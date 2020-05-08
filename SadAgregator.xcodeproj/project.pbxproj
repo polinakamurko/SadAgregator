@@ -65,7 +65,9 @@
 				9BC48B1D2465420700239E4E /* SadAgregatorTests */,
 				9BC48B052465420300239E4E /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9BC48B052465420300239E4E /* Products */ = {
 			isa = PBXGroup;
@@ -79,12 +81,8 @@
 		9BC48B062465420300239E4E /* SadAgregator */ = {
 			isa = PBXGroup;
 			children = (
-				9BC48B072465420300239E4E /* AppDelegate.swift */,
-				9BC48B092465420300239E4E /* SceneDelegate.swift */,
-				9BC48B0B2465420300239E4E /* ContentView.swift */,
-				9BC48B0D2465420700239E4E /* Assets.xcassets */,
-				9BC48B122465420700239E4E /* LaunchScreen.storyboard */,
-				9BC48B152465420700239E4E /* Info.plist */,
+				9BC48B292465459000239E4E /* Sources */,
+				9BC48B2A246545A600239E4E /* Resources */,
 				9BC48B0F2465420700239E4E /* Preview Content */,
 			);
 			path = SadAgregator;
@@ -105,6 +103,42 @@
 				9BC48B202465420700239E4E /* Info.plist */,
 			);
 			path = SadAgregatorTests;
+			sourceTree = "<group>";
+		};
+		9BC48B292465459000239E4E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9BC48B2B2465474000239E4E /* App Delegates */,
+				9BC48B2C2465484500239E4E /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		9BC48B2A246545A600239E4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9BC48B0D2465420700239E4E /* Assets.xcassets */,
+				9BC48B122465420700239E4E /* LaunchScreen.storyboard */,
+				9BC48B152465420700239E4E /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9BC48B2B2465474000239E4E /* App Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				9BC48B072465420300239E4E /* AppDelegate.swift */,
+				9BC48B092465420300239E4E /* SceneDelegate.swift */,
+			);
+			path = "App Delegates";
+			sourceTree = "<group>";
+		};
+		9BC48B2C2465484500239E4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9BC48B0B2465420300239E4E /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +400,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Y3X7GA52A;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SadAgregator/Info.plist;
+				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,7 +420,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Y3X7GA52A;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SadAgregator/Info.plist;
+				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
