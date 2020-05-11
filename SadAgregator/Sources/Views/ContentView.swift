@@ -24,7 +24,7 @@ struct ContentView: View {
           Image(systemName: "bolt.fill")
         }
       
-      Text("Menu")
+      MenuView()
         .tabItem {
           Image(systemName: "line.horizontal.3")
         }

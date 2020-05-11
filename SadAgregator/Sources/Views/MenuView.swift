@@ -11,11 +11,13 @@ import SwiftUI
 struct MenuView: View {
   var body: some View {
     List {
+      
       Section {
         HStack {
           VStack(alignment: .leading) {
             Text("Polina")
               .font(.system(size: 24, weight: .bold))
+              .padding(.bottom, 2)
             Text("Перейти в настройки")
               .font(.system(size: 14))
               .foregroundColor(Color(UIColor.systemGray2))
@@ -24,16 +26,33 @@ struct MenuView: View {
           Image(systemName: "chevron.right")
             .foregroundColor(Color(UIColor.systemGray3))
         }
+        .padding(.vertical, 8)
       }
       
       Section {
         MenuItemView(imageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
         MenuItemView(imageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
         MenuItemView(imageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
-        
       }
+      
+      Section {
+        MenuItemView(imageName: "tray.and.arrow.up", mainText: "Парсер")
+          .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
+          .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
+      }
+      
+      Section {
+        MenuItemView(imageName: "questionmark.circle", mainText: "Задать вопрос")
+        MenuItemView(imageName: "hand.thumbsup", mainText: "Помощь")
+      }
+      
+      Section {
+        MenuItemView(imageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+      }
+      
     }
-  .listStyle(GroupedListStyle())
+    .listStyle(GroupedListStyle())
+    .environment(\.horizontalSizeClass, .regular)
   }
 }
 
