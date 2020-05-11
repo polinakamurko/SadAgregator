@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B1C17FF2469D91A00EB108B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1C17FE2469D91A00EB108B /* MenuView.swift */; };
 		9BC48B082465420300239E4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC48B072465420300239E4E /* AppDelegate.swift */; };
 		9BC48B0A2465420300239E4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC48B092465420300239E4E /* SceneDelegate.swift */; };
 		9BC48B0C2465420300239E4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC48B0B2465420300239E4E /* ContentView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B1C17FE2469D91A00EB108B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		9BC48B042465420300239E4E /* SadAgregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SadAgregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC48B072465420300239E4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BC48B092465420300239E4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				9BC48B0B2465420300239E4E /* ContentView.swift */,
+				9B1C17FE2469D91A00EB108B /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BC48B082465420300239E4E /* AppDelegate.swift in Sources */,
+				9B1C17FF2469D91A00EB108B /* MenuView.swift in Sources */,
 				9BC48B0A2465420300239E4E /* SceneDelegate.swift in Sources */,
 				9BC48B0C2465420300239E4E /* ContentView.swift in Sources */,
 			);
