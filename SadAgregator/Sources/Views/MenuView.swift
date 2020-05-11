@@ -27,33 +27,10 @@ struct MenuView: View {
       }
       
       Section {
-        HStack {
-          Image(systemName: "person.2")
-          Text("Избранные поставщики")
-          Spacer()
-          Text("7")
-            .foregroundColor(.gray)
-          Image(systemName: "chevron.right")
-            .foregroundColor(Color(UIColor.systemGray3))
-        }
+        MenuItemView(imageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
+        MenuItemView(imageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
+        MenuItemView(imageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
         
-        HStack {
-          Image(systemName: "rectangle.on.rectangle")
-          Text("Избранные посты")
-          Spacer()
-          Text("57")
-            .foregroundColor(.gray)
-          Image(systemName: "chevron.right")
-            .foregroundColor(Color(UIColor.systemGray3))
-        }
-        
-        HStack {
-          Image(systemName: "person.crop.circle.badge.plus")
-          Text("Новый поставщик")
-          Spacer()
-          Image(systemName: "chevron.right")
-            .foregroundColor(Color(UIColor.systemGray3))
-        }
       }
     }
   .listStyle(GroupedListStyle())
@@ -66,3 +43,27 @@ struct MenuView_Previews: PreviewProvider {
   }
 }
 
+
+struct MenuItemView: View {
+  let imageName: String
+  let mainText: String
+  let detailedText: String
+  
+  init(imageName: String, mainText: String, detailedText: String = "") {
+    self.imageName = imageName
+    self.mainText = mainText
+    self.detailedText = detailedText
+  }
+  
+  var body: some View {
+    HStack {
+      Image(systemName: imageName)
+      Text(mainText)
+      Spacer()
+      Text(detailedText)
+        .foregroundColor(.gray)
+      Image(systemName: "chevron.right")
+        .foregroundColor(Color(UIColor.systemGray3))
+    }
+  }
+}
