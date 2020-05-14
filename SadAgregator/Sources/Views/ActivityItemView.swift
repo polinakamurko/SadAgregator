@@ -33,7 +33,7 @@ struct ActivityItemView: View {
       }
       .foregroundColor(Color(UIColor.systemGray3))
     }
-    .padding()
+    .padding(.vertical)
   }
 }
 
