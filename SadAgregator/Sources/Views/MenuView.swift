@@ -30,24 +30,24 @@ struct MenuView: View {
       }
       
       Section {
-        MenuItemView(imageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
-        MenuItemView(imageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
-        MenuItemView(imageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
+        MenuItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
+        MenuItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
+        MenuItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
       }
       
       Section {
-        MenuItemView(imageName: "tray.and.arrow.up", mainText: "Парсер")
+        MenuItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
           .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
           .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
       }
       
       Section {
-        MenuItemView(imageName: "questionmark.circle", mainText: "Задать вопрос")
-        MenuItemView(imageName: "hand.thumbsup", mainText: "Помощь")
+        MenuItemView(systemImageName: "questionmark.circle", mainText: "Задать вопрос")
+        MenuItemView(systemImageName: "hand.thumbsup", mainText: "Помощь")
       }
       
       Section {
-        MenuItemView(imageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+        MenuItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
       }
       
     }

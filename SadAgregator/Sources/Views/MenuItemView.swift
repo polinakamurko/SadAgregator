@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct MenuItemView: View {
-  let imageName: String
+  let systemImageName: String?
+  let imageName: String?
   let mainText: String
   let detailedText: String
   
-  init(imageName: String, mainText: String, detailedText: String = "") {
+  init(systemImageName: String? = nil, imageName: String? = nil, mainText: String, detailedText: String = "") {
+    self.systemImageName = systemImageName
     self.imageName = imageName
     self.mainText = mainText
     self.detailedText = detailedText
@@ -21,7 +23,11 @@ struct MenuItemView: View {
   
   var body: some View {
     HStack {
-      Image(systemName: imageName)
+      if systemImageName != nil {
+        Image(systemName: systemImageName!)
+      } else if imageName != nil {
+        Image(imageName!)
+      }
       Text(mainText)
       Spacer()
       Text(detailedText)
@@ -34,6 +40,6 @@ struct MenuItemView: View {
 
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
-      MenuItemView(imageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
+      MenuItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
     }
 }
