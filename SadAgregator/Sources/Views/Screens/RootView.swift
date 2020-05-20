@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RootView.swift
 //  SadAgregator
 //
 //  Created by Полина Камурко on 08.05.2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RootView: View {
   
   var body: some View {
     TabView {
@@ -35,6 +35,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    RootView()
   }
 }

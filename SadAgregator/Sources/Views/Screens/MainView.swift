@@ -55,7 +55,7 @@ struct MainView: View {
             ActivityItemView()
           }
           
-          Text("Активность поставщиков")
+          Text("Последние посты")
             .font(.system(size: 22, weight: .bold))
             .frame(maxWidth: .infinity, alignment: .leading)
           

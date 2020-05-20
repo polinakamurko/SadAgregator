@@ -1,5 +1,5 @@
 //
-//  PostView.swift
+//  PostItemView.swift
 //  SadAgregator
 //
 //  Created by Полина on 19.05.2020.
@@ -8,13 +8,10 @@
 
 import SwiftUI
 
-struct PostView: View {
+struct PostItemView: View {
   var body: some View {
     
     VStack(alignment: .leading, spacing: 5) {
-      Text("Последние посты")
-        .font(.system(size: 22, weight: .bold))
-      
       HStack {
         Text("38-46")
           .font(.system(size: 20, weight: .bold))
@@ -85,7 +82,7 @@ struct PostView: View {
   
   struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-      PostView()
+      PostItemView()
     }
   }
 }
