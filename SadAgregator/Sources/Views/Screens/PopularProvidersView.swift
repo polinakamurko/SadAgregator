@@ -58,7 +58,7 @@ struct PopularProvidersView: View {
           }
         }
         .padding(.horizontal)
-        .padding(.top)
+        .padding(.top, 8)
         
         List {
           ForEach(0..<8) { index in
