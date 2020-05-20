@@ -19,14 +19,14 @@ struct PopularProvidersView: View {
           TextField("Поиск", text: $searchQuery)
             .padding(.horizontal)
             .frame(height: 36)
-            .background(Color(UIColor.systemGray5))
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
           
-          Button(action: {}) {
-            Image(systemName: "photo.fill")
-              .foregroundColor(.gray)
-          }
-          .padding(.leading, 8)
+//          Button(action: {}) {
+//            Image(systemName: "photo.fill")
+//              .foregroundColor(.gray)
+//          }
+//          .padding(.leading, 8)
         }
         .padding([.top, .leading, .trailing])
         
