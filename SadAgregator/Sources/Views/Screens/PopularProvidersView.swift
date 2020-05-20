@@ -20,7 +20,7 @@ struct PopularProvidersView: View {
           Text("Популярность поставщиков")
             .fontWeight(.semibold)
             .padding(.top)
-            .transition(.move(edge: .top))
+            .transition(.customNavbar)
         }
         
         HStack { // Search Bar

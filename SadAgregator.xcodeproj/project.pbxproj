@@ -25,6 +25,7 @@
 		BE562F4C2475BD01000EDB5C /* SectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562F4B2475BD01000EDB5C /* SectionTitleView.swift */; };
 		BE562F4E2475BFC3000EDB5C /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562F4D2475BFC3000EDB5C /* UIApplication+Extensions.swift */; };
 		BE562F512475C031000EDB5C /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562F502475C031000EDB5C /* View+Extensions.swift */; };
+		BE562F532475C4A4000EDB5C /* AnyTransition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562F522475C4A4000EDB5C /* AnyTransition+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		BE562F4B2475BD01000EDB5C /* SectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleView.swift; sourceTree = "<group>"; };
 		BE562F4D2475BFC3000EDB5C /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		BE562F502475C031000EDB5C /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		BE562F522475C4A4000EDB5C /* AnyTransition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			children = (
 				BE562F4D2475BFC3000EDB5C /* UIApplication+Extensions.swift */,
 				BE562F502475C031000EDB5C /* View+Extensions.swift */,
+				BE562F522475C4A4000EDB5C /* AnyTransition+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				BE11E4B3246C888A004A2FBC /* PopularProviderItemView.swift in Sources */,
 				BE46218F246D13DA00F715B1 /* MainView.swift in Sources */,
 				9BC48B082465420300239E4E /* AppDelegate.swift in Sources */,
+				BE562F532475C4A4000EDB5C /* AnyTransition+Extensions.swift in Sources */,
 				BE11E4B4246C888A004A2FBC /* PopularProvidersView.swift in Sources */,
 				BE562F4E2475BFC3000EDB5C /* UIApplication+Extensions.swift in Sources */,
 				9B1C17FF2469D91A00EB108B /* MenuView.swift in Sources */,
