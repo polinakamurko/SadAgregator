@@ -8,52 +8,21 @@
 
 import SwiftUI
 
-struct SectionTitleView: View {
-  
-  let title: String
-  
-  var showAllAction: (() -> Void)?
-  
-  init(_ title: String, showAllAction: (() -> Void)? = nil) {
-    self.title = title
-    self.showAllAction = showAllAction
-  }
-  
-  var body: some View {
-    HStack {
-    Text(title)
-      .font(.system(size: 22, weight: .bold))
-    
-      Spacer()
-      
-      if showAllAction != nil {
-        Button(action: showAllAction!) {
-          HStack {
-            Text("См. все")
-            Image(systemName: "chevron.right")
-          }
-          .font(.system(size: 15))
-        }
-      }
-    }
-  }
-}
-
 struct MainView: View {
   var body: some View {
     NavigationView {
       VStack {
         List {
           Section(header: Text("Активность линий")) {
-            ActivityItemView()
-            ActivityItemView()
-            ActivityItemView()
+            ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
           
           Section(header: Text("Активность поставщиков")) {
-            ActivityItemView()
-            ActivityItemView()
-            ActivityItemView()
+            ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
           
           Section(header: Text("Последние посты")) {
@@ -63,7 +32,6 @@ struct MainView: View {
             PostItemView()
           }
         }
-        .listStyle(GroupedListStyle())
       }
       .navigationBarTitle("Главная", displayMode: .inline)
     }
