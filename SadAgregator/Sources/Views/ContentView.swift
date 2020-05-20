@@ -15,16 +15,19 @@ struct ContentView: View {
       MainView()
         .tabItem {
           Image(systemName: "house.fill")
+            .font(.system(size: 20))
         }
       
       PopularProvidersView()
         .tabItem {
           Image(systemName: "bolt.fill")
+            .font(.system(size: 20))
         }
       
       MenuView()
         .tabItem {
           Image(systemName: "line.horizontal.3")
+            .font(.system(size: 20))
         }
     }
   }
