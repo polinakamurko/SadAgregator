@@ -8,61 +8,62 @@
 
 import SwiftUI
 
+struct SectionTitleView: View {
+  
+  let title: String
+  
+  var showAllAction: (() -> Void)?
+  
+  init(_ title: String, showAllAction: (() -> Void)? = nil) {
+    self.title = title
+    self.showAllAction = showAllAction
+  }
+  
+  var body: some View {
+    HStack {
+    Text(title)
+      .font(.system(size: 22, weight: .bold))
+    
+      Spacer()
+      
+      if showAllAction != nil {
+        Button(action: showAllAction!) {
+          HStack {
+            Text("См. все")
+            Image(systemName: "chevron.right")
+          }
+          .font(.system(size: 15))
+        }
+      }
+    }
+  }
+}
+
 struct MainView: View {
   var body: some View {
     NavigationView {
       VStack {
-        ScrollView(.vertical) {
-          HStack {
-            Text("Активность линий")
-              .font(.system(size: 22, weight: .bold))
-            
-            Spacer()
-            
-            Button(action: {}) {
-              HStack {
-                Text("См. все")
-                Image(systemName: "chevron.right")
-              }
-              .font(.system(size: 15))
-            }
-          }
-          
-          Group {
+        List {
+          Section(header: Text("Активность линий")) {
             ActivityItemView()
             ActivityItemView()
             ActivityItemView()
           }
           
-          HStack {
-            Text("Активность поставщиков")
-              .font(.system(size: 22, weight: .bold))
-            
-            Spacer()
-            
-            Button(action: {}) {
-              HStack {
-                Text("См. все")
-                Image(systemName: "chevron.right")
-              }
-              .font(.system(size: 15))
-            }
-          }
-          
-          Group {
+          Section(header: Text("Активность поставщиков")) {
             ActivityItemView()
             ActivityItemView()
             ActivityItemView()
           }
           
-          Text("Последние посты")
-            .font(.system(size: 22, weight: .bold))
-            .frame(maxWidth: .infinity, alignment: .leading)
-          
-          Spacer()
+          Section(header: Text("Последние посты")) {
+            PostItemView()
+            PostItemView()
+            PostItemView()
+            PostItemView()
+          }
         }
-        .padding(.top)
-        .padding(.horizontal)
+        .listStyle(GroupedListStyle())
       }
       .navigationBarTitle("Главная", displayMode: .inline)
     }
