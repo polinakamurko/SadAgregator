@@ -38,6 +38,7 @@ struct PopularProvidersView: View {
             }
           }
         }
+        .resignKeyboardOnDragGesture()
       }
       .navigationBarTitle("Популярность поставщиков", displayMode: .inline)
     }
