@@ -32,8 +32,10 @@ struct PopularProvidersView: View {
         
         List {
           ForEach(0..<8) { index in
-            PopularProviderItemView(index: index)
+            NavigationLink(destination: ProviderView()) {
+              PopularProviderItemView(index: index + 1)
               .padding(.vertical, 8)
+            }
           }
         }
       }
