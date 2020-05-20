@@ -25,8 +25,12 @@ struct MenuItemView: View {
     HStack {
       if systemImageName != nil {
         Image(systemName: systemImageName!)
+          .padding(.trailing, 6)
+        .frame(width: 28)
       } else if imageName != nil {
         Image(imageName!)
+          .padding(.trailing, 6)
+        .frame(width: 28)
       }
       Text(mainText)
       Spacer()
