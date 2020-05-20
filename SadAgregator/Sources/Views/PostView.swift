@@ -64,15 +64,21 @@ struct PostView: View {
         .cornerRadius(10)
       }
       
-      ZStack {
-        Color(UIColor.systemGray6)
-          .frame(height: 34)
-        Text("Показать описание")
-        Image(systemName: "chevron.down")
-          .frame(maxWidth: .infinity, alignment: .trailing)
-          .padding(.trailing)
+      VStack(alignment: .leading) {
+        ZStack {
+          Text("Показать описание")
+          Image(systemName: "chevron.down")
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .padding(.trailing)
+        }
+        .padding(.vertical, 8)
+        .foregroundColor(Color(UIColor.darkGray))
+        
+        Text("Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб")
+          .padding(.bottom)
       }
-      .foregroundColor(Color(UIColor.darkGray))
+      .background(Color(UIColor.systemGray6))
+   
     }
   }
   

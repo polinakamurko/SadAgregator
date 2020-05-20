@@ -49,8 +49,9 @@ struct ProviderView: View {
                 .font(.system(size: 10))
                 .foregroundColor(Color(UIColor.systemGray2))
               }
-            }
+            }.padding(.top)
           }
+          
           
           ZStack {
             Color(UIColor.systemGray6)
@@ -62,14 +63,15 @@ struct ProviderView: View {
           }
           .foregroundColor(Color(UIColor.darkGray))
         }
+      .listRowInsets(EdgeInsets())
       }
       
       Section {
         MenuItemView(imageName: "vk_icon", mainText: "@club154574939", detailedText: "7")
         MenuItemView(systemImageName: "location", mainText: "Контейнер", detailedText: "57")
-        MenuItemView(systemImageName: "phone", mainText: "Номер телефона")
-        MenuItemView(systemImageName: "calendar", mainText: "Дата регистрации VK")
-        MenuItemView(systemImageName: "person.2", mainText: "Охват")
+        MenuItemView(systemImageName: "phone", mainText: "Телефон", detailedText: "8 (912) 657 39 01")
+        MenuItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: "17.05.1998")
+        MenuItemView(systemImageName: "person.2", mainText: "Охват", detailedText: "1100 чел/сут")
       }
       
       Section {
