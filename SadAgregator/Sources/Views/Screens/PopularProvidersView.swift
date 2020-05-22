@@ -11,33 +11,67 @@ import SwiftUI
 struct PopularProvidersView: View {
   
   @State private var searchQuery = ""
+  @State private var showCancelButton = false
   
   var body: some View {
     NavigationView {
       VStack {
-        HStack {
-          TextField("Поиск", text: $searchQuery)
-            .padding(.horizontal)
-            .frame(height: 36)
-            .background(Color(UIColor.systemGray5))
-            .cornerRadius(10)
-          
-          Button(action: {}) {
-            Image(systemName: "photo.fill")
-              .foregroundColor(.gray)
-          }
-          .padding(.leading, 8)
+        if !showCancelButton {
+          Text("Популярность поставщиков")
+            .fontWeight(.semibold)
+            .padding(.top)
+            .transition(.customNavbar)
         }
-        .padding([.top, .leading, .trailing])
+        
+        HStack { // Search Bar
+          HStack {
+            Image(systemName: "magnifyingglass")
+            
+            TextField("Поиск", text: $searchQuery, onEditingChanged: { isEditing in
+              withAnimation {
+                self.showCancelButton = true
+              }
+            }, onCommit: {
+              print("onCommit")
+            }).foregroundColor(.primary)
+            
+            Button(action: {
+              self.searchQuery = ""
+            }) {
+              Image(systemName: "xmark.circle.fill").opacity(searchQuery == "" ? 0 : 1)
+            }
+          }
+          .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+          .foregroundColor(.secondary)
+          .background(Color(.secondarySystemBackground))
+          .cornerRadius(10.0)
+          
+          if showCancelButton {
+            Button("Отмена") {
+              UIApplication.shared.endEditing(true)
+              self.searchQuery = ""
+              withAnimation {
+                self.showCancelButton = false
+              }
+            }
+            .foregroundColor(Color(.systemBlue))
+          }
+        }
+        .padding(.horizontal)
+        .padding(.top, 8)
         
         List {
           ForEach(0..<8) { index in
-            PopularProviderItemView(index: index)
-              .padding(.vertical, 8)
+            NavigationLink(destination: ProviderView()) {
+              PopularProviderItemView(index: index + 1)
+                .padding(.vertical, 8)
+            }
           }
         }
+        .resignKeyboardOnDragGesture()
       }
-      .navigationBarTitle("Популярность поставщиков", displayMode: .inline)
+      .navigationBarTitle("", displayMode: .inline)
+      .navigationBarHidden(true)
     }
   }
 }

@@ -9,62 +9,93 @@
 import SwiftUI
 
 struct MainView: View {
+  
+  @State private var searchQuery = ""
+  @State private var showCancelButton = false
+  
   var body: some View {
     NavigationView {
       VStack {
-        ScrollView(.vertical) {
-          HStack {
-            Text("Активность линий")
-              .font(.system(size: 22, weight: .bold))
-            
-            Spacer()
-            
-            Button(action: {}) {
-              HStack {
-                Text("См. все")
-                Image(systemName: "chevron.right")
-              }
-              .font(.system(size: 15))
-            }
-          }
-          
-          Group {
-            ActivityItemView()
-            ActivityItemView()
-            ActivityItemView()
-          }
-          
-          HStack {
-            Text("Активность поставщиков")
-              .font(.system(size: 22, weight: .bold))
-            
-            Spacer()
-            
-            Button(action: {}) {
-              HStack {
-                Text("См. все")
-                Image(systemName: "chevron.right")
-              }
-              .font(.system(size: 15))
-            }
-          }
-          
-          Group {
-            ActivityItemView()
-            ActivityItemView()
-            ActivityItemView()
-          }
-          
-          Text("Последние посты")
-            .font(.system(size: 22, weight: .bold))
-            .frame(maxWidth: .infinity, alignment: .leading)
-          
-          Spacer()
+        if !showCancelButton {
+          Text("Главная")
+            .fontWeight(.semibold)
+            .padding(.top)
+            .transition(.customNavbar)
         }
-        .padding(.top)
+        
+        HStack { // Search Bar
+          HStack {
+            Image(systemName: "magnifyingglass")
+            
+            TextField("Поиск", text: $searchQuery, onEditingChanged: { isEditing in
+              withAnimation {
+                self.showCancelButton = true
+              }
+            }, onCommit: {
+              print("onCommit")
+            })
+              .foregroundColor(.primary)
+            
+            if searchQuery == "" {
+              Button(action: {
+                self.searchQuery = ""
+              }) {
+                Image(systemName: "photo.fill")
+                  .opacity(showCancelButton ? 0 : 1)
+                  .padding(.trailing, 8)
+              }
+            
+            } else {
+              Button(action: {
+                self.searchQuery = ""
+              }) {
+                Image(systemName: "xmark.circle.fill")
+                  .opacity(searchQuery == "" ? 0 : 1)
+              }
+            }
+          }
+          .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+          .foregroundColor(.secondary)
+          .background(Color(.secondarySystemBackground))
+          .cornerRadius(10.0)
+          
+          if showCancelButton {
+            Button("Отмена") {
+              UIApplication.shared.endEditing(true)
+              self.searchQuery = ""
+              withAnimation {
+                self.showCancelButton = false
+              }
+            }
+            .foregroundColor(Color(.systemBlue))
+          }
+        }
         .padding(.horizontal)
+        .padding(.vertical, 8)
+        
+        List {
+          Section(header: Text("Активность линий")) {
+            ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+          }
+          
+          Section(header: Text("Активность поставщиков")) {
+            ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+          }
+          
+          Section(header: Text("Последние посты")) {
+            PostItemView()
+            PostItemView()
+            PostItemView()
+            PostItemView()
+          }
+        }
       }
       .navigationBarTitle("Главная", displayMode: .inline)
+      .navigationBarHidden(true)
     }
   }
 }
