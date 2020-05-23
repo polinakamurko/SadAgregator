@@ -77,10 +77,11 @@ struct MainView: View {
         Text("Активность")
              .font(.system(size: 22, weight: .bold))
              Spacer()
-        Image(systemName: "chevron.right")
+        Image(systemName: "chevron.down")
           .font(.system(size: 15, weight: .bold))
           .foregroundColor(.blue)
         }
+        .padding(.horizontal)
         VStack {
           HStack {
             Image(systemName: "bolt.fill")
