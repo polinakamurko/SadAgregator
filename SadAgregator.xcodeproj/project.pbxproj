@@ -470,7 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
-				DEVELOPMENT_TEAM = N2HCJ99WYH;
+				DEVELOPMENT_TEAM = 9Y3X7GA52A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -478,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuraist.SadAgregator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuraist.SadAgregatorP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -491,7 +491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
-				DEVELOPMENT_TEAM = N2HCJ99WYH;
+				DEVELOPMENT_TEAM = 9Y3X7GA52A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -499,7 +499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuraist.SadAgregator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuraist.SadAgregatorP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
