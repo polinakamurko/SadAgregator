@@ -37,9 +37,10 @@ struct MenuView: View {
       
       Section {
         MenuItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
-          .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
-          .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
+        MenuItemView(systemImageName: "wrench", mainText: "Мастер настройки")
       }
+      .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
+      .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
       
       Section {
         MenuItemView(systemImageName: "questionmark.circle", mainText: "Задать вопрос")

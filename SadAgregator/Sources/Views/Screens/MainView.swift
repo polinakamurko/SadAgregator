@@ -14,7 +14,7 @@ struct MainView: View {
   @State private var showCancelButton = false
   
   var body: some View {
-    //NavigationView {
+    NavigationView {
       VStack {
         if !showCancelButton {
           Text("Главная")
@@ -120,7 +120,6 @@ struct MainView: View {
               Text("2253")
               Text("10783")
             }
-            .font(.system(size: 15))
           }
         }
         .frame(maxWidth: .infinity)
@@ -152,7 +151,7 @@ struct MainView: View {
       .navigationBarHidden(true)
     }
   }
-//}
+}
 
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {

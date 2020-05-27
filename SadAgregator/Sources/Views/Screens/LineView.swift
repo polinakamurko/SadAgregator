@@ -59,7 +59,6 @@ struct LineView: View {
             Text("27")
             Text("59")
           }
-          .font(.system(size: 15))
         }
         .frame(maxWidth: .infinity)
         .padding()
