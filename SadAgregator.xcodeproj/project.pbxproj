@@ -30,6 +30,7 @@
 		BE562F532475C4A4000EDB5C /* AnyTransition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE562F522475C4A4000EDB5C /* AnyTransition+Extensions.swift */; };
 		BEB9514C2484D94F00A26F71 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB9514B2484D94F00A26F71 /* ProfileView.swift */; };
 		BEB9514E2484DCBA00A26F71 /* BorderedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB9514D2484DCBA00A26F71 /* BorderedButtonStyle.swift */; };
+		BEB951512484E3BF00A26F71 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB951502484E3BF00A26F71 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		BE562F522475C4A4000EDB5C /* AnyTransition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Extensions.swift"; sourceTree = "<group>"; };
 		BEB9514B2484D94F00A26F71 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BEB9514D2484DCBA00A26F71 /* BorderedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButtonStyle.swift; sourceTree = "<group>"; };
+		BEB951502484E3BF00A26F71 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				9BAD866B2479421400F756DA /* LineView.swift */,
 				9B0D77602479B41A00ABF210 /* SpotView.swift */,
 				BEB9514B2484D94F00A26F71 /* ProfileView.swift */,
+				BEB951502484E3BF00A26F71 /* LoginView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				9BAD866C2479421400F756DA /* LineView.swift in Sources */,
 				9BC48B0C2465420300239E4E /* RootView.swift in Sources */,
 				9BB2FB4F2474414700E1B184 /* PostItemView.swift in Sources */,
+				BEB951512484E3BF00A26F71 /* LoginView.swift in Sources */,
 				BE562F4C2475BD01000EDB5C /* SectionTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

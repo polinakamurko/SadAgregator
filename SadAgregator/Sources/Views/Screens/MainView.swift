@@ -141,8 +141,9 @@ struct MainView: View {
             }
             .listRowInsets(EdgeInsets())
             
-            
-            ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            NavigationLink(destination: LineView()) {
+              ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            }
             ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
           
@@ -151,10 +152,12 @@ struct MainView: View {
               SectionTitleView("Активность точек", showAllAction: {
                 // TODO: Add show all action
               })
-              ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(number: 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
             }
-            ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-            ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            NavigationLink(destination: SpotView()) {
+              ActivityItemView(number: 2, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            }
+            ActivityItemView(number: 3, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
           
           Section(header: Text("Последние посты")) {

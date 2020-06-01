@@ -46,9 +46,10 @@ struct MenuView: View {
       }
       
       Section {
-        DetailItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+        NavigationLink(destination: LoginView()) {
+          DetailItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+        }
       }
-      
     }
     .navigationBarTitle("")
     .navigationBarHidden(true)

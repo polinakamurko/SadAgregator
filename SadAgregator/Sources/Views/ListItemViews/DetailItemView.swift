@@ -13,12 +13,20 @@ struct DetailItemView: View {
   let imageName: String?
   let mainText: String
   let detailedText: String
+  let showChevron: Bool
   
-  init(systemImageName: String? = nil, imageName: String? = nil, mainText: String, detailedText: String = "") {
+  init(
+    systemImageName: String? = nil,
+    imageName: String? = nil,
+    mainText: String,
+    detailedText: String = "",
+    showChevron: Bool = false
+  ) {
     self.systemImageName = systemImageName
     self.imageName = imageName
     self.mainText = mainText
     self.detailedText = detailedText
+    self.showChevron = showChevron
   }
   
   var body: some View {
@@ -36,8 +44,10 @@ struct DetailItemView: View {
       Spacer()
       Text(detailedText)
         .foregroundColor(.gray)
-      Image(systemName: "chevron.right")
-        .foregroundColor(Color(UIColor.systemGray3))
+      if showChevron {
+        Image(systemName: "chevron.right")
+          .foregroundColor(Color(UIColor.systemGray3))
+      }
     }
   }
 }
