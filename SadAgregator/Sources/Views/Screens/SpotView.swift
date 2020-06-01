@@ -70,15 +70,14 @@ struct SpotView: View {
           Image(systemName: "exclamationmark.triangle")
             .font(.system(size: 30))
             .foregroundColor(Color(.systemRed))
+          
           Text("Обращаем Ваше внимание, что по данному поставщику мы не предоставляем услуги выкупа")
             .font(.system(size: 15))
+            .frame(maxWidth: .infinity)
         }
-        
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-    }
-    
-    
+      }
       
       VStack(alignment: .leading) {
         HStack {
@@ -98,8 +97,8 @@ struct SpotView: View {
             .font(.subheadline)
             .foregroundColor(Color(UIColor.systemGray3))
           }
-          
         }
+        
         VStack(alignment: .leading, spacing: 5) {
           HStack(spacing: 0) {
             Group {
@@ -136,13 +135,13 @@ struct SpotView: View {
             Text("8 919 769 69 16")
           }
           .padding(.horizontal, 8)
-        .padding(.vertical, 4)
+          .padding(.vertical, 4)
           .background(Color(UIColor.systemGray6))
-        .cornerRadius(13)
+          .cornerRadius(13)
           
           Text("Нет уникального контента")
-          .font(.system(size: 15))
-          .foregroundColor(Color(UIColor.systemGray))
+            .font(.system(size: 15))
+            .foregroundColor(Color(UIColor.systemGray))
         }
       }
       .padding(.horizontal)
