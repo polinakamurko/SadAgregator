@@ -1,5 +1,5 @@
 //
-//  MenuItemView.swift
+//  DetailItemView.swift
 //  SadAgregator
 //
 //  Created by Полина on 15.05.2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MenuItemView: View {
+struct DetailItemView: View {
   let systemImageName: String?
   let imageName: String?
   let mainText: String
@@ -44,6 +44,6 @@ struct MenuItemView: View {
 
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
-      MenuItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
+      DetailItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
     }
 }

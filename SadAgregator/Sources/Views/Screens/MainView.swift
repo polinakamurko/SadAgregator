@@ -131,7 +131,7 @@ struct MainView: View {
               .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
             
               Group {
-                SectionTitleView("Активность точек", showAllAction: {
+                SectionTitleView("Активность линий", showAllAction: {
                   // TODO: Add show all action
                 })
                 

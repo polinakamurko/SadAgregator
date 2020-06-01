@@ -30,25 +30,25 @@ struct MenuView: View {
       }
       
       Section {
-        MenuItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
-        MenuItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
-        MenuItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
+        DetailItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
+        DetailItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
+        DetailItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
       }
       
       Section {
-        MenuItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
-        MenuItemView(systemImageName: "wrench", mainText: "Мастер настройки")
+        DetailItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
+        DetailItemView(systemImageName: "wrench", mainText: "Мастер настройки")
       }
       .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
       .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
       
       Section {
-        MenuItemView(systemImageName: "questionmark.circle", mainText: "Задать вопрос")
-        MenuItemView(systemImageName: "hand.thumbsup", mainText: "Помощь")
+        DetailItemView(systemImageName: "questionmark.circle", mainText: "Задать вопрос")
+        DetailItemView(systemImageName: "hand.thumbsup", mainText: "Помощь")
       }
       
       Section {
-        MenuItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+        DetailItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
       }
       
     }
