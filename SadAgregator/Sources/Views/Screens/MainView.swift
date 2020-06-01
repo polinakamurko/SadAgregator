@@ -130,8 +130,14 @@ struct MainView: View {
               .padding()
               .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
             
-              ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-                .padding(.horizontal)
+              Group {
+                SectionTitleView("Активность точек", showAllAction: {
+                  // TODO: Add show all action
+                })
+                
+                ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              }
+              .padding(.horizontal)
             }
             .listRowInsets(EdgeInsets())
             
@@ -140,8 +146,13 @@ struct MainView: View {
             ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
           
-          Section(header: Text("Активность поставщиков")) {
-            ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+          Section {
+            VStack {
+              SectionTitleView("Активность точек", showAllAction: {
+                // TODO: Add show all action
+              })
+              ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            }
             ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
             ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
