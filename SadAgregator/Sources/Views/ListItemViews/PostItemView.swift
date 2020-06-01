@@ -79,8 +79,8 @@ struct PostItemView: View {
           .padding([.horizontal, .bottom])
       }
       .background(Color(UIColor.systemGray6))
-   
     }
+    .padding(.vertical, 8)
     .listRowInsets(EdgeInsets())
   }
 }

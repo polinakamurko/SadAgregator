@@ -73,62 +73,69 @@ struct MainView: View {
         .padding(.horizontal)
         .padding(.vertical, 8)
         
-        HStack {
-        Text("Активность")
-             .font(.system(size: 22, weight: .bold))
-             Spacer()
-        Image(systemName: "chevron.down")
-          .font(.system(size: 15, weight: .bold))
-          .foregroundColor(.blue)
-        }
-        .padding(.horizontal)
-        VStack {
-          HStack {
-            Image(systemName: "bolt.fill")
-            Text("1048 поставщиков")
-          }
-          .font(.system(size: 13, weight: .bold))
-          .foregroundColor(.blue)
-          
-          HStack {
-            VStack(alignment: .leading, spacing: 12) {
-              Text(" ")
-              HStack {
-                Image(systemName: "rectangle.fill.on.rectangle.fill")
-                  .foregroundColor(Color(UIColor.systemGray3))
-                Text("Посты")
-                .fixedSize(horizontal: true, vertical: false)
-              }
-              HStack {
-                Image(systemName: "photo.fill.on.rectangle.fill")
-                  .foregroundColor(Color(UIColor.systemGray3))
-                Text("Фото")
-              }
-            }
-            Spacer()
-            VStack(spacing: 12) {
-              Text("Сегодня")
-                .foregroundColor(.gray)
-              Text("2253")
-              Text("10783")
-            }
-            .font(.system(size: 17, weight: .bold))
-            Spacer()
-            VStack(spacing: 12) {
-              Text("Вчера")
-              .foregroundColor(.gray)
-              Text("2253")
-              Text("10783")
-            }
-          }
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-        
         List {
-          Section(header: Text("Активность линий")) {
-            ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+          Section {
+            VStack {
+              HStack {
+                Text("Активность")
+                  .font(.system(size: 22, weight: .bold))
+                Spacer()
+                Image(systemName: "chevron.down")
+                  .font(.system(size: 15, weight: .bold))
+                  .foregroundColor(.blue)
+              }
+              .padding(.horizontal)
+              
+              VStack {
+                HStack {
+                  Image(systemName: "bolt.fill")
+                  Text("1048 поставщиков")
+                }
+                .font(.system(size: 13, weight: .bold))
+                .foregroundColor(.blue)
+                
+                HStack {
+                  VStack(alignment: .leading, spacing: 12) {
+                    Text(" ")
+                    HStack {
+                      Image(systemName: "rectangle.fill.on.rectangle.fill")
+                        .foregroundColor(Color(UIColor.systemGray3))
+                      Text("Посты")
+                        .fixedSize(horizontal: true, vertical: false)
+                    }
+                    HStack {
+                      Image(systemName: "photo.fill.on.rectangle.fill")
+                        .foregroundColor(Color(UIColor.systemGray3))
+                      Text("Фото")
+                    }
+                  }
+                  Spacer()
+                  VStack(spacing: 12) {
+                    Text("Сегодня")
+                      .foregroundColor(.gray)
+                    Text("2253")
+                    Text("10783")
+                  }
+                  .font(.system(size: 17, weight: .bold))
+                  Spacer()
+                  VStack(spacing: 12) {
+                    Text("Вчера")
+                      .foregroundColor(.gray)
+                    Text("2253")
+                    Text("10783")
+                  }
+                }
+              }
+              .frame(maxWidth: .infinity)
+              .padding()
+              .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
+            
+              ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+                .padding(.horizontal)
+            }
+            .listRowInsets(EdgeInsets())
+            
+            
             ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
             ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
