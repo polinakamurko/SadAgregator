@@ -11,22 +11,20 @@ import SwiftUI
 struct MenuView: View {
   var body: some View {
     List {
-      
       Section {
-        HStack {
+        NavigationLink(destination:
+          ProfileView()
+        ) {
           VStack(alignment: .leading) {
-            Text("Polina")
+            Text("Юрий")
               .font(.system(size: 24, weight: .bold))
               .padding(.bottom, 2)
             Text("Перейти в настройки")
               .font(.system(size: 14))
               .foregroundColor(Color(UIColor.systemGray2))
           }
-          Spacer()
-          Image(systemName: "chevron.right")
-            .foregroundColor(Color(UIColor.systemGray3))
+          .padding(.vertical, 8)
         }
-        .padding(.vertical, 8)
       }
       
       Section {
@@ -52,6 +50,8 @@ struct MenuView: View {
       }
       
     }
+    .navigationBarTitle("")
+    .navigationBarHidden(true)
     .listStyle(GroupedListStyle())
     .environment(\.horizontalSizeClass, .regular)
   }

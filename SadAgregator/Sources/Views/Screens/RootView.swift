@@ -23,12 +23,13 @@ struct RootView: View {
           Image(systemName: "bolt.fill")
             .font(.system(size: 20))
         }
-      
-      MenuView()
-        .tabItem {
-          Image(systemName: "line.horizontal.3")
-            .font(.system(size: 20))
-        }
+      NavigationView {
+        MenuView()
+      }
+      .tabItem {
+        Image(systemName: "line.horizontal.3")
+          .font(.system(size: 20))
+      }
     }
   }
 }

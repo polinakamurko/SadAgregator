@@ -58,12 +58,12 @@ struct ProfileView: View {
           .frame(maxWidth: .infinity)
       }
     }
-    .navigationBarTitle("Профиль")
+    .navigationBarTitle("Профиль", displayMode: .inline)
     .onAppear {
-      UITableView.appearance().separatorStyle = .none
+//      UITableView.appearance().separatorStyle = .none
     }
     .onDisappear {
-      UITableView.appearance().separatorStyle = .singleLine
+//      UITableView.appearance().separatorStyle = .singleLine
     }
   }
 }
