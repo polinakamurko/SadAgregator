@@ -56,11 +56,11 @@ struct PostItemView: View {
             Text("В размер")
           }
           .font(.system(size: 17, weight: .medium))
-          .foregroundColor(Color(red: 142/255, green: 142/255, blue: 147/255))
+          .foregroundColor(Color(UIColor.darkGray))
           .padding(.horizontal, 8)
           .frame(height: 32)
           .foregroundColor(Color(red: 58/255, green: 58/255, blue: 60/255))
-          .background(Color(red: 248/255, green: 248/255, blue: 249/255))
+          .background(Color(UIColor.systemGray6))
           .cornerRadius(10)
         }
       }
@@ -92,6 +92,37 @@ struct PostItemView: View {
       .background(Color(UIColor.systemGray6))
       .padding(.vertical, 8)
       .listRowInsets(EdgeInsets())
+      
+      HStack {
+        VStack(alignment: .leading) {
+          Text("17 мин. назад")
+          Text("См. пост в ВК")
+          .font(.system(size: 13, weight: .bold))
+        }
+        .font(.system(size: 13))
+        .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
+        
+        Spacer()
+       
+        Group {
+          Image(systemName:"line.horizontal.3")
+          HStack(spacing: 2) {
+            Image("vk_icon")
+              .renderingMode(.template)
+            Text("Выгрузить")
+          }
+          .font(.system(size: 14, weight: .semibold))
+          .foregroundColor(Color(red: 64/255, green: 137/255, blue: 222/255))
+          Image(systemName:"heart")
+        }
+        .padding(.horizontal, 8)
+        .frame(height: 32)
+        .foregroundColor(Color(UIColor.darkGray))
+        .background(Color(UIColor.systemGray6))
+        .cornerRadius(10)
+        
+      }
+      .padding()
     }
   }
 }
