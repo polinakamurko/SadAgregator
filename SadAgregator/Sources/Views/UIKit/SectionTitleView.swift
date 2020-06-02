@@ -21,9 +21,9 @@ struct SectionTitleView: View {
   
   var body: some View {
     HStack {
-    Text(title)
-      .font(.system(size: 22, weight: .bold))
-    
+      Text(title)
+        .font(.system(size: 22, weight: .bold))
+      
       Spacer()
       
       if showAllAction != nil {
@@ -34,6 +34,7 @@ struct SectionTitleView: View {
           }
           .font(.system(size: 15))
         }
+        .buttonStyle(BorderlessButtonStyle())
       }
     }
   }

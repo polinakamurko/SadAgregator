@@ -67,11 +67,11 @@ struct ProviderView: View {
       }
       
       Section {
-        MenuItemView(imageName: "vk_icon", mainText: "@club154574939", detailedText: "7")
-        MenuItemView(systemImageName: "location", mainText: "Контейнер", detailedText: "57")
-        MenuItemView(systemImageName: "phone", mainText: "Телефон", detailedText: "8 (912) 657 39 01")
-        MenuItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: "17.05.1998")
-        MenuItemView(systemImageName: "person.2", mainText: "Охват", detailedText: "1100 чел/сут")
+        DetailItemView(imageName: "vk_icon", mainText: "@club154574939", detailedText: "7")
+        DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: "57")
+        DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: "8 (912) 657 39 01")
+        DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: "17.05.1998")
+        DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: "1100 чел/сут")
       }
       
       Section {
@@ -87,7 +87,7 @@ struct ProviderView: View {
           }
           .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
         }
-        MenuItemView(mainText: "Оставить отзыв")
+        DetailItemView(mainText: "Оставить отзыв")
         
       }
       

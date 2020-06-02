@@ -11,47 +11,48 @@ import SwiftUI
 struct MenuView: View {
   var body: some View {
     List {
-      
       Section {
-        HStack {
+        NavigationLink(destination:
+          ProfileView()
+        ) {
           VStack(alignment: .leading) {
-            Text("Polina")
+            Text("Юрий")
               .font(.system(size: 24, weight: .bold))
               .padding(.bottom, 2)
             Text("Перейти в настройки")
               .font(.system(size: 14))
               .foregroundColor(Color(UIColor.systemGray2))
           }
-          Spacer()
-          Image(systemName: "chevron.right")
-            .foregroundColor(Color(UIColor.systemGray3))
+          .padding(.vertical, 8)
         }
-        .padding(.vertical, 8)
       }
       
       Section {
-        MenuItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
-        MenuItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
-        MenuItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
+        DetailItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
+        DetailItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
+        DetailItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
       }
       
       Section {
-        MenuItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
-        MenuItemView(systemImageName: "wrench", mainText: "Мастер настройки")
+        DetailItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
+        DetailItemView(systemImageName: "wrench", mainText: "Мастер настройки")
       }
       .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
       .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
       
       Section {
-        MenuItemView(systemImageName: "questionmark.circle", mainText: "Задать вопрос")
-        MenuItemView(systemImageName: "hand.thumbsup", mainText: "Помощь")
+        DetailItemView(systemImageName: "questionmark.circle", mainText: "Задать вопрос")
+        DetailItemView(systemImageName: "hand.thumbsup", mainText: "Помощь")
       }
       
       Section {
-        MenuItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+        NavigationLink(destination: LoginView()) {
+          DetailItemView(systemImageName: "square.and.arrow.up", mainText: "Выйти из аккаунта")
+        }
       }
-      
     }
+    .navigationBarTitle("")
+    .navigationBarHidden(true)
     .listStyle(GroupedListStyle())
     .environment(\.horizontalSizeClass, .regular)
   }
