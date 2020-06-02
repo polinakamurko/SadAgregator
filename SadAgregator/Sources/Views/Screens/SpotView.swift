@@ -70,12 +70,13 @@ struct SpotView: View {
           Image(systemName: "exclamationmark.triangle")
             .font(.system(size: 30))
             .foregroundColor(Color(.systemRed))
-          
+            
           Text("Обращаем Ваше внимание, что по данному поставщику мы не предоставляем услуги выкупа")
-            .font(.system(size: 15))
-            .frame(maxWidth: .infinity)
+            .font(.system(size: 13))
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 8)
         }
-        .frame(maxWidth: .infinity)
         .padding(.horizontal)
       }
       

@@ -12,17 +12,19 @@ struct RootView: View {
   
   var body: some View {
     TabView {
-      MainView()
-        .tabItem {
+      NavigationView {
+        MainView()
+      }
+      .tabItem {
           Image(systemName: "house.fill")
             .font(.system(size: 20))
-        }
+      }
       
       PopularProvidersView()
         .tabItem {
           Image(systemName: "bolt.fill")
             .font(.system(size: 20))
-        }
+      }
       NavigationView {
         MenuView()
       }

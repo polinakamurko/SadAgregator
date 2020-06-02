@@ -12,9 +12,10 @@ struct MainView: View {
   
   @State private var searchQuery = ""
   @State private var showCancelButton = false
+  @State private var showActivity = false
   
   var body: some View {
-    NavigationView {
+    
       VStack {
         if !showCancelButton {
           Text("Главная")
@@ -80,56 +81,64 @@ struct MainView: View {
                 Text("Активность")
                   .font(.system(size: 22, weight: .bold))
                 Spacer()
-                Image(systemName: "chevron.down")
+                Button(action: {
+                  self.showActivity = true
+                }) {
+                  Image(systemName: "chevron.down")
                   .font(.system(size: 15, weight: .bold))
                   .foregroundColor(.blue)
+                }
+                .buttonStyle(BorderlessButtonStyle())
               }
               .padding(.horizontal)
               
-              VStack {
-                HStack {
-                  Image(systemName: "bolt.fill")
-                  Text("1048 поставщиков")
-                }
-                .font(.system(size: 13, weight: .bold))
-                .foregroundColor(.blue)
-                
-                HStack {
-                  VStack(alignment: .leading, spacing: 12) {
-                    Text(" ")
-                    HStack {
-                      Image(systemName: "rectangle.fill.on.rectangle.fill")
-                        .foregroundColor(Color(UIColor.systemGray3))
-                      Text("Посты")
-                        .fixedSize(horizontal: true, vertical: false)
+              if showActivity {
+                VStack {
+                  HStack {
+                    Image(systemName: "bolt.fill")
+                    Text("1048 поставщиков")
+                  }
+                  .font(.system(size: 13, weight: .bold))
+                  .foregroundColor(.blue)
+                  
+                  HStack {
+                    VStack(alignment: .leading, spacing: 12) {
+                      Text(" ")
+                      HStack {
+                        Image(systemName: "rectangle.fill.on.rectangle.fill")
+                          .foregroundColor(Color(UIColor.systemGray3))
+                        Text("Посты")
+                          .fixedSize(horizontal: true, vertical: false)
+                      }
+                      HStack {
+                        Image(systemName: "photo.fill.on.rectangle.fill")
+                          .foregroundColor(Color(UIColor.systemGray3))
+                        Text("Фото")
+                      }
                     }
-                    HStack {
-                      Image(systemName: "photo.fill.on.rectangle.fill")
-                        .foregroundColor(Color(UIColor.systemGray3))
-                      Text("Фото")
+                    Spacer()
+                    VStack(spacing: 12) {
+                      Text("Сегодня")
+                        .foregroundColor(.gray)
+                      Text("2253")
+                      Text("10783")
+                    }
+                    .font(.system(size: 17, weight: .bold))
+                    Spacer()
+                    VStack(spacing: 12) {
+                      Text("Вчера")
+                        .foregroundColor(.gray)
+                      Text("2253")
+                      Text("10783")
                     }
                   }
-                  Spacer()
-                  VStack(spacing: 12) {
-                    Text("Сегодня")
-                      .foregroundColor(.gray)
-                    Text("2253")
-                    Text("10783")
-                  }
-                  .font(.system(size: 17, weight: .bold))
-                  Spacer()
-                  VStack(spacing: 12) {
-                    Text("Вчера")
-                      .foregroundColor(.gray)
-                    Text("2253")
-                    Text("10783")
-                  }
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
               }
-              .frame(maxWidth: .infinity)
-              .padding()
-              .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-            
+              
+              
               Group {
                 SectionTitleView("Активность линий", showAllAction: {
                   // TODO: Add show all action
@@ -170,7 +179,6 @@ struct MainView: View {
       }
       .navigationBarTitle("Главная", displayMode: .inline)
       .navigationBarHidden(true)
-    }
   }
 }
 
