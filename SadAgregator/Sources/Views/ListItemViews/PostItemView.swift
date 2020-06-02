@@ -76,7 +76,6 @@ struct PostItemView: View {
             Image(systemName: showPostDescription ? "chevron.up" : "chevron.down")
               .frame(maxWidth: .infinity, alignment: .trailing)
               .padding(.trailing)
-            
           }
         }
         .buttonStyle(BorderlessButtonStyle())
