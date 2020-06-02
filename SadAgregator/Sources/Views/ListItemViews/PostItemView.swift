@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PostItemView: View {
   
+  @State private var showPostDescription = false
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 5) {
       VStack(alignment: .leading, spacing: 5) {
@@ -68,20 +70,30 @@ struct PostItemView: View {
       VStack(alignment: .leading) {
         ZStack {
           Text("Показать описание")
-          Image(systemName: "chevron.down")
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .padding(.trailing)
+          Button(action: {
+            self.showPostDescription.toggle()
+          }) {
+            Image(systemName: showPostDescription ? "chevron.up" : "chevron.down")
+              .frame(maxWidth: .infinity, alignment: .trailing)
+              .padding(.trailing)
+            
+          }
         }
+        .buttonStyle(BorderlessButtonStyle())
         .padding(.vertical, 8)
         .foregroundColor(Color(UIColor.darkGray))
         
-        Text("Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб")
-          .padding([.horizontal, .bottom])
+        if showPostDescription {
+          VStack {
+            Text("Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб")
+              .padding([.horizontal, .bottom])
+          }
+        }
       }
       .background(Color(UIColor.systemGray6))
+      .padding(.vertical, 8)
+      .listRowInsets(EdgeInsets())
     }
-    .padding(.vertical, 8)
-    .listRowInsets(EdgeInsets())
   }
 }
 
@@ -90,3 +102,4 @@ struct PostView_Previews: PreviewProvider {
     PostItemView()
   }
 }
+
