@@ -127,62 +127,61 @@ struct ProviderView: View {
       .listStyle(GroupedListStyle())
     }
   }
-  
-  
-  struct ProviderView_Previews: PreviewProvider {
-    static var previews: some View {
-      ProviderView()
-    }
+}
+
+struct ProviderView_Previews: PreviewProvider {
+  static var previews: some View {
+    ProviderView()
   }
-  
-  struct FeedbackItemView: View {
-    var body: some View {
-      VStack {
-        HStack {
-          VStack(alignment: .leading, spacing: 6) {
-            Text("Хороший поставщик")
-              .padding(.top)
-              .font(.system(size: 15, weight: .semibold))
-            HStack(spacing: 0) {
-              Group{
-                Image(systemName: "star.fill")
-                Image(systemName: "star.fill")
-                Image(systemName: "star.fill")
-                Image(systemName: "star.lefthalf.fill")
-                Image(systemName: "star")
-              }
-              .padding(.horizontal, 1.5)
-              .padding(.bottom, 8)
+}
+
+struct FeedbackItemView: View {
+  var body: some View {
+    VStack {
+      HStack {
+        VStack(alignment: .leading, spacing: 6) {
+          Text("Хороший поставщик")
+            .padding(.top)
+            .font(.system(size: 15, weight: .semibold))
+          HStack(spacing: 0) {
+            Group{
+              Image(systemName: "star.fill")
+              Image(systemName: "star.fill")
+              Image(systemName: "star.fill")
+              Image(systemName: "star.lefthalf.fill")
+              Image(systemName: "star")
             }
-            .font(.system(size: 11))
-            .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
+            .padding(.horizontal, 1.5)
+            .padding(.bottom, 8)
           }
-          Spacer()
-          VStack(alignment: .trailing, spacing: 0) {
-            Text("5 мая")
-            Text("Valevko")
-          }
-          .font(.caption)
-          .foregroundColor(Color(red: 153/255, green: 153/255, blue: 153/255))
+          .font(.system(size: 11))
+          .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
         }
-        
-        Text("Зайдя на линию 13, вы найдете множество товаров разных категорий. Большую часть здесь занимает продукция по уходу за собой. Также есть...")
-          .font(.system(size: 15))
-          .fixedSize(horizontal: false, vertical: true)
-        
-        HStack {
-          Group {
-            Image(systemName: "photo")
-            Image(systemName: "photo")
-            Image(systemName: "photo")
-          }
-          Spacer()
+        Spacer()
+        VStack(alignment: .trailing, spacing: 0) {
+          Text("5 мая")
+          Text("Valevko")
         }
-        Text("Показать полностью")
-          .font(.system(size: 15, weight: .medium))
-          .foregroundColor(.blue)
-          .padding(.vertical, 8)
+        .font(.caption)
+        .foregroundColor(Color(red: 153/255, green: 153/255, blue: 153/255))
       }
+      
+      Text("Зайдя на линию 13, вы найдете множество товаров разных категорий. Большую часть здесь занимает продукция по уходу за собой. Также есть...")
+        .font(.system(size: 15))
+        .fixedSize(horizontal: false, vertical: true)
+      
+      HStack {
+        Group {
+          Image(systemName: "photo")
+          Image(systemName: "photo")
+          Image(systemName: "photo")
+        }
+        Spacer()
+      }
+      Text("Показать полностью")
+        .font(.system(size: 15, weight: .medium))
+        .foregroundColor(.blue)
+        .padding(.vertical, 8)
     }
   }
 }
