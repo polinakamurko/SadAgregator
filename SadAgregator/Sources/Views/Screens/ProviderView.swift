@@ -106,8 +106,10 @@ struct ProviderView: View {
             }
             .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
           }
-          DetailItemView(mainText: "Оставить отзыв")
           
+          NavigationLink(destination: LeaveFeedbackDetailView()) {
+            DetailItemView(mainText: "Оставить отзыв")
+          }
         }
         
         Section {
@@ -117,7 +119,7 @@ struct ProviderView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .foregroundColor(.blue)
-            
+            .padding(.top, 8)
             FeedbackItemView()
           }
           FeedbackItemView()
