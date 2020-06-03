@@ -111,7 +111,15 @@ struct ProviderView: View {
         }
         
         Section {
-          FeedbackItemView()
+          VStack {
+            NavigationLink(destination: FeedbackDetailView()) {
+              Text("См. все")
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .foregroundColor(.blue)
+            
+            FeedbackItemView()
+          }
           FeedbackItemView()
           FeedbackItemView()
         }
