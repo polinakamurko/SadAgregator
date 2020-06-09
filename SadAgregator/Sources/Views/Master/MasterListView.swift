@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct MasterListView: View {
+  
+  @State var searchQuery = ""
+  @State var showCancelButton = false
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Spacer()
@@ -18,8 +22,8 @@ struct MasterListView: View {
       Text("Например, 5%")
         .font(.headline)
         .foregroundColor(Color(.lightGray))
-      
-     
+
+      SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton)
       
       HStack() {
         Button(action: {}) {

@@ -27,6 +27,7 @@
 		9BC48B1F2465420700239E4E /* SadAgregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC48B1E2465420700239E4E /* SadAgregatorTests.swift */; };
 		9BFD6675248FAE4E0091110A /* MasterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD6674248FAE4E0091110A /* MasterTextView.swift */; };
 		9BFD6677248FBBF20091110A /* MasterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD6676248FBBF10091110A /* MasterListView.swift */; };
+		9BFD6679248FC4370091110A /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD6678248FC4370091110A /* SearchField.swift */; };
 		BE11E4B3246C888A004A2FBC /* PopularProviderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */; };
 		BE11E4B4246C888A004A2FBC /* PopularProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11E4B2246C888A004A2FBC /* PopularProvidersView.swift */; };
 		BE46218F246D13DA00F715B1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46218E246D13DA00F715B1 /* MainView.swift */; };
@@ -74,6 +75,7 @@
 		9BC48B202465420700239E4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BFD6674248FAE4E0091110A /* MasterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTextView.swift; sourceTree = "<group>"; };
 		9BFD6676248FBBF10091110A /* MasterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListView.swift; sourceTree = "<group>"; };
+		9BFD6678248FC4370091110A /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularProviderItemView.swift; sourceTree = "<group>"; };
 		BE11E4B2246C888A004A2FBC /* PopularProvidersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularProvidersView.swift; sourceTree = "<group>"; };
 		BE46218E246D13DA00F715B1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				BE562F4B2475BD01000EDB5C /* SectionTitleView.swift */,
 				9B50A8642487E8B200B43BAB /* TextView.swift */,
+				9BFD6678248FC4370091110A /* SearchField.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				9BB2FB4D246F0B9900E1B184 /* ProviderView.swift in Sources */,
 				9BB2FB4B246F0A4C00E1B184 /* DetailItemView.swift in Sources */,
 				9B50A8632487B73300B43BAB /* LeaveFeedbackDetailView.swift in Sources */,
+				9BFD6679248FC4370091110A /* SearchField.swift in Sources */,
 				BE562F512475C031000EDB5C /* View+Extensions.swift in Sources */,
 				9BAD866C2479421400F756DA /* LineView.swift in Sources */,
 				9BC48B0C2465420300239E4E /* RootView.swift in Sources */,
