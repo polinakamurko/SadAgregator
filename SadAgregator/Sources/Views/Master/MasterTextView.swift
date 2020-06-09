@@ -1,57 +1,68 @@
 //
-//  MasterChoiceView.swift
+//  MasterTextView.swift
 //  SadAgregator
 //
-//  Created by Полина on 04.06.2020.
+//  Created by Полина on 09.06.2020.
 //  Copyright © 2020 Полина Камурко. All rights reserved.
 //
 
 import SwiftUI
 
-struct MasterChoiceView: View {
+struct MasterTextView: View {
+  
+  @State var surchargeTitle = ""
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Spacer()
-      Text("Что именно Вы хотите сделать?")
+      Text("Укажите % наценки на товар")
         .font(.title)
         .fontWeight(.bold)
-      Text("Выберите дальнейшее действие")
+      Text("Например, 5%")
         .font(.headline)
+        .foregroundColor(Color(.lightGray))
       
-      Button(action: {}) {
-        VStack(alignment: .leading, spacing: 6) {
-          Text("Изменить настройки парсера")
-            .font(.system(size: 17, weight: .semibold))
-          Text("Настройки парсера будут изменены в соответствии с вашими требованиями.")
-            .font(.system(size: 15))
-            .fixedSize(horizontal: false, vertical: true)
-            .foregroundColor(Color(.darkGray))
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
+      TextField("Введите % наценки", text: $surchargeTitle)
         .padding()
-        .background(
-          RoundedRectangle(cornerRadius: 10)
-            .foregroundColor((Color(.systemGray6)))
-        )
-      }
+        .frame(maxWidth: .infinity)
+        .background((Color(.systemGray6)))
+        .cornerRadius(10)
       
-      Button(action: {}) {
-        VStack(alignment: .leading, spacing: 6) {
-          Text("Приостановить выгрузку")
+      HStack() {
+        Button(action: {}) {
+          VStack(alignment: .leading, spacing: 6) {
+            HStack {
+              Text("Передумала")
+            }
             .font(.system(size: 17, weight: .semibold))
-          Text("Выгрузка будет приостановлена.")
-            .font(.system(size: 15))
-            .fixedSize(horizontal: false, vertical: true)
-            .foregroundColor(Color(.darkGray))
+            .foregroundColor(.white)
+          }
+          .frame(maxWidth: .infinity)
+          .frame(height: 44)
+          .background(
+            RoundedRectangle(cornerRadius: 10)
+              .foregroundColor(.blue)
+          )
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(
-          RoundedRectangle(cornerRadius: 10)
-            .foregroundColor((Color(.systemGray6)))
-          
-        )
+        
+        Button(action: {}) {
+          VStack(alignment: .leading, spacing: 6) {
+            HStack {
+              Text("Готово")
+            }
+            .font(.system(size: 17, weight: .semibold))
+            .foregroundColor(.blue)
+          }
+          .frame(maxWidth: .infinity)
+          .frame(height: 44)
+          .background(
+            RoundedRectangle(cornerRadius: 10)
+              .foregroundColor(Color(.systemGray6))
+          )
+        }
       }
+      .frame(maxWidth: .infinity, alignment: .center)
+      
       Spacer()
       Text("На этом шаге вы настраиваете")
         .frame(maxWidth: .infinity, alignment: .center)
@@ -96,10 +107,8 @@ struct MasterChoiceView: View {
   }
 }
 
-
-
-struct MasterChoiceView_Previews: PreviewProvider {
+struct MasterTextView_Previews: PreviewProvider {
   static var previews: some View {
-    MasterChoiceView()
+    MasterTextView()
   }
 }
