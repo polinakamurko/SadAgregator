@@ -11,6 +11,7 @@ import SwiftUI
 struct MasterChoiceView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
+      Spacer()
       Text("Что именно Вы хотите сделать?")
         .font(.title)
         .fontWeight(.bold)
@@ -18,42 +19,84 @@ struct MasterChoiceView: View {
         .font(.headline)
       
       Button(action: {}) {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 6) {
           Text("Изменить настройки парсера")
             .font(.system(size: 17, weight: .semibold))
           Text("Настройки парсера будут изменены в соответствии с вашими требованиями.")
             .font(.system(size: 15))
             .fixedSize(horizontal: false, vertical: true)
+            .foregroundColor(Color(.darkGray))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(
           RoundedRectangle(cornerRadius: 10)
-            .stroke(lineWidth: 2)
-            .foregroundColor(.blue)
+            .foregroundColor(.white)
         )
       }
       
       Button(action: {}) {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 6) {
           Text("Приостановить выгрузку")
             .font(.system(size: 17, weight: .semibold))
           Text("Выгрузка будет приостановлена.")
             .font(.system(size: 15))
             .fixedSize(horizontal: false, vertical: true)
+            .foregroundColor(Color(.darkGray))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(
           RoundedRectangle(cornerRadius: 10)
-            .stroke(lineWidth: 2)
-            .foregroundColor(.blue)
+            .foregroundColor(.white)
+          
         )
       }
+      Spacer()
+      Text("На этом шаге вы настраиваете")
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.top)
+      HStack() {
+        Button(action: {}) {
+          VStack(alignment: .leading, spacing: 6) {
+            HStack {
+              Image(systemName: "arrow.left")
+              Text("НАЗАД")
+            }
+            .font(.system(size: 17, weight: .semibold))
+            .foregroundColor(.blue)
+          }
+          .frame(width: 160, height: 36)
+          .background(
+            RoundedRectangle(cornerRadius: 17)
+              .stroke(lineWidth: 2)
+              .foregroundColor(.blue)
+          )
+        }
+        
+        Button(action: {}) {
+          VStack(alignment: .leading, spacing: 6) {
+            HStack {
+              Text("ГОТОВО")
+            }
+            .font(.system(size: 17, weight: .semibold))
+            .foregroundColor(.white)
+          }
+          .frame(width: 160, height: 36)
+          .background(
+            RoundedRectangle(cornerRadius: 17)
+              .foregroundColor(.blue)
+          )
+        }
+      }
+      .frame(maxWidth: .infinity, alignment: .center)
     }
+    .frame(maxHeight: .infinity)
     .padding()
+    .background(Color(.systemGray6))
   }
 }
+
 
 
 struct MasterChoiceView_Previews: PreviewProvider {
