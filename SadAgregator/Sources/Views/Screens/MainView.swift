@@ -25,7 +25,7 @@ struct MainView: View {
       }
       
       HStack { // Search Bar
-        SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton)
+        SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton, imageSearchEnabled: true)
         
         if showCancelButton {
           Button("Отмена") {

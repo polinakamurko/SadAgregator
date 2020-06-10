@@ -12,6 +12,7 @@ struct SearchField: View {
   
   @Binding var searchQuery: String
   @Binding var showCancelButton: Bool
+  var imageSearchEnabled: Bool
   
   var body: some View {
     HStack {
@@ -26,7 +27,7 @@ struct SearchField: View {
       })
         .foregroundColor(.primary)
       
-      if searchQuery == "" {
+      if searchQuery == "" && imageSearchEnabled {
         Button(action: {
           self.searchQuery = ""
         }) {
@@ -35,7 +36,7 @@ struct SearchField: View {
             .padding(.trailing, 8)
         }
         
-      } else {
+      } else if searchQuery != "" {
         Button(action: {
           self.searchQuery = ""
         }) {
@@ -52,6 +53,6 @@ struct SearchField: View {
 }
 struct SearchField_Previews: PreviewProvider {
     static var previews: some View {
-      SearchField(searchQuery: .constant(""), showCancelButton: .constant(false))
+      SearchField(searchQuery: .constant(""), showCancelButton: .constant(false), imageSearchEnabled: false)
     }
 }

@@ -16,49 +16,15 @@ struct MasterListView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Spacer()
-      Text("Укажите % наценки на товар")
+      Text("Выбрите стену для автоматического наполнения")
         .font(.title)
         .fontWeight(.bold)
-      Text("Например, 5%")
+      Text("Автовыгрузка для ВКонтакте")
         .font(.headline)
-        .foregroundColor(Color(.lightGray))
 
-      SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton)
+      SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton, imageSearchEnabled: false)
       
-      HStack() {
-        Button(action: {}) {
-          VStack(alignment: .leading, spacing: 6) {
-            HStack {
-              Text("Передумала")
-            }
-            .font(.system(size: 17, weight: .semibold))
-            .foregroundColor(.white)
-          }
-          .frame(maxWidth: .infinity)
-          .frame(height: 44)
-          .background(
-            RoundedRectangle(cornerRadius: 10)
-              .foregroundColor(.blue)
-          )
-        }
-        
-        Button(action: {}) {
-          VStack(alignment: .leading, spacing: 6) {
-            HStack {
-              Text("Готово")
-            }
-            .font(.system(size: 17, weight: .semibold))
-            .foregroundColor(.blue)
-          }
-          .frame(maxWidth: .infinity)
-          .frame(height: 44)
-          .background(
-            RoundedRectangle(cornerRadius: 10)
-              .foregroundColor(Color(.systemGray6))
-          )
-        }
-      }
-      .frame(maxWidth: .infinity, alignment: .center)
+      
       
       Spacer()
       Text("На этом шаге вы настраиваете")
