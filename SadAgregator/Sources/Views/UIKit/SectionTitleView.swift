@@ -37,6 +37,7 @@ struct SectionTitleView: View {
         .buttonStyle(BorderlessButtonStyle())
       }
     }
+    .padding(.top, 8)
   }
 }
 

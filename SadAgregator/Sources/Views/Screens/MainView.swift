@@ -25,17 +25,16 @@ struct MainView: View {
       }
       
       HStack { // Search Bar
-        SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton, imageSearchEnabled: true)
+        SearchField(
+          searchQuery: $searchQuery,
+          showCancelButton: $showCancelButton,
+          imageSearchEnabled: true
+        )
         
         if showCancelButton {
-          Button("Отмена") {
-            UIApplication.shared.endEditing(true)
-            self.searchQuery = ""
-            withAnimation {
-              self.showCancelButton = false
-            }
+          Button(action: cancelSearchEditing) {
+            Text("Отмена").foregroundColor(Color(.systemBlue))
           }
-          .foregroundColor(Color(.systemBlue))
         }
       }
       .padding(.horizontal)
@@ -66,6 +65,7 @@ struct MainView: View {
               }
               .font(.system(size: 13, weight: .bold))
               .foregroundColor(.blue)
+              
               if showActivity {
                 HStack {
                   VStack(alignment: .leading, spacing: 12) {
@@ -103,43 +103,34 @@ struct MainView: View {
             .frame(maxWidth: .infinity)
             .padding()
             .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-            
-            Group {
-              SectionTitleView("Активность линий", showAllAction: {
-                // TODO: Add show all action
-              })
-              NavigationLink(destination: LineView()) {
-                ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-              }
-            }
-            .padding(.horizontal)
           }
           .listRowInsets(EdgeInsets())
           
-          ForEach(0..<2, id: \.self) { index in
+          SectionTitleView("Активность линий", showAllAction: {
+            // TODO: Add show all action
+          })
+          
+          ForEach(0..<3, id: \.self) { index in
             NavigationLink(destination: LineView()) {
-              ActivityItemView(number: index + 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(number: index + 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
             }
           }
         }
         
         Section {
-          VStack {
-            SectionTitleView("Активность точек", showAllAction: {
-              // TODO: Add show all action
-            })
+          SectionTitleView("Активность точек", showAllAction: {
+            // TODO: Add show all action
+          })
+          ForEach(0..<3, id: \.self) { index in
             NavigationLink(destination: SpotView()) {
-              ActivityItemView(number: 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
-            }
-          }
-          ForEach(0..<2, id: \.self) { index in
-            NavigationLink(destination: SpotView()) {
-              ActivityItemView(number: index + 2, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
             }
           }
         }
         
-        Section(header: Text("Последние посты")) {
+        Section {
+          SectionTitleView("Последние посты")
+            
           ForEach(0..<4, id: \.self) { _ in
             PostItemView()
               .listRowInsets(EdgeInsets())
@@ -150,6 +141,15 @@ struct MainView: View {
     .navigationBarTitle("Главная", displayMode: .inline)
     .navigationBarHidden(true)
   }
+  
+  private func cancelSearchEditing() {
+    UIApplication.shared.endEditing(true)
+    searchQuery = ""
+    
+    withAnimation {
+      self.showCancelButton = false
+    }
+  }
 }
 
 struct MainView_Previews: PreviewProvider {
@@ -157,5 +157,3 @@ struct MainView_Previews: PreviewProvider {
     MainView()
   }
 }
-
-
