@@ -124,6 +124,7 @@ struct PostItemView: View {
       }
       .padding()
     }
+    .padding(.top)
   }
 }
 
