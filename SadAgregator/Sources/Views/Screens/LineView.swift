@@ -21,14 +21,15 @@ struct LineView: View {
         HStack {
           Text("Линия 8")
           Image(systemName: "arrow.right.circle.fill")
-          .font(.headline)
+            .font(.headline)
         }
       }
-    .padding()
+      .padding()
       .font(.subheadline)
       .foregroundColor(.blue)
       
-       VStack {
+      
+      List {
         HStack {
           VStack(alignment: .leading, spacing: 12) {
             Text(" ")
@@ -63,20 +64,26 @@ struct LineView: View {
         .frame(maxWidth: .infinity)
         .padding()
         .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-      }
-      
-      List {
-        Section(header: Text("Активность точек")) {
-          ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-          ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-          ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+        .listRowInsets(EdgeInsets())
+        
+        Section {
+          SectionTitleView("Активность точек", showAllAction: {
+            // TODO: Add show all action
+          })
+          ForEach(0..<3, id: \.self) { index in
+            NavigationLink(destination: SpotView()) {
+              ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+            }
+          }
         }
         
-        Section(header: Text("Последние посты")) {
-          PostItemView()
-          PostItemView()
-          PostItemView()
-          PostItemView()
+        Section {
+          SectionTitleView("Последние посты")
+          
+          ForEach(0..<4, id: \.self) { _ in
+            PostItemView()
+              .listRowInsets(EdgeInsets())
+          }
         }
       }
     }
