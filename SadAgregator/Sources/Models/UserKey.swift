@@ -7,36 +7,30 @@
 
 import Foundation
 
-
 public struct UserKey: Codable {
-
-
-    public var key: String?
-
-    public var anonym: String?
-
-    public var imgHashSrv: String?
-
-    public var imgHashSrch: String?
-
-    public var result: Int?
-
-    public var speed: Int?
-    public init(key: String? = nil, anonym: String? = nil, imgHashSrv: String? = nil, imgHashSrch: String? = nil, result: Int? = nil, speed: Int? = nil) { 
-        self.key = key
-        self.anonym = anonym
-        self.imgHashSrv = imgHashSrv
-        self.imgHashSrch = imgHashSrch
-        self.result = result
-        self.speed = speed
-    }
-    public enum CodingKeys: String, CodingKey { 
-        case key
-        case anonym
-        case imgHashSrv = "img_hash_srv"
-        case imgHashSrch = "img_hash_srch"
-        case result
-        case speed
-    }
-
+  
+  public var key: String?
+  public var anonym: String?
+  public var imgHashSrv: String?
+  public var imgHashSrch: String?
+  public var result: Int?
+  public var speed: Int?
+  
+  public init(key: String? = nil, anonym: String? = nil, imgHashSrv: String? = nil, imgHashSrch: String? = nil, result: Int? = nil, speed: Int? = nil) {
+    self.key = key
+    self.anonym = anonym
+    self.imgHashSrv = imgHashSrv
+    self.imgHashSrch = imgHashSrch
+    self.result = result
+    self.speed = speed
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case key
+    case anonym
+    case imgHashSrv = "img_hash_srv"
+    case imgHashSrch = "img_hash_srch"
+    case result
+    case speed
+  }
 }

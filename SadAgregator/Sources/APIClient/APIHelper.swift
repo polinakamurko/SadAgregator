@@ -62,4 +62,3 @@ public struct APIHelper {
     return destination
   }
 }
-

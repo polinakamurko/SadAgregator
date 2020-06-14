@@ -7,28 +7,25 @@
 
 import Foundation
 
-
 public struct TopSpot: Codable {
-
-
-    public var pointId: String?
-
-    public var posts: String?
-
-    public var capt: String?
-
-    public var lastAct: String?
-    public init(pointId: String? = nil, posts: String? = nil, capt: String? = nil, lastAct: String? = nil) { 
-        self.pointId = pointId
-        self.posts = posts
-        self.capt = capt
-        self.lastAct = lastAct
-    }
-    public enum CodingKeys: String, CodingKey { 
-        case pointId = "point_id"
-        case posts
-        case capt
-        case lastAct = "last_act"
-    }
-
+  
+  public var pointId: String?
+  public var posts: String?
+  public var capt: String?
+  public var lastAct: String?
+  
+  public init(pointId: String? = nil, posts: String? = nil, capt: String? = nil, lastAct: String? = nil) {
+    self.pointId = pointId
+    self.posts = posts
+    self.capt = capt
+    self.lastAct = lastAct
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case pointId = "point_id"
+    case posts
+    case capt
+    case lastAct = "last_act"
+  }
+  
 }

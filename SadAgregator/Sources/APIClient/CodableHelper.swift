@@ -75,5 +75,4 @@ open class CodableHelper {
     
     return (returnedData, returnedError)
   }
-  
 }

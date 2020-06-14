@@ -7,68 +7,60 @@
 
 import Foundation
 
-
 public struct Post: Codable {
+  
+  public var _id: String?
+  public var vendorCapt: String?
+  public var vendorId: String?
+  public var pointId: String?
+  public var vkPost: String?
+  public var price: String?
+  public var by: String?
+  public var like: String?
+  public var views: String?
+  public var posted: String?
+  public var text: String?
+  public var images: [ServerImage]?
+  public var sizes: [String]?
+  public var options: [String]?
+  
+  public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [ServerImage]? = nil, sizes: [String]? = nil, options: [String]? = nil) {
+    self._id = _id
+    self.vendorCapt = vendorCapt
+    self.vendorId = vendorId
+    self.pointId = pointId
+    self.vkPost = vkPost
+    self.price = price
+    self.by = by
+    self.like = like
+    self.views = views
+    self.posted = posted
+    self.text = text
+    self.images = images
+    self.sizes = sizes
+    self.options = options
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case _id = "id"
+    case vendorCapt = "vendor_capt"
+    case vendorId = "vendor_id"
+    case pointId = "point_id"
+    case vkPost = "vk_post"
+    case price
+    case by
+    case like
+    case views
+    case posted
+    case text
+    case images
+    case sizes
+    case options
+  }
+}
 
-
-    public var _id: String?
-
-    public var vendorCapt: String?
-
-    public var vendorId: String?
-
-    public var pointId: String?
-
-    public var vkPost: String?
-
-    public var price: String?
-
-    public var by: String?
-
-    public var like: String?
-
-    public var views: String?
-
-    public var posted: String?
-
-    public var text: String?
-
-    public var images: [ServerImage]?
-
-    public var sizes: [String]?
-
-    public var options: [String]?
-    public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [ServerImage]? = nil, sizes: [String]? = nil, options: [String]? = nil) { 
-        self._id = _id
-        self.vendorCapt = vendorCapt
-        self.vendorId = vendorId
-        self.pointId = pointId
-        self.vkPost = vkPost
-        self.price = price
-        self.by = by
-        self.like = like
-        self.views = views
-        self.posted = posted
-        self.text = text
-        self.images = images
-        self.sizes = sizes
-        self.options = options
-    }
-    public enum CodingKeys: String, CodingKey { 
-        case _id = "id"
-        case vendorCapt = "vendor_capt"
-        case vendorId = "vendor_id"
-        case pointId = "point_id"
-        case vkPost = "vk_post"
-        case price
-        case by
-        case like
-        case views
-        case posted
-        case text
-        case images
-        case sizes
-        case options
-    }
-
+extension Post: Identifiable {
+  public var id: String {
+    _id ?? UUID().uuidString
+  }
 }

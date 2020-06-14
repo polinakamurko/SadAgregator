@@ -128,7 +128,7 @@ struct MainView: View {
         Section {
           SectionTitleView("Последние посты")
             
-          ForEach(0..<4, id: \.self) { _ in
+          ForEach(viewModel.posts) { post in
             PostItemView()
               .listRowInsets(EdgeInsets())
           }
@@ -150,14 +150,7 @@ struct MainView: View {
   }
   
   private func fetchMain() {
-    DefaultAPI.agrIntfMainGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (mainPageData, error) in
-      if let error = error {
-        print(error)
-        return
-      }
-      
-      print(mainPageData)
-    }
+    viewModel.fetchData()
   }
 }
 

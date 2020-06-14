@@ -7,16 +7,14 @@
 
 import Foundation
 
-
 public struct ErrorModel: Codable {
-
-
-    public var message: String
-
-    public var code: Int
-    public init(message: String, code: Int) { 
-        self.message = message
-        self.code = code
-    }
-
+  
+  public var message: String
+  
+  public var code: Int
+  public init(message: String, code: Int) {
+    self.message = message
+    self.code = code
+  }
+  
 }

@@ -9,9 +9,12 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
+  
   @Published var searchQuery = ""
   @Published var showCancelButton = false
   @Published var showActivity = false
+  
+  @Published private(set) var posts = [Post]()
   
   func fetchData() {
     DefaultAPI.agrIntfMainGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (mainPageData, error) in
@@ -20,7 +23,7 @@ class MainViewModel: ObservableObject {
         return
       }
       
-      print(mainPageData)
+      self.posts = mainPageData?.posts ?? []
     }
   }
 }

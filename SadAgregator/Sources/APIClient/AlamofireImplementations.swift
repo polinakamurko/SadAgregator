@@ -408,6 +408,5 @@ open class AlamofireDecodableRequestBuilder<T:Decodable>: AlamofireRequestBuilde
         completion(responseObj, decodeResult.error)
       })
     }
-  }
-  
+  }  
 }
