@@ -133,7 +133,7 @@ struct MainView: View {
               providerTitle: post.providerTitle,
               price: post.price,
               providerName: post.providerName,
-              text: post.text ?? ""
+              text: post.cleanText ?? ""
             ).listRowInsets(EdgeInsets())
           }
         }
