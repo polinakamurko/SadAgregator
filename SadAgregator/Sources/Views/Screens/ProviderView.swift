@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ProviderView: View {
+  
+  @State var showProviderConditions = false
+  
   var body: some View {
     List {
       Section {
@@ -53,54 +56,80 @@ struct ProviderView: View {
           }
           
           
-          ZStack {
-            Color(UIColor.systemGray6)
-              .frame(height: 34)
-            Text("Условия сотрудничества")
-            Image(systemName: "chevron.down")
-              .frame(maxWidth: .infinity, alignment: .trailing)
-              .padding(.trailing)
+          VStack {
+            ZStack {
+              Color(UIColor.systemGray6)
+                .frame(height: 34)
+              Text("Условия сотрудничества")
+              Button(action: {
+                self.showProviderConditions.toggle()
+              }) {
+                Image(systemName: showProviderConditions ? "chevron.up" : "chevron.down")
+                  
+                  .frame(maxWidth: .infinity, alignment: .trailing)
+                  .padding(.trailing)
+              }
+              .buttonStyle(BorderlessButtonStyle())
+              .foregroundColor(Color(UIColor.darkGray))
+            }
+            if showProviderConditions {
+              Text("Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.bottom)
+              
+            }
           }
-          .foregroundColor(Color(UIColor.darkGray))
+          .background(Color(UIColor.systemGray6))
+          
         }
-      .listRowInsets(EdgeInsets())
-      }
-      
-      Section {
-        DetailItemView(imageName: "vk_icon", mainText: "@club154574939", detailedText: "7")
-        DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: "57")
-        DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: "8 (912) 657 39 01")
-        DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: "17.05.1998")
-        DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: "1100 чел/сут")
-      }
-      
-      Section {
-        HStack {
-          Text("Оценить поставщика")
-          Spacer()
-          Group {
-            Image(systemName: "star.fill")
-            Image(systemName: "star.fill")
-            Image(systemName: "star.fill")
-            Image(systemName: "star")
-            Image(systemName: "star")
-          }
-          .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
-        }
-        DetailItemView(mainText: "Оставить отзыв")
+        .listRowInsets(EdgeInsets())
         
+        Section {
+          DetailItemView(imageName: "vk_icon", mainText: "@club154574939", detailedText: "7")
+          DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: "57")
+          DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: "8 (912) 657 39 01")
+          DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: "17.05.1998")
+          DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: "1100 чел/сут")
+        }
+        
+        Section {
+          HStack {
+            Text("Оценить поставщика")
+            Spacer()
+            Group {
+              Image(systemName: "star.fill")
+              Image(systemName: "star.fill")
+              Image(systemName: "star.fill")
+              Image(systemName: "star")
+              Image(systemName: "star")
+            }
+            .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
+          }
+          
+          NavigationLink(destination: LeaveFeedbackDetailView()) {
+            DetailItemView(mainText: "Оставить отзыв")
+          }
+        }
+        
+        Section {
+          VStack {
+            NavigationLink(destination: FeedbackDetailView()) {
+              Text("См. все")
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .foregroundColor(.blue)
+            .padding(.top, 8)
+            FeedbackItemView()
+          }
+          FeedbackItemView()
+          FeedbackItemView()
+        }
       }
-      
-      Section {
-        FeedbackItemView()
-        FeedbackItemView()
-        FeedbackItemView()
-      }
+      .listStyle(GroupedListStyle())
     }
-    .listStyle(GroupedListStyle())
   }
 }
-
 
 struct ProviderView_Previews: PreviewProvider {
   static var previews: some View {

@@ -34,7 +34,7 @@ struct ActivityItemView: View {
       Group {
         Image(systemName: "rectangle.fill.on.rectangle.fill")
         Text(disclosureText)
-        Image(systemName: "chevron.right")
+//        Image(systemName: "chevron.right")
       }
       .foregroundColor(Color(UIColor.systemGray3))
     }

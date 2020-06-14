@@ -12,88 +12,61 @@ struct MainView: View {
   
   @State private var searchQuery = ""
   @State private var showCancelButton = false
+  @State private var showActivity = false
   
   var body: some View {
-    NavigationView {
-      VStack {
-        if !showCancelButton {
-          Text("Главная")
-            .fontWeight(.semibold)
-            .padding(.top)
-            .transition(.customNavbar)
-        }
+    
+    VStack {
+      if !showCancelButton {
+        Text("Главная")
+          .fontWeight(.semibold)
+          .padding(.top)
+          .transition(.customNavbar)
+      }
+      
+      HStack { // Search Bar
+        SearchField(
+          searchQuery: $searchQuery,
+          showCancelButton: $showCancelButton,
+          imageSearchEnabled: true
+        )
         
-        HStack { // Search Bar
-          HStack {
-            Image(systemName: "magnifyingglass")
-            
-            TextField("Поиск", text: $searchQuery, onEditingChanged: { isEditing in
-              withAnimation {
-                self.showCancelButton = true
-              }
-            }, onCommit: {
-              print("onCommit")
-            })
-              .foregroundColor(.primary)
-            
-            if searchQuery == "" {
-              Button(action: {
-                self.searchQuery = ""
-              }) {
-                Image(systemName: "photo.fill")
-                  .opacity(showCancelButton ? 0 : 1)
-                  .padding(.trailing, 8)
-              }
-            
-            } else {
-              Button(action: {
-                self.searchQuery = ""
-              }) {
-                Image(systemName: "xmark.circle.fill")
-                  .opacity(searchQuery == "" ? 0 : 1)
-              }
-            }
-          }
-          .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-          .foregroundColor(.secondary)
-          .background(Color(.secondarySystemBackground))
-          .cornerRadius(10.0)
-          
-          if showCancelButton {
-            Button("Отмена") {
-              UIApplication.shared.endEditing(true)
-              self.searchQuery = ""
-              withAnimation {
-                self.showCancelButton = false
-              }
-            }
-            .foregroundColor(Color(.systemBlue))
+        if showCancelButton {
+          Button(action: cancelSearchEditing) {
+            Text("Отмена").foregroundColor(Color(.systemBlue))
           }
         }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
-        
-        List {
-          Section {
-            VStack {
-              HStack {
-                Text("Активность")
-                  .font(.system(size: 22, weight: .bold))
-                Spacer()
-                Image(systemName: "chevron.down")
+      }
+      .padding(.horizontal)
+      .padding(.vertical, 8)
+      
+      List {
+        Section {
+          VStack {
+            HStack {
+              Text("Активность")
+                .font(.system(size: 22, weight: .bold))
+              Spacer()
+              Button(action: {
+                self.showActivity.toggle()
+              }) {
+                Image(systemName: showActivity ? "chevron.down" : "chevron.right")
                   .font(.system(size: 15, weight: .bold))
                   .foregroundColor(.blue)
               }
-              .padding(.horizontal)
+              .buttonStyle(BorderlessButtonStyle())
+            }
+            .padding(.horizontal)
+            
+            VStack {
+              HStack {
+                Image(systemName: "bolt.fill")
+                Text("1048 поставщиков")
+              }
+              .font(.system(size: 13, weight: .bold))
+              .foregroundColor(.blue)
               
-              VStack {
-                HStack {
-                  Image(systemName: "bolt.fill")
-                  Text("1048 поставщиков")
-                }
-                .font(.system(size: 13, weight: .bold))
-                .foregroundColor(.blue)
-                
+              if showActivity {
                 HStack {
                   VStack(alignment: .leading, spacing: 12) {
                     Text(" ")
@@ -126,50 +99,55 @@ struct MainView: View {
                   }
                 }
               }
-              .frame(maxWidth: .infinity)
-              .padding()
-              .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-            
-              Group {
-                SectionTitleView("Активность линий", showAllAction: {
-                  // TODO: Add show all action
-                })
-                
-                ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-              }
-              .padding(.horizontal)
             }
-            .listRowInsets(EdgeInsets())
-            
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
+          }
+          .listRowInsets(EdgeInsets())
+          
+          SectionTitleView("Активность линий", showAllAction: {
+            // TODO: Add show all action
+          })
+          
+          ForEach(0..<3, id: \.self) { index in
             NavigationLink(destination: LineView()) {
-              ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(number: index + 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
             }
-            ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
-          
-          Section {
-            VStack {
-              SectionTitleView("Активность точек", showAllAction: {
-                // TODO: Add show all action
-              })
-              ActivityItemView(number: 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
-            }
+        }
+        
+        Section {
+          SectionTitleView("Активность точек", showAllAction: {
+            // TODO: Add show all action
+          })
+          ForEach(0..<3, id: \.self) { index in
             NavigationLink(destination: SpotView()) {
-              ActivityItemView(number: 2, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
             }
-            ActivityItemView(number: 3, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
           }
-          
-          Section(header: Text("Последние посты")) {
+        }
+        
+        Section {
+          SectionTitleView("Последние посты")
+            
+          ForEach(0..<4, id: \.self) { _ in
             PostItemView()
-            PostItemView()
-            PostItemView()
-            PostItemView()
+              .listRowInsets(EdgeInsets())
           }
         }
       }
-      .navigationBarTitle("Главная", displayMode: .inline)
-      .navigationBarHidden(true)
+    }
+    .navigationBarTitle("Главная", displayMode: .inline)
+    .navigationBarHidden(true)
+  }
+  
+  private func cancelSearchEditing() {
+    UIApplication.shared.endEditing(true)
+    searchQuery = ""
+    
+    withAnimation {
+      self.showCancelButton = false
     }
   }
 }
