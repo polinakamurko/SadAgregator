@@ -56,6 +56,7 @@
 		BEB9514C2484D94F00A26F71 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB9514B2484D94F00A26F71 /* ProfileView.swift */; };
 		BEB9514E2484DCBA00A26F71 /* BorderedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB9514D2484DCBA00A26F71 /* BorderedButtonStyle.swift */; };
 		BEB951512484E3BF00A26F71 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB951502484E3BF00A26F71 /* LoginView.swift */; };
+		BEDCF74C2496B75B00217CE3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDCF74B2496B75B00217CE3 /* MainViewModel.swift */; };
 		BEFEA7B12496966E00A29B2D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BEFEA7B02496966E00A29B2D /* Alamofire */; };
 		BEFEA7B32496981900A29B2D /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFEA7B22496981900A29B2D /* Export.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		BEB9514B2484D94F00A26F71 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BEB9514D2484DCBA00A26F71 /* BorderedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButtonStyle.swift; sourceTree = "<group>"; };
 		BEB951502484E3BF00A26F71 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BEDCF74B2496B75B00217CE3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BEFEA7B22496981900A29B2D /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +221,7 @@
 				BE3F0A5624969490006F605A /* APIClient */,
 				BE3F0A582496949F006F605A /* Models */,
 				9BC48B2C2465484500239E4E /* Views */,
+				BEDCF74A2496B73900217CE3 /* ViewModels */,
 				BE562F4F2475BFCA000EDB5C /* Extensions */,
 			);
 			path = Sources;
@@ -352,6 +355,14 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		BEDCF74A2496B73900217CE3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BEDCF74B2496B75B00217CE3 /* MainViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -459,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDCF74C2496B75B00217CE3 /* MainViewModel.swift in Sources */,
 				BE3F0A772496951B006F605A /* ErrorModel.swift in Sources */,
 				BE11E4B3246C888A004A2FBC /* PopularProviderItemView.swift in Sources */,
 				BE46218F246D13DA00F715B1 /* MainView.swift in Sources */,

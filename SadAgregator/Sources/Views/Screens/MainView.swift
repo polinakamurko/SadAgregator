@@ -10,14 +10,11 @@ import SwiftUI
 
 struct MainView: View {
   
-  @State private var searchQuery = ""
-  @State private var showCancelButton = false
-  @State private var showActivity = false
+  @ObservedObject var viewModel: MainViewModel
   
   var body: some View {
-    
     VStack {
-      if !showCancelButton {
+      if !viewModel.showCancelButton {
         Text("Главная")
           .fontWeight(.semibold)
           .padding(.top)
@@ -26,12 +23,12 @@ struct MainView: View {
       
       HStack { // Search Bar
         SearchField(
-          searchQuery: $searchQuery,
-          showCancelButton: $showCancelButton,
+          searchQuery: $viewModel.searchQuery,
+          showCancelButton: $viewModel.showCancelButton,
           imageSearchEnabled: true
         )
         
-        if showCancelButton {
+        if viewModel.showCancelButton {
           Button(action: cancelSearchEditing) {
             Text("Отмена").foregroundColor(Color(.systemBlue))
           }
@@ -48,9 +45,9 @@ struct MainView: View {
                 .font(.system(size: 22, weight: .bold))
               Spacer()
               Button(action: {
-                self.showActivity.toggle()
+                self.viewModel.showActivity.toggle()
               }) {
-                Image(systemName: showActivity ? "chevron.down" : "chevron.right")
+                Image(systemName: viewModel.showActivity ? "chevron.down" : "chevron.right")
                   .font(.system(size: 15, weight: .bold))
                   .foregroundColor(.blue)
               }
@@ -66,7 +63,7 @@ struct MainView: View {
               .font(.system(size: 13, weight: .bold))
               .foregroundColor(.blue)
               
-              if showActivity {
+              if viewModel.showActivity {
                 HStack {
                   VStack(alignment: .leading, spacing: 12) {
                     Text(" ")
@@ -145,10 +142,10 @@ struct MainView: View {
   
   private func cancelSearchEditing() {
     UIApplication.shared.endEditing(true)
-    searchQuery = ""
+    viewModel.searchQuery = ""
     
     withAnimation {
-      self.showCancelButton = false
+      self.viewModel.showCancelButton = false
     }
   }
   
@@ -166,6 +163,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView()
+    MainView(viewModel: MainViewModel())
   }
 }
