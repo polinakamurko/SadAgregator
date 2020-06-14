@@ -12,23 +12,30 @@ struct PostItemView: View {
   
   @State private var showPostDescription = false
   
+  var providerTitle: String
+  var price: String? = nil
+  var providerName: String
+  var text: String
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 5) {
       VStack(alignment: .leading, spacing: 5) {
         HStack {
-          Text("38-46")
+          Text(providerTitle)
             .font(.system(size: 20, weight: .bold))
           Spacer()
-          Text("900 руб.")
-            .font(.system(size: 15, weight: .semibold))
-            .foregroundColor(Color(red: 33/255, green: 150/255, blue: 83/255))
-            .frame(width: 89, height: 30)
-            .background(Color(red: 239/255, green: 249/255, blue: 236/255))
-            .cornerRadius(15)
+          if price != nil {
+            Text("\(price!) руб.")
+              .font(.system(size: 15, weight: .semibold))
+              .foregroundColor(Color(red: 33/255, green: 150/255, blue: 83/255))
+              .frame(width: 89, height: 30)
+              .background(Color(red: 239/255, green: 249/255, blue: 236/255))
+              .cornerRadius(15)
+          }
         }
         
         HStack {
-          Text("baby club")
+          Text(providerName)
           Image(systemName: "chevron.right")
         }
         .font(.system(size: 17, weight: .medium))
@@ -84,7 +91,7 @@ struct PostItemView: View {
         
         if showPostDescription {
           VStack {
-            Text("Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб")
+            Text(text)
               .padding([.horizontal, .bottom])
           }
         }
@@ -130,7 +137,12 @@ struct PostItemView: View {
 
 struct PostView_Previews: PreviewProvider {
   static var previews: some View {
-    PostItemView()
+    PostItemView(
+      providerTitle: "32-38",
+      price: "900",
+      providerName: "Baby Shop",
+      text: "Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб"
+    )
   }
 }
 

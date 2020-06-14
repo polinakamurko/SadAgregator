@@ -80,10 +80,10 @@ struct LineView: View {
         Section {
           SectionTitleView("Последние посты")
           
-          ForEach(0..<4, id: \.self) { _ in
-            PostItemView()
-              .listRowInsets(EdgeInsets())
-          }
+//          ForEach(0..<4, id: \.self) { _ in
+//            PostItemView()
+//              .listRowInsets(EdgeInsets())
+//          }
         }
       }
     }

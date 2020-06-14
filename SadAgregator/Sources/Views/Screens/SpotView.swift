@@ -155,10 +155,11 @@ struct SpotView: View {
         }
         
         Section(header: Text("Последние посты")) {
-          PostItemView()
-          PostItemView()
-          PostItemView()
-          PostItemView()
+          ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+//          PostItemView()
+//          PostItemView()
+//          PostItemView()
+//          PostItemView()
         }
       }
     }

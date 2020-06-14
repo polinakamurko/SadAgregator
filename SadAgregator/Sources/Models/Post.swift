@@ -24,6 +24,14 @@ public struct Post: Codable {
   public var sizes: [String]?
   public var options: [String]?
   
+  var providerTitle: String {
+    vendorCapt ?? ""
+  }
+  
+  var providerName: String {
+    by?.capitalized ?? ""
+  }
+  
   public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [ServerImage]? = nil, sizes: [String]? = nil, options: [String]? = nil) {
     self._id = _id
     self.vendorCapt = vendorCapt
