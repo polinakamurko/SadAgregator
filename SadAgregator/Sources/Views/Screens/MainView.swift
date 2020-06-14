@@ -140,6 +140,7 @@ struct MainView: View {
     }
     .navigationBarTitle("Главная", displayMode: .inline)
     .navigationBarHidden(true)
+    .onAppear(perform: fetchMain)
   }
   
   private func cancelSearchEditing() {
@@ -148,6 +149,17 @@ struct MainView: View {
     
     withAnimation {
       self.showCancelButton = false
+    }
+  }
+  
+  private func fetchMain() {
+    DefaultAPI.agrIntfMainGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (mainPageData, error) in
+      if let error = error {
+        print(error)
+        return
+      }
+      
+      print(mainPageData)
     }
   }
 }
