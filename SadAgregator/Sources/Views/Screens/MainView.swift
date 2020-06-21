@@ -88,9 +88,14 @@ struct MainView: View {
           SectionTitleView("Активность точек", showAllAction: {
             // TODO: Add show all action
           })
-          ForEach(0..<3, id: \.self) { index in
+          ForEach(0..<viewModel.topSpots.count, id: \.self) { index in
             NavigationLink(destination: SpotView()) {
-              ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(
+                number: index + 1,
+                title: self.viewModel.topSpots[index].capt!,
+                subtitle: self.viewModel.topSpots[index].lastAct!,
+                disclosureText: self.viewModel.topSpots[index].posts!
+              )
             }
           }
         }
