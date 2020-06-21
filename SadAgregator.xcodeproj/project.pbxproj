@@ -31,6 +31,8 @@
 		BE07A4D6249FE0D5007AE812 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BE07A4D5249FE0D5007AE812 /* Alamofire */; };
 		BE07A4D8249FE3D4007AE812 /* BlueInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07A4D7249FE3D4007AE812 /* BlueInfoView.swift */; };
 		BE07A4DA249FEAB9007AE812 /* DetailedActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07A4D9249FEAB9007AE812 /* DetailedActivityView.swift */; };
+		BE07A4DD24A0026A007AE812 /* RandomAccessCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07A4DC24A0026A007AE812 /* RandomAccessCollection+Extensions.swift */; };
+		BE07A4DF24A004CA007AE812 /* MainPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07A4DE24A004CA007AE812 /* MainPaging.swift */; };
 		BE11E4B3246C888A004A2FBC /* PopularProviderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */; };
 		BE11E4B4246C888A004A2FBC /* PopularProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11E4B2246C888A004A2FBC /* PopularProvidersView.swift */; };
 		BE3F0A752496951B006F605A /* TopLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F0A6D2496951A006F605A /* TopLine.swift */; };
@@ -101,6 +103,8 @@
 		9BFD6678248FC4370091110A /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		BE07A4D7249FE3D4007AE812 /* BlueInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueInfoView.swift; sourceTree = "<group>"; };
 		BE07A4D9249FEAB9007AE812 /* DetailedActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedActivityView.swift; sourceTree = "<group>"; };
+		BE07A4DC24A0026A007AE812 /* RandomAccessCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection+Extensions.swift"; sourceTree = "<group>"; };
+		BE07A4DE24A004CA007AE812 /* MainPaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPaging.swift; sourceTree = "<group>"; };
 		BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularProviderItemView.swift; sourceTree = "<group>"; };
 		BE11E4B2246C888A004A2FBC /* PopularProvidersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularProvidersView.swift; sourceTree = "<group>"; };
 		BE3F0A6D2496951A006F605A /* TopLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopLine.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 			children = (
 				BE3F0A6F2496951A006F605A /* ErrorModel.swift */,
 				BE3F0A6E2496951A006F605A /* MainPage.swift */,
+				BE07A4DE24A004CA007AE812 /* MainPaging.swift */,
 				BEFEA7B22496981900A29B2D /* Export.swift */,
 				BE3F0A702496951A006F605A /* Post.swift */,
 				BE3F0A712496951B006F605A /* ServerImage.swift */,
@@ -346,6 +351,7 @@
 				BE562F4D2475BFC3000EDB5C /* UIApplication+Extensions.swift */,
 				BE562F502475C031000EDB5C /* View+Extensions.swift */,
 				BE562F522475C4A4000EDB5C /* AnyTransition+Extensions.swift */,
+				BE07A4DC24A0026A007AE812 /* RandomAccessCollection+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 				BE562F4E2475BFC3000EDB5C /* UIApplication+Extensions.swift in Sources */,
 				9B1C17FF2469D91A00EB108B /* MenuView.swift in Sources */,
 				9B1C1801246C2A2D00EB108B /* ActivityItemView.swift in Sources */,
+				BE07A4DF24A004CA007AE812 /* MainPaging.swift in Sources */,
 				9BC48B0A2465420300239E4E /* SceneDelegate.swift in Sources */,
 				BEB9514C2484D94F00A26F71 /* ProfileView.swift in Sources */,
 				BE3F0A862496952A006F605A /* Extensions.swift in Sources */,
@@ -530,6 +537,7 @@
 				BEFEA7B32496981900A29B2D /* Export.swift in Sources */,
 				9B50A8612487ABCE00B43BAB /* FeedbackDetailView.swift in Sources */,
 				9B50A8652487E8B200B43BAB /* TextView.swift in Sources */,
+				BE07A4DD24A0026A007AE812 /* RandomAccessCollection+Extensions.swift in Sources */,
 				BEB951512484E3BF00A26F71 /* LoginView.swift in Sources */,
 				BE07A4DA249FEAB9007AE812 /* DetailedActivityView.swift in Sources */,
 				BE562F4C2475BD01000EDB5C /* SectionTitleView.swift in Sources */,

@@ -106,6 +106,9 @@ struct MainView: View {
           ForEach(viewModel.posts) { post in
             PostItemView(post: post)
               .listRowInsets(EdgeInsets())
+              .onAppear {
+                self.onPostShowed(post)
+              }
           }
         }
       }
@@ -126,6 +129,12 @@ struct MainView: View {
   
   private func fetchMain() {
     viewModel.fetchData()
+  }
+  
+  private func onPostShowed(_ post: Post) {
+    if viewModel.posts.isLastItem(post) {
+      viewModel.loadNextPage()
+    }
   }
 }
 
