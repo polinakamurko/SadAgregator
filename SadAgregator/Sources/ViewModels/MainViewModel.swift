@@ -15,6 +15,8 @@ class MainViewModel: ObservableObject {
   @Published var showActivity = false
   
   @Published var activityText = ""
+  @Published var totalActivity = TotalActivity()
+  
   @Published private(set) var posts = [Post]()
   
   func fetchData() {
@@ -26,6 +28,10 @@ class MainViewModel: ObservableObject {
       
       self.activityText = mainPageData?.activity ?? ""
       self.posts = mainPageData?.posts ?? []
+      
+      if let totalActivity = mainPageData?.totalActivity {
+        self.totalActivity = totalActivity
+      }
     }
   }
 }

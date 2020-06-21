@@ -9,22 +9,22 @@ import Foundation
 
 public struct TotalActivity: Codable {
   
-  public var postToday: String?
-  public var postYstd: String?
-  public var photoToday: String?
-  public var photoYstd: String?
+  public var postsToday: String?
+  public var postsYesterday: String?
+  public var photosToday: String?
+  public var photosYesterday: String?
   
-  public init(postToday: String? = nil, postYstd: String? = nil, photoToday: String? = nil, photoYstd: String? = nil) {
-    self.postToday = postToday
-    self.postYstd = postYstd
-    self.photoToday = photoToday
-    self.photoYstd = photoYstd
+  public init(postsToday: String? = nil, postsYesterday: String? = nil, photosToday: String? = nil, photosYesterday: String? = nil) {
+    self.postsToday = postsToday
+    self.postsYesterday = postsYesterday
+    self.photosToday = photosToday
+    self.photosYesterday = photosYesterday
   }
   
   public enum CodingKeys: String, CodingKey {
-    case postToday = "post_today"
-    case postYstd = "post_ystd"
-    case photoToday = "photo_today"
-    case photoYstd = "photo_ystd"
+    case postsToday = "post_today"
+    case postsYesterday = "post_ystd"
+    case photosToday = "photo_today"
+    case photosYesterday = "photo_ystd"
   }
 }

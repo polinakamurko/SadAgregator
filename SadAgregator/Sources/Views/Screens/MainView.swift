@@ -59,37 +59,7 @@ struct MainView: View {
               BlueInfoView(text: $viewModel.activityText)
               
               if viewModel.showActivity {
-                HStack {
-                  VStack(alignment: .leading, spacing: 12) {
-                    Text(" ")
-                    HStack {
-                      Image(systemName: "rectangle.fill.on.rectangle.fill")
-                        .foregroundColor(Color(UIColor.systemGray3))
-                      Text("Посты")
-                        .fixedSize(horizontal: true, vertical: false)
-                    }
-                    HStack {
-                      Image(systemName: "photo.fill.on.rectangle.fill")
-                        .foregroundColor(Color(UIColor.systemGray3))
-                      Text("Фото")
-                    }
-                  }
-                  Spacer()
-                  VStack(spacing: 12) {
-                    Text("Сегодня")
-                      .foregroundColor(.gray)
-                    Text("2253")
-                    Text("10783")
-                  }
-                  .font(.system(size: 17, weight: .bold))
-                  Spacer()
-                  VStack(spacing: 12) {
-                    Text("Вчера")
-                      .foregroundColor(.gray)
-                    Text("2253")
-                    Text("10783")
-                  }
-                }
+                DetailedActivityView(totalActivity: $viewModel.totalActivity)
               }
             }
             .frame(maxWidth: .infinity)
@@ -156,21 +126,5 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
     MainView(viewModel: MainViewModel())
-  }
-}
-
-struct BlueInfoView: View {
-  
-  let iconName = "bolt.fill"
-  
-  @Binding var text: String
-    
-  var body: some View {
-    HStack {
-      Image(systemName: iconName)
-      Text(text)
-    }
-    .font(.system(size: 13, weight: .bold))
-    .foregroundColor(.blue)
   }
 }
