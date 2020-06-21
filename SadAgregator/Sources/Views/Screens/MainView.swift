@@ -56,12 +56,7 @@ struct MainView: View {
             .padding(.horizontal)
             
             VStack {
-              HStack {
-                Image(systemName: "bolt.fill")
-                Text("1048 поставщиков")
-              }
-              .font(.system(size: 13, weight: .bold))
-              .foregroundColor(.blue)
+              BlueInfoView(text: $viewModel.activityText)
               
               if viewModel.showActivity {
                 HStack {
@@ -161,5 +156,21 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
     MainView(viewModel: MainViewModel())
+  }
+}
+
+struct BlueInfoView: View {
+  
+  let iconName = "bolt.fill"
+  
+  @Binding var text: String
+    
+  var body: some View {
+    HStack {
+      Image(systemName: iconName)
+      Text(text)
+    }
+    .font(.system(size: 13, weight: .bold))
+    .foregroundColor(.blue)
   }
 }

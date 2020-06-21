@@ -14,6 +14,7 @@ class MainViewModel: ObservableObject {
   @Published var showCancelButton = false
   @Published var showActivity = false
   
+  @Published var activityText = ""
   @Published private(set) var posts = [Post]()
   
   func fetchData() {
@@ -23,6 +24,7 @@ class MainViewModel: ObservableObject {
         return
       }
       
+      self.activityText = mainPageData?.activity ?? ""
       self.posts = mainPageData?.posts ?? []
     }
   }
