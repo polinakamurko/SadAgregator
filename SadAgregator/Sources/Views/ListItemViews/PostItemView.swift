@@ -12,20 +12,17 @@ struct PostItemView: View {
   
   @State private var showPostDescription = false
   
-  var providerTitle: String
-  var price: String? = nil
-  var providerName: String
-  var text: String
+  var post: Post
   
   var body: some View {
     VStack(alignment: .leading, spacing: 5) {
       VStack(alignment: .leading, spacing: 5) {
         HStack {
-          Text(providerTitle)
+          Text(post.vendorCapt ?? "")
             .font(.system(size: 20, weight: .bold))
           Spacer()
-          if price != nil {
-            Text("\(price!) руб.")
+          if post.price != nil {
+            Text("\(post.price!) руб.")
               .font(.system(size: 15, weight: .semibold))
               .foregroundColor(Color(red: 33/255, green: 150/255, blue: 83/255))
               .frame(width: 89, height: 30)
@@ -35,7 +32,7 @@ struct PostItemView: View {
         }
         
         HStack {
-          Text(providerName)
+          Text(post.by ?? "")
           Image(systemName: "chevron.right")
         }
         .font(.system(size: 17, weight: .medium))
@@ -44,12 +41,12 @@ struct PostItemView: View {
         HStack {
           Text("Размеры")
             .fontWeight(.medium)
+            .fixedSize(horizontal: true, vertical: true)
+          
           Group {
-            Text("42")
-            Text("44")
-            Text("46")
-            Text("48")
-            Text("50")
+            ForEach(post.sizes ?? [], id: \.self) { size in
+              Text(size)
+            }
           }
           .padding(.horizontal, 8)
           .frame(height: 24)
@@ -59,8 +56,9 @@ struct PostItemView: View {
         }
         HStack {
           Group {
-            Text("Опт")
-            Text("В размер")
+            ForEach(post.options ?? [], id: \.self) { option in
+              Text(option)
+            }
           }
           .font(.system(size: 17, weight: .medium))
           .foregroundColor(Color(UIColor.darkGray))
@@ -91,7 +89,7 @@ struct PostItemView: View {
         
         if showPostDescription {
           VStack {
-            Text(text)
+            Text(post.cleanText)
               .padding([.horizontal, .bottom])
           }
         }
@@ -102,7 +100,7 @@ struct PostItemView: View {
       
       HStack {
         VStack(alignment: .leading) {
-          Text("17 мин. назад")
+          Text(post.posted ?? "")
           Text("См. пост в ВК")
           .font(.system(size: 13, weight: .bold))
         }
@@ -137,11 +135,17 @@ struct PostItemView: View {
 
 struct PostView_Previews: PreviewProvider {
   static var previews: some View {
-    PostItemView(
-      providerTitle: "32-38",
-      price: "900",
-      providerName: "Baby Shop",
-      text: "Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб"
+    PostItemView(post: Post(
+      vendorCapt: "2Г-03",
+      vendorId: "4892",
+      pointId: "1007",
+      vkPost: "https://vk.com/wall475869467_10120",
+      price: "350",
+      by: "изатулло сироджов",
+      posted: "6 мин. назад",
+      text: "новинки 350р 42-44-46 качество бомба ! ткань очень хорошая! юбки",
+      sizes: [ "42", "44", "46"],
+      options: ["Юбка"])
     )
   }
 }

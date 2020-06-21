@@ -104,12 +104,8 @@ struct MainView: View {
           SectionTitleView("Последние посты")
             
           ForEach(viewModel.posts) { post in
-            PostItemView(
-              providerTitle: post.providerTitle,
-              price: post.price,
-              providerName: post.providerName,
-              text: post.cleanText ?? ""
-            ).listRowInsets(EdgeInsets())
+            PostItemView(post: post)
+              .listRowInsets(EdgeInsets())
           }
         }
       }

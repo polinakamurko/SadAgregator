@@ -32,8 +32,8 @@ public struct Post: Codable {
     by?.capitalized ?? ""
   }
   
-  var cleanText: String? {
-    text?.replacingOccurrences(of: "<br>", with: "\n")
+  var cleanText: String {
+    text?.replacingOccurrences(of: "<br>", with: "\n") ?? ""
   }
   
   public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [ServerImage]? = nil, sizes: [String]? = nil, options: [String]? = nil) {
