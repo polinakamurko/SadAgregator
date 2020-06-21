@@ -253,14 +253,23 @@
 		9BC48B2C2465484500239E4E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE562F492475B837000EDB5C /* Screens */,
+				BE07A4DB249FEB1A007AE812 /* Templates */,
+				BEB9514A2484D91600A26F71 /* UIKit */,
 				9B50A866248910EF00B43BAB /* Master */,
 				9B50A85F2487AA7A00B43BAB /* DetailViews */,
-				BE562F492475B837000EDB5C /* Screens */,
 				BE562F4A2475B842000EDB5C /* ListItemViews */,
-				BEB9514A2484D91600A26F71 /* UIKit */,
 				BEB9514F2484DCDB00A26F71 /* Styles */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BE07A4DB249FEB1A007AE812 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				BE07A4D9249FEAB9007AE812 /* DetailedActivityView.swift */,
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 		BE3F0A5624969490006F605A /* APIClient */ = {
@@ -309,7 +318,6 @@
 			children = (
 				9BC48B0B2465420300239E4E /* RootView.swift */,
 				BE46218E246D13DA00F715B1 /* MainView.swift */,
-				BE07A4D9249FEAB9007AE812 /* DetailedActivityView.swift */,
 				BE11E4B2246C888A004A2FBC /* PopularProvidersView.swift */,
 				9B1C17FE2469D91A00EB108B /* MenuView.swift */,
 				9BB2FB4C246F0B9900E1B184 /* ProviderView.swift */,
