@@ -17,19 +17,24 @@ class MainViewModel: ObservableObject {
   @Published var activityText = ""
   @Published var totalActivity = TotalActivity()
   
+  @Published private(set) var topLines = [TopLine]()
+  @Published private(set) var topSpots = [TopSpot]()
+  
   @Published private(set) var posts = [Post]()
   
   func fetchData() {
-    DefaultAPI.agrIntfMainGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (mainPageData, error) in
-      if let error = error {
-        print(error)
+    DefaultAPI.agrIntfMainGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (result, error) in
+      if error != nil {
         return
       }
       
-      self.activityText = mainPageData?.activity ?? ""
-      self.posts = mainPageData?.posts ?? []
+      self.activityText = result?.activity ?? ""
       
-      if let totalActivity = mainPageData?.totalActivity {
+      self.topLines = result?.linesActTop ?? []
+      self.topSpots = result?.pointsTop ?? []
+      self.posts = result?.posts ?? []
+      
+      if let totalActivity = result?.totalActivity {
         self.totalActivity = totalActivity
       }
     }

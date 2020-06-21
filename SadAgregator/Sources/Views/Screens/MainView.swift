@@ -72,9 +72,14 @@ struct MainView: View {
             // TODO: Add show all action
           })
           
-          ForEach(0..<3, id: \.self) { index in
+          ForEach(0..<viewModel.topLines.count, id: \.self) { index in
             NavigationLink(destination: LineView()) {
-              ActivityItemView(number: index + 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(
+                number: index + 1,
+                title: self.viewModel.topLines[index].capt!,
+                subtitle: self.viewModel.topLines[index].lastAct!,
+                disclosureText: self.viewModel.topLines[index].posts!
+              )
             }
           }
         }
