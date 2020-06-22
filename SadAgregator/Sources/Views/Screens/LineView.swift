@@ -67,9 +67,7 @@ struct LineView: View {
         .listRowInsets(EdgeInsets())
         
         Section {
-          SectionTitleView("Активность точек", showAllAction: {
-            // TODO: Add show all action
-          })
+          SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
           ForEach(0..<3, id: \.self) { index in
             NavigationLink(destination: SpotView()) {
               ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
@@ -78,7 +76,7 @@ struct LineView: View {
         }
         
         Section {
-          SectionTitleView("Последние посты")
+          SectionTitleView<Text>("Последние посты")
           
 //          ForEach(0..<4, id: \.self) { _ in
 //            PostItemView()
