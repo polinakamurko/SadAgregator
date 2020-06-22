@@ -13,18 +13,19 @@ struct RootView: View {
   var body: some View {
     TabView {
       NavigationView {
-        MainView()
+        MainView(viewModel: MainViewModel())
       }
       .tabItem {
-          Image(systemName: "house.fill")
-            .font(.system(size: 20))
+        Image(systemName: "house.fill")
+          .font(.system(size: 20))
       }
 
       PopularProvidersView()
         .tabItem {
           Image(systemName: "bolt.fill")
             .font(.system(size: 20))
-      }
+        }
+
       NavigationView {
         MenuView()
       }
