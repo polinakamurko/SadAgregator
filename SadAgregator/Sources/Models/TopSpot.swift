@@ -7,12 +7,16 @@
 
 import Foundation
 
-public struct TopSpot: Codable {
+public struct TopSpot: Codable, Identifiable {
   
   public var pointId: String?
   public var posts: String?
   public var capt: String?
   public var lastAct: String?
+  
+  public var id: String {
+    pointId ?? UUID().uuidString
+  }
   
   public init(pointId: String? = nil, posts: String? = nil, capt: String? = nil, lastAct: String? = nil) {
     self.pointId = pointId

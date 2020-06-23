@@ -8,6 +8,21 @@
 
 import SwiftUI
 
-struct SpotListViewModel {
-  var topSpots = [TopSpot]()
+class SpotListViewModel: ObservableObject {
+  
+  @Published var topSpots = [TopSpot]()
+    
+  private var currentPage = 0
+  
+  func fetchPage() {
+    currentPage += 1
+    DefaultAPI.agrIntfTopPointsPagingGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPage: "\(currentPage)") { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      self.topSpots.append(contentsOf: response?.pointsTop ?? [])
+    }
+  }
 }

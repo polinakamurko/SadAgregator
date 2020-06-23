@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SpotListView: View {
   
-  var viewModel: SpotListViewModel
+  @ObservedObject var viewModel: SpotListViewModel
   
   var body: some View {
     List {
@@ -22,9 +22,16 @@ struct SpotListView: View {
             subtitle: self.viewModel.topSpots[index].lastAct!,
             disclosureText: self.viewModel.topSpots[index].posts!
           )
+            .onAppear {
+              let spot = self.viewModel.topSpots[index]
+              if self.viewModel.topSpots.isLastItem(spot) {
+                self.viewModel.fetchPage()
+              }
+          }
         }
       }
     }
+    .onAppear(perform: viewModel.fetchPage)
   }
 }
 
