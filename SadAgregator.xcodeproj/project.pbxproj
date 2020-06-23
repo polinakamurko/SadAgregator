@@ -17,6 +17,8 @@
 		9B97D4DC24A0CBC800DB3F5E /* SpotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4DB24A0CBC800DB3F5E /* SpotListView.swift */; };
 		9B97D4DE24A0D35800DB3F5E /* SpotListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */; };
 		9B97D4E224A1F83300DB3F5E /* DefaultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E124A1F83200DB3F5E /* DefaultAPI.swift */; };
+		9B97D4E424A23A3100DB3F5E /* LineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E324A23A3100DB3F5E /* LineListView.swift */; };
+		9B97D4E624A23AA500DB3F5E /* LineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E524A23AA500DB3F5E /* LineListViewModel.swift */; };
 		9BAD866C2479421400F756DA /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAD866B2479421400F756DA /* LineView.swift */; };
 		9BB2FB4B246F0A4C00E1B184 /* DetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2FB4A246F0A4C00E1B184 /* DetailItemView.swift */; };
 		9BB2FB4D246F0B9900E1B184 /* ProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2FB4C246F0B9900E1B184 /* ProviderView.swift */; };
@@ -144,6 +146,8 @@
 		9B97D4DB24A0CBC800DB3F5E /* SpotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListView.swift; sourceTree = "<group>"; };
 		9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListViewModel.swift; sourceTree = "<group>"; };
 		9B97D4E124A1F83200DB3F5E /* DefaultAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAPI.swift; sourceTree = "<group>"; };
+		9B97D4E324A23A3100DB3F5E /* LineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineListView.swift; sourceTree = "<group>"; };
+		9B97D4E524A23AA500DB3F5E /* LineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineListViewModel.swift; sourceTree = "<group>"; };
 		9BAD866B2479421400F756DA /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		9BB2FB4A246F0A4C00E1B184 /* DetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemView.swift; sourceTree = "<group>"; };
 		9BB2FB4C246F0B9900E1B184 /* ProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderView.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				9B97D4DB24A0CBC800DB3F5E /* SpotListView.swift */,
+				9B97D4E324A23A3100DB3F5E /* LineListView.swift */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 			children = (
 				BEDCF74B2496B75B00217CE3 /* MainViewModel.swift */,
 				9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */,
+				9B97D4E524A23AA500DB3F5E /* LineListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -726,6 +732,7 @@
 				9B50A8632487B73300B43BAB /* LeaveFeedbackDetailView.swift in Sources */,
 				BE3F0A882496952A006F605A /* APIs.swift in Sources */,
 				9BFD6679248FC4370091110A /* SearchField.swift in Sources */,
+				9B97D4E424A23A3100DB3F5E /* LineListView.swift in Sources */,
 				9BFD670824A0C6D90091110A /* Arrows.swift in Sources */,
 				9BFD670524A0C6D90091110A /* LinePostsPaging.swift in Sources */,
 				9BFD670324A0C6D90091110A /* Reviews.swift in Sources */,
@@ -779,6 +786,7 @@
 				BEB951512484E3BF00A26F71 /* LoginView.swift in Sources */,
 				BE07A4DA249FEAB9007AE812 /* DetailedActivityView.swift in Sources */,
 				9BFD670E24A0C6D90091110A /* Message.swift in Sources */,
+				9B97D4E624A23AA500DB3F5E /* LineListViewModel.swift in Sources */,
 				BE562F4C2475BD01000EDB5C /* SectionTitleView.swift in Sources */,
 				9BFD66ED24A0C6D90091110A /* PostLike.swift in Sources */,
 			);
@@ -935,7 +943,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
-				DEVELOPMENT_TEAM = 68788AEQ8E;
+				DEVELOPMENT_TEAM = 9Y3X7GA52A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -943,7 +951,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-sad.SadAgregator";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PolinaSadAgregator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -957,7 +965,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
-				DEVELOPMENT_TEAM = 68788AEQ8E;
+				DEVELOPMENT_TEAM = 9Y3X7GA52A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -965,7 +973,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-sad.SadAgregator";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PolinaSadAgregator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

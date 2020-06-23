@@ -7,12 +7,16 @@
 
 import Foundation
 
-public struct TopLine: Codable {
+public struct TopLine: Codable, Identifiable {
   
   public var lineId: String?
   public var posts: String?
   public var capt: String?
   public var lastAct: String?
+  
+  public var id: String {
+    lineId ?? UUID().uuidString
+  }
   
   public init(lineId: String? = nil, posts: String? = nil, capt: String? = nil, lastAct: String? = nil) {
     self.lineId = lineId

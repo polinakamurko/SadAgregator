@@ -68,16 +68,17 @@ struct MainView: View {
           }
           .listRowInsets(EdgeInsets())
           
-          SectionTitleView<Text>("Активность линий")
-          
-          ForEach(0..<viewModel.topLines.count, id: \.self) { index in
-            NavigationLink(destination: LineView()) {
-              ActivityItemView(
-                number: index + 1,
-                title: self.viewModel.topLines[index].capt!,
-                subtitle: self.viewModel.topLines[index].lastAct!,
-                disclosureText: self.viewModel.topLines[index].posts!
-              )
+          Section {
+            SectionTitleView("Активность линий", showAllView: LineListView(viewModel: LineListViewModel()))
+            ForEach(0..<viewModel.topLines.count, id: \.self) { index in
+              NavigationLink(destination: LineView()) {
+                ActivityItemView(
+                  number: index + 1,
+                  title: self.viewModel.topLines[index].capt!,
+                  subtitle: self.viewModel.topLines[index].lastAct!,
+                  disclosureText: self.viewModel.topLines[index].posts!
+                )
+              }
             }
           }
         }
@@ -98,13 +99,13 @@ struct MainView: View {
         
         Section {
           SectionTitleView<Text>("Последние посты")
-            
+          
           ForEach(viewModel.posts) { post in
             PostItemView(post: post)
               .listRowInsets(EdgeInsets())
               .onAppear {
                 self.onPostShowed(post)
-              }
+            }
           }
         }
       }
