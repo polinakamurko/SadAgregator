@@ -62,6 +62,19 @@ struct PopularProvidersView: View {
         .padding(.horizontal)
         .padding(.top, 8)
         
+        ZStack {
+          Text("Как работает рейтинг")
+          HStack {
+            Spacer()
+            Image(systemName: "xmark")
+          }
+        }
+        .padding(.vertical, 6)
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
+        .background(Color(red: 226/255, green: 241/255, blue: 255/255))
+        .foregroundColor(Color(.systemBlue))
+        
         List {
           ForEach(0..<viewModel.topProviders.count, id: \.self) { index in
             NavigationLink(destination: ProviderView()) {

@@ -17,6 +17,9 @@ struct ProfileView: View {
           DetailItemView(mainText: "Телефон", detailedText: "+7 912 557 18 93")
           DetailItemView(mainText: "Email", detailedText: "yura@mail.ru")
           DetailItemView(mainText: "Пароль", detailedText: "Изменить")
+          DetailItemView(mainText: "Код партнера", detailedText: "Некий код")
+          DetailItemView(mainText: "Автовыгрузка ВК", showChevron: true)
+          DetailItemView(mainText: "Автовыгрузка ОК", showChevron: true)
         }
         .padding(.vertical, 8)
       }
