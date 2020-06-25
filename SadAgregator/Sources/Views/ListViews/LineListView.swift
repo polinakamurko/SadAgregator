@@ -22,12 +22,12 @@ struct LineListView: View {
             subtitle: self.viewModel.topLines[index].lastAct!,
             disclosureText: self.viewModel.topLines[index].posts!
           )
-            .onAppear {
-              let spot = self.viewModel.topLines[index]
-              if self.viewModel.topLines.isLastItem(spot) {
-                self.viewModel.fetchPage()
-              }
-          }
+//            .onAppear {
+//              let spot = self.viewModel.topLines[index]
+//              if self.viewModel.topLines.isLastItem(spot) {
+//                self.viewModel.fetchPage()
+//              }
+//          }
         }
       }
     }
