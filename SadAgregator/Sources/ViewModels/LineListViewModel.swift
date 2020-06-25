@@ -6,7 +6,7 @@
 //  Copyright © 2020 Полина Камурко. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 class LineListViewModel: ObservableObject {
   

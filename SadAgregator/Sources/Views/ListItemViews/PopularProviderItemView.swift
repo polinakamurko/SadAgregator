@@ -11,6 +11,7 @@ import SwiftUI
 struct PopularProviderItemView: View {
   
   let index: Int
+  let provider: ProviderItem
   
   var body: some View {
       VStack {
@@ -25,13 +26,13 @@ struct PopularProviderItemView: View {
           
           // Username
           VStack(alignment: .leading, spacing: 5) {
-            Text("Юрий Истомин")
+            Text(provider.name ?? "")
               .bold()
             
             Button(action: {}) {
               HStack(spacing: 0) {
                 Group {
-                  Text("18-23")
+                  Text(provider.capt ?? "")
                     .padding(.trailing, 5)
                   
                   Image(systemName: "chevron.right")
@@ -45,49 +46,50 @@ struct PopularProviderItemView: View {
           Spacer()
           
           // Rating
-          VStack(alignment: .trailing, spacing: 5) {
-            HStack(spacing: 0) {
-              Group {
-                Text("3.5")
-                  .padding(.trailing, 4)
-                ForEach(0..<5) { _ in
-                  Image(systemName: "star.fill")
-                    .padding(.horizontal, 2)
-                }
-              }
-              .font(.system(size: 15, weight: .semibold))
-              .foregroundColor(Color(UIColor.systemGray2))
-            }
-            
-            HStack(spacing: 0) {
-              Group {
-                Image(systemName: "star.fill")
-                  .padding(.trailing, 4)
-                
-                Text("183 оценки")
-                  .padding(.trailing, 8)
-                
-                Image(systemName: "photo.fill.on.rectangle.fill")
-                  .padding(.trailing, 4)
-                
-                Text("13 фото")
-              }
-              .font(.system(size: 10))
-              .foregroundColor(Color(UIColor.systemGray2))
-            }
-          }
+//          VStack(alignment: .trailing, spacing: 5) {
+//            HStack(spacing: 0) {
+//              Group {
+//                Text("3.5")
+//                  .padding(.trailing, 4)
+//                ForEach(0..<5) { _ in
+//                  Image(systemName: "star.fill")
+//                    .padding(.horizontal, 2)
+//                }
+//              }
+//
+//  .font(.system(size: 15, weight: .semibold))
+//              .foregroundColor(Color(UIColor.systemGray2))
+//            }
+//
+//            HStack(spacing: 0) {
+//              Group {
+//                Image(systemName: "star.fill")
+//                  .padding(.trailing, 4)
+//
+//                Text("183 оценки")
+//                  .padding(.trailing, 8)
+//
+//                Image(systemName: "photo.fill.on.rectangle.fill")
+//                  .padding(.trailing, 4)
+//
+//                Text("13 фото")
+//              }
+//              .font(.system(size: 10))
+//              .foregroundColor(Color(UIColor.systemGray2))
+//            }
+//          }
         }
         
         // Statistics
         VStack(spacing: 8) {
           Group {
-            Text("Цена до 5000 руб., ~1600 руб.")
+            Text("Цена до \(provider.prices ?? ""), \(provider.pricesAvg ?? "")")
               .foregroundColor(.green)
               .frame(height: 34)
               .frame(maxWidth: .infinity)
               .background(Color(red: 239/255, green: 249/255, blue: 236/255))
             
-            Text("Охват ~29500 чел/сутки")
+            Text("Охват \(provider.popularity ?? "") чел/сутки")
               .foregroundColor(.blue)
               .frame(height: 34)
               .frame(maxWidth: .infinity)
@@ -96,7 +98,7 @@ struct PopularProviderItemView: View {
           .font(.system(size: 15, weight: .medium))
           .cornerRadius(10)
           
-          Text("30 апр. в 16:11")
+          Text(provider.dt ?? "")
             .font(.system(size: 15))
             .frame(maxWidth: .infinity, alignment: .trailing)
             .foregroundColor(Color(UIColor.systemGray2))
@@ -107,6 +109,6 @@ struct PopularProviderItemView: View {
 
 struct PopularProviderItemView_Previews: PreviewProvider {
   static var previews: some View {
-    PopularProviderItemView(index: 1)
+    PopularProviderItemView(index: 1, provider: ProviderItem(name: "Азиз"))
   }
 }

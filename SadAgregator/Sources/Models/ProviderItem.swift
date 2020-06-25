@@ -9,41 +9,43 @@ import Foundation
 
 
 
-public struct ProviderItem: Codable {
-
-    public var vendId: String?
-    public var dt: String?
-    public var capt: String?
-    public var name: String?
-    public var pos: String?
-    public var popularity: String?
-    public var prices: String?
-    public var pricesAvg: String?
-    public var pointId: String?
-
-    public init(vendId: String?, dt: String?, capt: String?, name: String?, pos: String?, popularity: String?, prices: String?, pricesAvg: String?, pointId: String?) {
-        self.vendId = vendId
-        self.dt = dt
-        self.capt = capt
-        self.name = name
-        self.pos = pos
-        self.popularity = popularity
-        self.prices = prices
-        self.pricesAvg = pricesAvg
-        self.pointId = pointId
-    }
-
-    public enum CodingKeys: String, CodingKey { 
-        case vendId = "vend_id"
-        case dt
-        case capt
-        case name
-        case pos
-        case popularity
-        case prices
-        case pricesAvg = "prices_avg"
-        case pointId = "point_id"
-    }
-
+public struct ProviderItem: Codable, Identifiable {
+  public var id: String {
+    vendId ?? UUID().uuidString
+  }
+  public var vendId: String?
+  public var dt: String?
+  public var capt: String?
+  public var name: String?
+  public var pos: String?
+  public var popularity: String?
+  public var prices: String?
+  public var pricesAvg: String?
+  public var pointId: String?
+  
+  public init(vendId: String? = nil, dt: String? = nil, capt: String? = nil, name: String? = nil, pos: String? = nil, popularity: String? = nil, prices: String? = nil, pricesAvg: String? = nil, pointId: String? = nil) {
+    self.vendId = vendId
+    self.dt = dt
+    self.capt = capt
+    self.name = name
+    self.pos = pos
+    self.popularity = popularity
+    self.prices = prices
+    self.pricesAvg = pricesAvg
+    self.pointId = pointId
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case vendId = "vend_id"
+    case dt
+    case capt
+    case name
+    case pos
+    case popularity
+    case prices
+    case pricesAvg = "prices_avg"
+    case pointId = "point_id"
+  }
+  
 }
 

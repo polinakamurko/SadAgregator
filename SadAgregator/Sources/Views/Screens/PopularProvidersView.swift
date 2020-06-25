@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PopularProvidersView: View {
   
+  @ObservedObject var viewModel: PopularProvidersViewModel
+  
   @State private var searchQuery = ""
   @State private var showCancelButton = false
   
@@ -61,13 +63,20 @@ struct PopularProvidersView: View {
         .padding(.top, 8)
         
         List {
-          ForEach(0..<8) { index in
+          ForEach(0..<viewModel.topProviders.count, id: \.self) { index in
             NavigationLink(destination: ProviderView()) {
-              PopularProviderItemView(index: index + 1)
+              PopularProviderItemView(index: index + 1, provider: self.viewModel.topProviders[index])
                 .padding(.vertical, 8)
+            }
+            .onAppear {
+              let provider = self.viewModel.topProviders[index]
+              if self.viewModel.topProviders.isLastItem(provider) {
+                self.viewModel.fetchPage()
+              }
             }
           }
         }
+        .onAppear(perform: viewModel.fetchPage)
         .resignKeyboardOnDragGesture()
       }
       .navigationBarTitle("", displayMode: .inline)
@@ -78,6 +87,6 @@ struct PopularProvidersView: View {
 
 struct PopularProvidersView_Previews: PreviewProvider {
   static var previews: some View {
-    PopularProvidersView()
+    PopularProvidersView(viewModel: PopularProvidersViewModel())
   }
 }
