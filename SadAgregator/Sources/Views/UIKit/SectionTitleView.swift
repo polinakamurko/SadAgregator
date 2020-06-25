@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SectionTitleView<Destination>: View where Destination: View {
   
+  @State private var showDestination = false
+  
   let title: String
   
   let showAllDestinationView: Destination?
@@ -27,7 +29,16 @@ struct SectionTitleView<Destination>: View where Destination: View {
       Spacer()
       
       if showAllDestinationView != nil {
-        NavigationLink(destination: showAllDestinationView!) {
+        NavigationLink(destination: showAllDestinationView!, isActive: $showDestination) {
+          EmptyView()
+        }
+        .buttonStyle(BorderlessButtonStyle())
+      }
+      
+      if showAllDestinationView != nil {
+        Button(action: {
+          self.showDestination = true
+        }) {
           HStack {
             Text("См. все")
             Image(systemName: "chevron.right")
@@ -36,17 +47,6 @@ struct SectionTitleView<Destination>: View where Destination: View {
         }
         .buttonStyle(BorderlessButtonStyle())
       }
-      
-//      if showAllAction != nil {
-//        Button(action: showAllAction!) {
-//          HStack {
-//            Text("См. все")
-//            Image(systemName: "chevron.right")
-//          }
-//          .font(.system(size: 15))
-//        }
-//        .buttonStyle(BorderlessButtonStyle())
-//      }
     }
     .padding(.top, 8)
   }
