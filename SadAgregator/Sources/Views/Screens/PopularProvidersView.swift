@@ -17,7 +17,7 @@ struct PopularProvidersView: View {
   
   var body: some View {
     NavigationView {
-      VStack {
+      VStack(spacing: 0) {
         if !showCancelButton {
           Text("Популярность поставщиков")
             .fontWeight(.semibold)
@@ -60,7 +60,8 @@ struct PopularProvidersView: View {
           }
         }
         .padding(.horizontal)
-        .padding(.top, 8)
+        .padding(.top, 16)
+        .padding(.bottom, 16)
         
         ZStack {
           Text("Как работает рейтинг")
@@ -71,6 +72,7 @@ struct PopularProvidersView: View {
         }
         .padding(.vertical, 6)
         .padding(.horizontal, 16)
+        .padding(.bottom, 0)
         .frame(maxWidth: .infinity)
         .background(Color(red: 226/255, green: 241/255, blue: 255/255))
         .foregroundColor(Color(.systemBlue))

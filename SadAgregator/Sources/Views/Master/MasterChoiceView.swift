@@ -74,20 +74,20 @@ struct MasterChoiceView: View {
           )
         }
         
-        Button(action: {}) {
-          VStack(alignment: .leading, spacing: 6) {
-            HStack {
-              Text("ГОТОВО")
+        NavigationLink(destination: MasterTextView()) {
+            VStack(alignment: .leading, spacing: 6) {
+              HStack {
+                Text("ПРОДОЛЖИТЬ")
+              }
+              .font(.system(size: 17, weight: .semibold))
+              .foregroundColor(.white)
             }
-            .font(.system(size: 17, weight: .semibold))
-            .foregroundColor(.white)
           }
           .frame(width: 160, height: 36)
           .background(
             RoundedRectangle(cornerRadius: 17)
               .foregroundColor(.blue)
           )
-        }
       }
       .frame(maxWidth: .infinity, alignment: .center)
     }

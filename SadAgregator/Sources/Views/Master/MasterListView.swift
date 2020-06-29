@@ -21,11 +21,16 @@ struct MasterListView: View {
         .fontWeight(.bold)
       Text("Автовыгрузка для ВКонтакте")
         .font(.headline)
-
+      
       SearchField(searchQuery: $searchQuery, showCancelButton: $showCancelButton, imageSearchEnabled: false)
       
-      
-      
+      List {
+        MasterListItemView(title: "Платья, сарафаны", subTitle: "Всех размеров")
+        MasterListItemView(title: "Блузки", subTitle: "Блузки, рубашки")
+        MasterListItemView(title: "Футболки, майки", subTitle: "Всех размеров")
+        MasterListItemView(title: "Домашняя одежда", subTitle: "Пижамы, халаты")
+      }
+      .frame(maxHeight: .infinity)
       Spacer()
       Text("На этом шаге вы настраиваете")
         .frame(maxWidth: .infinity, alignment: .center)
@@ -51,7 +56,7 @@ struct MasterListView: View {
         Button(action: {}) {
           VStack(alignment: .leading, spacing: 6) {
             HStack {
-              Text("ГОТОВО")
+              Text("ПРОДОЛЖИТЬ")
             }
             .font(.system(size: 17, weight: .semibold))
             .foregroundColor(.white)
@@ -74,5 +79,38 @@ struct MasterListView: View {
 struct MasterListView_Previews: PreviewProvider {
   static var previews: some View {
     MasterListView()
+  }
+}
+
+struct MasterListItemView: View {
+  
+  var title: String
+  var subTitle: String
+  
+  var body: some View {
+    HStack {
+      VStack(alignment: .leading) {
+        Text(title)
+          .font(.system(size: 17))
+        Text(subTitle)
+          .font(.system(size: 15))
+          .foregroundColor(Color(.systemGray))
+      }
+      Spacer()
+      Button(action: {}) {
+        VStack(alignment: .leading, spacing: 6) {
+          HStack {
+            Text("Подключен")
+          }
+          .font(.system(size: 12, weight: .semibold))
+          .foregroundColor(.blue)
+        }
+        .frame(width: 82, height: 24)
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+        
+      }
+    }
+    .frame(maxWidth: .infinity)
   }
 }

@@ -84,11 +84,10 @@ struct MasterTextView: View {
               .foregroundColor(.blue)
           )
         }
-        
-        Button(action: {}) {
+        NavigationLink(destination: MasterListView()) {
           VStack(alignment: .leading, spacing: 6) {
             HStack {
-              Text("ГОТОВО")
+              Text("ПРОДОЛЖИТЬ")
             }
             .font(.system(size: 17, weight: .semibold))
             .foregroundColor(.white)

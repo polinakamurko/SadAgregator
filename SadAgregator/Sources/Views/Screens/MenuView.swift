@@ -35,7 +35,9 @@ struct MenuView: View {
       
       Section {
         DetailItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
-        DetailItemView(systemImageName: "wrench", mainText: "Мастер настройки")
+        NavigationLink(destination: MasterChoiceView()) {
+          DetailItemView(systemImageName: "wrench", mainText: "Мастер настройки")
+        }
       }
       .font(.system(size: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium))
       .listRowBackground(Color(red: 229/255, green: 242/255, blue: 255/255))
