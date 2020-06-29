@@ -14,6 +14,7 @@ struct PopularProvidersView: View {
   
   @State private var searchQuery = ""
   @State private var showCancelButton = false
+  @State private var showHowRatingWorksButton = true
   
   var body: some View {
     NavigationView {
@@ -63,19 +64,27 @@ struct PopularProvidersView: View {
         .padding(.top, 16)
         .padding(.bottom, 16)
         
-        ZStack {
-          Text("Как работает рейтинг")
-          HStack {
-            Spacer()
-            Image(systemName: "xmark")
+        if showHowRatingWorksButton {
+          ZStack {
+            Button(action: {}) {
+               Text("Как работает рейтинг")
+            }
+            HStack {
+              Spacer()
+              Button(action: {
+                self.showHowRatingWorksButton = false
+              }) {
+                Image(systemName: "xmark")
+              }
+            }
           }
+          .padding(.vertical, 6)
+          .padding(.horizontal, 16)
+          .padding(.bottom, 0)
+          .frame(maxWidth: .infinity)
+          .background(Color(red: 226/255, green: 241/255, blue: 255/255))
+          .foregroundColor(Color(.systemBlue))
         }
-        .padding(.vertical, 6)
-        .padding(.horizontal, 16)
-        .padding(.bottom, 0)
-        .frame(maxWidth: .infinity)
-        .background(Color(red: 226/255, green: 241/255, blue: 255/255))
-        .foregroundColor(Color(.systemBlue))
         
         List {
           ForEach(0..<viewModel.topProviders.count, id: \.self) { index in
