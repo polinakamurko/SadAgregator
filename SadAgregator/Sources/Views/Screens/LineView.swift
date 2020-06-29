@@ -9,17 +9,20 @@
 import SwiftUI
 
 struct LineView: View {
+  
+  @ObservedObject var viewModel: LineViewModel
+  
   var body: some View {
     VStack{
       HStack {
         HStack {
           Image(systemName: "arrow.left.circle.fill")
             .font(.headline)
-          Text("Линия 6")
+          Text(viewModel.line.arrows?.namePrev ?? "")
         }
         Spacer()
         HStack {
-          Text("Линия 8")
+          Text(viewModel.line.arrows?.nameNext ?? "")
           Image(systemName: "arrow.right.circle.fill")
             .font(.headline)
         }
@@ -27,7 +30,6 @@ struct LineView: View {
       .padding()
       .font(.subheadline)
       .foregroundColor(.blue)
-      
       
       List {
         HStack {
@@ -68,9 +70,14 @@ struct LineView: View {
         
         Section {
           SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
-          ForEach(0..<3, id: \.self) { index in
+          ForEach(0..<viewModel.line.topSpots.count, id: \.self) { index in
             NavigationLink(destination: SpotView()) {
-              ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+              ActivityItemView(
+                number: index + 1,
+                title: self.viewModel.line.topSpots[index].capt!,
+                subtitle: self.viewModel.line.topSpots[index].lastAct!,
+                disclosureText: self.viewModel.line.topSpots[index].posts!
+              )
             }
           }
         }
@@ -85,13 +92,14 @@ struct LineView: View {
         }
       }
     }
+    .onAppear(perform: viewModel.fetchLine)
   }
 }
 
 
 struct LineView_Previews: PreviewProvider {
   static var previews: some View {
-    LineView()
+    LineView(viewModel: LineViewModel(lineID: "1"))
   }
 }
 

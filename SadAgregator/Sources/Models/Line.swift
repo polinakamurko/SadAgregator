@@ -7,46 +7,46 @@
 
 import Foundation
 
-
-
 public struct Line: Codable {
-
-    public var capt: String?
-    public var lineId: String?
-    public var anonym: String?
-    public var arrows: Arrows?
-    public var activity: TotalActivity?
-    public var pointsTop: [TopSpot]?
-    public var export: Export?
-    public var posts: [Post]?
-    public var result: Int?
-    public var speed: Int?
-
-    public init(capt: String?, lineId: String?, anonym: String?, arrows: Arrows?, activity: TotalActivity?, pointsTop: [TopSpot]?, export: Export?, posts: [Post]?, result: Int?, speed: Int?) {
-        self.capt = capt
-        self.lineId = lineId
-        self.anonym = anonym
-        self.arrows = arrows
-        self.activity = activity
-        self.pointsTop = pointsTop
-        self.export = export
-        self.posts = posts
-        self.result = result
-        self.speed = speed
-    }
-
-    public enum CodingKeys: String, CodingKey { 
-        case capt
-        case lineId = "line_id"
-        case anonym
-        case arrows
-        case activity
-        case pointsTop = "points_top"
-        case export
-        case posts
-        case result
-        case speed
-    }
-
+  
+  public var capt: String?
+  public var lineId: String?
+  public var anonym: String?
+  public var arrows: Arrows?
+  public var activity: TotalActivity?
+  public var pointsTop: [TopSpot]?
+  public var export: Export?
+  public var posts: [Post]?
+  public var result: Int?
+  public var speed: Int?
+  
+  var topSpots: [TopSpot] {
+    pointsTop ?? []
+  }
+  
+  public init(capt: String? = nil, lineId: String? = nil, anonym: String? = nil, arrows: Arrows? = nil, activity: TotalActivity? = nil, pointsTop: [TopSpot]? = nil, export: Export? = nil, posts: [Post]? = nil, result: Int? = nil, speed: Int? = nil) {
+    self.capt = capt
+    self.lineId = lineId
+    self.anonym = anonym
+    self.arrows = arrows
+    self.activity = activity
+    self.pointsTop = pointsTop
+    self.export = export
+    self.posts = posts
+    self.result = result
+    self.speed = speed
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case capt
+    case lineId = "line_id"
+    case anonym
+    case arrows
+    case activity
+    case pointsTop = "points_top"
+    case export
+    case posts
+    case result
+    case speed
+  }
 }
-

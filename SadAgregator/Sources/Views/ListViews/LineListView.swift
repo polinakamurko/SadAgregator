@@ -15,7 +15,7 @@ struct LineListView: View {
   var body: some View {
     List {
       ForEach(0..<viewModel.topLines.count, id: \.self) { index in
-        NavigationLink(destination: LineView()) {
+        NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: self.viewModel.topLines[index].lineId!))) {
           ActivityItemView(
             number: index + 1,
             title: self.viewModel.topLines[index].capt!,
