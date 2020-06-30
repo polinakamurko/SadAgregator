@@ -957,10 +957,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "ALineID": aLineID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "ALineID", value: aLineID)
+    ]
     
     let requestBuilder: RequestBuilder<Line>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     

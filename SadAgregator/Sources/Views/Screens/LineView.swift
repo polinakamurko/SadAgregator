@@ -32,37 +32,8 @@ struct LineView: View {
       .foregroundColor(.blue)
       
       List {
-        HStack {
-          VStack(alignment: .leading, spacing: 12) {
-            Text(" ")
-            HStack {
-              Image(systemName: "rectangle.fill.on.rectangle.fill")
-                .foregroundColor(Color(UIColor.systemGray3))
-              Text("Посты")
-                .fixedSize(horizontal: true, vertical: false)
-            }
-            HStack {
-              Image(systemName: "photo.fill.on.rectangle.fill")
-                .foregroundColor(Color(UIColor.systemGray3))
-              Text("Фото")
-            }
-          }
-          Spacer()
-          VStack(spacing: 12) {
-            Text("Сегодня")
-              .foregroundColor(.gray)
-            Text("31")
-            Text("102")
-          }
-          .font(.system(size: 17, weight: .bold))
-          Spacer()
-          VStack(spacing: 12) {
-            Text("Вчера")
-              .foregroundColor(.gray)
-            Text("27")
-            Text("59")
-          }
-        }
+        
+        DetailedActivityView(totalActivity: $viewModel.totalActivity)
         .frame(maxWidth: .infinity)
         .padding()
         .background((Color(red: 248/255, green: 248/255, blue: 249/255)))

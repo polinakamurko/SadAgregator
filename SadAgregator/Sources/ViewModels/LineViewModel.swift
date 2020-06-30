@@ -11,6 +11,8 @@ import SwiftUI
 class LineViewModel: ObservableObject {
   
   @Published var line = Line()
+  @Published var totalActivity = TotalActivity()
+  
   let lineID: String
   init(lineID: String) {
     self.lineID = lineID
@@ -25,6 +27,7 @@ class LineViewModel: ObservableObject {
       
       if let unwrapped = response {
         self.line = unwrapped
+        self.totalActivity = unwrapped.activity ?? TotalActivity()
       }
     }
   }
