@@ -1100,12 +1100,14 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APointID": aPointID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APointID", value: aPointID)
+    ]
     
     let requestBuilder: RequestBuilder<Spot>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    print(url?.string)
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
   }

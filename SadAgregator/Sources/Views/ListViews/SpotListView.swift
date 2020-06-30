@@ -15,7 +15,7 @@ struct SpotListView: View {
   var body: some View {
     List {
       ForEach(0..<viewModel.topSpots.count, id: \.self) { index in
-        NavigationLink(destination: SpotView()) {
+        NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topSpots[index].capt!))) {
           ActivityItemView(
             number: index + 1,
             title: self.viewModel.topSpots[index].capt!,

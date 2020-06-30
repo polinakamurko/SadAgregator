@@ -25,7 +25,7 @@ public struct Spot: Codable {
     public var result: Int?
     public var speed: Int?
 
-    public init(anonym: String?, pointId: String?, capt: String?, arrows: Arrows?, backLine: BackLine?, activity: TotalActivity?, altertText: String?, export: Export?, vends: [Providers]?, pointsTop: [TopSpot]?, posts: [Post]?, result: Int?, speed: Int?) {
+    public init(anonym: String? = nil, pointId: String? = nil, capt: String? = nil, arrows: Arrows? = nil, backLine: BackLine? = nil, activity: TotalActivity? = nil, altertText: String? = nil, export: Export? = nil, vends: [Providers]? = nil, pointsTop: [TopSpot]? = nil, posts: [Post]? = nil, result: Int? = nil, speed: Int? = nil) {
         self.anonym = anonym
         self.pointId = pointId
         self.capt = capt

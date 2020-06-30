@@ -9,17 +9,20 @@
 import SwiftUI
 
 struct SpotView: View {
+  
+  @ObservedObject var viewModel: SpotViewModel
+  
   var body: some View {
     VStack {
       HStack {
         HStack {
           Image(systemName: "arrow.left.circle.fill")
             .font(.headline)
-          Text("6-68")
+          Text(viewModel.spot.arrows?.namePrev ?? "")
         }
         Spacer()
         HStack {
-          Text("6-70")
+          Text(viewModel.spot.arrows?.nameNext ?? "")
           Image(systemName: "arrow.right.circle.fill")
             .font(.headline)
         }
@@ -29,37 +32,7 @@ struct SpotView: View {
       .foregroundColor(.blue)
       
       VStack {
-        HStack {
-          VStack(alignment: .leading, spacing: 12) {
-            Text(" ")
-            HStack {
-              Image(systemName: "rectangle.fill.on.rectangle.fill")
-                .foregroundColor(Color(UIColor.systemGray3))
-              Text("Посты")
-                .fixedSize(horizontal: true, vertical: false)
-            }
-            HStack {
-              Image(systemName: "photo.fill.on.rectangle.fill")
-                .foregroundColor(Color(UIColor.systemGray3))
-              Text("Фото")
-            }
-          }
-          Spacer()
-          VStack(spacing: 12) {
-            Text("Сегодня")
-              .foregroundColor(.gray)
-            Text("4")
-            Text("9")
-          }
-          .font(.system(size: 17, weight: .bold))
-          Spacer()
-          VStack(spacing: 12) {
-            Text("Вчера")
-              .foregroundColor(.gray)
-            Text("16")
-            Text("33")
-          }
-        }
+        DetailedActivityView(totalActivity: $viewModel.totalActivity)
         .frame(maxWidth: .infinity)
         .padding()
         .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
@@ -163,11 +136,12 @@ struct SpotView: View {
         }
       }
     }
+    .onAppear(perform: viewModel.fetchSpot)
   }
 }
 
 struct SpotView_Previews: PreviewProvider {
   static var previews: some View {
-    SpotView()
+    SpotView(viewModel: SpotViewModel(spotID: "1"))
   }
 }

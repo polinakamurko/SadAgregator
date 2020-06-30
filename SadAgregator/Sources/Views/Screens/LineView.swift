@@ -13,7 +13,7 @@ struct LineView: View {
   @ObservedObject var viewModel: LineViewModel
   
   var body: some View {
-    VStack{
+    VStack {
       HStack {
         HStack {
           Image(systemName: "arrow.left.circle.fill")
@@ -42,7 +42,7 @@ struct LineView: View {
         Section {
           SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
           ForEach(0..<viewModel.line.topSpots.count, id: \.self) { index in
-            NavigationLink(destination: SpotView()) {
+            NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.line.topSpots[index].pointId!))) {
               ActivityItemView(
                 number: index + 1,
                 title: self.viewModel.line.topSpots[index].capt!,
@@ -56,13 +56,17 @@ struct LineView: View {
         Section {
           SectionTitleView<Text>("Последние посты")
           
-//          ForEach(0..<4, id: \.self) { _ in
-//            PostItemView()
+//          ForEach(viewModel.line.posts ?? <#default value#>) { post in
+//            PostItemView(post: post)
 //              .listRowInsets(EdgeInsets())
+//              .onAppear {
+//                self.onPostShowed(post)
+//            }
 //          }
         }
       }
     }
+    .navigationBarTitle(viewModel.line.capt ?? "")
     .onAppear(perform: viewModel.fetchLine)
   }
 }

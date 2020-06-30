@@ -86,7 +86,7 @@ struct MainView: View {
         Section {
           SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
           ForEach(0..<viewModel.topSpots.count, id: \.self) { index in
-            NavigationLink(destination: SpotView()) {
+            NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topSpots[index].pointId!))) {
               ActivityItemView(
                 number: index + 1,
                 title: self.viewModel.topSpots[index].capt!,
