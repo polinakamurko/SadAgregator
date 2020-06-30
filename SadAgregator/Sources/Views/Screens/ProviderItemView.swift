@@ -26,17 +26,29 @@ struct ProviderItemView: View {
       }
       
       VStack(alignment: .leading, spacing: 5) {
-        HStack(spacing: 0) {
-          Group {
-            Text("3.5")
-              .padding(.trailing, 4)
-            ForEach(0..<5) { _ in
-              Image(systemName: "star.fill")
-                .padding(.horizontal, 2)
+        if provider.rating != nil {
+          HStack(spacing: 0) {
+            Group {
+              Text(provider.rate ?? "0")
+                .padding(.trailing, 4)
+              ForEach(0..<provider.filledStars) { _ in
+                Image(systemName: "star.fill")
+                  .padding(.horizontal, 2)
+              }
+              
+              if provider.hasHalfStart {
+                Image(systemName: "star.lefthalf.fill")
+                  .padding(.horizontal, 2)
+              }
+              
+              ForEach(0..<provider.emptyStars) { _ in
+                Image(systemName: "star")
+                  .padding(.horizontal, 2)
+              }
             }
+            .font(.system(size: 15, weight: .semibold))
+            .foregroundColor(Color(UIColor.systemGray2))
           }
-          .font(.system(size: 15, weight: .semibold))
-          .foregroundColor(Color(UIColor.systemGray2))
         }
         
         HStack(spacing: 0) {
@@ -44,13 +56,13 @@ struct ProviderItemView: View {
             Image(systemName: "star.fill")
               .padding(.trailing, 4)
             
-            Text("183 оценки")
+            Text(provider.reviews)
               .padding(.trailing, 8)
             
             Image(systemName: "photo.fill.on.rectangle.fill")
               .padding(.trailing, 4)
             
-            Text("13 фото")
+            Text("\(provider.imgs ?? 0) фото")
           }
           .font(.system(size: 10))
           .foregroundColor(Color(UIColor.systemGray2))
@@ -58,7 +70,7 @@ struct ProviderItemView: View {
         
         HStack {
           Image("whatsapp")
-          Text("8 919 769 69 16")
+          Text(provider.ph ?? "Не указан")
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 4)

@@ -18,6 +18,33 @@ public struct Providers: Codable, Identifiable {
   public var act: String?
   public var pop: Int?
   
+  public var rating: Double? {
+    Double(rate ?? "0")
+  }
+  
+  public var filledStars: Int {
+    Int(rating ?? 0)
+  }
+  
+  public var hasHalfStart: Bool {
+    if let rating = rating {
+      return rating > floor(rating)
+    }
+    
+    return false
+  }
+  
+  public var emptyStars: Int {
+    5 - filledStars - (hasHalfStart ? 1 : 0)
+  }
+  
+  public var reviews: String {
+    if let revs = revs {
+      return "\(revs)"
+    } else {
+      return ""
+    }
+  }
   public var id: Int { _id }
   
   public init(_id: Int, name: String?, ph: String?, rate: String?, revs: Int?, imgs: Int?, act: String?, pop: Int?) {
