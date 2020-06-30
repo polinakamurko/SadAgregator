@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 public struct Spot: Codable {
 
     public var anonym: String?

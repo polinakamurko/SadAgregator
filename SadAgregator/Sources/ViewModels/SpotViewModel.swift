@@ -12,8 +12,10 @@ class SpotViewModel: ObservableObject {
   
   @Published var spot = Spot()
   @Published var totalActivity = TotalActivity()
+  @Published var providers = [Providers]()
   
   let spotID: String
+  
   init(spotID: String) {
     self.spotID = spotID
   }
@@ -28,6 +30,7 @@ class SpotViewModel: ObservableObject {
       if let unwrapped = response {
         self.spot = unwrapped
         self.totalActivity = unwrapped.activity ?? TotalActivity()
+        self.providers = unwrapped.vends ?? []
       }
     }
   }

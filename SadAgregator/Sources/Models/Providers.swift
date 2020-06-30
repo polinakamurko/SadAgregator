@@ -7,40 +7,38 @@
 
 import Foundation
 
-
-
-public struct Providers: Codable {
-
-    public var _id: Int?
-    public var name: String?
-    public var ph: String?
-    public var rate: String?
-    public var revs: Int?
-    public var imgs: Int?
-    public var act: String?
-    public var pop: Int?
-
-    public init(_id: Int?, name: String?, ph: String?, rate: String?, revs: Int?, imgs: Int?, act: String?, pop: Int?) {
-        self._id = _id
-        self.name = name
-        self.ph = ph
-        self.rate = rate
-        self.revs = revs
-        self.imgs = imgs
-        self.act = act
-        self.pop = pop
-    }
-
-    public enum CodingKeys: String, CodingKey { 
-        case _id = "id"
-        case name
-        case ph
-        case rate
-        case revs
-        case imgs
-        case act
-        case pop
-    }
-
+public struct Providers: Codable, Identifiable {
+  
+  public var _id: Int
+  public var name: String?
+  public var ph: String?
+  public var rate: String?
+  public var revs: Int?
+  public var imgs: Int?
+  public var act: String?
+  public var pop: Int?
+  
+  public var id: Int { _id }
+  
+  public init(_id: Int, name: String?, ph: String?, rate: String?, revs: Int?, imgs: Int?, act: String?, pop: Int?) {
+    self._id = _id
+    self.name = name
+    self.ph = ph
+    self.rate = rate
+    self.revs = revs
+    self.imgs = imgs
+    self.act = act
+    self.pop = pop
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case _id = "id"
+    case name
+    case ph
+    case rate
+    case revs
+    case imgs
+    case act
+    case pop
+  }
 }
-
