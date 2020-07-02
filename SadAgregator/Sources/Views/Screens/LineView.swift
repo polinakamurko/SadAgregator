@@ -40,7 +40,7 @@ struct LineView: View {
         .listRowInsets(EdgeInsets())
         
         Section {
-          SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
+          SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel(lineId: viewModel.lineID)))
           ForEach(0..<viewModel.line.topSpots.count, id: \.self) { index in
             NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.line.topSpots[index].pointId!))) {
               ActivityItemView(

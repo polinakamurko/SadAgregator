@@ -15,7 +15,7 @@ struct ProviderItemView: View {
   var body: some View {
     VStack(alignment: .leading) {
       HStack {
-        Text(provider.name ?? "")
+        Text(provider.name?.capitalized ?? "")
         Spacer()
         Group {
           Text(provider.act ?? "")
@@ -81,10 +81,11 @@ struct ProviderItemView: View {
           .font(.system(size: 15))
           .foregroundColor(Color(UIColor.systemGray))
       }
+      
+      Divider()
     }
-    .padding(.horizontal)
+    .padding([.horizontal, .bottom])
   }
-  
 }
 
 struct ProviderItemView_Previews: PreviewProvider {

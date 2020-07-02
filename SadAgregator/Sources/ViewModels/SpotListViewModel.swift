@@ -11,18 +11,36 @@ import SwiftUI
 class SpotListViewModel: ObservableObject {
   
   @Published var topSpots = [TopSpot]()
-    
+  
+  var lineId: String?
+  
   private var currentPage = 0
+  
+  init(lineId: String? = nil) {
+    self.lineId = lineId
+  }
   
   func fetchPage() {
     currentPage += 1
-    DefaultAPI.agrIntfTopPointsPagingGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPage: "\(currentPage)") { (response, error) in
-      if error != nil {
-        print(error!)
-        return
+    
+    if let lineId = lineId {
+      DefaultAPI.agrIntfLinePointsPagingGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aLineID: lineId, aPage: "\(currentPage)") { (response, error) in
+             if error != nil {
+               print(error!)
+               return
+             }
+             
+             self.topSpots.append(contentsOf: response?.pointsTop ?? [])
+           }
+    } else {
+      DefaultAPI.agrIntfTopPointsPagingGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPage: "\(currentPage)") { (response, error) in
+        if error != nil {
+          print(error!)
+          return
+        }
+        
+        self.topSpots.append(contentsOf: response?.pointsTop ?? [])
       }
-      
-      self.topSpots.append(contentsOf: response?.pointsTop ?? [])
     }
   }
 }

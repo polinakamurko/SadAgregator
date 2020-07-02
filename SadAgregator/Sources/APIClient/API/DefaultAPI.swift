@@ -1405,11 +1405,7 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "ALineID": aLineID,
-      "APage": aPage
-    ])
+    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "ALineID", value: aLineID), URLQueryItem(name: "aPage", value: aPage)]
     
     let requestBuilder: RequestBuilder<LinePointsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     

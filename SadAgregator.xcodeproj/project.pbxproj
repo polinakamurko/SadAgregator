@@ -18,6 +18,7 @@
 		9B779EFD24AA07FB005967B6 /* LineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779EFC24AA07FB005967B6 /* LineViewModel.swift */; };
 		9B779EFF24AB70E4005967B6 /* SpotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */; };
 		9B779F0124ABBA7D005967B6 /* ProviderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779F0024ABBA7D005967B6 /* ProviderItemView.swift */; };
+		9B779F0324ADDD14005967B6 /* ProviderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779F0224ADDD14005967B6 /* ProviderViewModel.swift */; };
 		9B97D4DC24A0CBC800DB3F5E /* SpotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4DB24A0CBC800DB3F5E /* SpotListView.swift */; };
 		9B97D4DE24A0D35800DB3F5E /* SpotListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */; };
 		9B97D4E224A1F83300DB3F5E /* DefaultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E124A1F83200DB3F5E /* DefaultAPI.swift */; };
@@ -151,6 +152,7 @@
 		9B779EFC24AA07FB005967B6 /* LineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewModel.swift; sourceTree = "<group>"; };
 		9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotViewModel.swift; sourceTree = "<group>"; };
 		9B779F0024ABBA7D005967B6 /* ProviderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderItemView.swift; sourceTree = "<group>"; };
+		9B779F0224ADDD14005967B6 /* ProviderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderViewModel.swift; sourceTree = "<group>"; };
 		9B97D4DB24A0CBC800DB3F5E /* SpotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListView.swift; sourceTree = "<group>"; };
 		9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListViewModel.swift; sourceTree = "<group>"; };
 		9B97D4E124A1F83200DB3F5E /* DefaultAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAPI.swift; sourceTree = "<group>"; };
@@ -575,10 +577,11 @@
 			children = (
 				9B97D4E524A23AA500DB3F5E /* LineListViewModel.swift */,
 				9B779EFC24AA07FB005967B6 /* LineViewModel.swift */,
-				9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */,
 				BEDCF74B2496B75B00217CE3 /* MainViewModel.swift */,
 				9B779EFA24A4BFA1005967B6 /* PopularProvidersViewModel.swift */,
+				9B779F0224ADDD14005967B6 /* ProviderViewModel.swift */,
 				9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */,
+				9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				9BFD66E424A0C6D90091110A /* MyProviders.swift in Sources */,
 				9BFD671724A0C6D90091110A /* ReviewsInfo.swift in Sources */,
 				9B0D77612479B41A00ABF210 /* SpotView.swift in Sources */,
+				9B779F0324ADDD14005967B6 /* ProviderViewModel.swift in Sources */,
 				9B97D4E224A1F83300DB3F5E /* DefaultAPI.swift in Sources */,
 				9BFD66F124A0C6D90091110A /* ReviewDelete.swift in Sources */,
 				BE562F532475C4A4000EDB5C /* AnyTransition+Extensions.swift in Sources */,

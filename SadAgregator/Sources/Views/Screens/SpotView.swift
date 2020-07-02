@@ -38,23 +38,26 @@ struct SpotView: View {
           .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
           .listRowInsets(EdgeInsets())
         
-        HStack {
-          Image(systemName: "exclamationmark.triangle")
-            .font(.system(size: 30))
-            .foregroundColor(Color(.systemRed))
-          
-          Text("Обращаем Ваше внимание, что по данному поставщику мы не предоставляем услуги выкупа")
-            .font(.system(size: 13))
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 8)
+        if !(viewModel.spot.altertText ?? "").isEmpty {
+          HStack {
+            Image(systemName: "exclamationmark.triangle")
+              .font(.system(size: 30))
+              .foregroundColor(Color(.systemRed))
+            
+            Text(viewModel.spot.altertText!)
+              .font(.system(size: 13))
+              .multilineTextAlignment(.leading)
+              .frame(maxWidth: .infinity, alignment: .leading)
+              .padding(.leading, 8)
+          }
+          .padding(.horizontal)
+          .listRowInsets(EdgeInsets())
         }
-        .padding(.horizontal)
-        .listRowInsets(EdgeInsets())
         
         HStack {
           Text("Арендаторы")
             .font(.system(size: 22, weight: .bold))
+            .multilineTextAlignment(.leading)
           Spacer()
         }
         
@@ -62,16 +65,6 @@ struct SpotView: View {
           ProviderItemView(provider: provider)
             .listRowInsets(EdgeInsets())
         }
-        
-        ActivityItemView(number: 1, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-        ActivityItemView(number: 2, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-        ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-        
-        ActivityItemView(number: 3, title: "Линия 30", subtitle: "17 мин. назад", disclosureText: "1436")
-        //          PostItemView()
-        //          PostItemView()
-        //          PostItemView()
-        //          PostItemView()
       }
       .onAppear(perform: viewModel.fetchSpot)
     }
