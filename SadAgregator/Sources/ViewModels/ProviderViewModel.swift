@@ -8,14 +8,26 @@
 
 import SwiftUI
 
-struct ProviderViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class ProviderViewModel: ObservableObject {
+  
+  @Published var provider = Provider()
+  
+  let providerID: String
+  init(providerID: String) {
+    self.providerID = providerID
+  }
+  
+  func fetchProvider() {
+    DefaultAPI.agrIntfVendorCardGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aVendorID: providerID) { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      if let unwrapped = response {
+        self.provider = unwrapped
+      }
     }
+  }
 }
 
-struct ProviderViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        ProviderViewModel()
-    }
-}

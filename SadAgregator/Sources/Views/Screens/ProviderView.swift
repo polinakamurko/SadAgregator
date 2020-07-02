@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProviderView: View {
   
+  @ObservedObject var viewModel: ProviderViewModel
+  
   @State var showProviderConditions = false
   
   var body: some View {
@@ -21,7 +23,7 @@ struct ProviderView: View {
               .frame(width: 60, height: 60)
             
             VStack(alignment: .leading, spacing: 5) {
-              Text("Парфюмерия и косметика оптом")
+              Text(viewModel.provider.name ?? "")
                 .font(.headline)
               HStack(spacing: 0) {
                 Group {
@@ -73,7 +75,7 @@ struct ProviderView: View {
               .foregroundColor(Color(UIColor.darkGray))
             }
             if showProviderConditions {
-              Text("Джинсы черные\nРазмеры 42, 44, 46, 48\n900 руб")
+              Text(viewModel.provider.terms ?? "")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -86,11 +88,11 @@ struct ProviderView: View {
         .listRowInsets(EdgeInsets())
         
         Section {
-          DetailItemView(imageName: "vk_icon", mainText: "@club154574939", detailedText: "7")
-          DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: "57")
-          DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: "8 (912) 657 39 01")
-          DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: "17.05.1998")
-          DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: "1100 чел/сут")
+          DetailItemView(imageName: "vk_icon", mainText: viewModel.provider.vkLink ?? "")
+          DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: viewModel.provider.place ?? "")
+          DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: viewModel.provider.phone ?? "Не указан")
+          DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: viewModel.provider.regDt ?? "")
+          DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: viewModel.provider.pop ?? "")
         }
         
         Section {
@@ -128,12 +130,13 @@ struct ProviderView: View {
       }
       .listStyle(GroupedListStyle())
     }
+    .onAppear(perform: viewModel.fetchProvider)
   }
 }
 
 struct ProviderView_Previews: PreviewProvider {
   static var previews: some View {
-    ProviderView()
+    ProviderView(viewModel: ProviderViewModel(providerID: "4364"))
   }
 }
 
