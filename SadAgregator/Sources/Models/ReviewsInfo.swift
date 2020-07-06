@@ -7,28 +7,61 @@
 
 import Foundation
 
-
-
 public struct ReviewsInfo: Codable {
-
-    public var cnt: String?
-    public var rate: String?
-    public var imgsCnt: String?
-    public var revs: [Reviews]?
-
-    public init(cnt: String?, rate: String?, imgsCnt: String?, revs: [Reviews]?) {
-        self.cnt = cnt
-        self.rate = rate
-        self.imgsCnt = imgsCnt
-        self.revs = revs
+  
+  public var cnt: String? // количество отзывов
+  public var rate: String?
+  public var imgsCnt: String?
+  public var revs: [Reviews]?
+  
+  public var reviewCount: String {
+    cnt ?? ""
+  }
+  
+  public var rating: Double? {
+    Double(rate ?? "0")
+  }
+  
+  public var filledStars: Int {
+    Int(rating ?? 0)
+  }
+  
+  public var hasHalfStart: Bool {
+    if let rating = rating {
+      return rating > floor(rating)
     }
-
-    public enum CodingKeys: String, CodingKey { 
-        case cnt
-        case rate
-        case imgsCnt = "imgs_cnt"
-        case revs
+    
+    return false
+  }
+  
+  public var emptyStars: Int {
+    5 - filledStars - (hasHalfStart ? 1 : 0)
+  }
+  
+  public var reviews: String {
+    if let revs = revs {
+      return "\(revs)"
+    } else {
+      return "0"
     }
-
+  }
+  
+  public var photosInReview: String {
+    imgsCnt ?? ""
+  }
+  
+  public init(cnt: String?, rate: String?, imgsCnt: String?, revs: [Reviews]?) {
+    self.cnt = cnt
+    self.rate = rate
+    self.imgsCnt = imgsCnt
+    self.revs = revs
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case cnt
+    case rate
+    case imgsCnt = "imgs_cnt"
+    case revs
+  }
+  
 }
-

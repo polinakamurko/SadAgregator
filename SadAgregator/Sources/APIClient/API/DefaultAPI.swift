@@ -2156,7 +2156,7 @@ open class DefaultAPI {
       URLQueryItem(name: "AKey", value: aKey),
       URLQueryItem(name: "AVendorID", value: aVendorID)
     ]
-        
+    print(url?.string)
     let requestBuilder: RequestBuilder<Provider>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)

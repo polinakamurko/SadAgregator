@@ -526,7 +526,6 @@
 				9BB2FB4C246F0B9900E1B184 /* ProviderView.swift */,
 				9BC48B0B2465420300239E4E /* RootView.swift */,
 				9B0D77602479B41A00ABF210 /* SpotView.swift */,
-				9B779F0024ABBA7D005967B6 /* ProviderItemView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -535,9 +534,10 @@
 			isa = PBXGroup;
 			children = (
 				9B1C1800246C2A2D00EB108B /* ActivityItemView.swift */,
-				BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */,
 				9BB2FB4A246F0A4C00E1B184 /* DetailItemView.swift */,
+				BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */,
 				9BB2FB4E2474414700E1B184 /* PostItemView.swift */,
+				9B779F0024ABBA7D005967B6 /* ProviderItemView.swift */,
 			);
 			path = ListItemViews;
 			sourceTree = "<group>";

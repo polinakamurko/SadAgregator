@@ -26,7 +26,7 @@ struct PopularProviderItemView: View {
           
           // Username
           VStack(alignment: .leading, spacing: 5) {
-            Text(provider.name ?? "")
+            Text(provider.name?.capitalized ?? "")
               .bold()
             
             Button(action: {}) {

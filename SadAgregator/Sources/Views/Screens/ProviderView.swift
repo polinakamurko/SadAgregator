@@ -22,37 +22,53 @@ struct ProviderView: View {
             Image("SellerPhoto")
               .frame(width: 60, height: 60)
             
+            
+            
             VStack(alignment: .leading, spacing: 5) {
-              Text(viewModel.provider.name ?? "")
+              Text(viewModel.provider.name?.capitalized ?? "")
                 .font(.headline)
-              HStack(spacing: 0) {
-                Group {
-                  Text("3.5")
-                    .padding(.trailing, 4)
-                  ForEach(0..<5) { _ in
-                    Image(systemName: "star.fill")
-                      .padding(.horizontal, 2)
+              VStack(alignment: .leading, spacing: 5) {
+                if viewModel.provider.revsInfo?.rate != nil {
+                  HStack(spacing: 0) {
+                    Group {
+                      Text(viewModel.provider.revsInfo?.rate ?? "0")
+                        .padding(.trailing, 4)
+                      ForEach(0..<(viewModel.provider.revsInfo?.filledStars ?? 0)) { _ in
+                        Image(systemName: "star.fill")
+                          .padding(.horizontal, 2)
+                      }
+                      
+                      if (viewModel.provider.revsInfo?.hasHalfStart ?? false) {
+                        Image(systemName: "star.lefthalf.fill")
+                          .padding(.horizontal, 2)
+                      }
+                      
+                      ForEach(0..<(viewModel.provider.revsInfo?.emptyStars ?? 0)) { _ in
+                        Image(systemName: "star")
+                          .padding(.horizontal, 2)
+                      }
+                    }
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundColor(Color(UIColor.systemGray2))
                   }
                 }
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundColor(Color(UIColor.systemGray2))
-              }
-              
-              HStack(spacing: 0) {
-                Group {
-                  Image(systemName: "star.fill")
-                    .padding(.trailing, 4)
-                  
-                  Text("183 оценки")
-                    .padding(.trailing, 8)
-                  
-                  Image(systemName: "photo.fill.on.rectangle.fill")
-                    .padding(.trailing, 4)
-                  
-                  Text("13 фото")
+                
+                HStack(spacing: 0) {
+                  Group {
+                    Image(systemName: "star.fill")
+                      .padding(.trailing, 4)
+                    
+                    Text(viewModel.provider.revsInfo?.reviews ?? "0")
+                      .padding(.trailing, 8)
+                    
+                    Image(systemName: "photo.fill.on.rectangle.fill")
+                      .padding(.trailing, 4)
+                    
+                    Text("\(viewModel.provider.revsInfo?.photosInReview ?? "0") фото")
+                  }
+                  .font(.system(size: 10))
+                  .foregroundColor(Color(UIColor.systemGray2))
                 }
-                .font(.system(size: 10))
-                .foregroundColor(Color(UIColor.systemGray2))
               }
             }.padding(.top)
           }
@@ -90,7 +106,7 @@ struct ProviderView: View {
         Section {
           DetailItemView(imageName: "vk_icon", mainText: viewModel.provider.vkLink ?? "")
           DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: viewModel.provider.place ?? "")
-          DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: viewModel.provider.phone ?? "Не указан")
+          DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: viewModel.provider.phoneNumber)
           DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: viewModel.provider.regDt ?? "")
           DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: viewModel.provider.pop ?? "")
         }

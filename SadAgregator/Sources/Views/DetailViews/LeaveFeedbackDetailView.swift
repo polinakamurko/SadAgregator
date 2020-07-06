@@ -15,43 +15,45 @@ struct LeaveFeedbackDetailView: View {
   
   var body: some View {
     VStack {
-      List {
-        HStack {
-          TextField("Заголовок отзыва", text: $feedbackTitle)
-        }
-        
-        HStack {
-          Text("Оценка")
-          Spacer()
-          Group {
-            Image(systemName: "star.fill")
-            Image(systemName: "star.fill")
-            Image(systemName: "star.fill")
-            Image(systemName: "star")
-            Image(systemName: "star")
-          }
-          .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
-        }
-        
-        TextView(text: $feedbackText)
-          .padding(.horizontal)
-          .frame(height: 196)
-        
-        
-        Text("Добавить фото")
-          .frame(maxWidth: .infinity)
-          .font(.system(size: 17))
-          .foregroundColor(.blue)
-          .padding(.vertical, 8)
-        
-        Text("Отправить отзыв")
-          .frame(maxWidth: .infinity)
-          .font(.system(size: 17, weight: .medium))
-          .foregroundColor(.blue)
-          .padding(.vertical, 8)
+      HStack {
+        TextField("Заголовок отзыва", text: $feedbackTitle)
       }
-      .listStyle(GroupedListStyle())
+      Divider()
+      HStack {
+        Text("Оценка")
+        Spacer()
+        Group {
+          Image(systemName: "star.fill")
+          Image(systemName: "star.fill")
+          Image(systemName: "star.fill")
+          Image(systemName: "star")
+          Image(systemName: "star")
+        }
+        .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
+      }
+      Divider()
+      
+      TextView(text: $feedbackText)
+        .padding(.horizontal)
+        .frame(height: 196)
+      Divider()
+      
+      Text("Добавить фото")
+        .frame(maxWidth: .infinity)
+        .font(.system(size: 17))
+        .foregroundColor(.blue)
+        .padding(.vertical, 8)
+      Divider()
+      
+      Text("Отправить отзыв")
+        .frame(maxWidth: .infinity)
+        .font(.system(size: 17, weight: .medium))
+        .foregroundColor(.blue)
+        .padding(.vertical, 8)
+      
+      Spacer()
     }
+    .padding()
   }
 }
 
