@@ -35,6 +35,8 @@
 		9BC48B112465420700239E4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC48B102465420700239E4E /* Preview Assets.xcassets */; };
 		9BC48B142465420700239E4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC48B122465420700239E4E /* LaunchScreen.storyboard */; };
 		9BC48B1F2465420700239E4E /* SadAgregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC48B1E2465420700239E4E /* SadAgregatorTests.swift */; };
+		9BE9065924B36D7B00FD955E /* FeedbackItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE9065824B36D7B00FD955E /* FeedbackItemView.swift */; };
+		9BE9065B24B3709300FD955E /* FeedackItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE9065A24B3709200FD955E /* FeedackItemViewModel.swift */; };
 		9BFD6675248FAE4E0091110A /* MasterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD6674248FAE4E0091110A /* MasterTextView.swift */; };
 		9BFD6677248FBBF20091110A /* MasterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD6676248FBBF10091110A /* MasterListView.swift */; };
 		9BFD6679248FC4370091110A /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD6678248FC4370091110A /* SearchField.swift */; };
@@ -173,6 +175,8 @@
 		9BC48B1A2465420700239E4E /* SadAgregatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SadAgregatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC48B1E2465420700239E4E /* SadAgregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SadAgregatorTests.swift; sourceTree = "<group>"; };
 		9BC48B202465420700239E4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BE9065824B36D7B00FD955E /* FeedbackItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackItemView.swift; sourceTree = "<group>"; };
+		9BE9065A24B3709200FD955E /* FeedackItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedackItemViewModel.swift; sourceTree = "<group>"; };
 		9BFD6674248FAE4E0091110A /* MasterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTextView.swift; sourceTree = "<group>"; };
 		9BFD6676248FBBF10091110A /* MasterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListView.swift; sourceTree = "<group>"; };
 		9BFD6678248FC4370091110A /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
@@ -538,6 +542,7 @@
 				BE11E4B1246C888A004A2FBC /* PopularProviderItemView.swift */,
 				9BB2FB4E2474414700E1B184 /* PostItemView.swift */,
 				9B779F0024ABBA7D005967B6 /* ProviderItemView.swift */,
+				9BE9065824B36D7B00FD955E /* FeedbackItemView.swift */,
 			);
 			path = ListItemViews;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 				9B779F0224ADDD14005967B6 /* ProviderViewModel.swift */,
 				9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */,
 				9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */,
+				9BE9065A24B3709200FD955E /* FeedackItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -730,6 +736,7 @@
 				9BFD66EA24A0C6D90091110A /* AssignOKToAppID.swift in Sources */,
 				9BFD66E724A0C6D90091110A /* GetOKAppID.swift in Sources */,
 				9B1C17FF2469D91A00EB108B /* MenuView.swift in Sources */,
+				9BE9065924B36D7B00FD955E /* FeedbackItemView.swift in Sources */,
 				9B1C1801246C2A2D00EB108B /* ActivityItemView.swift in Sources */,
 				9B779EFD24AA07FB005967B6 /* LineViewModel.swift in Sources */,
 				9B779EFF24AB70E4005967B6 /* SpotViewModel.swift in Sources */,
@@ -743,6 +750,7 @@
 				BE3F0A872496952A006F605A /* APIHelper.swift in Sources */,
 				BE3F0A8D2496952A006F605A /* CodableHelper.swift in Sources */,
 				9BB2FB4D246F0B9900E1B184 /* ProviderView.swift in Sources */,
+				9BE9065B24B3709300FD955E /* FeedackItemViewModel.swift in Sources */,
 				BE3F0A8E2496952A006F605A /* JSONEncodableEncoding.swift in Sources */,
 				9BB2FB4B246F0A4C00E1B184 /* DetailItemView.swift in Sources */,
 				BE07A4D8249FE3D4007AE812 /* BlueInfoView.swift in Sources */,

@@ -15,16 +15,24 @@ struct SpotView: View {
   var body: some View {
     VStack {
       HStack {
-        HStack {
-          Image(systemName: "arrow.left.circle.fill")
-            .font(.headline)
-          Text(viewModel.spot.arrows?.namePrev ?? "")
+        if viewModel.spot.arrows?.idPrev != nil {
+          NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: viewModel.spot.arrows?.idPrev ?? ""))) {
+            HStack {
+              Image(systemName: "arrow.left.circle.fill")
+                .font(.headline)
+              Text(viewModel.spot.arrows?.namePrev ?? "")
+            }
+          }
         }
         Spacer()
-        HStack {
-          Text(viewModel.spot.arrows?.nameNext ?? "")
-          Image(systemName: "arrow.right.circle.fill")
-            .font(.headline)
+        if viewModel.spot.arrows?.idNext != nil {
+          NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: viewModel.spot.arrows!.idNext ?? ""))) {
+            HStack {
+              Text(viewModel.spot.arrows?.nameNext ?? "")
+              Image(systemName: "arrow.right.circle.fill")
+                .font(.headline)
+            }
+          }
         }
       }
       .padding()

@@ -15,7 +15,7 @@ public struct GetProviderReviewsPaging: Codable {
     public var result: Int?
     public var speed: Int?
 
-    public init(revs: [Reviews]?, result: Int?, speed: Int?) {
+    public init(revs: [Reviews]? = nil, result: Int? = nil, speed: Int? = nil) {
         self.revs = revs
         self.result = result
         self.speed = speed

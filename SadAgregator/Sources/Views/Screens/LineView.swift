@@ -15,16 +15,24 @@ struct LineView: View {
   var body: some View {
     VStack {
       HStack {
-        HStack {
-          Image(systemName: "arrow.left.circle.fill")
-            .font(.headline)
-          Text(viewModel.line.arrows?.namePrev ?? "")
+        if viewModel.line.arrows?.idPrev != nil {
+          NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: viewModel.line.arrows?.idPrev ?? ""))) {
+            HStack {
+              Image(systemName: "arrow.left.circle.fill")
+                .font(.headline)
+              Text(viewModel.line.arrows?.namePrev ?? "")
+            }
+          }
         }
         Spacer()
-        HStack {
-          Text(viewModel.line.arrows?.nameNext ?? "")
-          Image(systemName: "arrow.right.circle.fill")
-            .font(.headline)
+        if viewModel.line.arrows?.idNext != nil {
+          NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: viewModel.line.arrows?.idNext ?? ""))) {
+            HStack {
+              Text(viewModel.line.arrows?.nameNext ?? "")
+              Image(systemName: "arrow.right.circle.fill")
+                .font(.headline)
+            }
+          }
         }
       }
       .padding()
@@ -34,10 +42,10 @@ struct LineView: View {
       List {
         
         DetailedActivityView(totalActivity: $viewModel.totalActivity)
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-        .listRowInsets(EdgeInsets())
+          .frame(maxWidth: .infinity)
+          .padding()
+          .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
+          .listRowInsets(EdgeInsets())
         
         Section {
           SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel(lineId: viewModel.lineID)))
@@ -56,13 +64,13 @@ struct LineView: View {
         Section {
           SectionTitleView<Text>("Последние посты")
           
-//          ForEach(viewModel.line.posts ?? <#default value#>) { post in
-//            PostItemView(post: post)
-//              .listRowInsets(EdgeInsets())
-//              .onAppear {
-//                self.onPostShowed(post)
-//            }
-//          }
+          //          ForEach(viewModel.line.posts ?? <#default value#>) { post in
+          //            PostItemView(post: post)
+          //              .listRowInsets(EdgeInsets())
+          //              .onAppear {
+          //                self.onPostShowed(post)
+          //            }
+          //          }
         }
       }
     }

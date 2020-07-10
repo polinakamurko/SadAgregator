@@ -7,34 +7,37 @@
 
 import Foundation
 
-
-
-public struct Reviews: Codable {
-
-    public var _id: String?
-    public var author: String?
-    public var rate: String?
-    public var text: String?
-    public var dt: String?
-    public var imgs: [String]?
-
-    public init(_id: String?, author: String?, rate: String?, text: String?, dt: String?, imgs: [String]?) {
-        self._id = _id
-        self.author = author
-        self.rate = rate
-        self.text = text
-        self.dt = dt
-        self.imgs = imgs
-    }
-
-    public enum CodingKeys: String, CodingKey { 
-        case _id = "id"
-        case author
-        case rate
-        case text
-        case dt
-        case imgs
-    }
-
+public struct Reviews: Codable, Identifiable {
+  
+  public var _id: String?
+  public var author: String?
+  public var rate: String?
+  public var title: String?
+  public var text: String?
+  public var dt: String?
+  public var imgs: [String]?
+  
+  public var id: String {
+    _id ?? UUID().uuidString
+  }
+  
+  public init(_id: String? = nil, author: String? = nil, rate: String? = nil, title: String? = nil, text: String? = nil, dt: String? = nil, imgs: [String]? = nil) {
+    self._id = _id
+    self.author = author
+    self.rate = rate
+    self.title = title
+    self.text = text
+    self.dt = dt
+    self.imgs = imgs
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case _id = "id"
+    case author
+    case rate
+    case title
+    case text
+    case dt
+    case imgs
+  }  
 }
-
