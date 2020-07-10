@@ -56,7 +56,7 @@ struct ProviderView: View {
                     Image(systemName: "star.fill")
                       .padding(.trailing, 4)
                     
-                    Text(viewModel.provider.revsInfo?.reviews ?? "0")
+                    Text(viewModel.provider.myRate ?? "0")
                       .padding(.trailing, 8)
                     
                     Image(systemName: "photo.fill.on.rectangle.fill")
@@ -132,16 +132,16 @@ struct ProviderView: View {
         Section {
           VStack {
             // TODO: - Change providerID to viewModel.providerID
-            NavigationLink(destination: FeedbackDetailView(viewModel: FeedbackViewModel(providerID: "3"))) {
+            NavigationLink(destination: FeedbackDetailView(viewModel: FeedbackViewModel(providerID: viewModel.providerID))) {
               Text("См. все")
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .foregroundColor(.blue)
             .padding(.top, 8)
-            FeedbackItemView(feedback: Reviews())
           }
-          FeedbackItemView(feedback: Reviews())
-          FeedbackItemView(feedback: Reviews())
+          ForEach(viewModel.reviews) { review in
+            FeedbackItemView(feedback: review)
+          }
         }
       }
       .listStyle(GroupedListStyle())

@@ -88,6 +88,7 @@ struct PopularProvidersView: View {
         
         List {
           ForEach(0..<viewModel.topProviders.count, id: \.self) { index in
+             // self.viewModel.topProviders[index].vendId ?? ""
             NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: self.viewModel.topProviders[index].vendId ?? ""))) {
               PopularProviderItemView(index: index + 1, provider: self.viewModel.topProviders[index])
                 .padding(.vertical, 8)

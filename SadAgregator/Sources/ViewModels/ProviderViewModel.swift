@@ -12,7 +12,10 @@ class ProviderViewModel: ObservableObject {
   
   @Published var provider = Provider()
   
+  @Published var reviews = [Reviews]()
+  
   let providerID: String
+  
   init(providerID: String) {
     self.providerID = providerID
   }
@@ -26,6 +29,10 @@ class ProviderViewModel: ObservableObject {
       
       if let unwrapped = response {
         self.provider = unwrapped
+        
+        if let reviews = unwrapped.revsInfo?.revs {
+          self.reviews = reviews
+        }
       }
     }
   }
