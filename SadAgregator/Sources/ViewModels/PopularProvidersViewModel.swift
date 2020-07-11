@@ -19,6 +19,9 @@ class PopularProvidersViewModel: ObservableObject {
     }
   }
   
+  @Published var helpText: String = ""
+  
+  var helpURL: String = ""
   private var currentPage = 0
   
   func fetchPage() {
@@ -29,8 +32,17 @@ class PopularProvidersViewModel: ObservableObject {
         return
       }
       
-      self.topProviders.append(contentsOf: response?.items ?? [])
+      if let items = response?.items {
+        self.topProviders.append(contentsOf: items)
+      }
+      
+      if let helpText = response?.help?.str {
+        self.helpText = helpText
+      }
+      
+      if let helpURL = response?.help?.url {
+        self.helpURL = helpURL
+      }
     }
   }
-  
 }

@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 public struct ProvidersTop: Codable {
 
     public var help: Help?
@@ -22,7 +20,5 @@ public struct ProvidersTop: Codable {
         self.result = result
         self.speed = speed
     }
-
-
 }
 

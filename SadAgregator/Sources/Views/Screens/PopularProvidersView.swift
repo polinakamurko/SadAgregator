@@ -67,7 +67,7 @@ struct PopularProvidersView: View {
         if showHowRatingWorksButton {
           ZStack {
             Button(action: {}) {
-               Text("Как работает рейтинг")
+              Text(viewModel.helpText)
             }
             HStack {
               Spacer()
