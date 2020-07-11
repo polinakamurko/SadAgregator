@@ -72,8 +72,9 @@ struct SpotView: View {
         ForEach(viewModel.providers) { provider in
           NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: "\(provider.id)"))) {
             ProviderItemView(provider: provider)
-              .listRowInsets(EdgeInsets())
+              
           }
+          .listRowInsets(EdgeInsets())
         }
       }
       .onAppear(perform: viewModel.fetchSpot)
