@@ -30,7 +30,7 @@ struct PopularProvidersView: View {
           HStack {
             Image(systemName: "magnifyingglass")
             
-            TextField("Поиск", text: $searchQuery, onEditingChanged: { isEditing in
+            TextField("Поиск", text: $viewModel.query, onEditingChanged: { isEditing in
               withAnimation {
                 self.showCancelButton = true
               }

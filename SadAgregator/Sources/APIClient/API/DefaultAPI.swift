@@ -2332,6 +2332,8 @@ open class DefaultAPI {
     ]
     let requestBuilder: RequestBuilder<ProvidersTop>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
+    print(url?.string)
+    
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
   }
   

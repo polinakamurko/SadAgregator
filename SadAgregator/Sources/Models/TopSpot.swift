@@ -13,7 +13,7 @@ public struct TopSpot: Codable, Identifiable {
   public var posts: String?
   public var capt: String?
   public var lastAct: String?
-  
+
   public var id: String {
     pointId ?? UUID().uuidString
   }

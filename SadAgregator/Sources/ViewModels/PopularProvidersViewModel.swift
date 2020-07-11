@@ -11,12 +11,19 @@ import SwiftUI
 class PopularProvidersViewModel: ObservableObject {
   
   @Published var topProviders = [ProviderItem]()
+  @Published var query: String = "" {
+    didSet {
+      currentPage = 0
+      topProviders = []
+      fetchPage()
+    }
+  }
   
   private var currentPage = 0
   
   func fetchPage() {
     currentPage += 1
-    DefaultAPI.agrSrchVendorsTOPGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aQueryID: "", aPage: "\(currentPage)") { (response, error) in
+    DefaultAPI.agrSrchVendorsTOPGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aQueryID: query, aPage: "\(currentPage)") { (response, error) in
       if error != nil {
         print(error!)
         return
