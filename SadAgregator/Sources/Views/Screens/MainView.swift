@@ -14,7 +14,7 @@ struct MainView: View {
   
   var body: some View {
     VStack {
-      if !viewModel.showCancelButton {
+      if !viewModel.inSearchMode {
         Text("Главная")
           .fontWeight(.semibold)
           .padding(.top)
@@ -24,11 +24,11 @@ struct MainView: View {
       HStack { // Search Bar
         SearchField(
           searchQuery: $viewModel.searchQuery,
-          showCancelButton: $viewModel.showCancelButton,
+          showCancelButton: $viewModel.inSearchMode,
           imageSearchEnabled: true
         )
         
-        if viewModel.showCancelButton {
+        if viewModel.inSearchMode {
           Button(action: cancelSearchEditing) {
             Text("Отмена").foregroundColor(Color(.systemBlue))
           }
@@ -38,69 +38,70 @@ struct MainView: View {
       .padding(.vertical, 8)
       
       List {
-        Section {
-          VStack {
-            HStack {
-              Text("Активность")
-                .font(.system(size: 22, weight: .bold))
-              Spacer()
-              Button(action: {
-                self.viewModel.showActivity.toggle()
-              }) {
-                Image(systemName: viewModel.showActivity ? "chevron.down" : "chevron.right")
-                  .font(.system(size: 15, weight: .bold))
-                  .foregroundColor(.blue)
-              }
-              .buttonStyle(BorderlessButtonStyle())
-            }
-            .padding(.horizontal)
-            
+        if !viewModel.inSearchMode {
+          Section {
             VStack {
-              BlueInfoView(text: $viewModel.activityText)
+              HStack {
+                Text("Активность")
+                  .font(.system(size: 22, weight: .bold))
+                Spacer()
+                Button(action: {
+                  self.viewModel.showActivity.toggle()
+                }) {
+                  Image(systemName: viewModel.showActivity ? "chevron.down" : "chevron.right")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(.blue)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+              }
+              .padding(.horizontal)
               
-              if viewModel.showActivity {
-                DetailedActivityView(totalActivity: $viewModel.totalActivity)
+              VStack {
+                BlueInfoView(text: $viewModel.activityText)
+                
+                if viewModel.showActivity {
+                  DetailedActivityView(totalActivity: $viewModel.totalActivity)
+                }
+              }
+              .frame(maxWidth: .infinity)
+              .padding()
+              .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
+            }
+            .listRowInsets(EdgeInsets())
+            
+            Section {
+              SectionTitleView("Активность линий", showAllView: LineListView(viewModel: LineListViewModel()))
+              ForEach(0..<viewModel.topLines.count, id: \.self) { index in
+                NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: self.viewModel.topLines[index].lineId!))) {
+                  ActivityItemView(
+                    number: index + 1,
+                    title: self.viewModel.topLines[index].capt!,
+                    subtitle: self.viewModel.topLines[index].lastAct!,
+                    disclosureText: self.viewModel.topLines[index].posts!
+                  )
+                }
               }
             }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
           }
-          .listRowInsets(EdgeInsets())
           
           Section {
-            SectionTitleView("Активность линий", showAllView: LineListView(viewModel: LineListViewModel()))
-            ForEach(0..<viewModel.topLines.count, id: \.self) { index in
-              NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: self.viewModel.topLines[index].lineId!))) {
+            SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
+            ForEach(0..<viewModel.topSpots.count, id: \.self) { index in
+              NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topSpots[index].pointId!))) {
                 ActivityItemView(
                   number: index + 1,
-                  title: self.viewModel.topLines[index].capt!,
-                  subtitle: self.viewModel.topLines[index].lastAct!,
-                  disclosureText: self.viewModel.topLines[index].posts!
+                  title: self.viewModel.topSpots[index].capt!,
+                  subtitle: self.viewModel.topSpots[index].lastAct!,
+                  disclosureText: self.viewModel.topSpots[index].posts!
                 )
               }
             }
           }
         }
-        
-        Section {
-          SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
-          ForEach(0..<viewModel.topSpots.count, id: \.self) { index in
-            NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topSpots[index].pointId!))) {
-              ActivityItemView(
-                number: index + 1,
-                title: self.viewModel.topSpots[index].capt!,
-                subtitle: self.viewModel.topSpots[index].lastAct!,
-                disclosureText: self.viewModel.topSpots[index].posts!
-              )
-            }
-          }
-        }
-        
         Section {
           SectionTitleView<Text>("Последние посты")
           
-          ForEach(viewModel.posts) { post in
+          ForEach(viewModel.inSearchMode ? viewModel.searchPosts : viewModel.posts) { post in
             PostItemView(post: post)
               .listRowInsets(EdgeInsets())
               .onAppear {
@@ -120,7 +121,7 @@ struct MainView: View {
     viewModel.searchQuery = ""
     
     withAnimation {
-      self.viewModel.showCancelButton = false
+      self.viewModel.inSearchMode = false
     }
   }
   
@@ -129,8 +130,14 @@ struct MainView: View {
   }
   
   private func onPostShowed(_ post: Post) {
-    if viewModel.posts.isLastItem(post) {
-      viewModel.loadNextPage()
+    if viewModel.inSearchMode == false {
+      if viewModel.posts.isLastItem(post) {
+        viewModel.loadNextPage()
+      }
+    } else {
+      if viewModel.searchPosts.isLastItem(post) {
+        viewModel.loadNextPage()
+      }
     }
   }
 }
