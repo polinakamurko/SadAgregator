@@ -68,14 +68,16 @@ struct ProviderItemView: View {
           .foregroundColor(Color(UIColor.systemGray2))
         }
         
-        HStack {
-          Image("whatsapp")
-          Text(provider.ph ?? "Не указан")
+        if (provider.ph ?? "").isEmpty == false {
+          HStack {
+            Image("whatsapp")
+            Text((provider.ph ?? "").isEmpty ? "Не указан" : provider.ph!)
+          }
+          .padding(.horizontal, 8)
+          .padding(.vertical, 4)
+          .background(Color(UIColor.systemGray6))
+          .cornerRadius(13)
         }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(Color(UIColor.systemGray6))
-        .cornerRadius(13)
         
         Text("Нет уникального контента")
           .font(.system(size: 15))
@@ -90,6 +92,6 @@ struct ProviderItemView: View {
 
 struct ProviderItemView_Previews: PreviewProvider {
   static var previews: some View {
-    ProviderItemView(provider: Providers(_id: 10, name: "василиса ермина", ph: "10 шт", rate: "3.5", revs: 0, imgs: 0, act: "", pop: 40))
+    ProviderItemView(provider: Providers(_id: 10, name: "василиса ермина", ph: "89121219074", rate: "3.5", revs: 0, imgs: 0, act: "", pop: 40))
   }
 }
