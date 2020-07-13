@@ -34,6 +34,8 @@ class MainViewModel: ObservableObject {
   @Published var presentSafariView = false
   @Published var helpURL = ""
   
+  @Published var searchStatistics = [CntListItem]()
+  
   var currentPage = 0
   
   func fetchData() {
@@ -72,6 +74,10 @@ class MainViewModel: ObservableObject {
         
         if let helpURL = result?.help?.url {
           self.helpURL = helpURL
+        }
+        
+        if let searchStatistics = result?.cntList {
+          self.searchStatistics = searchStatistics
         }
       }
     }

@@ -40,6 +40,19 @@ struct MainView: View {
       .padding(.vertical, 8)
       
       if viewModel.inSearchMode {
+        HStack {
+          ForEach(0..<viewModel.searchStatistics.count, id: \.self) { index in
+            SearchStatisticsItemView(
+              index: index + 1,
+              title: self.viewModel.searchStatistics[index].type ?? "",
+              number: self.viewModel.searchStatistics[index].cnt ?? "")
+          }
+          
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 4)
+        .padding(.horizontal, 16)
+        
         if showHowSearchWorksButton {
           ZStack {
             Button(action: {
