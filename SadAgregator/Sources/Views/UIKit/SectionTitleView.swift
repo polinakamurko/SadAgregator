@@ -8,15 +8,17 @@
 
 import SwiftUI
 
-struct SectionTitleView: View {
+struct SectionTitleView<Destination>: View where Destination: View {
+  
+  @State private var showDestination = false
   
   let title: String
   
-  var showAllAction: (() -> Void)?
+  let showAllDestinationView: Destination?
   
-  init(_ title: String, showAllAction: (() -> Void)? = nil) {
+  init(_ title: String, showAllView: Destination? = nil) {
     self.title = title
-    self.showAllAction = showAllAction
+    self.showAllDestinationView = showAllView
   }
   
   var body: some View {
@@ -26,8 +28,17 @@ struct SectionTitleView: View {
       
       Spacer()
       
-      if showAllAction != nil {
-        Button(action: showAllAction!) {
+      if showAllDestinationView != nil {
+        NavigationLink(destination: showAllDestinationView!, isActive: $showDestination) {
+          EmptyView()
+        }
+        .buttonStyle(BorderlessButtonStyle())
+      }
+      
+      if showAllDestinationView != nil {
+        Button(action: {
+          self.showDestination = true
+        }) {
           HStack {
             Text("См. все")
             Image(systemName: "chevron.right")
@@ -43,6 +54,6 @@ struct SectionTitleView: View {
 
 struct SectionTitleView_Previews: PreviewProvider {
   static var previews: some View {
-    SectionTitleView("Text", showAllAction: {})
+    SectionTitleView<SpotListView>("Text", showAllView: SpotListView(viewModel: SpotListViewModel()))
   }
 }

@@ -9,10 +9,249 @@ import Foundation
 import Alamofire
 
 
-
 open class DefaultAPI {
   /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStep: (query) Step
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistGetStepGet(aKey: String, aStep: String, completion: @escaping ((_ data: GetStep?,_ error: Error?) -> Void)) {
+    agrAssistGetStepGetWithRequestBuilder(aKey: aKey, aStep: aStep).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.GetStep
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 5,
+   "descr" : "descr",
+   "ansqers" : [ {
+   "rec" : 1,
+   "hint" : "hint",
+   "disabled" : 5,
+   "id" : 6,
+   "capt" : "capt"
+   }, {
+   "rec" : 1,
+   "hint" : "hint",
+   "disabled" : 5,
+   "id" : 6,
+   "capt" : "capt"
+   } ],
+   "hint" : "hint",
+   "back_step_id" : "back_step_id",
+   "step_id" : 0,
+   "type" : "type",
+   "capt" : "capt",
+   "speed" : 2
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStep: (query) Step
+   
+   - returns: RequestBuilder<GetStep>
+   */
+  open class func agrAssistGetStepGetWithRequestBuilder(aKey: String, aStep: String) -> RequestBuilder<GetStep> {
+    let path = "/agr_assist.GetStep"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AStep": aStep
+    ])
+    
+    let requestBuilder: RequestBuilder<GetStep>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aSelID: (query) SelID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistSetSimpleReqGet(aKey: String, aStepID: String, aSelID: String, completion: @escaping ((_ data: SetSimpleReq?,_ error: Error?) -> Void)) {
+    agrAssistSetSimpleReqGetWithRequestBuilder(aKey: aKey, aStepID: aStepID, aSelID: aSelID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.Set_SimpleReq
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "next_step_id" : "next_step_id",
+   "err" : "err",
+   "message" : "message",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aSelID: (query) SelID
+   
+   - returns: RequestBuilder<SetSimpleReq>
+   */
+  open class func agrAssistSetSimpleReqGetWithRequestBuilder(aKey: String, aStepID: String, aSelID: String) -> RequestBuilder<SetSimpleReq> {
+    let path = "/agr_assist.Set_SimpleReq"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AStepID": aStepID,
+      "ASelID": aSelID
+    ])
+    
+    let requestBuilder: RequestBuilder<SetSimpleReq>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter AVKID: (query) ID
+   - parameter aAppID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientAssignOKToAppIDGet(aKey: String, AVKID: String, aAppID: String, completion: @escaping ((_ data: AssignOKToAppID?,_ error: Error?) -> Void)) {
+    agrClientAssignOKToAppIDGetWithRequestBuilder(aKey: aKey, AVKID: AVKID, aAppID: aAppID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.AssignOKToAppID
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter AVKID: (query) ID
+   - parameter aAppID: (query) ID
+   
+   - returns: RequestBuilder<AssignOKToAppID>
+   */
+  open class func agrClientAssignOKToAppIDGetWithRequestBuilder(aKey: String, AVKID: String, aAppID: String) -> RequestBuilder<AssignOKToAppID> {
+    let path = "/agr_client.AssignOKToAppID"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVKID": AVKID,
+      "AAppID": aAppID
+    ])
+    
+    let requestBuilder: RequestBuilder<AssignOKToAppID>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter AVKID: (query) ID
+   - parameter aAppID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientAssignVKToAppIDGet(aKey: String, AVKID: String, aAppID: String, completion: @escaping ((_ data: AssignVKToAppID?,_ error: Error?) -> Void)) {
+    agrClientAssignVKToAppIDGetWithRequestBuilder(aKey: aKey, AVKID: AVKID, aAppID: aAppID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.AssignVKToAppID
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter AVKID: (query) ID
+   - parameter aAppID: (query) ID
+   
+   - returns: RequestBuilder<AssignVKToAppID>
+   */
+  open class func agrClientAssignVKToAppIDGetWithRequestBuilder(aKey: String, AVKID: String, aAppID: String) -> RequestBuilder<AssignVKToAppID> {
+    let path = "/agr_client.AssignVKToAppID"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVKID": AVKID,
+      "AAppID": aAppID
+    ])
+    
+    let requestBuilder: RequestBuilder<AssignVKToAppID>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aLogin: (query) userName
+   - parameter aPass: (query) Token
+   - parameter aKey: (query) Token
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientAuthGet(aLogin: String, aPass: String, aKey: String, completion: @escaping ((_ data: Auth?,_ error: Error?) -> Void)) {
+    agrClientAuthGetWithRequestBuilder(aLogin: aLogin, aPass: aPass, aKey: aKey).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.Auth
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aLogin: (query) userName
+   - parameter aPass: (query) Token
+   - parameter aKey: (query) Token
+   
+   - returns: RequestBuilder<Auth>
+   */
+  open class func agrClientAuthGetWithRequestBuilder(aLogin: String, aPass: String, aKey: String) -> RequestBuilder<Auth> {
+    let path = "/agr_client.Auth"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "ALogin": aLogin,
+      "APass": aPass,
+      "AKey": aKey
+    ])
+    
+    let requestBuilder: RequestBuilder<Auth>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
    Returns an updated user key
+   
    - parameter aKey: (query) Old key
    - parameter completion: completion handler to receive the data and the error objects
    */
@@ -26,13 +265,24 @@ open class DefaultAPI {
   /**
    Returns an updated user key
    - GET /agr_client.CheckKeys
+   -
+   
    - examples: [{contentType=application/json, example={
-   "result" : 0,
+   "result" : 6,
+   "settings" : "settings",
    "img_hash_srch" : "img_hash_srch",
+   "lk_posts" : "lk_posts",
    "anonym" : "anonym",
+   "name" : "name",
+   "lk_vends" : "lk_vends",
    "img_hash_srv" : "img_hash_srv",
+   "message" : {
+   "msg" : "msg",
+   "id" : 0,
+   "title" : "title"
+   },
    "key" : "key",
-   "speed" : 6
+   "speed" : 1
    }}]
    - parameter aKey: (query) Old key
    
@@ -53,7 +303,1205 @@ open class DefaultAPI {
   }
   
   /**
+   
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientGetOKAppIDGet(completion: @escaping ((_ data: GetOKAppID?,_ error: Error?) -> Void)) {
+    agrClientGetOKAppIDGetWithRequestBuilder().execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.GetOKAppID
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "app_key" : "app_key",
+   "app_id" : "app_id",
+   "speed" : 6
+   }}]
+   
+   - returns: RequestBuilder<GetOKAppID>
+   */
+  open class func agrClientGetOKAppIDGetWithRequestBuilder() -> RequestBuilder<GetOKAppID> {
+    let path = "/agr_client.GetOKAppID"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    
+    let url = URLComponents(string: URLString)
+    
+    let requestBuilder: RequestBuilder<GetOKAppID>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientGetProfileGet(aKey: String, completion: @escaping ((_ data: GetUserProfile?,_ error: Error?) -> Void)) {
+    agrClientGetProfileGetWithRequestBuilder(aKey: aKey).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.GetProfile
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "user" : {
+   "settings" : "settings",
+   "phone" : "phone",
+   "auto_ok" : "auto_ok",
+   "ok_token" : "ok_token",
+   "vk_token" : "vk_token",
+   "name" : "name",
+   "partner_code" : "partner_code",
+   "email" : "email",
+   "pay_url" : "pay_url",
+   "auto_vk" : "auto_vk"
+   },
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   
+   - returns: RequestBuilder<GetUserProfile>
+   */
+  open class func agrClientGetProfileGetWithRequestBuilder(aKey: String) -> RequestBuilder<GetUserProfile> {
+    let path = "/agr_client.GetProfile"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey
+    ])
+    
+    let requestBuilder: RequestBuilder<GetUserProfile>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientGetVKAppIDGet(completion: @escaping ((_ data: GetVKAppID?,_ error: Error?) -> Void)) {
+    agrClientGetVKAppIDGetWithRequestBuilder().execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.GetVKAppID
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "app_id" : "app_id",
+   "speed" : 6
+   }}]
+   
+   - returns: RequestBuilder<GetVKAppID>
+   */
+  open class func agrClientGetVKAppIDGetWithRequestBuilder() -> RequestBuilder<GetVKAppID> {
+    let path = "/agr_client.GetVKAppID"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    
+    let url = URLComponents(string: URLString)
+    
+    let requestBuilder: RequestBuilder<GetVKAppID>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientMyPostsGet(aKey: String, aPage: String, completion: @escaping ((_ data: MyPosts?,_ error: Error?) -> Void)) {
+    agrClientMyPostsGetWithRequestBuilder(aKey: aKey, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.MyPosts
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "export" : {
+   "aviable" : "aviable",
+   "fast" : "fast",
+   "type" : "type"
+   },
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<MyPosts>
+   */
+  open class func agrClientMyPostsGetWithRequestBuilder(aKey: String, aPage: String) -> RequestBuilder<MyPosts> {
+    let path = "/agr_client.MyPosts"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "APage": aPage
+    ])
+    
+    let requestBuilder: RequestBuilder<MyPosts>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientMyVendorsGet(aKey: String, aPage: String, completion: @escaping ((_ data: MyProviders?,_ error: Error?) -> Void)) {
+    agrClientMyVendorsGetWithRequestBuilder(aKey: aKey, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.MyVendors
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "vends" : [ {
+   "pop" : 5,
+   "imgs" : 1,
+   "act" : "act",
+   "rate" : "rate",
+   "revs" : 6,
+   "name" : "name",
+   "ph" : "ph",
+   "id" : 0
+   }, {
+   "pop" : 5,
+   "imgs" : 1,
+   "act" : "act",
+   "rate" : "rate",
+   "revs" : 6,
+   "name" : "name",
+   "ph" : "ph",
+   "id" : 0
+   } ],
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<MyProviders>
+   */
+  open class func agrClientMyVendorsGetWithRequestBuilder(aKey: String, aPage: String) -> RequestBuilder<MyProviders> {
+    let path = "/agr_client.MyVendors"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "APage": aPage
+    ])
+    
+    let requestBuilder: RequestBuilder<MyProviders>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aEmail: (query) Email
+   - parameter aName: (query) userName
+   - parameter aPass: (query) Token
+   - parameter aPhone: (query) phoneNumber
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientRegisterGet(aKey: String, aEmail: String, aName: String, aPass: String, aPhone: String, completion: @escaping ((_ data: Register?,_ error: Error?) -> Void)) {
+    agrClientRegisterGetWithRequestBuilder(aKey: aKey, aEmail: aEmail, aName: aName, aPass: aPass, aPhone: aPhone).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.Register
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aEmail: (query) Email
+   - parameter aName: (query) userName
+   - parameter aPass: (query) Token
+   - parameter aPhone: (query) phoneNumber
+   
+   - returns: RequestBuilder<Register>
+   */
+  open class func agrClientRegisterGetWithRequestBuilder(aKey: String, aEmail: String, aName: String, aPass: String, aPhone: String) -> RequestBuilder<Register> {
+    let path = "/agr_client.Register"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AEmail": aEmail,
+      "AName": aName,
+      "APass": aPass,
+      "APhone": aPhone
+    ])
+    
+    let requestBuilder: RequestBuilder<Register>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aFieldID: (query) ID
+   - parameter aVal: (query) Value
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientSaveOKInfoGet(aKey: String, aFieldID: String, aVal: String, completion: @escaping ((_ data: SaveOKInfo?,_ error: Error?) -> Void)) {
+    agrClientSaveOKInfoGetWithRequestBuilder(aKey: aKey, aFieldID: aFieldID, aVal: aVal).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.SaveOKInfo
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aFieldID: (query) ID
+   - parameter aVal: (query) Value
+   
+   - returns: RequestBuilder<SaveOKInfo>
+   */
+  open class func agrClientSaveOKInfoGetWithRequestBuilder(aKey: String, aFieldID: String, aVal: String) -> RequestBuilder<SaveOKInfo> {
+    let path = "/agr_client.SaveOKInfo"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AFieldID": aFieldID,
+      "AVal": aVal
+    ])
+    
+    let requestBuilder: RequestBuilder<SaveOKInfo>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aFieldID: (query) ID
+   - parameter aVal: (query) Value
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientSaveVKInfoGet(aKey: String, aFieldID: String, aVal: String, completion: @escaping ((_ data: SaveVKInfo?,_ error: Error?) -> Void)) {
+    agrClientSaveVKInfoGetWithRequestBuilder(aKey: aKey, aFieldID: aFieldID, aVal: aVal).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.SaveVKInfo
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aFieldID: (query) ID
+   - parameter aVal: (query) Value
+   
+   - returns: RequestBuilder<SaveVKInfo>
+   */
+  open class func agrClientSaveVKInfoGetWithRequestBuilder(aKey: String, aFieldID: String, aVal: String) -> RequestBuilder<SaveVKInfo> {
+    let path = "/agr_client.SaveVKInfo"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AFieldID": aFieldID,
+      "AVal": aVal
+    ])
+    
+    let requestBuilder: RequestBuilder<SaveVKInfo>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aOldPass: (query) Password
+   - parameter aNewPass: (query) Password
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientUserChangePassGet(aKey: String, aOldPass: String, aNewPass: String, completion: @escaping ((_ data: ChangeUserPassword?,_ error: Error?) -> Void)) {
+    agrClientUserChangePassGetWithRequestBuilder(aKey: aKey, aOldPass: aOldPass, aNewPass: aNewPass).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.UserChangePass
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aOldPass: (query) Password
+   - parameter aNewPass: (query) Password
+   
+   - returns: RequestBuilder<ChangeUserPassword>
+   */
+  open class func agrClientUserChangePassGetWithRequestBuilder(aKey: String, aOldPass: String, aNewPass: String) -> RequestBuilder<ChangeUserPassword> {
+    let path = "/agr_client.UserChangePass"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AOldPass": aOldPass,
+      "ANewPass": aNewPass
+    ])
+    
+    let requestBuilder: RequestBuilder<ChangeUserPassword>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aEmail: (query) Email
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientUserForgotPassGet(aKey: String, aEmail: String, completion: @escaping ((_ data: UserForgotPass?,_ error: Error?) -> Void)) {
+    agrClientUserForgotPassGetWithRequestBuilder(aKey: aKey, aEmail: aEmail).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.UserForgotPass
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aEmail: (query) Email
+   
+   - returns: RequestBuilder<UserForgotPass>
+   */
+  open class func agrClientUserForgotPassGetWithRequestBuilder(aKey: String, aEmail: String) -> RequestBuilder<UserForgotPass> {
+    let path = "/agr_client.UserForgotPass"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AEmail": aEmail
+    ])
+    
+    let requestBuilder: RequestBuilder<UserForgotPass>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aInfoType: (query) Password
+   - parameter aNewVal: (query) Password
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrClientUsetChangeOptionGet(aKey: String, aInfoType: String, aNewVal: String, completion: @escaping ((_ data: ChangeUserOption?,_ error: Error?) -> Void)) {
+    agrClientUsetChangeOptionGetWithRequestBuilder(aKey: aKey, aInfoType: aInfoType, aNewVal: aNewVal).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_client.UsetChangeOption
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aInfoType: (query) Password
+   - parameter aNewVal: (query) Password
+   
+   - returns: RequestBuilder<ChangeUserOption>
+   */
+  open class func agrClientUsetChangeOptionGetWithRequestBuilder(aKey: String, aInfoType: String, aNewVal: String) -> RequestBuilder<ChangeUserOption> {
+    let path = "/agr_client.UsetChangeOption"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AInfoType": aInfoType,
+      "ANewVal": aNewVal
+    ])
+    
+    let requestBuilder: RequestBuilder<ChangeUserOption>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aLineID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfActivityLineGet(aKey: String, aLineID: String, completion: @escaping ((_ data: Line?,_ error: Error?) -> Void)) {
+    agrIntfActivityLineGetWithRequestBuilder(aKey: aKey, aLineID: aLineID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.ActivityLine
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "points_top" : [ {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   }, {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   } ],
+   "activity" : {
+   "photo_ystd" : "photo_ystd",
+   "post_today" : "post_today",
+   "photo_today" : "photo_today",
+   "post_ystd" : "post_ystd"
+   },
+   "anonym" : "anonym",
+   "arrows" : {
+   "id_prev" : "id_prev",
+   "id_next" : "id_next",
+   "name_prev" : "name_prev",
+   "name_next" : "name_next"
+   },
+   "capt" : "capt",
+   "line_id" : "line_id",
+   "export" : {
+   "aviable" : "aviable",
+   "fast" : "fast",
+   "type" : "type"
+   },
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aLineID: (query) ID
+   
+   - returns: RequestBuilder<Line>
+   */
+  open class func agrIntfActivityLineGetWithRequestBuilder(aKey: String, aLineID: String) -> RequestBuilder<Line> {
+    let path = "/agr_intf.ActivityLine"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "ALineID", value: aLineID)
+    ]
+    
+    let requestBuilder: RequestBuilder<Line>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPointID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfActivityPointGet(aKey: String, aPointID: String, completion: @escaping ((_ data: Spot?,_ error: Error?) -> Void)) {
+    agrIntfActivityPointGetWithRequestBuilder(aKey: aKey, aPointID: aPointID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.ActivityPoint
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "vends" : [ {
+   "pop" : 5,
+   "imgs" : 1,
+   "act" : "act",
+   "rate" : "rate",
+   "revs" : 6,
+   "name" : "name",
+   "ph" : "ph",
+   "id" : 0
+   }, {
+   "pop" : 5,
+   "imgs" : 1,
+   "act" : "act",
+   "rate" : "rate",
+   "revs" : 6,
+   "name" : "name",
+   "ph" : "ph",
+   "id" : 0
+   } ],
+   "point_id" : "point_id",
+   "activity" : {
+   "photo_ystd" : "photo_ystd",
+   "post_today" : "post_today",
+   "photo_today" : "photo_today",
+   "post_ystd" : "post_ystd"
+   },
+   "anonym" : "anonym",
+   "arrows" : {
+   "id_prev" : "id_prev",
+   "id_next" : "id_next",
+   "name_prev" : "name_prev",
+   "name_next" : "name_next"
+   },
+   "altert_text" : "altert_text",
+   "capt" : "capt",
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 2,
+   "result" : 5,
+   "points_top" : [ {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   }, {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   } ],
+   "back_line" : {
+   "id" : "id",
+   "capt" : "capt"
+   },
+   "export" : {
+   "aviable" : "aviable",
+   "fast" : "fast",
+   "type" : "type"
+   }
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPointID: (query) ID
+   
+   - returns: RequestBuilder<Spot>
+   */
+  open class func agrIntfActivityPointGetWithRequestBuilder(aKey: String, aPointID: String) -> RequestBuilder<Spot> {
+    let path = "/agr_intf.ActivityPoint"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APointID", value: aPointID)
+    ]
+    
+    let requestBuilder: RequestBuilder<Spot>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    print(url?.string)
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfExportPeersGet(aKey: String, completion: @escaping ((_ data: ExportPeers?,_ error: Error?) -> Void)) {
+    agrIntfExportPeersGetWithRequestBuilder(aKey: aKey).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.ExportPeers
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "peers" : [ {
+   "type" : "type",
+   "capt" : "capt",
+   "peer_id" : "peer_id"
+   }, {
+   "type" : "type",
+   "capt" : "capt",
+   "peer_id" : "peer_id"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   
+   - returns: RequestBuilder<ExportPeers>
+   */
+  open class func agrIntfExportPeersGetWithRequestBuilder(aKey: String) -> RequestBuilder<ExportPeers> {
+    let path = "/agr_intf.ExportPeers"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey
+    ])
+    
+    let requestBuilder: RequestBuilder<ExportPeers>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfGetMyReviewGet(aKey: String, aVendID: String, completion: @escaping ((_ data: GetMyReview?,_ error: Error?) -> Void)) {
+    agrIntfGetMyReviewGetWithRequestBuilder(aKey: aKey, aVendID: aVendID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.GetMyReview
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "imgs" : [ {
+   "img" : "img",
+   "id" : "id"
+   }, {
+   "img" : "img",
+   "id" : "id"
+   } ],
+   "rate" : "rate",
+   "rev_id" : "rev_id",
+   "text" : "text",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   
+   - returns: RequestBuilder<GetMyReview>
+   */
+  open class func agrIntfGetMyReviewGetWithRequestBuilder(aKey: String, aVendID: String) -> RequestBuilder<GetMyReview> {
+    let path = "/agr_intf.GetMyReview"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVendID": aVendID
+    ])
+    
+    let requestBuilder: RequestBuilder<GetMyReview>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendorID: (query) ID
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfGetVendPostsPagingGet(aKey: String, aVendorID: String, aPage: String, completion: @escaping ((_ data: GetProviderPostsPaging?,_ error: Error?) -> Void)) {
+    agrIntfGetVendPostsPagingGetWithRequestBuilder(aKey: aKey, aVendorID: aVendorID, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.GetVendPostsPaging
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendorID: (query) ID
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<GetProviderPostsPaging>
+   */
+  open class func agrIntfGetVendPostsPagingGetWithRequestBuilder(aKey: String, aVendorID: String, aPage: String) -> RequestBuilder<GetProviderPostsPaging> {
+    let path = "/agr_intf.GetVendPostsPaging"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVendorID": aVendorID,
+      "APage": aPage
+    ])
+    
+    let requestBuilder: RequestBuilder<GetProviderPostsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendorID: (query) ID
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfGetVendRevsPagingGet(aKey: String, aVendorID: String, aPage: String, completion: @escaping ((_ data: GetProviderReviewsPaging?,_ error: Error?) -> Void)) {
+    agrIntfGetVendRevsPagingGetWithRequestBuilder(aKey: aKey, aVendorID: aVendorID, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.GetVendRevsPaging
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "revs" : [ {
+   "dt" : "dt",
+   "imgs" : [ "imgs", "imgs" ],
+   "rate" : "rate",
+   "author" : "author",
+   "id" : "id",
+   "text" : "text"
+   }, {
+   "dt" : "dt",
+   "imgs" : [ "imgs", "imgs" ],
+   "rate" : "rate",
+   "author" : "author",
+   "id" : "id",
+   "text" : "text"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendorID: (query) ID
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<GetProviderReviewsPaging>
+   */
+  open class func agrIntfGetVendRevsPagingGetWithRequestBuilder(aKey: String, aVendorID: String, aPage: String) -> RequestBuilder<GetProviderReviewsPaging> {
+    let path = "/agr_intf.GetVendRevsPaging"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [URLQueryItem(name: "AKey", value: aKey), URLQueryItem(name: "AVendorID", value: aVendorID), URLQueryItem(name: "APage", value: aPage)]
+    
+    let requestBuilder: RequestBuilder<GetProviderReviewsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aLineID: (query) ID
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfLinePointsPagingGet(aKey: String, aLineID: String, aPage: String, completion: @escaping ((_ data: LinePointsPaging?,_ error: Error?) -> Void)) {
+    agrIntfLinePointsPagingGetWithRequestBuilder(aKey: aKey, aLineID: aLineID, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.LinePointsPaging
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "points_top" : [ {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   }, {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   } ],
+   "anonym" : "anonym",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aLineID: (query) ID
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<LinePointsPaging>
+   */
+  open class func agrIntfLinePointsPagingGetWithRequestBuilder(aKey: String, aLineID: String, aPage: String) -> RequestBuilder<LinePointsPaging> {
+    let path = "/agr_intf.LinePointsPaging"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "ALineID", value: aLineID), URLQueryItem(name: "aPage", value: aPage)]
+    
+    let requestBuilder: RequestBuilder<LinePointsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aLineID: (query) ID
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfLinePostsPagingGet(aKey: String, aLineID: String, aPage: String, completion: @escaping ((_ data: LinePostsPaging?,_ error: Error?) -> Void)) {
+    agrIntfLinePostsPagingGetWithRequestBuilder(aKey: aKey, aLineID: aLineID, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.LinePostsPaging
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aLineID: (query) ID
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<LinePostsPaging>
+   */
+  open class func agrIntfLinePostsPagingGetWithRequestBuilder(aKey: String, aLineID: String, aPage: String) -> RequestBuilder<LinePostsPaging> {
+    let path = "/agr_intf.LinePostsPaging"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "ALineID": aLineID,
+      "APage": aPage
+    ])
+    
+    let requestBuilder: RequestBuilder<LinePostsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
    Main page data
+   
    - parameter aKey: (query) Token
    - parameter completion: completion handler to receive the data and the error objects
    */
@@ -67,6 +1515,8 @@ open class DefaultAPI {
   /**
    Main page data
    - GET /agr_intf.Main
+   -
+   
    - examples: [{contentType=application/json, example={
    "result" : 1,
    "lines_act_top" : [ {
@@ -178,6 +1628,7 @@ open class DefaultAPI {
     }
   }
   
+  
   /**
    - GET /agr_intf.MainPaging
    -
@@ -243,13 +1694,1047 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APage": aPage
-    ])
+    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "aPage", value: aPage)]
     
     let requestBuilder: RequestBuilder<MainPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
   }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPointID: (query) ID
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfPointPostsPagingGet(aKey: String, aPointID: String, aPage: String, completion: @escaping ((_ data: SpotPostsPaging?,_ error: Error?) -> Void)) {
+    agrIntfPointPostsPagingGetWithRequestBuilder(aKey: aKey, aPointID: aPointID, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.PointPostsPaging
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPointID: (query) ID
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<SpotPostsPaging>
+   */
+  open class func agrIntfPointPostsPagingGetWithRequestBuilder(aKey: String, aPointID: String, aPage: String) -> RequestBuilder<SpotPostsPaging> {
+    let path = "/agr_intf.PointPostsPaging"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "APointID": aPointID,
+      "APage": aPage
+    ])
+    
+    let requestBuilder: RequestBuilder<SpotPostsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter aRate: (query) Rating
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfRateUpdateGet(aKey: String, aVendID: String, aRate: String, completion: @escaping ((_ data: RateUpdate?,_ error: Error?) -> Void)) {
+    agrIntfRateUpdateGetWithRequestBuilder(aKey: aKey, aVendID: aVendID, aRate: aRate).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.RateUpdate
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter aRate: (query) Rating
+   
+   - returns: RequestBuilder<RateUpdate>
+   */
+  open class func agrIntfRateUpdateGetWithRequestBuilder(aKey: String, aVendID: String, aRate: String) -> RequestBuilder<RateUpdate> {
+    let path = "/agr_intf.RateUpdate"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVendID": aVendID,
+      "ARate": aRate
+    ])
+    
+    let requestBuilder: RequestBuilder<RateUpdate>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter aRevID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfReviewDeleteGet(aKey: String, aVendID: String, aRevID: String, completion: @escaping ((_ data: ReviewUpdate?,_ error: Error?) -> Void)) {
+    agrIntfReviewDeleteGetWithRequestBuilder(aKey: aKey, aVendID: aVendID, aRevID: aRevID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.ReviewDelete
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter aRevID: (query) ID
+   
+   - returns: RequestBuilder<ReviewUpdate>
+   */
+  open class func agrIntfReviewDeleteGetWithRequestBuilder(aKey: String, aVendID: String, aRevID: String) -> RequestBuilder<ReviewUpdate> {
+    let path = "/agr_intf.ReviewDelete"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVendID": aVendID,
+      "ARevID": aRevID
+    ])
+    
+    let requestBuilder: RequestBuilder<ReviewUpdate>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter avendID: (query) ID
+   - parameter aRating: (query) Rating
+   - parameter aTitle: (query) Title
+   - parameter aText: (query) Text
+   - parameter aImages: (query) Images
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfReviewUpdateGet(aKey: String, avendID: String, aRating: String, aTitle: String, aText: String, aImages: String, completion: @escaping ((_ data: ReviewDelete?,_ error: Error?) -> Void)) {
+    agrIntfReviewUpdateGetWithRequestBuilder(aKey: aKey, avendID: avendID, aRating: aRating, aTitle: aTitle, aText: aText, aImages: aImages).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.ReviewUpdate
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter avendID: (query) ID
+   - parameter aRating: (query) Rating
+   - parameter aTitle: (query) Title
+   - parameter aText: (query) Text
+   - parameter aImages: (query) Images
+   
+   - returns: RequestBuilder<ReviewDelete>
+   */
+  open class func agrIntfReviewUpdateGetWithRequestBuilder(aKey: String, avendID: String, aRating: String, aTitle: String, aText: String, aImages: String) -> RequestBuilder<ReviewDelete> {
+    let path = "/agr_intf.ReviewUpdate"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AvendID": avendID,
+      "ARating": aRating,
+      "ATitle": aTitle,
+      "AText": aText,
+      "AImages": aImages
+    ])
+    
+    let requestBuilder: RequestBuilder<ReviewDelete>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfTopLinesGet(aKey: String, completion: @escaping ((_ data: TopLines?,_ error: Error?) -> Void)) {
+    agrIntfTopLinesGetWithRequestBuilder(aKey: aKey).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.TopLines
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "lines_act_top" : [ {
+   "capt" : "capt",
+   "line_id" : "line_id",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   }, {
+   "capt" : "capt",
+   "line_id" : "line_id",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   } ],
+   "anonymm" : "anonymm",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   
+   - returns: RequestBuilder<TopLines>
+   */
+  open class func agrIntfTopLinesGetWithRequestBuilder(aKey: String) -> RequestBuilder<TopLines> {
+    let path = "/agr_intf.TopLines"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey
+    ])
+    
+    let requestBuilder: RequestBuilder<TopLines>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfTopPointsPagingGet(aKey: String, aPage: String, completion: @escaping ((_ data: TopSpotsPaging?,_ error: Error?) -> Void)) {
+    agrIntfTopPointsPagingGetWithRequestBuilder(aKey: aKey, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.TopPointsPaging
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "points_top" : [ {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   }, {
+   "point_id" : "point_id",
+   "capt" : "capt",
+   "posts" : "posts",
+   "last_act" : "last_act"
+   } ],
+   "anonymm" : "anonymm",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<TopSpotsPaging>
+   */
+  open class func agrIntfTopPointsPagingGetWithRequestBuilder(aKey: String, aPage: String) -> RequestBuilder<TopSpotsPaging> {
+    let path = "/agr_intf.TopPointsPaging"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    
+    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "aPage", value: aPage)]
+    
+    let requestBuilder: RequestBuilder<TopSpotsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendorID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrIntfVendorCardGet(aKey: String, aVendorID: String, completion: @escaping ((_ data: Provider?,_ error: Error?) -> Void)) {
+    agrIntfVendorCardGetWithRequestBuilder(aKey: aKey, aVendorID: aVendorID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_intf.VendorCard
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "vend_id" : "vend_id",
+   "img" : "img",
+   "revs_info" : {
+   "rate" : "rate",
+   "revs" : [ {
+   "dt" : "dt",
+   "imgs" : [ "imgs", "imgs" ],
+   "rate" : "rate",
+   "author" : "author",
+   "id" : "id",
+   "text" : "text"
+   }, {
+   "dt" : "dt",
+   "imgs" : [ "imgs", "imgs" ],
+   "rate" : "rate",
+   "author" : "author",
+   "id" : "id",
+   "text" : "text"
+   } ],
+   "cnt" : "cnt",
+   "imgs_cnt" : "imgs_cnt"
+   },
+   "vk_link" : "vk_link",
+   "anonym" : "anonym",
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6,
+   "pop" : "pop",
+   "result" : 0,
+   "reg_dt" : "reg_dt",
+   "phone" : "phone",
+   "terms" : "terms",
+   "name" : "name",
+   "export" : {
+   "aviable" : "aviable",
+   "fast" : "fast",
+   "type" : "type"
+   },
+   "place_id" : "place_id"
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendorID: (query) ID
+   
+   - returns: RequestBuilder<Provider>
+   */
+  open class func agrIntfVendorCardGetWithRequestBuilder(aKey: String, aVendorID: String) -> RequestBuilder<Provider> {
+    let path = "/agr_intf.VendorCard"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AVendorID", value: aVendorID)
+    ]
+    print(url?.string)
+    let requestBuilder: RequestBuilder<Provider>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aQuery: (query) Token
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrSrchGetSearchPageGet(aKey: String, aQuery: String, aPage: String, completion: @escaping ((_ data: GetSearchPage?,_ error: Error?) -> Void)) {
+    agrSrchGetSearchPageGetWithRequestBuilder(aKey: aKey, aQuery: aQuery, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_srch.GetSearchPage
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "help" : {
+   "str" : "str",
+   "url" : "url"
+   },
+   "cnt_list" : [ {
+   "cnt" : "cnt",
+   "type" : "type"
+   }, {
+   "cnt" : "cnt",
+   "type" : "type"
+   } ],
+   "query" : "query",
+   "pg" : "pg",
+   "export" : {
+   "aviable" : "aviable",
+   "fast" : "fast",
+   "type" : "type"
+   },
+   "posts" : [ {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   }, {
+   "point_id" : "point_id",
+   "images" : [ {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   }, {
+   "w" : 0,
+   "h" : 6,
+   "n" : "n"
+   } ],
+   "like" : "like",
+   "vk_post" : "vk_post",
+   "posted" : "posted",
+   "sizes" : [ "sizes", "sizes" ],
+   "price" : "price",
+   "vendor_id" : "vendor_id",
+   "by" : "by",
+   "options" : [ "options", "options" ],
+   "id" : "id",
+   "text" : "text",
+   "views" : "views",
+   "vendor_capt" : "vendor_capt"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aQuery: (query) Token
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<GetSearchPage>
+   */
+  open class func agrSrchGetSearchPageGetWithRequestBuilder(aKey: String, aQuery: String, aPage: String) -> RequestBuilder<GetSearchPage> {
+    let path = "/agr_srch.GetSearchPage"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AQuery": aQuery,
+      "APage": aPage
+    ])
+    
+    let requestBuilder: RequestBuilder<GetSearchPage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aQueryID: (query) Token
+   - parameter aPage: (query) Page
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrSrchVendorsTOPGet(aKey: String, aQueryID: String, aPage: String, completion: @escaping ((_ data: ProvidersTop?,_ error: Error?) -> Void)) {
+    agrSrchVendorsTOPGetWithRequestBuilder(aKey: aKey, aQueryID: aQueryID, aPage: aPage).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_srch.VendorsTOP
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "help" : {
+   "str" : "str",
+   "url" : "url"
+   },
+   "items" : [ {
+   "vend_id" : "vend_id",
+   "dt" : "dt",
+   "point_id" : "point_id",
+   "prices_avg" : "prices_avg",
+   "pos" : "pos",
+   "popularity" : "popularity",
+   "name" : "name",
+   "capt" : "capt",
+   "prices" : "prices"
+   }, {
+   "vend_id" : "vend_id",
+   "dt" : "dt",
+   "point_id" : "point_id",
+   "prices_avg" : "prices_avg",
+   "pos" : "pos",
+   "popularity" : "popularity",
+   "name" : "name",
+   "capt" : "capt",
+   "prices" : "prices"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aQueryID: (query) Token
+   - parameter aPage: (query) Page
+   
+   - returns: RequestBuilder<ProvidersTop>
+   */
+  open class func agrSrchVendorsTOPGetWithRequestBuilder(aKey: String, aQueryID: String, aPage: String) -> RequestBuilder<ProvidersTop> {
+    let path = "/agr_srch.VendorsTOP"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AQueryID", value: aQueryID),
+      URLQueryItem(name: "APage", value: aPage),
+    ]
+    let requestBuilder: RequestBuilder<ProvidersTop>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    print(url?.string)
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPlace: (query) Place
+   - parameter AURL: (query) URL
+   - parameter aComment: (query) Text
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsAddPointRequestGet(aKey: String, aPlace: String, AURL: String, aComment: String, completion: @escaping ((_ data: AddProvider?,_ error: Error?) -> Void)) {
+    agrUtilsAddPointRequestGetWithRequestBuilder(aKey: aKey, aPlace: aPlace, AURL: AURL, aComment: aComment).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.AddPointRequest
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "error" : "error",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPlace: (query) Place
+   - parameter AURL: (query) URL
+   - parameter aComment: (query) Text
+   
+   - returns: RequestBuilder<AddProvider>
+   */
+  open class func agrUtilsAddPointRequestGetWithRequestBuilder(aKey: String, aPlace: String, AURL: String, aComment: String) -> RequestBuilder<AddProvider> {
+    let path = "/agr_utils.AddPointRequest"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "APlace": aPlace,
+      "AURL": AURL,
+      "AComment": aComment
+    ])
+    
+    let requestBuilder: RequestBuilder<AddProvider>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aImageID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsDeletePhotoGet(aKey: String, aImageID: String, completion: @escaping ((_ data: DeletePhoto?,_ error: Error?) -> Void)) {
+    agrUtilsDeletePhotoGetWithRequestBuilder(aKey: aKey, aImageID: aImageID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.DeletePhoto
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aImageID: (query) ID
+   
+   - returns: RequestBuilder<DeletePhoto>
+   */
+  open class func agrUtilsDeletePhotoGetWithRequestBuilder(aKey: String, aImageID: String) -> RequestBuilder<DeletePhoto> {
+    let path = "/agr_utils.DeletePhoto"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AImageID": aImageID
+    ])
+    
+    let requestBuilder: RequestBuilder<DeletePhoto>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsHelpPageGet(aKey: String, completion: @escaping ((_ data: HelpPage?,_ error: Error?) -> Void)) {
+    agrUtilsHelpPageGetWithRequestBuilder(aKey: aKey).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.HelpPage
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "help" : [ {
+   "id" : "id",
+   "text" : "text",
+   "capt" : "capt",
+   "url" : "url"
+   }, {
+   "id" : "id",
+   "text" : "text",
+   "capt" : "capt",
+   "url" : "url"
+   } ],
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   
+   - returns: RequestBuilder<HelpPage>
+   */
+  open class func agrUtilsHelpPageGetWithRequestBuilder(aKey: String) -> RequestBuilder<HelpPage> {
+    let path = "/agr_utils.HelpPage"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey
+    ])
+    
+    let requestBuilder: RequestBuilder<HelpPage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aMsgID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsMessageReadedGet(aKey: String, aMsgID: String, completion: @escaping ((_ data: MessageReaded?,_ error: Error?) -> Void)) {
+    agrUtilsMessageReadedGetWithRequestBuilder(aKey: aKey, aMsgID: aMsgID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.MessageReaded
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aMsgID: (query) ID
+   
+   - returns: RequestBuilder<MessageReaded>
+   */
+  open class func agrUtilsMessageReadedGetWithRequestBuilder(aKey: String, aMsgID: String) -> RequestBuilder<MessageReaded> {
+    let path = "/agr_utils.MessageReaded"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AMsgID": aMsgID
+    ])
+    
+    let requestBuilder: RequestBuilder<MessageReaded>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aImageID: (query) ID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsPhotoSavedGet(aKey: String, aImageID: String, completion: @escaping ((_ data: PhotoSaved?,_ error: Error?) -> Void)) {
+    agrUtilsPhotoSavedGetWithRequestBuilder(aKey: aKey, aImageID: aImageID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.PhotoSaved
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "msg" : "msg",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aImageID: (query) ID
+   
+   - returns: RequestBuilder<PhotoSaved>
+   */
+  open class func agrUtilsPhotoSavedGetWithRequestBuilder(aKey: String, aImageID: String) -> RequestBuilder<PhotoSaved> {
+    let path = "/agr_utils.PhotoSaved"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AImageID": aImageID
+    ])
+    
+    let requestBuilder: RequestBuilder<PhotoSaved>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPostID: (query) ID
+   - parameter aStatus: (query) Status
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsPostLikeGet(aKey: String, aPostID: String, aStatus: String, completion: @escaping ((_ data: PostLike?,_ error: Error?) -> Void)) {
+    agrUtilsPostLikeGetWithRequestBuilder(aKey: aKey, aPostID: aPostID, aStatus: aStatus).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.PostLike
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "post_lk_cnt" : "post_lk_cnt",
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPostID: (query) ID
+   - parameter aStatus: (query) Status
+   
+   - returns: RequestBuilder<PostLike>
+   */
+  open class func agrUtilsPostLikeGetWithRequestBuilder(aKey: String, aPostID: String, aStatus: String) -> RequestBuilder<PostLike> {
+    let path = "/agr_utils.PostLike"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "APostID": aPostID,
+      "AStatus": aStatus
+    ])
+    
+    let requestBuilder: RequestBuilder<PostLike>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aEmail: (query) Email
+   - parameter aQuestion: (query) Text
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsSendQuestionGet(aKey: String, aEmail: String, aQuestion: String, completion: @escaping ((_ data: SendQuestion?,_ error: Error?) -> Void)) {
+    agrUtilsSendQuestionGetWithRequestBuilder(aKey: aKey, aEmail: aEmail, aQuestion: aQuestion).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.SendQuestion
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aEmail: (query) Email
+   - parameter aQuestion: (query) Text
+   
+   - returns: RequestBuilder<SendQuestion>
+   */
+  open class func agrUtilsSendQuestionGetWithRequestBuilder(aKey: String, aEmail: String, aQuestion: String) -> RequestBuilder<SendQuestion> {
+    let path = "/agr_utils.SendQuestion"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AEmail": aEmail,
+      "AQuestion": aQuestion
+    ])
+    
+    let requestBuilder: RequestBuilder<SendQuestion>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPostID: (query) ID
+   - parameter aText: (query) Text
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsToExpQueueGet(aKey: String, aPostID: String, aText: String, completion: @escaping ((_ data: ToExpQueue?,_ error: Error?) -> Void)) {
+    agrUtilsToExpQueueGetWithRequestBuilder(aKey: aKey, aPostID: aPostID, aText: aText).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.ToExpQueue
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPostID: (query) ID
+   - parameter aText: (query) Text
+   
+   - returns: RequestBuilder<ToExpQueue>
+   */
+  open class func agrUtilsToExpQueueGetWithRequestBuilder(aKey: String, aPostID: String, aText: String) -> RequestBuilder<ToExpQueue> {
+    let path = "/agr_utils.ToExpQueue"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "APostID": aPostID,
+      "AText": aText
+    ])
+    
+    let requestBuilder: RequestBuilder<ToExpQueue>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter aStatus: (query) Status
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsVendorLikeGet(aKey: String, aVendID: String, aStatus: String, completion: @escaping ((_ data: ProviderLike?,_ error: Error?) -> Void)) {
+    agrUtilsVendorLikeGetWithRequestBuilder(aKey: aKey, aVendID: aVendID, aStatus: aStatus).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.VendorLike
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "vends_lk_cnt" : "vends_lk_cnt",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aVendID: (query) ID
+   - parameter aStatus: (query) Status
+   
+   - returns: RequestBuilder<ProviderLike>
+   */
+  open class func agrUtilsVendorLikeGetWithRequestBuilder(aKey: String, aVendID: String, aStatus: String) -> RequestBuilder<ProviderLike> {
+    let path = "/agr_utils.VendorLike"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = APIHelper.mapValuesToQueryItems([
+      "AKey": aKey,
+      "AVendID": aVendID,
+      "AStatus": aStatus
+    ])
+    
+    let requestBuilder: RequestBuilder<ProviderLike>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
 }

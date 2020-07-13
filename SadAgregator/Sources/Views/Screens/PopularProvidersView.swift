@@ -10,12 +10,15 @@ import SwiftUI
 
 struct PopularProvidersView: View {
   
+  @ObservedObject var viewModel: PopularProvidersViewModel
+  
   @State private var searchQuery = ""
   @State private var showCancelButton = false
+  @State private var showHowRatingWorksButton = true
   
   var body: some View {
     NavigationView {
-      VStack {
+      VStack(spacing: 0) {
         if !showCancelButton {
           Text("Популярность поставщиков")
             .fontWeight(.semibold)
@@ -27,7 +30,7 @@ struct PopularProvidersView: View {
           HStack {
             Image(systemName: "magnifyingglass")
             
-            TextField("Поиск", text: $searchQuery, onEditingChanged: { isEditing in
+            TextField("Поиск", text: $viewModel.query, onEditingChanged: { isEditing in
               withAnimation {
                 self.showCancelButton = true
               }
@@ -49,7 +52,7 @@ struct PopularProvidersView: View {
           if showCancelButton {
             Button("Отмена") {
               UIApplication.shared.endEditing(true)
-              self.searchQuery = ""
+              self.viewModel.query = ""
               withAnimation {
                 self.showCancelButton = false
               }
@@ -58,16 +61,53 @@ struct PopularProvidersView: View {
           }
         }
         .padding(.horizontal)
-        .padding(.top, 8)
+        .padding(.top, 16)
+        .padding(.bottom, 16)
+        
+        if showHowRatingWorksButton {
+          ZStack {
+            Button(action: {
+              self.viewModel.presentSafariView = true
+            }) {
+              Text(viewModel.helpText)
+            }
+            .sheet(isPresented: $viewModel.presentSafariView) {
+              SafariView(url: URL(string: self.viewModel.helpURL))
+            }
+            
+            HStack {
+              Spacer()
+              Button(action: {
+                self.showHowRatingWorksButton = false
+              }) {
+                Image(systemName: "xmark")
+              }
+            }
+          }
+          .padding(.vertical, 6)
+          .padding(.horizontal, 16)
+          .padding(.bottom, 0)
+          .frame(maxWidth: .infinity)
+          .background(Color(red: 226/255, green: 241/255, blue: 255/255))
+          .foregroundColor(Color(.systemBlue))
+        }
         
         List {
-          ForEach(0..<8) { index in
-            NavigationLink(destination: ProviderView()) {
-              PopularProviderItemView(index: index + 1)
+          ForEach(0..<viewModel.topProviders.count, id: \.self) { index in
+            //            NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: self.viewModel.topProviders[index].vendId ?? "")))
+            NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topProviders[index].pointId ?? ""))) {
+              PopularProviderItemView(provider: self.viewModel.topProviders[index])
                 .padding(.vertical, 8)
+            }
+            .onAppear {
+              let provider = self.viewModel.topProviders[index]
+              if self.viewModel.topProviders.isLastItem(provider) {
+                self.viewModel.fetchPage()
+              }
             }
           }
         }
+        .onAppear(perform: viewModel.fetchPage)
         .resignKeyboardOnDragGesture()
       }
       .navigationBarTitle("", displayMode: .inline)
@@ -78,6 +118,6 @@ struct PopularProvidersView: View {
 
 struct PopularProvidersView_Previews: PreviewProvider {
   static var previews: some View {
-    PopularProvidersView()
+    PopularProvidersView(viewModel: PopularProvidersViewModel())
   }
 }

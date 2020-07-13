@@ -30,23 +30,25 @@ struct DetailItemView: View {
   }
   
   var body: some View {
-    HStack {
-      if systemImageName != nil {
-        Image(systemName: systemImageName!)
-          .padding(.trailing, 6)
-        .frame(width: 28)
-      } else if imageName != nil {
-        Image(imageName!)
-          .padding(.trailing, 6)
-        .frame(width: 28)
-      }
-      Text(mainText)
-      Spacer()
-      Text(detailedText)
-        .foregroundColor(.gray)
-      if showChevron {
-        Image(systemName: "chevron.right")
-          .foregroundColor(Color(UIColor.systemGray3))
+    VStack {
+      HStack {
+        if systemImageName != nil {
+          Image(systemName: systemImageName!)
+            .padding(.trailing, 6)
+          .frame(width: 28)
+        } else if imageName != nil {
+          Image(imageName!)
+            .padding(.trailing, 6)
+          .frame(width: 28)
+        }
+        Text(mainText)
+        Spacer()
+        Text(detailedText)
+          .foregroundColor(.gray)
+        if showChevron {
+          Image(systemName: "chevron.right")
+            .foregroundColor(Color(UIColor.systemGray3))
+        }
       }
     }
   }

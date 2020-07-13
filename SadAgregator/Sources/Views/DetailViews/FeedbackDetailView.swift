@@ -9,17 +9,19 @@
 import SwiftUI
 
 struct FeedbackDetailView: View {
+  
+  @ObservedObject var viewModel: FeedbackViewModel
+  
   var body: some View {
-    List {
-      FeedbackItemView()
-      FeedbackItemView()
-      FeedbackItemView()
+    List(viewModel.feedback) { feedbackItem in
+      FeedbackItemView(feedback: feedbackItem)
     }
+    .onAppear(perform: viewModel.fetchFeedback)
   }
 }
 
 struct FeedbackDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    FeedbackDetailView()
+    FeedbackDetailView(viewModel: FeedbackViewModel(providerID: "3"))
   }
 }

@@ -68,28 +68,25 @@ struct MainView: View {
           }
           .listRowInsets(EdgeInsets())
           
-          SectionTitleView("Активность линий", showAllAction: {
-            // TODO: Add show all action
-          })
-          
-          ForEach(0..<viewModel.topLines.count, id: \.self) { index in
-            NavigationLink(destination: LineView()) {
-              ActivityItemView(
-                number: index + 1,
-                title: self.viewModel.topLines[index].capt!,
-                subtitle: self.viewModel.topLines[index].lastAct!,
-                disclosureText: self.viewModel.topLines[index].posts!
-              )
+          Section {
+            SectionTitleView("Активность линий", showAllView: LineListView(viewModel: LineListViewModel()))
+            ForEach(0..<viewModel.topLines.count, id: \.self) { index in
+              NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: self.viewModel.topLines[index].lineId!))) {
+                ActivityItemView(
+                  number: index + 1,
+                  title: self.viewModel.topLines[index].capt!,
+                  subtitle: self.viewModel.topLines[index].lastAct!,
+                  disclosureText: self.viewModel.topLines[index].posts!
+                )
+              }
             }
           }
         }
         
         Section {
-          SectionTitleView("Активность точек", showAllAction: {
-            // TODO: Add show all action
-          })
+          SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel()))
           ForEach(0..<viewModel.topSpots.count, id: \.self) { index in
-            NavigationLink(destination: SpotView()) {
+            NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topSpots[index].pointId!))) {
               ActivityItemView(
                 number: index + 1,
                 title: self.viewModel.topSpots[index].capt!,
@@ -101,14 +98,14 @@ struct MainView: View {
         }
         
         Section {
-          SectionTitleView("Последние посты")
-            
+          SectionTitleView<Text>("Последние посты")
+          
           ForEach(viewModel.posts) { post in
             PostItemView(post: post)
               .listRowInsets(EdgeInsets())
               .onAppear {
                 self.onPostShowed(post)
-              }
+            }
           }
         }
       }

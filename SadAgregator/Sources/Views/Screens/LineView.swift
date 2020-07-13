@@ -9,91 +9,80 @@
 import SwiftUI
 
 struct LineView: View {
+  
+  @ObservedObject var viewModel: LineViewModel
+  
   var body: some View {
-    VStack{
+    VStack {
       HStack {
-        HStack {
-          Image(systemName: "arrow.left.circle.fill")
-            .font(.headline)
-          Text("Линия 6")
+        if viewModel.line.arrows?.idPrev != nil {
+          NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: viewModel.line.arrows?.idPrev ?? ""))) {
+            HStack {
+              Image(systemName: "arrow.left.circle.fill")
+                .font(.headline)
+              Text(viewModel.line.arrows?.namePrev ?? "")
+            }
+          }
         }
         Spacer()
-        HStack {
-          Text("Линия 8")
-          Image(systemName: "arrow.right.circle.fill")
-            .font(.headline)
+        if viewModel.line.arrows?.idNext != nil {
+          NavigationLink(destination: LineView(viewModel: LineViewModel(lineID: viewModel.line.arrows?.idNext ?? ""))) {
+            HStack {
+              Text(viewModel.line.arrows?.nameNext ?? "")
+              Image(systemName: "arrow.right.circle.fill")
+                .font(.headline)
+            }
+          }
         }
       }
       .padding()
       .font(.subheadline)
       .foregroundColor(.blue)
       
-      
       List {
-        HStack {
-          VStack(alignment: .leading, spacing: 12) {
-            Text(" ")
-            HStack {
-              Image(systemName: "rectangle.fill.on.rectangle.fill")
-                .foregroundColor(Color(UIColor.systemGray3))
-              Text("Посты")
-                .fixedSize(horizontal: true, vertical: false)
-            }
-            HStack {
-              Image(systemName: "photo.fill.on.rectangle.fill")
-                .foregroundColor(Color(UIColor.systemGray3))
-              Text("Фото")
-            }
-          }
-          Spacer()
-          VStack(spacing: 12) {
-            Text("Сегодня")
-              .foregroundColor(.gray)
-            Text("31")
-            Text("102")
-          }
-          .font(.system(size: 17, weight: .bold))
-          Spacer()
-          VStack(spacing: 12) {
-            Text("Вчера")
-              .foregroundColor(.gray)
-            Text("27")
-            Text("59")
-          }
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
-        .listRowInsets(EdgeInsets())
+        
+        DetailedActivityView(totalActivity: $viewModel.totalActivity)
+          .frame(maxWidth: .infinity)
+          .padding()
+          .background((Color(red: 248/255, green: 248/255, blue: 249/255)))
+          .listRowInsets(EdgeInsets())
         
         Section {
-          SectionTitleView("Активность точек", showAllAction: {
-            // TODO: Add show all action
-          })
-          ForEach(0..<3, id: \.self) { index in
-            NavigationLink(destination: SpotView()) {
-              ActivityItemView(number: index + 1, title: "Точка 30", subtitle: "17 мин. назад", disclosureText: "1436")
+          SectionTitleView("Активность точек", showAllView: SpotListView(viewModel: SpotListViewModel(lineId: viewModel.lineID)))
+          ForEach(0..<viewModel.line.topSpots.count, id: \.self) { index in
+            NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.line.topSpots[index].pointId!))) {
+              ActivityItemView(
+                number: index + 1,
+                title: self.viewModel.line.topSpots[index].capt!,
+                subtitle: self.viewModel.line.topSpots[index].lastAct!,
+                disclosureText: self.viewModel.line.topSpots[index].posts!
+              )
             }
           }
         }
         
         Section {
-          SectionTitleView("Последние посты")
+          SectionTitleView<Text>("Последние посты")
           
-//          ForEach(0..<4, id: \.self) { _ in
-//            PostItemView()
-//              .listRowInsets(EdgeInsets())
-//          }
+          //          ForEach(viewModel.line.posts ?? <#default value#>) { post in
+          //            PostItemView(post: post)
+          //              .listRowInsets(EdgeInsets())
+          //              .onAppear {
+          //                self.onPostShowed(post)
+          //            }
+          //          }
         }
       }
     }
+    .navigationBarTitle(viewModel.line.capt ?? "")
+    .onAppear(perform: viewModel.fetchLine)
   }
 }
 
 
 struct LineView_Previews: PreviewProvider {
   static var previews: some View {
-    LineView()
+    LineView(viewModel: LineViewModel(lineID: "1"))
   }
 }
 
