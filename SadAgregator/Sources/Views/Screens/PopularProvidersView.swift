@@ -66,9 +66,15 @@ struct PopularProvidersView: View {
         
         if showHowRatingWorksButton {
           ZStack {
-            Button(action: {}) {
+            Button(action: {
+              self.viewModel.presentSafariView = true
+            }) {
               Text(viewModel.helpText)
             }
+            .sheet(isPresented: $viewModel.presentSafariView) {
+              SafariView(url: URL(string: self.viewModel.helpURL))
+            }
+            
             HStack {
               Spacer()
               Button(action: {
@@ -88,7 +94,7 @@ struct PopularProvidersView: View {
         
         List {
           ForEach(0..<viewModel.topProviders.count, id: \.self) { index in
-//            NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: self.viewModel.topProviders[index].vendId ?? "")))
+            //            NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: self.viewModel.topProviders[index].vendId ?? "")))
             NavigationLink(destination: SpotView(viewModel: SpotViewModel(spotID: self.viewModel.topProviders[index].pointId ?? ""))) {
               PopularProviderItemView(provider: self.viewModel.topProviders[index])
                 .padding(.vertical, 8)

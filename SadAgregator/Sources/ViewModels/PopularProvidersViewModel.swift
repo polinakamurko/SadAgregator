@@ -19,9 +19,11 @@ class PopularProvidersViewModel: ObservableObject {
     }
   }
   
-  @Published var helpText: String = ""
+  @Published var helpText = ""
+  @Published var presentSafariView = false
   
-  var helpURL: String = ""
+  @Published var helpURL: String = ""
+  
   private var currentPage = 0
   
   func fetchPage() {
