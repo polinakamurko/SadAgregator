@@ -12,6 +12,8 @@ struct MainView: View {
   
   @ObservedObject var viewModel: MainViewModel
   
+  @State private var showHowSearchWorksButton = true
+  
   var body: some View {
     VStack {
       if !viewModel.inSearchMode {
@@ -36,6 +38,36 @@ struct MainView: View {
       }
       .padding(.horizontal)
       .padding(.vertical, 8)
+      
+      if viewModel.inSearchMode {
+        if showHowSearchWorksButton {
+          ZStack {
+            Button(action: {
+              self.viewModel.presentSafariView = true
+            }) {
+              Text(viewModel.helpText)
+            }
+            .sheet(isPresented: $viewModel.presentSafariView) {
+              SafariView(url: URL(string: self.viewModel.helpURL))
+            }
+            
+            HStack {
+              Spacer()
+              Button(action: {
+                self.showHowSearchWorksButton = false
+              }) {
+                Image(systemName: "xmark")
+              }
+            }
+          }
+          .padding(.vertical, 6)
+          .padding(.horizontal, 16)
+          .padding(.bottom, 0)
+          .frame(maxWidth: .infinity)
+          .background(Color(red: 226/255, green: 241/255, blue: 255/255))
+          .foregroundColor(Color(.systemBlue))
+        }
+      }
       
       List {
         if !viewModel.inSearchMode {
@@ -98,6 +130,7 @@ struct MainView: View {
             }
           }
         }
+        
         Section {
           SectionTitleView<Text>("Последние посты")
           

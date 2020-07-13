@@ -30,6 +30,10 @@ class MainViewModel: ObservableObject {
   @Published private(set) var posts = [Post]()
   @Published private(set) var searchPosts = [Post]()
   
+  @Published var helpText = "Как работает поиск?"
+  @Published var presentSafariView = false
+  @Published var helpURL = ""
+  
   var currentPage = 0
   
   func fetchData() {
@@ -59,6 +63,15 @@ class MainViewModel: ObservableObject {
         if let posts = result?.posts {
           print("Search query: \(self.searchQuery)\nCurrent page: \(self.currentPage)\nPosts: \(posts)")
           self.searchPosts.append(contentsOf: posts)
+        }
+        
+        if let helpText = result?.help?.str {
+          self.helpText = helpText
+          print(helpText)
+        }
+        
+        if let helpURL = result?.help?.url {
+          self.helpURL = helpURL
         }
       }
     }

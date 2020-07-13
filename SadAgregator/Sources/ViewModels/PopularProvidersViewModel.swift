@@ -22,7 +22,7 @@ class PopularProvidersViewModel: ObservableObject {
   @Published var helpText = ""
   @Published var presentSafariView = false
   
-  @Published var helpURL: String = ""
+  @Published var helpURL = ""
   
   private var currentPage = 0
   
