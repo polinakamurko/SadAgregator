@@ -10,17 +10,17 @@ import SwiftUI
 
 struct PopularProviderItemView: View {
   
-  let index: Int
   let provider: ProviderItem
   
   var body: some View {
     VStack {
       HStack {
         
-        Text("\(index)")
+        Text(provider.pos ?? "")
           .font(.system(size: 11, weight: .semibold, design: .rounded))
           .foregroundColor(.blue)
-          .frame(width: 18, height: 18)
+          .frame(height: 18)
+          .padding(.horizontal, 6)
           .background(Color(UIColor.systemGray5))
           .cornerRadius(9)
         
@@ -110,6 +110,6 @@ struct PopularProviderItemView: View {
 
 struct PopularProviderItemView_Previews: PreviewProvider {
   static var previews: some View {
-    PopularProviderItemView(index: 1, provider: ProviderItem(name: "Азиз"))
+    PopularProviderItemView(provider: ProviderItem(name: "Азиз"))
   }
 }
