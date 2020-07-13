@@ -32,7 +32,7 @@ struct PostItemView: View {
         }
         
         HStack {
-          Text(post.by ?? "")
+          Text(post.by?.capitalized ?? "")
           Image(systemName: "chevron.right")
         }
         .font(.system(size: 17, weight: .medium))
