@@ -18,6 +18,9 @@ struct ProfileView: View {
         DetailItemView(mainText: "Имя", detailedText: viewModel.user?.name ?? "")
         DetailItemView(mainText: "Телефон", detailedText: viewModel.user?.phoneNumber ?? "")
         DetailItemView(mainText: "Email", detailedText: viewModel.user?.email ?? "")
+        NavigationLink(destination: ChangePasswordView()) {
+          DetailItemView(mainText: "Пароль", detailedText: "Изменить" )
+        }
         DetailItemView(mainText: "Код партнера", detailedText: viewModel.user?.partnerCode ?? "")
         DetailItemView(mainText: "Ссылка на оплату", detailedText: viewModel.user?.payUrl ?? "")
         
