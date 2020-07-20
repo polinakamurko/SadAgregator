@@ -22,6 +22,14 @@ public struct UserProfile: Codable {
   public var okExpirationDate: String?
   public var settings: String?
   
+  public var phoneNumber: String {
+    if let phone = phone, phone.isEmpty == false {
+      return "\(phone)"
+    } else {
+      return "Не указан"
+    }
+  }
+  
   public init(name: String?, phone: String?, email: String?, partnerCode: String?, autoVk: String?, autoOk: String?, payUrl: String?, vkToken: String?, okToken: String?, vkExpirationDate: String?, okExpirationDate: String?, settings: String?) {
     self.name = name
     self.phone = phone

@@ -16,18 +16,18 @@ struct ProfileView: View {
     List {
       Group {
         DetailItemView(mainText: "Имя", detailedText: viewModel.user?.name ?? "")
-        DetailItemView(mainText: "Телефон", detailedText: viewModel.user?.phone ?? "")
+        DetailItemView(mainText: "Телефон", detailedText: viewModel.user?.phoneNumber ?? "")
         DetailItemView(mainText: "Email", detailedText: viewModel.user?.email ?? "")
         DetailItemView(mainText: "Код партнера", detailedText: viewModel.user?.partnerCode ?? "")
         DetailItemView(mainText: "Ссылка на оплату", detailedText: viewModel.user?.payUrl ?? "")
         
         if viewModel.user?.vkToken == "EXISTS" {
-          DetailItemView(mainText: "Автовыгрузка ВК", detailedText: viewModel.user?.autoVk ?? "")
+          DetailItemView(mainText: "Автовыгрузка ВК", detailedText: viewModel.user?.autoVk != nil ? "Подключена" : "")
           DetailItemView(mainText: "Осталось дней ВК", detailedText: viewModel.user?.vkExpirationDate ?? "")
         }
         
         if viewModel.user?.okToken == "EXISTS" {
-          DetailItemView(mainText: "Автовыгрузка ОК")
+          DetailItemView(mainText: "Автовыгрузка ОК", detailedText: viewModel.user?.autoVk != nil ? "Подключена" : "")
           DetailItemView(mainText: "Осталось дней ОК", detailedText: viewModel.user?.okExpirationDate ?? "")
         }
         DetailItemView(mainText: "Настройки", detailedText: viewModel.user?.settings ?? "")
