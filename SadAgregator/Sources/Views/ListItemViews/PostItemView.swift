@@ -11,7 +11,7 @@ import SwiftUI
 struct PostItemView: View {
   
   @State private var showPostDescription = false
-  
+  @State var showUploadView = false
   var post: Post
   
   var body: some View {
@@ -111,13 +111,20 @@ struct PostItemView: View {
        
         Group {
           Image(systemName:"line.horizontal.3")
-          HStack(spacing: 2) {
-            Image("vk_icon")
-              .renderingMode(.template)
-            Text("Выгрузить")
+          Button(action: {
+            self.showUploadView = true
+          }) {
+            HStack(spacing: 2) {
+              Image("vk_icon")
+                .renderingMode(.template)
+              Text("Выгрузить")
+            }
+            .font(.system(size: 14, weight: .semibold))
+            .foregroundColor(Color(red: 64/255, green: 137/255, blue: 222/255))
+            .sheet(isPresented: $showUploadView) {
+              UploadView()
+            }
           }
-          .font(.system(size: 14, weight: .semibold))
-          .foregroundColor(Color(red: 64/255, green: 137/255, blue: 222/255))
           Image(systemName:"heart")
         }
         .padding(.horizontal, 8)

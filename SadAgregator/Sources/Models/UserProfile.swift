@@ -7,46 +7,48 @@
 
 import Foundation
 
-
-
 public struct UserProfile: Codable {
-
-    public var name: String?
-    public var phone: String?
-    public var email: String?
-    public var partnerCode: String?
-    public var autoVk: String?
-    public var autoOk: String?
-    public var payUrl: String?
-    public var vkToken: String?
-    public var okToken: String?
-    public var settings: String?
-
-    public init(name: String?, phone: String?, email: String?, partnerCode: String?, autoVk: String?, autoOk: String?, payUrl: String?, vkToken: String?, okToken: String?, settings: String?) {
-        self.name = name
-        self.phone = phone
-        self.email = email
-        self.partnerCode = partnerCode
-        self.autoVk = autoVk
-        self.autoOk = autoOk
-        self.payUrl = payUrl
-        self.vkToken = vkToken
-        self.okToken = okToken
-        self.settings = settings
-    }
-
-    public enum CodingKeys: String, CodingKey { 
-        case name
-        case phone
-        case email
-        case partnerCode = "partner_code"
-        case autoVk = "auto_vk"
-        case autoOk = "auto_ok"
-        case payUrl = "pay_url"
-        case vkToken = "vk_token"
-        case okToken = "ok_token"
-        case settings
-    }
-
+  
+  public var name: String?
+  public var phone: String?
+  public var email: String?
+  public var partnerCode: String?
+  public var autoVk: String?
+  public var autoOk: String?
+  public var payUrl: String?
+  public var vkToken: String?
+  public var okToken: String?
+  public var vkExpirationDate: String?
+  public var okExpirationDate: String?
+  public var settings: String?
+  
+  public init(name: String?, phone: String?, email: String?, partnerCode: String?, autoVk: String?, autoOk: String?, payUrl: String?, vkToken: String?, okToken: String?, vkExpirationDate: String?, okExpirationDate: String?, settings: String?) {
+    self.name = name
+    self.phone = phone
+    self.email = email
+    self.partnerCode = partnerCode
+    self.autoVk = autoVk
+    self.autoOk = autoOk
+    self.payUrl = payUrl
+    self.vkToken = vkToken
+    self.okToken = okToken
+    self.vkExpirationDate = vkExpirationDate
+    self.okExpirationDate = okExpirationDate
+    self.settings = settings
+  }
+  
+  public enum CodingKeys: String, CodingKey {
+    case name
+    case phone
+    case email
+    case partnerCode = "partner_code"
+    case autoVk = "auto_vk"
+    case autoOk = "auto_ok"
+    case payUrl = "pay_url"
+    case vkToken = "vk_token"
+    case okToken = "ok_token"
+    case vkExpirationDate = "vk_exp"
+    case okExpirationDate = "ok_exp"
+    case settings
+  }
 }
-

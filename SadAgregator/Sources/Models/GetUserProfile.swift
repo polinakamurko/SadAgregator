@@ -7,22 +7,17 @@
 
 import Foundation
 
-
-
 public struct GetUserProfile: Codable {
-
-    public var msg: String?
-    public var user: UserProfile?
-    public var result: Int?
-    public var speed: Int?
-
-    public init(msg: String?, user: UserProfile?, result: Int?, speed: Int?) {
-        self.msg = msg
-        self.user = user
-        self.result = result
-        self.speed = speed
-    }
-
-
+  
+  public var msg: String?
+  public var user: UserProfile?
+  public var result: Int?
+  public var speed: Int?
+  
+  public init(msg: String?, user: UserProfile?, result: Int?, speed: Int?) {
+    self.msg = msg
+    self.user = user
+    self.result = result
+    self.speed = speed
+  }
 }
-

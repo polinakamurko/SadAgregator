@@ -9,23 +9,32 @@
 import SwiftUI
 
 struct ProfileView: View {
+  
+  @ObservedObject var viewModel: ProfileViewModel
+  
   var body: some View {
     List {
-      Section {
-        Group {
-          DetailItemView(mainText: "Имя", detailedText: "Юрий")
-          DetailItemView(mainText: "Телефон", detailedText: "+7 912 557 18 93")
-          DetailItemView(mainText: "Email", detailedText: "yura@mail.ru")
-          DetailItemView(mainText: "Пароль", detailedText: "Изменить")
-          DetailItemView(mainText: "Код партнера", detailedText: "Некий код")
-          DetailItemView(mainText: "Автовыгрузка ВК", showChevron: true)
-          DetailItemView(mainText: "Автовыгрузка ОК", showChevron: true)
-        }
-        .padding(.vertical, 8)
-      }
-      
-      Section {
+      Group {
+        DetailItemView(mainText: "Имя", detailedText: viewModel.user?.name ?? "")
+        DetailItemView(mainText: "Телефон", detailedText: viewModel.user?.phone ?? "")
+        DetailItemView(mainText: "Email", detailedText: viewModel.user?.email ?? "")
+        DetailItemView(mainText: "Код партнера", detailedText: viewModel.user?.partnerCode ?? "")
+        DetailItemView(mainText: "Ссылка на оплату", detailedText: viewModel.user?.payUrl ?? "")
         
+        if viewModel.user?.vkToken == "EXISTS" {
+          DetailItemView(mainText: "Автовыгрузка ВК", detailedText: viewModel.user?.autoVk ?? "")
+          DetailItemView(mainText: "Осталось дней ВК", detailedText: viewModel.user?.vkExpirationDate ?? "")
+        }
+        
+        if viewModel.user?.okToken == "EXISTS" {
+          DetailItemView(mainText: "Автовыгрузка ОК")
+          DetailItemView(mainText: "Осталось дней ОК", detailedText: viewModel.user?.okExpirationDate ?? "")
+        }
+        DetailItemView(mainText: "Настройки", detailedText: viewModel.user?.settings ?? "")
+      }
+      .padding(.vertical, 8)
+      
+      if viewModel.user?.vkToken != "EXISTS" {
         Button(action: {}) {
           HStack{
             Image("vk_icon")
@@ -42,7 +51,9 @@ struct ProfileView: View {
           .multilineTextAlignment(.center)
           .foregroundColor(.gray)
           .frame(maxWidth: .infinity)
-        
+      }
+      
+      if viewModel.user?.okToken != "EXISTS" {
         Button(action: {}) {
           HStack{
             Image("ok_icon")
@@ -61,18 +72,21 @@ struct ProfileView: View {
           .frame(maxWidth: .infinity)
       }
     }
+      
     .navigationBarTitle("Профиль", displayMode: .inline)
+    .onAppear(perform: viewModel.fetchProfile)
     .onAppear {
-//      UITableView.appearance().separatorStyle = .none
+      //      UITableView.appearance().separatorStyle = .none
+      
     }
     .onDisappear {
-//      UITableView.appearance().separatorStyle = .singleLine
+      //      UITableView.appearance().separatorStyle = .singleLine
     }
   }
 }
 
 struct ProfileView_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView()
+    ProfileView(viewModel: ProfileViewModel())
   }
 }

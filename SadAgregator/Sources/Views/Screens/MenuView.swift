@@ -13,7 +13,7 @@ struct MenuView: View {
     List {
       Section {
         NavigationLink(destination:
-          ProfileView()
+          ProfileView(viewModel: ProfileViewModel())
         ) {
           VStack(alignment: .leading) {
             Text("Юрий")
