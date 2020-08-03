@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct MenuView: View {
+  
+  @ObservedObject var viewModel: ProfileViewModel
+  
   var body: some View {
     List {
       Section {
@@ -28,7 +31,10 @@ struct MenuView: View {
       }
       
       Section {
-        DetailItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "7")
+        NavigationLink(destination: FavoriteProvidersView(viewModel: FavoriteProviderViewModel())
+        ) {
+          DetailItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "0")
+        }
         DetailItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
         DetailItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
       }
@@ -62,6 +68,6 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
   static var previews: some View {
-    MenuView()
+    MenuView(viewModel: ProfileViewModel())
   }
 }

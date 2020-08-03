@@ -15,21 +15,28 @@ struct ChangePasswordView: View {
   
   var body: some View {
     VStack {
-      TextView(text: $oldPassword)
-        .padding(.horizontal)
-        .frame(height: 196)
+      HStack {
+        TextField("Старый пароль", text: $oldPassword)
+      }
+      .padding(.top, 50)
+      Divider()
+      HStack {
+        TextField("Новый пароль", text: $newPassword)
+      }
+      .padding(.top, 50)
+      Divider()
+      HStack {
+        TextField("Повторите пароль", text: $newPassword)
+      }
+      .padding(.top, 50)
       Divider()
       
-      TextView(text: $newPassword)
-        .padding(.horizontal)
-        .frame(height: 196)
-      Divider()
-      
-      TextView(text: $newPassword)
-        .padding(.horizontal)
-        .frame(height: 196)
-      Divider()
-      
+      Text("Изменить пароль")
+      .frame(maxWidth: .infinity)
+      .font(.system(size: 17, weight: .medium))
+      .foregroundColor(.blue)
+        .padding(.top, 20)
+      .padding(.vertical, 8)
       
       Spacer()
     }

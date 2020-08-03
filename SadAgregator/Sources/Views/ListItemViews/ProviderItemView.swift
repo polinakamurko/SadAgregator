@@ -18,8 +18,7 @@ struct ProviderItemView: View {
         Text(provider.name?.capitalized ?? "")
         Spacer()
         Group {
-          Text(provider.act ?? "")
-          Image(systemName: "chevron.right")
+          Text(provider.act ?? "Очень давно")
         }
         .font(.subheadline)
         .foregroundColor(Color(UIColor.systemGray3))
@@ -79,9 +78,11 @@ struct ProviderItemView: View {
           .cornerRadius(13)
         }
         
-        Text("Нет уникального контента")
-          .font(.system(size: 15))
-          .foregroundColor(Color(UIColor.systemGray))
+        if (provider.pop ?? 0) == 0 {
+          Text("Нет уникального контента")
+            .font(.system(size: 15))
+            .foregroundColor(Color(UIColor.systemGray))
+        }
       }
       
       Divider()

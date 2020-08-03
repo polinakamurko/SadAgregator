@@ -567,10 +567,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APage": aPage
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APage", value: aPage),
+    ]
     
     let requestBuilder: RequestBuilder<MyProviders>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     

@@ -15,6 +15,8 @@
 		9B50A8652487E8B200B43BAB /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8642487E8B200B43BAB /* TextView.swift */; };
 		9B50A8682489113D00B43BAB /* MasterChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8672489113D00B43BAB /* MasterChoiceView.swift */; };
 		9B5CC10424C5F40200261989 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CC10324C5F40200261989 /* ChangePasswordView.swift */; };
+		9B74674524D2F5F90003A05D /* FavoriteProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74674424D2F5F90003A05D /* FavoriteProvidersView.swift */; };
+		9B74674724D81AEC0003A05D /* FavoriteProviderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74674624D81AEC0003A05D /* FavoriteProviderViewModel.swift */; };
 		9B779EFB24A4BFA1005967B6 /* PopularProvidersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779EFA24A4BFA1005967B6 /* PopularProvidersViewModel.swift */; };
 		9B779EFD24AA07FB005967B6 /* LineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779EFC24AA07FB005967B6 /* LineViewModel.swift */; };
 		9B779EFF24AB70E4005967B6 /* SpotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */; };
@@ -157,6 +159,8 @@
 		9B50A8642487E8B200B43BAB /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		9B50A8672489113D00B43BAB /* MasterChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterChoiceView.swift; sourceTree = "<group>"; };
 		9B5CC10324C5F40200261989 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		9B74674424D2F5F90003A05D /* FavoriteProvidersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProvidersView.swift; sourceTree = "<group>"; };
+		9B74674624D81AEC0003A05D /* FavoriteProviderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProviderViewModel.swift; sourceTree = "<group>"; };
 		9B779EFA24A4BFA1005967B6 /* PopularProvidersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularProvidersViewModel.swift; sourceTree = "<group>"; };
 		9B779EFC24AA07FB005967B6 /* LineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineViewModel.swift; sourceTree = "<group>"; };
 		9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				9B50A8622487B73300B43BAB /* LeaveFeedbackDetailView.swift */,
 				9B96FEF824C06F2B0022D6D9 /* UploadView.swift */,
 				9B5CC10324C5F40200261989 /* ChangePasswordView.swift */,
+				9B74674424D2F5F90003A05D /* FavoriteProvidersView.swift */,
 			);
 			path = DetailViews;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				9B779EFE24AB70E4005967B6 /* SpotViewModel.swift */,
 				9BE9065A24B3709200FD955E /* FeedackItemViewModel.swift */,
 				9BE9066024BF29FE00FD955E /* ProfileViewModel.swift */,
+				9B74674624D81AEC0003A05D /* FavoriteProviderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				BE3F0A862496952A006F605A /* Extensions.swift in Sources */,
 				9BFD671924A0C6D90091110A /* GetVKAppID.swift in Sources */,
 				9BFD671124A0C6D90091110A /* Line.swift in Sources */,
+				9B74674724D81AEC0003A05D /* FavoriteProviderViewModel.swift in Sources */,
 				BE3F0A872496952A006F605A /* APIHelper.swift in Sources */,
 				BE3F0A8D2496952A006F605A /* CodableHelper.swift in Sources */,
 				9BB2FB4D246F0B9900E1B184 /* ProviderView.swift in Sources */,
@@ -841,6 +848,7 @@
 				9B97D4E624A23AA500DB3F5E /* LineListViewModel.swift in Sources */,
 				BE562F4C2475BD01000EDB5C /* SectionTitleView.swift in Sources */,
 				9BFD66ED24A0C6D90091110A /* PostLike.swift in Sources */,
+				9B74674524D2F5F90003A05D /* FavoriteProvidersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
