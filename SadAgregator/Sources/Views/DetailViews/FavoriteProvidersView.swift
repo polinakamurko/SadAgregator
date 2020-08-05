@@ -19,6 +19,11 @@ struct FavoriteProvidersView: View {
           NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: "\(provider.id)"))) {
             ProviderItemView(provider: provider)
               .padding(.vertical, 8)
+            .onAppear {
+              if self.viewModel.favoriteProviders.isLastItem(provider) {
+                self.viewModel.fetchPage()
+              }
+            }
           }
         }
       }

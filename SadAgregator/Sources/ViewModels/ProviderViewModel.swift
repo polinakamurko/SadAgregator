@@ -23,7 +23,7 @@ class ProviderViewModel: ObservableObject {
   }
   
   func fetchProvider() {
-    DefaultAPI.agrIntfVendorCardGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aVendorID: providerID) { (response, error) in
+    DefaultAPI.agrIntfVendorCardGet(aKey: userKey, aVendorID: providerID) { (response, error) in
       if error != nil {
         print(error!)
         return
@@ -31,6 +31,7 @@ class ProviderViewModel: ObservableObject {
       
       if let unwrapped = response {
         self.provider = unwrapped
+        self.providerIsLiked = unwrapped.providerIsLiked
         
         if let reviews = unwrapped.revsInfo?.revs {
           self.reviews = reviews
@@ -42,7 +43,7 @@ class ProviderViewModel: ObservableObject {
   func likeProvider() {
     let newStatus = providerIsLiked ? "0" : "1"
     
-    DefaultAPI.agrUtilsVendorLikeGet(aKey: "VOHCXiRrkonTQNIIFyRlVQL108838058", aVendID: providerID, aStatus: newStatus) { (response, error) in
+    DefaultAPI.agrUtilsVendorLikeGet(aKey: userKey, aVendID: providerID, aStatus: newStatus) { (response, error) in
       if error != nil {
         print(error!)
         return
