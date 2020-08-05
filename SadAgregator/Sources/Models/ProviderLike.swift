@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 public struct ProviderLike: Codable {
 
     public var vendsLkCnt: String?
@@ -26,6 +24,5 @@ public struct ProviderLike: Codable {
         case result
         case speed
     }
-
 }
 

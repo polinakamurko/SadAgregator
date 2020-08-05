@@ -14,6 +14,8 @@ class ProviderViewModel: ObservableObject {
   
   @Published var reviews = [Reviews]()
   
+  @Published var providerIsLiked = false
+  
   let providerID: String
   
   init(providerID: String) {
@@ -33,6 +35,21 @@ class ProviderViewModel: ObservableObject {
         if let reviews = unwrapped.revsInfo?.revs {
           self.reviews = reviews
         }
+      }
+    }
+  }
+  
+  func likeProvider() {
+    let newStatus = providerIsLiked ? "0" : "1"
+    
+    DefaultAPI.agrUtilsVendorLikeGet(aKey: "VOHCXiRrkonTQNIIFyRlVQL108838058", aVendID: providerID, aStatus: newStatus) { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      DispatchQueue.main.async {
+        self.providerIsLiked.toggle()
       }
     }
   }

@@ -15,7 +15,7 @@ class FavoriteProviderViewModel: ObservableObject {
   private var currentPage = 0
   
   func fetchFavoriteProviders() {
-    DefaultAPI.agrClientMyVendorsGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPage: "\(currentPage)"){ (response, error) in
+    DefaultAPI.agrClientMyVendorsGet(aKey: "VOHCXiRrkonTQNIIFyRlVQL108838058", aPage: "\(currentPage)"){ (response, error) in
       if error != nil {
         print(error!)
         return

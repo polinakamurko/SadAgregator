@@ -38,6 +38,10 @@ public struct Provider: Codable {
     }
   }
   
+  public var providerIsLiked: Bool {
+    vendLike == "1"
+  }
+  
   public init(anonym: String? = nil, vendId: String? = nil, vendLike: String? = nil, name: String? = nil, img: String? = nil, phone: String? = nil, placeId: String? = nil, myRate: String? = nil, place: String? = nil, vkLink: String? = nil, pop: String? = nil, regDt: String? = nil, terms: String? = nil, export: Export? = nil, revsInfo: ReviewsInfo? = nil, posts: [Post]? = nil, result: Int? = nil, speed: Int? = nil) {
     self.anonym = anonym
     self.vendId = vendId

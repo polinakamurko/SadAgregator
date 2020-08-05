@@ -12,7 +12,7 @@ struct ProviderView: View {
   
   @ObservedObject var viewModel: ProviderViewModel
   
-  @State var showProviderConditions = false
+  @State private var showProviderConditions = false
   
   var body: some View {
     List {
@@ -147,6 +147,11 @@ struct ProviderView: View {
       .listStyle(GroupedListStyle())
     }
     .onAppear(perform: viewModel.fetchProvider)
+    .navigationBarItems(trailing:
+      Button(action: self.viewModel.likeProvider) {
+        Image(systemName: viewModel.providerIsLiked ? "heart.fill" : "heart")
+      }
+    )
   }
 }
 
