@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MenuView: View {
   
-  @ObservedObject var viewModel: ProfileViewModel
+  @ObservedObject var viewModel: MenuViewModel
   
   var body: some View {
     List {
@@ -19,7 +19,7 @@ struct MenuView: View {
           ProfileView(viewModel: ProfileViewModel())
         ) {
           VStack(alignment: .leading) {
-            Text("Юрий")
+            Text(viewModel.menuContent.name ?? "")
               .font(.system(size: 24, weight: .bold))
               .padding(.bottom, 2)
             Text("Перейти в настройки")
@@ -33,9 +33,12 @@ struct MenuView: View {
       Section {
         NavigationLink(destination: FavoriteProvidersView(viewModel: FavoriteProviderViewModel())
         ) {
-          DetailItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: "0")
+          DetailItemView(systemImageName: "person.2", mainText: "Избранные поставщики", detailedText: viewModel.menuContent.favoriteProviders ?? "")
         }
-        DetailItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: "57")
+        NavigationLink(destination: LikedPostsView(viewModel: LikedPostsViewModel())
+        ) {
+        DetailItemView(systemImageName: "rectangle.on.rectangle", mainText: "Избранные посты", detailedText: viewModel.menuContent.likedPosts ?? "")
+        }
         DetailItemView(systemImageName: "person.crop.circle.badge.plus", mainText: "Новый поставщик")
       }
       
@@ -63,11 +66,12 @@ struct MenuView: View {
     .navigationBarHidden(true)
     .listStyle(GroupedListStyle())
     .environment(\.horizontalSizeClass, .regular)
+    .onAppear(perform: viewModel.fetchMenu)
   }
 }
 
 struct MenuView_Previews: PreviewProvider {
   static var previews: some View {
-    MenuView(viewModel: ProfileViewModel())
+    MenuView(viewModel: MenuViewModel())
   }
 }

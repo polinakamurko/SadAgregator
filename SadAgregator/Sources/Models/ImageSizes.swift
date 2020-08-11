@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ServerImage: Codable {
+public struct ImageSizes: Codable {
   
   public var n: String?
   public var w: Int?

@@ -20,7 +20,7 @@ public struct Post: Codable {
   public var views: String?
   public var posted: String?
   public var text: String?
-  public var images: [ServerImage]?
+  public var images: [Images]?
   public var sizes: [String]?
   public var options: [String]?
   
@@ -36,7 +36,22 @@ public struct Post: Codable {
     text?.replacingOccurrences(of: "<br>", with: "\n") ?? ""
   }
   
-  public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [ServerImage]? = nil, sizes: [String]? = nil, options: [String]? = nil) {
+  
+  var imageUrls: [String] {
+    if let serverImages = images {
+      var imageNames = [String]()
+      for image in serverImages {
+        if let imageName = image.image {
+          imageNames.append(imageName)
+        }
+      }
+      return imageNames
+    } else {
+      return []
+    }
+  }
+  
+  public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [Images]? = nil, sizes: [String]? = nil, options: [String]? = nil) {
     self._id = _id
     self.vendorCapt = vendorCapt
     self.vendorId = vendorId

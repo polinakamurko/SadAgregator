@@ -98,6 +98,9 @@ struct PostItemView: View {
       .padding(.vertical, 8)
       .listRowInsets(EdgeInsets())
       
+      // Photos
+      PhotoGalleryView(images: post.imageUrls)
+      
       HStack {
         VStack(alignment: .leading) {
           Text(post.posted ?? "")

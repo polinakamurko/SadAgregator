@@ -380,9 +380,9 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey)
+    ]
     
     let requestBuilder: RequestBuilder<GetUserProfile>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     

@@ -27,7 +27,7 @@ struct RootView: View {
         }
 
       NavigationView {
-        MenuView(viewModel: ProfileViewModel())
+        MenuView(viewModel: MenuViewModel())
       }
       .tabItem {
         Image(systemName: "line.horizontal.3")
