@@ -38,21 +38,24 @@ struct PostItemView: View {
         .font(.system(size: 17, weight: .medium))
         .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
         
-        HStack {
-          Text("Размеры")
-            .fontWeight(.medium)
-            .fixedSize(horizontal: true, vertical: true)
-          
-          Group {
-            ForEach(post.sizes ?? [], id: \.self) { size in
-              Text(size)
+        
+        if (post.sizes ?? []).isEmpty == false {
+          HStack {
+            Text("Размеры")
+              .fontWeight(.medium)
+              .fixedSize(horizontal: true, vertical: true)
+            
+            Group {
+              ForEach(post.sizes ?? [], id: \.self) { size in
+                Text(size)
+              }
             }
+            .padding(.horizontal, 8)
+            .frame(height: 24)
+            .foregroundColor(Color(red: 58/255, green: 58/255, blue: 60/255))
+            .background(Color(red: 248/255, green: 248/255, blue: 249/255))
+            .cornerRadius(12)
           }
-          .padding(.horizontal, 8)
-          .frame(height: 24)
-          .foregroundColor(Color(red: 58/255, green: 58/255, blue: 60/255))
-          .background(Color(red: 248/255, green: 248/255, blue: 249/255))
-          .cornerRadius(12)
         }
         HStack {
           Group {
