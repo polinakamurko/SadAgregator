@@ -143,6 +143,20 @@ struct ProviderView: View {
             FeedbackItemView(feedback: review)
           }
         }
+        
+        Section {
+          SectionTitleView<Text>("Последние посты")
+          
+          ForEach(viewModel.posts) { post in
+            PostItemView(post: post)
+              .listRowInsets(EdgeInsets())
+              .onAppear {
+                if self.viewModel.posts.isLastItem(post) {
+                  self.viewModel.loadNextPage()
+                }
+            }
+          }
+        }
       }
       .listStyle(GroupedListStyle())
     }

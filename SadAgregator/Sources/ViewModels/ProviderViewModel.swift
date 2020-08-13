@@ -11,16 +11,17 @@ import SwiftUI
 class ProviderViewModel: ObservableObject {
   
   @Published var provider = Provider()
-  
   @Published var reviews = [Reviews]()
-  
   @Published var providerIsLiked = false
+  @Published var posts = [Post]()
   
   let providerID: String
   
   init(providerID: String) {
     self.providerID = providerID
   }
+  
+  private var currentPage = 0
   
   func fetchProvider() {
     DefaultAPI.agrIntfVendorCardGet(aKey: userKey, aVendorID: providerID) { (response, error) in
@@ -29,11 +30,12 @@ class ProviderViewModel: ObservableObject {
         return
       }
       
-      if let unwrapped = response {
-        self.provider = unwrapped
-        self.providerIsLiked = unwrapped.providerIsLiked
+      if let provider = response {
+        self.provider = provider
+        self.posts = provider.posts ?? []
+        self.providerIsLiked = provider.providerIsLiked
         
-        if let reviews = unwrapped.revsInfo?.revs {
+        if let reviews = provider.revsInfo?.revs {
           self.reviews = reviews
         }
       }
@@ -54,5 +56,21 @@ class ProviderViewModel: ObservableObject {
       }
     }
   }
+  
+  func loadNextPage() {
+     
+     currentPage += 1
+    
+     DefaultAPI.agrIntfGetVendPostsPagingGet(aKey: userKey, aVendorID: providerID, aPage: "\(currentPage)"){ (response, error) in
+       if error != nil {
+         print(error!)
+         return
+       }
+       
+       if let posts = response?.posts {
+         self.posts.append(contentsOf: posts)
+       }
+     }
+   }
 }
 
