@@ -31,13 +31,14 @@ struct PostItemView: View {
           }
         }
         
-        HStack {
-          Text(post.by?.capitalized ?? "")
-          Image(systemName: "chevron.right")
+        NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: post.vendorId!))) {
+          HStack {
+            Text(post.by?.capitalized ?? "")
+            Image(systemName: "chevron.right")
+          }
+          .font(.system(size: 17, weight: .medium))
+          .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
         }
-        .font(.system(size: 17, weight: .medium))
-        .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
-        
         
         if (post.sizes ?? []).isEmpty == false {
           HStack {
@@ -102,7 +103,7 @@ struct PostItemView: View {
       .listRowInsets(EdgeInsets())
       
       // Photos
-      PhotoGalleryView(images: post.imageUrls)
+      PhotoGalleryView(imageUrlStrings: post.imageUrls)
       
       HStack {
         VStack(alignment: .leading) {
@@ -131,13 +132,16 @@ struct PostItemView: View {
               UploadView()
             }
           }
+          .buttonStyle(BorderlessButtonStyle())
           Image(systemName:"heart")
+          
         }
         .padding(.horizontal, 8)
         .frame(height: 32)
         .foregroundColor(Color(UIColor.darkGray))
         .background(Color(UIColor.systemGray6))
         .cornerRadius(10)
+      
         
       }
       .padding()
