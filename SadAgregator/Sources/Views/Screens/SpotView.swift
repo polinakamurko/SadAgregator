@@ -72,9 +72,23 @@ struct SpotView: View {
         ForEach(viewModel.providers) { provider in
           NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: "\(provider.id)"))) {
             ProviderItemView(provider: provider)
-              
+            
           }
           .listRowInsets(EdgeInsets())
+        }
+        
+        Section {
+          SectionTitleView<Text>("Последние посты")
+          
+          ForEach(viewModel.posts) { post in
+            PostItemView(post: post)
+              .listRowInsets(EdgeInsets())
+              .onAppear {
+                if self.viewModel.posts.isLastItem(post) {
+                  self.viewModel.loadNextPage()
+                }
+            }
+          }
         }
       }
       .onAppear(perform: viewModel.fetchSpot)

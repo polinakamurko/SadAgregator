@@ -13,12 +13,15 @@ class SpotViewModel: ObservableObject {
   @Published var spot = Spot()
   @Published var totalActivity = TotalActivity()
   @Published var providers = [Providers]()
+  @Published var posts = [Post]()
   
   let spotID: String
   
   init(spotID: String) {
     self.spotID = spotID
   }
+  
+  private var currentPage = 0
   
   func fetchSpot() {
     DefaultAPI.agrIntfActivityPointGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPointID: spotID) { (response, error) in
@@ -27,10 +30,27 @@ class SpotViewModel: ObservableObject {
         return
       }
       
-      if let unwrapped = response {
-        self.spot = unwrapped
-        self.totalActivity = unwrapped.activity ?? TotalActivity()
-        self.providers = unwrapped.vends ?? []
+      if let spot = response {
+        self.spot = spot
+        self.posts = spot.posts ?? []
+        self.totalActivity = spot.activity ?? TotalActivity()
+        self.providers = spot.vends ?? []
+      }
+    }
+  }
+  
+  func loadNextPage() {
+    
+    currentPage += 1
+    
+    DefaultAPI.agrIntfPointPostsPagingGet(aKey: userKey, aPointID: spotID, aPage: "\(currentPage)"){ (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      if let posts = response?.posts {
+        self.posts.append(contentsOf: posts)
       }
     }
   }
