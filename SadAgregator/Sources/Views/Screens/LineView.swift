@@ -64,13 +64,15 @@ struct LineView: View {
         Section {
           SectionTitleView<Text>("Последние посты")
           
-          //          ForEach(viewModel.line.posts ?? <#default value#>) { post in
-          //            PostItemView(post: post)
-          //              .listRowInsets(EdgeInsets())
-          //              .onAppear {
-          //                self.onPostShowed(post)
-          //            }
-          //          }
+          ForEach(viewModel.posts) { post in
+            PostItemView(post: post)
+              .listRowInsets(EdgeInsets())
+              .onAppear {
+                if self.viewModel.posts.isLastItem(post) {
+                  self.viewModel.loadNextPage()
+                }
+            }
+          }
         }
       }
     }

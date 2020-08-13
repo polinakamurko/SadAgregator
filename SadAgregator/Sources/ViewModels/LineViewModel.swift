@@ -12,11 +12,14 @@ class LineViewModel: ObservableObject {
   
   @Published var line = Line()
   @Published var totalActivity = TotalActivity()
+  @Published var posts = [Post]()
   
   let lineID: String
   init(lineID: String) {
     self.lineID = lineID
   }
+  
+  private var currentPage = 0
   
   func fetchLine() {
     DefaultAPI.agrIntfActivityLineGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aLineID: lineID) { (response, error) in
@@ -25,9 +28,26 @@ class LineViewModel: ObservableObject {
         return
       }
       
-      if let unwrapped = response {
-        self.line = unwrapped
-        self.totalActivity = unwrapped.activity ?? TotalActivity()
+      if let line = response {
+        self.line = line
+        self.posts = line.posts ?? []
+        self.totalActivity = line.activity ?? TotalActivity()
+      }
+    }
+  }
+  
+  func loadNextPage() {
+    
+    currentPage += 1
+    
+    DefaultAPI.agrIntfLinePostsPagingGet(aKey: userKey, aLineID: lineID, aPage: "\(currentPage)"){ (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      if let posts = response?.posts {
+        self.posts.append(contentsOf: posts)
       }
     }
   }
