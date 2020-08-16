@@ -61,7 +61,11 @@ struct MainView: View {
               Text(viewModel.helpText)
             }
             .sheet(isPresented: $viewModel.presentSafariView) {
-              SafariView(url: URL(string: self.viewModel.helpURL))
+              if self.viewModel.helpURL.isEmpty == false {
+                SafariView(url: URL(string: self.viewModel.helpURL))
+              } else {
+                Text("Страница недоступна")
+              }
             }
             
             HStack {

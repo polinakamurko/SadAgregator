@@ -32,7 +32,7 @@ class MainViewModel: ObservableObject {
   
   @Published var helpText = "Как работает поиск?"
   @Published var presentSafariView = false
-  @Published var helpURL = ""
+  @Published var helpURL = "https://m.vk.com/@tksad_andriod_ios-kak-rabotaet-poisk-v-agregatore-postavschikov"
   
   @Published var searchStatistics = [CntListItem]()
   
