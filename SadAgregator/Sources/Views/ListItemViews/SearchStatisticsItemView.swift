@@ -9,14 +9,31 @@
 import SwiftUI
 
 struct SearchStatisticsItemView: View {
+  
   let index: Int
-  let title, number: String
+  let title: String
+  let number: String
+  
+  init(index: Int, title: String, number: String) {
+    self.index = index
+    self.number = number
+    
+    switch title {
+    case "today":
+      self.title = "Сегодня"
+    case "ystd":
+      self.title = "Вчера"
+    default:
+      self.title = "Другое"
+    }
+  }
   
   var body: some View {
     HStack {
       Text(title)
       Text(number)
     }
+    .font(Font.footnote.bold())
     .padding(.horizontal, 8)
     .frame(height: 24)
     .background((Color(red: 248/255, green: 248/255, blue: 249/255)))

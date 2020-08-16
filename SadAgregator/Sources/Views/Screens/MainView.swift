@@ -31,10 +31,17 @@ struct MainView: View {
       if viewModel.inSearchMode {
         HStack {
           ForEach(0..<viewModel.searchStatistics.count, id: \.self) { index in
-            SearchStatisticsItemView(
-              index: index + 1,
-              title: self.viewModel.searchStatistics[index].type ?? "",
-              number: self.viewModel.searchStatistics[index].cnt ?? "")
+            HStack {
+              SearchStatisticsItemView(
+                index: index + 1,
+                title: self.viewModel.searchStatistics[index].type ?? "",
+                number: self.viewModel.searchStatistics[index].cnt ?? ""
+              )
+              
+              if index < self.viewModel.searchStatistics.count - 1 {
+                Spacer()
+              }
+            }
           }
         }
         .frame(maxWidth: .infinity)
