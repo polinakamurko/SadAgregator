@@ -17,6 +17,8 @@ class ImageLoader: ObservableObject {
   private var cancellable: AnyCancellable?
   private var cache: ImageCache?
   
+  private(set) var isLoading = false
+  
   init(url: URL, cache: ImageCache? = nil) {
     self.url = url
     self.cache = cache
@@ -27,6 +29,8 @@ class ImageLoader: ObservableObject {
   }
   
   func load() {
+    guard !isLoading else { return }
+    
     if let image = cache?[url] {
       self.image = image
       return
@@ -35,7 +39,12 @@ class ImageLoader: ObservableObject {
     cancellable = URLSession.shared.dataTaskPublisher(for: url)
       .map { UIImage(data: $0.data) }
       .replaceError(with: nil)
-      .handleEvents(receiveOutput: { [weak self] in self?.cache($0) })
+      .handleEvents(
+        receiveSubscription: { [weak self] _ in self?.onStart() },
+        receiveOutput: { [weak self] in self?.cache($0) },
+        receiveCompletion: { [weak self] _ in self?.onFinish() },
+        receiveCancel: { [weak self] in self?.onFinish() }
+      )
       .receive(on: DispatchQueue.main)
       .assign(to: \.image, on: self)
   }
@@ -46,5 +55,13 @@ class ImageLoader: ObservableObject {
   
   private func cache(_ image: UIImage?) {
     image.map { cache?[url] = $0 }
+  }
+  
+  func onStart() {
+    isLoading = true
+  }
+  
+  func onFinish() {
+    isLoading = false
   }
 }
