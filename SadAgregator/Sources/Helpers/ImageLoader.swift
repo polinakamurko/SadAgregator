@@ -11,6 +11,8 @@ import Combine
 
 class ImageLoader: ObservableObject {
   
+  private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
+  
   @Published var image: UIImage?
   
   private let url: URL
@@ -37,6 +39,7 @@ class ImageLoader: ObservableObject {
     }
     
     cancellable = URLSession.shared.dataTaskPublisher(for: url)
+      .subscribe(on: Self.imageProcessingQueue)
       .map { UIImage(data: $0.data) }
       .replaceError(with: nil)
       .handleEvents(
