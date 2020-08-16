@@ -12,33 +12,22 @@ struct MainView: View {
   
   @ObservedObject var viewModel: MainViewModel
   
-  @State private var showHowSearchWorksButton = true
-  
   var body: some View {
     VStack {
       if !viewModel.inSearchMode {
         Text("Главная")
-          .fontWeight(.semibold)
+          .font(.headline)
           .padding(.top)
           .transition(.customNavbar)
       }
       
-      HStack { // Search Bar
-        SearchField(
-          searchQuery: $viewModel.searchQuery,
-          showCancelButton: $viewModel.inSearchMode,
-          imageSearchEnabled: true
-        )
-        
-        if viewModel.inSearchMode {
-          Button(action: cancelSearchEditing) {
-            Text("Отмена").foregroundColor(Color(.systemBlue))
-          }
-        }
-      }
-      .padding(.horizontal)
-      .padding(.vertical, 8)
+      MainSearchBar(
+        searchQuery: $viewModel.searchQuery,
+        searchModeEnabled: $viewModel.inSearchMode,
+        cancelAction: cancelSearchEditing
+      )
       
+      // Search Results
       if viewModel.inSearchMode {
         HStack {
           ForEach(0..<viewModel.searchStatistics.count, id: \.self) { index in
@@ -47,13 +36,12 @@ struct MainView: View {
               title: self.viewModel.searchStatistics[index].type ?? "",
               number: self.viewModel.searchStatistics[index].cnt ?? "")
           }
-          
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 4)
         .padding(.horizontal, 16)
         
-        if showHowSearchWorksButton {
+        if viewModel.showHowSearchWorks {
           ZStack {
             Button(action: {
               self.viewModel.presentSafariView = true
@@ -71,7 +59,8 @@ struct MainView: View {
             HStack {
               Spacer()
               Button(action: {
-                self.showHowSearchWorksButton = false
+                self.viewModel.showHowSearchWorks = false
+                UserDefaults.standard.set(false, forKey: UserDefaultsKey.showHowMainSearchWorks.rawValue)
               }) {
                 Image(systemName: "xmark")
               }
@@ -195,5 +184,31 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
     MainView(viewModel: MainViewModel())
+  }
+}
+
+struct MainSearchBar: View {
+  
+  @Binding var searchQuery: String
+  @Binding var searchModeEnabled: Bool
+  
+  var cancelAction: () -> Void
+  
+  var body: some View {
+    HStack { // Search Bar
+      SearchField(
+        searchQuery: $searchQuery,
+        showCancelButton: $searchModeEnabled,
+        imageSearchEnabled: true
+      )
+      
+      if searchModeEnabled {
+        Button(action: cancelAction) {
+          Text("Отмена").foregroundColor(Color(.systemBlue))
+        }
+      }
+    }
+    .padding(.horizontal)
+    .padding(.vertical, 8)
   }
 }

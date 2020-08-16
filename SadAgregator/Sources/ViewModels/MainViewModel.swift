@@ -34,6 +34,8 @@ class MainViewModel: ObservableObject {
   @Published var presentSafariView = false
   @Published var helpURL = "https://m.vk.com/@tksad_andriod_ios-kak-rabotaet-poisk-v-agregatore-postavschikov"
   
+  @Published var showHowSearchWorks = UserDefaults.standard.bool(forKey: UserDefaultsKey.showHowMainSearchWorks.rawValue)
+  
   @Published var searchStatistics = [CntListItem]()
   
   var currentPage = 0
