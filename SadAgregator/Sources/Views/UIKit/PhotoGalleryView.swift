@@ -13,240 +13,218 @@ struct PhotoGalleryView: View {
   
   let imageUrlStrings: [String]
   
-  @State private var images: [UIImage] = []
+  private var imageUrls: [URL] {
+    imageUrlStrings.map { URL(string: $0)! }
+  }
   
   var body: some View {
     VStack {
-      if images.count == 1 {
-        Image(uiImage: images[0])
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .background(Color.black)
+      if imageUrls.count == 1 {
+        AsyncImage(
+          url: imageUrls[0],
+          placeholder: Text("Loading")
+        )
       }
       
-      if images.count == 2 {
+      if imageUrls.count == 2 {
         HStack {
-          Image(uiImage: images[0])
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .background(Color.black)
-          Image(uiImage: images[1])
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .background(Color.black)
+          AsyncImage(
+            url: imageUrls[0],
+            placeholder: Text("Loading")
+          )
+          AsyncImage(
+            url: imageUrls[1],
+            placeholder: Text("Loading")
+          )
         }
       }
       
-      if images.count == 3 {
+      if imageUrls.count == 3 {
         HStack {
-          Image(uiImage: images[0])
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .background(Color.black)
+          AsyncImage(
+            url: imageUrls[0],
+            placeholder: Text("Loading")
+          )
           
           VStack {
-            Image(uiImage: images[1])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
-            Image(uiImage: images[2])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[1],
+              placeholder: Text("Loading")
+            )
+            AsyncImage(
+              url: imageUrls[2],
+              placeholder: Text("Loading")
+            )
           }
         }
       }
       
-      if images.count == 4 {
+      if imageUrls.count == 4 {
         HStack {
-          Image(uiImage: images[0])
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .background(Color.black)
+          AsyncImage(
+            url: imageUrls[1],
+            placeholder: Text("Loading")
+          )
           
           VStack {
             ForEach(2..<4, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
         }
       }
       
-      if images.count == 5 {
+      if imageUrls.count == 5 {
         VStack {
           HStack {
-            Image(uiImage: images[0])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
-            Image(uiImage: images[1])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[0],
+              placeholder: Text("Loading")
+            )
+            AsyncImage(
+              url: imageUrls[1],
+              placeholder: Text("Loading")
+            )
           }
           HStack {
             ForEach(2..<5, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
         }
       }
       
-      if images.count == 6 {
+      if imageUrls.count == 6 {
         VStack {
           HStack {
-            Image(uiImage: images[0])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
-            Image(uiImage: images[1])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[0],
+              placeholder: Text("Loading")
+            )
+            AsyncImage(
+              url: imageUrls[1],
+              placeholder: Text("Loading")
+            )
           }
           HStack {
             ForEach(2..<6, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
         }
       }
       
-      if images.count == 7 {
+      if imageUrls.count == 7 {
         VStack {
           HStack {
-            Image(uiImage: images[0])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
-            Image(uiImage: images[1])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[0],
+              placeholder: Text("Loading")
+            )
+            AsyncImage(
+              url: imageUrls[1],
+              placeholder: Text("Loading")
+            )
           }
           HStack {
             ForEach(2..<7, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
         }
       }
       
-      if images.count == 8 {
+      if imageUrls.count == 8 {
         VStack {
           HStack {
-            Image(uiImage: images[0])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
-            Image(uiImage: images[1])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[0],
+              placeholder: Text("Loading")
+            )
+            AsyncImage(
+              url: imageUrls[1],
+              placeholder: Text("Loading")
+            )
           }
           HStack {
             ForEach(2..<8, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
         }
       }
       
-      if images.count == 9 {
+      if imageUrls.count == 9 {
         VStack {
           HStack {
-            Image(uiImage: images[0])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[0],
+              placeholder: Text("Loading")
+            )
             VStack {
-              Image(uiImage: images[1])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
-              Image(uiImage: images[2])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: imageUrls[1],
+                placeholder: Text("Loading")
+              )
+              AsyncImage(
+                url: imageUrls[2],
+                placeholder: Text("Loading")
+              )
             }
           }
           HStack {
             ForEach(3..<9, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
         }
       }
       
-      if images.count == 10 {
+      if imageUrls.count == 10 {
         VStack {
           HStack {
-            Image(uiImage: images[0])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
-            Image(uiImage: images[1])
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .background(Color.black)
+            AsyncImage(
+              url: imageUrls[0],
+              placeholder: Text("Loading")
+            )
+            AsyncImage(
+              url: imageUrls[1],
+              placeholder: Text("Loading")
+            )
           }
           HStack {
             ForEach(2..<5, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
           }
           HStack {
             ForEach(5..<10, id: \.self) { index in
-              Image(uiImage: self.images[index])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .background(Color.black)
+              AsyncImage(
+                url: self.imageUrls[index],
+                placeholder: Text("Loading")
+              )
             }
-          }
-        }
-      }
-    }
-    .onAppear(perform: loadImages)
-  }
-  
-  private func loadImages() {
-    imageUrlStrings.forEach { imageUrlString in
-      if let url = URL(string: imageUrlString) {
-        self.fetchImage(for: url)
-      }
-    }
-  }
-  
-  private func fetchImage(for url: URL) {
-    let request = Alamofire.request(url)
-    
-    request.responseData { response in
-      if let data = response.data {
-        DispatchQueue.main.async {
-          if let image = UIImage(data: data) {
-            self.images.append(image)
-            return
           }
         }
       }
