@@ -93,6 +93,7 @@ struct SpotView: View {
       }
       .onAppear(perform: viewModel.fetchSpot)
     }
+    .navigationBarHidden(false)
   }
 }
 
