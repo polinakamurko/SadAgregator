@@ -40,7 +40,7 @@ public struct Post: Codable {
     if let serverImages = images {
       var imageNames = [String]()
       for image in serverImages {
-        if let imageName = image.image {
+        if let imageName = image.image?.replacingOccurrences(of: "orig", with: "250") {
           imageNames.append(imageName)
         }
       }
