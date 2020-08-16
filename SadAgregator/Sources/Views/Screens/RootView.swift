@@ -20,7 +20,7 @@ struct RootView: View {
           .font(.system(size: 20))
       }
 
-      PopularProvidersView(viewModel: PopularProvidersViewModel())
+      TopProvidersView(viewModel: TopProvidersViewModel())
         .tabItem {
           Image(systemName: "bolt.fill")
             .font(.system(size: 20))

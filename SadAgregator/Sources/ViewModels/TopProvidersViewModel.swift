@@ -1,5 +1,5 @@
 //
-//  PopularProvidersViewModel.swift
+//  TopProvidersViewModel.swift
 //  SadAgregator
 //
 //  Created by Полина on 25.06.2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class PopularProvidersViewModel: ObservableObject {
+class TopProvidersViewModel: ObservableObject {
   
   @Published var topProviders = [ProviderItem]()
   @Published var query: String = "" {

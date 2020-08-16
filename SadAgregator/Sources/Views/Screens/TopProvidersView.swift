@@ -1,5 +1,5 @@
 //
-//  PopularProvidersView.swift
+//  TopProvidersView.swift
 //  SadAgregator
 //
 //  Created by Yura Istomin on 13.05.2020.
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct PopularProvidersView: View {
+struct TopProvidersView: View {
   
-  @ObservedObject var viewModel: PopularProvidersViewModel
+  @ObservedObject var viewModel: TopProvidersViewModel
   
   @State private var searchQuery = ""
   @State private var showCancelButton = false
@@ -118,6 +118,6 @@ struct PopularProvidersView: View {
 
 struct PopularProvidersView_Previews: PreviewProvider {
   static var previews: some View {
-    PopularProvidersView(viewModel: PopularProvidersViewModel())
+    TopProvidersView(viewModel: TopProvidersViewModel())
   }
 }
