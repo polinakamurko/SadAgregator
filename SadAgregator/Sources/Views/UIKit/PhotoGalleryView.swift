@@ -11,6 +11,8 @@ import Alamofire
 
 struct PhotoGalleryView: View {
   
+  @Environment(\.imageCache) var cache
+  
   let imageUrlStrings: [String]
   
   private var imageUrls: [URL] {
@@ -22,7 +24,8 @@ struct PhotoGalleryView: View {
       if imageUrls.count == 1 {
         AsyncImage(
           url: imageUrls[0],
-          placeholder: Text("Loading")
+          placeholder: Text("Loading"),
+          cache: cache
         )
       }
       
@@ -30,11 +33,13 @@ struct PhotoGalleryView: View {
         HStack {
           AsyncImage(
             url: imageUrls[0],
-            placeholder: Text("Loading")
+            placeholder: Text("Loading"),
+            cache: cache
           )
           AsyncImage(
             url: imageUrls[1],
-            placeholder: Text("Loading")
+            placeholder: Text("Loading"),
+            cache: cache
           )
         }
       }
@@ -43,17 +48,20 @@ struct PhotoGalleryView: View {
         HStack {
           AsyncImage(
             url: imageUrls[0],
-            placeholder: Text("Loading")
+            placeholder: Text("Loading"),
+            cache: cache
           )
           
           VStack {
             AsyncImage(
               url: imageUrls[1],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             AsyncImage(
               url: imageUrls[2],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
           }
         }
@@ -63,14 +71,16 @@ struct PhotoGalleryView: View {
         HStack {
           AsyncImage(
             url: imageUrls[1],
-            placeholder: Text("Loading")
+            placeholder: Text("Loading"),
+            cache: cache
           )
           
           VStack {
             ForEach(2..<4, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -82,18 +92,21 @@ struct PhotoGalleryView: View {
           HStack {
             AsyncImage(
               url: imageUrls[0],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             AsyncImage(
               url: imageUrls[1],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
           }
           HStack {
             ForEach(2..<5, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -105,18 +118,21 @@ struct PhotoGalleryView: View {
           HStack {
             AsyncImage(
               url: imageUrls[0],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             AsyncImage(
               url: imageUrls[1],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
           }
           HStack {
             ForEach(2..<6, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -128,18 +144,21 @@ struct PhotoGalleryView: View {
           HStack {
             AsyncImage(
               url: imageUrls[0],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             AsyncImage(
               url: imageUrls[1],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
           }
           HStack {
             ForEach(2..<7, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -151,18 +170,21 @@ struct PhotoGalleryView: View {
           HStack {
             AsyncImage(
               url: imageUrls[0],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             AsyncImage(
               url: imageUrls[1],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
           }
           HStack {
             ForEach(2..<8, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -174,16 +196,19 @@ struct PhotoGalleryView: View {
           HStack {
             AsyncImage(
               url: imageUrls[0],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             VStack {
               AsyncImage(
                 url: imageUrls[1],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: cache
               )
               AsyncImage(
                 url: imageUrls[2],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: cache
               )
             }
           }
@@ -191,7 +216,8 @@ struct PhotoGalleryView: View {
             ForEach(3..<9, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -203,18 +229,21 @@ struct PhotoGalleryView: View {
           HStack {
             AsyncImage(
               url: imageUrls[0],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
             AsyncImage(
               url: imageUrls[1],
-              placeholder: Text("Loading")
+              placeholder: Text("Loading"),
+              cache: cache
             )
           }
           HStack {
             ForEach(2..<5, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
@@ -222,7 +251,8 @@ struct PhotoGalleryView: View {
             ForEach(5..<10, id: \.self) { index in
               AsyncImage(
                 url: self.imageUrls[index],
-                placeholder: Text("Loading")
+                placeholder: Text("Loading"),
+                cache: self.cache
               )
             }
           }
