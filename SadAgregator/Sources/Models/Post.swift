@@ -36,7 +36,6 @@ public struct Post: Codable {
     text?.replacingOccurrences(of: "<br>", with: "\n") ?? ""
   }
   
-  
   var imageUrls: [String] {
     if let serverImages = images {
       var imageNames = [String]()

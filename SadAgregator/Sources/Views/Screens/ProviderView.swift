@@ -73,31 +73,34 @@ struct ProviderView: View {
           }
           .padding(.horizontal)
           
-          VStack {
-            ZStack {
-              Color(UIColor.systemGray6)
-                .frame(height: 34)
-              Text("Условия сотрудничества")
-              Button(action: {
-                self.showProviderConditions.toggle()
-              }) {
-                Image(systemName: showProviderConditions ? "chevron.up" : "chevron.down")
-                  
-                  .frame(maxWidth: .infinity, alignment: .trailing)
-                  .padding(.trailing)
+          if viewModel.provider.cleanTerms?.isEmpty == false {
+            VStack {
+              ZStack {
+                Color(UIColor.systemGray6)
+                  .frame(height: 34)
+                Text("Условия сотрудничества")
+                Button(action: {
+                  self.showProviderConditions.toggle()
+                }) {
+                  Image(systemName: showProviderConditions ? "chevron.up" : "chevron.down")
+                    
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .foregroundColor(Color(UIColor.darkGray))
               }
-              .buttonStyle(BorderlessButtonStyle())
-              .foregroundColor(Color(UIColor.darkGray))
-            }
-            if showProviderConditions {
-              Text(viewModel.provider.terms ?? "")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .padding(.bottom)
               
+              if showProviderConditions {
+                Text(viewModel.provider.cleanTerms!)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .padding(.horizontal)
+                  .padding(.bottom)
+                
+              }
             }
+            .background(Color(UIColor.systemGray6))
           }
-          .background(Color(UIColor.systemGray6))
           
         }
         .listRowInsets(EdgeInsets())

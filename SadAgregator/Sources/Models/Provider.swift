@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 public struct Provider: Codable {
   
   public var anonym: String?
@@ -36,6 +34,10 @@ public struct Provider: Codable {
     } else {
       return "Не указан"
     }
+  }
+  
+  var cleanTerms: String? {
+    terms?.replacingOccurrences(of: "<br>", with: "\n")
   }
   
   public var providerIsLiked: Bool {
