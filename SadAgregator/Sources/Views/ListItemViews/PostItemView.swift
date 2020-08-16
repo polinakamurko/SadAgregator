@@ -38,6 +38,7 @@ struct PostItemView: View {
           }
           .font(.system(size: 17, weight: .medium))
           .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
+          .buttonStyle(BorderlessButtonStyle())
         }
         
         if (post.sizes ?? []).isEmpty == false {
