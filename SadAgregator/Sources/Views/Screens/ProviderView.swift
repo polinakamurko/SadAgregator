@@ -118,11 +118,26 @@ struct ProviderView: View {
             Text("Оценить поставщика")
             Spacer()
             Group {
-              Image(systemName: "star.fill")
-              Image(systemName: "star.fill")
-              Image(systemName: "star.fill")
-              Image(systemName: "star")
-              Image(systemName: "star")
+              Image(systemName: viewModel.rate > 0 ? "star.fill" : "star")
+                .onTapGesture {
+                  self.viewModel.rate = 1
+              }
+              Image(systemName: viewModel.rate > 1 ? "star.fill" : "star")
+                .onTapGesture {
+                  self.viewModel.rate = 2
+              }
+              Image(systemName: viewModel.rate > 2 ? "star.fill" : "star")
+                .onTapGesture {
+                  self.viewModel.rate = 3
+              }
+              Image(systemName: viewModel.rate > 3 ? "star.fill" : "star")
+                .onTapGesture {
+                  self.viewModel.rate = 4
+              }
+              Image(systemName: viewModel.rate > 4 ? "star.fill" : "star")
+                .onTapGesture {
+                  self.viewModel.rate = 5
+              }
             }
             .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
           }

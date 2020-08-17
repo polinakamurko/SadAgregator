@@ -14,6 +14,14 @@ class ProviderViewModel: ObservableObject {
   @Published var reviews = [Reviews]()
   @Published var providerIsLiked = false
   @Published var posts = [Post]()
+  @Published var rate = 0 {
+    didSet {
+      if rate > 0 {
+        updateRate()
+      }
+    }
+  }
+
   
   let providerID: String
   
@@ -58,19 +66,28 @@ class ProviderViewModel: ObservableObject {
   }
   
   func loadNextPage() {
-     
-     currentPage += 1
     
-     DefaultAPI.agrIntfGetVendPostsPagingGet(aKey: userKey, aVendorID: providerID, aPage: "\(currentPage)"){ (response, error) in
-       if error != nil {
-         print(error!)
-         return
-       }
-       
-       if let posts = response?.posts {
-         self.posts.append(contentsOf: posts)
-       }
-     }
-   }
+    currentPage += 1
+    
+    DefaultAPI.agrIntfGetVendPostsPagingGet(aKey: userKey, aVendorID: providerID, aPage: "\(currentPage)"){ (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      if let posts = response?.posts {
+        self.posts.append(contentsOf: posts)
+      }
+    }
+  }
+  
+  private func updateRate() {
+    DefaultAPI.agrIntfRateUpdateGet(aKey: userKey, aVendID: providerID, aRate: "\(rate)") { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+    }
+  }
 }
 

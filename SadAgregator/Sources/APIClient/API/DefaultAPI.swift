@@ -1825,11 +1825,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AVendID": aVendID,
-      "ARate": aRate
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AVendID", value: aVendID),
+       URLQueryItem(name: "ARate", value: aRate)
+    ]
     
     let requestBuilder: RequestBuilder<RateUpdate>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
