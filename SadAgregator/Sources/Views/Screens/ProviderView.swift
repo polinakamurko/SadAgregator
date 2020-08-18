@@ -142,7 +142,7 @@ struct ProviderView: View {
             .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
           }
           
-          NavigationLink(destination: LeaveFeedbackDetailView()) {
+          NavigationLink(destination: LeaveFeedbackDetailView(viewModel: LeaveFeedbackViewModel(providerID: viewModel.providerID))) {
             DetailItemView(mainText: "Оставить отзыв")
           }
         }

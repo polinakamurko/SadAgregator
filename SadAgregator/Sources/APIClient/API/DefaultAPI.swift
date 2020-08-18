@@ -1891,7 +1891,7 @@ open class DefaultAPI {
    - parameter aImages: (query) Images
    - parameter completion: completion handler to receive the data and the error objects
    */
-  open class func agrIntfReviewUpdateGet(aKey: String, avendID: String, aRating: String, aTitle: String, aText: String, aImages: String, completion: @escaping ((_ data: ReviewDelete?,_ error: Error?) -> Void)) {
+  open class func agrIntfReviewUpdateGet(aKey: String, avendID: String, aRating: String, aTitle: String, aText: String, aImages: String, completion: @escaping ((_ data: PostResponse?,_ error: Error?) -> Void)) {
     agrIntfReviewUpdateGetWithRequestBuilder(aKey: aKey, avendID: avendID, aRating: aRating, aTitle: aTitle, aText: aText, aImages: aImages).execute { (response, error) -> Void in
       completion(response?.body, error)
     }
@@ -1915,21 +1915,23 @@ open class DefaultAPI {
    
    - returns: RequestBuilder<ReviewDelete>
    */
-  open class func agrIntfReviewUpdateGetWithRequestBuilder(aKey: String, avendID: String, aRating: String, aTitle: String, aText: String, aImages: String) -> RequestBuilder<ReviewDelete> {
+  open class func agrIntfReviewUpdateGetWithRequestBuilder(aKey: String, avendID: String, aRating: String, aTitle: String, aText: String, aImages: String) -> RequestBuilder<PostResponse> {
     let path = "/agr_intf.ReviewUpdate"
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AvendID": avendID,
-      "ARating": aRating,
-      "ATitle": aTitle,
-      "AText": aText,
-      "AImages": aImages
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AvendID", value: avendID),
+      URLQueryItem(name: "ARating", value: aRating),
+      URLQueryItem(name: "ATitle", value: aTitle),
+      URLQueryItem(name: "AText", value: aText),
+      URLQueryItem(name: "AImages", value: aImages)
+    ]
     
-    let requestBuilder: RequestBuilder<ReviewDelete>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    print(url?.string)
+    
+    let requestBuilder: RequestBuilder<PostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
   }

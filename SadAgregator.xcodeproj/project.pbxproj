@@ -10,6 +10,8 @@
 		9B0D77612479B41A00ABF210 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D77602479B41A00ABF210 /* SpotView.swift */; };
 		9B1C17FF2469D91A00EB108B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1C17FE2469D91A00EB108B /* MenuView.swift */; };
 		9B1C1801246C2A2D00EB108B /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1C1800246C2A2D00EB108B /* ActivityItemView.swift */; };
+		9B4527C524EBF2FC00DA573B /* LeaveFeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4527C424EBF2FC00DA573B /* LeaveFeedbackViewModel.swift */; };
+		9B4527C724EBF76F00DA573B /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4527C624EBF76E00DA573B /* PostResponse.swift */; };
 		9B50A8612487ABCE00B43BAB /* FeedbackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8602487ABCE00B43BAB /* FeedbackDetailView.swift */; };
 		9B50A8632487B73300B43BAB /* LeaveFeedbackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8622487B73300B43BAB /* LeaveFeedbackDetailView.swift */; };
 		9B50A8652487E8B200B43BAB /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8642487E8B200B43BAB /* TextView.swift */; };
@@ -164,6 +166,8 @@
 		9B0D77602479B41A00ABF210 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
 		9B1C17FE2469D91A00EB108B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		9B1C1800246C2A2D00EB108B /* ActivityItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
+		9B4527C424EBF2FC00DA573B /* LeaveFeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackViewModel.swift; sourceTree = "<group>"; };
+		9B4527C624EBF76E00DA573B /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		9B50A8602487ABCE00B43BAB /* FeedbackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDetailView.swift; sourceTree = "<group>"; };
 		9B50A8622487B73300B43BAB /* LeaveFeedbackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackDetailView.swift; sourceTree = "<group>"; };
 		9B50A8642487E8B200B43BAB /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -551,6 +555,7 @@
 				9BFD66B724A0C6D30091110A /* UserForgotPass.swift */,
 				BE3F0A742496951B006F605A /* UserKey.swift */,
 				9BFD66CE24A0C6D60091110A /* UserProfile.swift */,
+				9B4527C624EBF76E00DA573B /* PostResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -650,6 +655,7 @@
 				9BE9066024BF29FE00FD955E /* ProfileViewModel.swift */,
 				9B74674624D81AEC0003A05D /* FavoriteProviderViewModel.swift */,
 				9B74676C24E15DCD0003A05D /* LikedPostsViewModel.swift */,
+				9B4527C424EBF2FC00DA573B /* LeaveFeedbackViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -822,6 +828,7 @@
 				BE3F0A872496952A006F605A /* APIHelper.swift in Sources */,
 				BE3F0A8D2496952A006F605A /* CodableHelper.swift in Sources */,
 				9BB2FB4D246F0B9900E1B184 /* ProviderView.swift in Sources */,
+				9B4527C524EBF2FC00DA573B /* LeaveFeedbackViewModel.swift in Sources */,
 				9BE9065B24B3709300FD955E /* FeedackItemViewModel.swift in Sources */,
 				BE3F0A8E2496952A006F605A /* JSONEncodableEncoding.swift in Sources */,
 				9BB2FB4B246F0A4C00E1B184 /* DetailItemView.swift in Sources */,
@@ -830,6 +837,7 @@
 				9B50A8632487B73300B43BAB /* LeaveFeedbackDetailView.swift in Sources */,
 				BE3F0A882496952A006F605A /* APIs.swift in Sources */,
 				9BFD6679248FC4370091110A /* SearchField.swift in Sources */,
+				9B4527C724EBF76F00DA573B /* PostResponse.swift in Sources */,
 				9B97D4E424A23A3100DB3F5E /* LineListView.swift in Sources */,
 				9B779EFB24A4BFA1005967B6 /* TopProvidersViewModel.swift in Sources */,
 				9BFD670824A0C6D90091110A /* Arrows.swift in Sources */,

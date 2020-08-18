@@ -10,47 +10,70 @@ import SwiftUI
 
 struct LeaveFeedbackDetailView: View {
   
-  @State var feedbackTitle = ""
-  @State var feedbackText = ""
+  @ObservedObject var viewModel: LeaveFeedbackViewModel
+  
+  
   
   var body: some View {
     VStack {
       HStack {
-        TextField("Заголовок отзыва", text: $feedbackTitle)
+        TextField("Заголовок отзыва", text: $viewModel.feedbackTitle)
       }
       Divider()
       HStack {
         Text("Оценка")
         Spacer()
         Group {
-          Image(systemName: "star.fill")
-          Image(systemName: "star.fill")
-          Image(systemName: "star.fill")
-          Image(systemName: "star")
-          Image(systemName: "star")
+          Image(systemName: viewModel.rate > 0 ? "star.fill" : "star")
+            .onTapGesture {
+              self.viewModel.rate = 1
+          }
+          Image(systemName: viewModel.rate > 1 ? "star.fill" : "star")
+            .onTapGesture {
+              self.viewModel.rate = 2
+          }
+          Image(systemName: viewModel.rate > 2 ? "star.fill" : "star")
+            .onTapGesture {
+              self.viewModel.rate = 3
+          }
+          Image(systemName: viewModel.rate > 3 ? "star.fill" : "star")
+            .onTapGesture {
+              self.viewModel.rate = 4
+          }
+          Image(systemName: viewModel.rate > 4 ? "star.fill" : "star")
+            .onTapGesture {
+              self.viewModel.rate = 5
+          }
         }
         .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
       }
       Divider()
       
-      TextView(text: $feedbackText)
+      TextField("Текст отзыва", text: $viewModel.feedbackText)
         .padding(.horizontal)
         .frame(height: 196)
       Divider()
       
-      Text("Добавить фото")
-        .frame(maxWidth: .infinity)
-        .font(.system(size: 17))
-        .foregroundColor(.blue)
-        .padding(.vertical, 8)
+      Button(action: {}) {
+        Text("Добавить фото")
+          .frame(maxWidth: .infinity)
+          .font(.system(size: 17))
+          .foregroundColor(.blue)
+          .padding(.vertical, 8)
+      }
+      
       Divider()
       
-      Text("Отправить отзыв")
-        .frame(maxWidth: .infinity)
-        .font(.system(size: 17, weight: .medium))
-        .foregroundColor(.blue)
-        .padding(.vertical, 8)
       
+      Button(action: {
+        self.viewModel.updateFeedback()
+      }) {
+        Text("Отправить отзыв")
+          .frame(maxWidth: .infinity)
+          .font(.system(size: 17, weight: .medium))
+          .foregroundColor(.blue)
+          .padding(.vertical, 8)
+      }
       Spacer()
     }
     .padding()
@@ -59,6 +82,6 @@ struct LeaveFeedbackDetailView: View {
 
 struct LeaveFeedbackDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    LeaveFeedbackDetailView()
+    LeaveFeedbackDetailView(viewModel: LeaveFeedbackViewModel(providerID: "1701"))
   }
 }
