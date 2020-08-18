@@ -56,7 +56,7 @@ struct ProviderView: View {
                     Image(systemName: "star.fill")
                       .padding(.trailing, 4)
                     
-                    Text(viewModel.provider.myRate ?? "0")
+                    Text(viewModel.provider.revsInfo?.cnt ?? "0")
                       .padding(.trailing, 8)
                     
                     Image(systemName: "photo.fill.on.rectangle.fill")
