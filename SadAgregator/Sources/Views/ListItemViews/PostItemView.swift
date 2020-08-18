@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct PostItemView: View {
-  
   @State private var showPostDescription = false
   @State var showUploadView = false
   var post: Post
@@ -36,10 +35,12 @@ struct PostItemView: View {
             Text(post.by?.capitalized ?? "")
             Image(systemName: "chevron.right")
           }
+            
           .font(.system(size: 17, weight: .medium))
           .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
-          .buttonStyle(BorderlessButtonStyle())
+//          .buttonStyle(BorderlessButtonStyle())
         }
+        .buttonStyle(BorderlessButtonStyle())
         
         if (post.sizes ?? []).isEmpty == false {
           HStack {
@@ -107,16 +108,21 @@ struct PostItemView: View {
       PhotoGalleryView(imageUrlStrings: post.imageUrls)
       
       HStack {
-        VStack(alignment: .leading) {
-          Text(post.posted ?? "")
-          Text("См. пост в ВК")
-          .font(.system(size: 13, weight: .bold))
+        Button(action: {
+          self.openURL(URL(string: self.post.vkPost ?? "https://www.apple.com")!)
+        }) {
+          VStack(alignment: .leading) {
+            Text(post.posted ?? "")
+            Text("См. пост в ВК")
+              .font(.system(size: 13, weight: .bold))
+          }
         }
+        .buttonStyle(BorderlessButtonStyle())
         .font(.system(size: 13))
         .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
         
         Spacer()
-       
+        
         Group {
           Image(systemName:"line.horizontal.3")
           Button(action: {
@@ -142,12 +148,16 @@ struct PostItemView: View {
         .foregroundColor(Color(UIColor.darkGray))
         .background(Color(UIColor.systemGray6))
         .cornerRadius(10)
-      
+        
         
       }
       .padding()
     }
     .padding(.top)
+  }
+  
+  func openURL(_ url: URL) {
+    UIApplication.shared.open(url, options: [:], completionHandler: nil)
   }
 }
 
