@@ -9,8 +9,11 @@
 import SwiftUI
 
 struct PostItemView: View {
-  @State private var showPostDescription = false
-  @State var showUploadView = false
+  
+  @State private var showPostDescription: Bool = false
+  @State private var showUploadView: Bool = false
+  @State private var postIsLiked: Bool = false
+  
   var post: Post
   
   var body: some View {
@@ -38,7 +41,7 @@ struct PostItemView: View {
             
           .font(.system(size: 17, weight: .medium))
           .foregroundColor(Color(red: 174/255, green: 174/255, blue: 178/255))
-//          .buttonStyle(BorderlessButtonStyle())
+          //          .buttonStyle(BorderlessButtonStyle())
         }
         .buttonStyle(BorderlessButtonStyle())
         
@@ -140,8 +143,11 @@ struct PostItemView: View {
             }
           }
           .buttonStyle(BorderlessButtonStyle())
-          Image(systemName:"heart")
           
+          Button(action: likePost) {
+            Image(systemName: postIsLiked ? "heart.fill" : "heart")
+          }
+          .buttonStyle(BorderlessButtonStyle())
         }
         .padding(.horizontal, 8)
         .frame(height: 32)
@@ -152,9 +158,29 @@ struct PostItemView: View {
         
       }
       .padding()
+    Divider()
     }
     .padding(.top)
+    .onAppear {
+      self.postIsLiked = self.post.isLiked
+    }
   }
+  
+  func likePost() {
+    
+    postIsLiked.toggle()
+    
+    let newStatus = postIsLiked ? "1" : "0"
+    
+    DefaultAPI.agrUtilsPostLikeGet(aKey: userKey, aPostID: post.id, aStatus: newStatus) { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+    }
+  }
+  
+  
   
   func openURL(_ url: URL) {
     UIApplication.shared.open(url, options: [:], completionHandler: nil)

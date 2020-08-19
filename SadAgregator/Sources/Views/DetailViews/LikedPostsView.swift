@@ -16,9 +16,9 @@ struct LikedPostsView: View {
     VStack {
       List {
         ForEach(viewModel.likedPosts) { post in
-          
             PostItemView(post: post)
               .padding(.vertical, 8)
+              .listRowInsets(EdgeInsets())
             .onAppear {
               if self.viewModel.likedPosts.isLastItem(post) {
                 self.viewModel.fetchPage()

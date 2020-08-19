@@ -21,7 +21,7 @@ class ProviderViewModel: ObservableObject {
       }
     }
   }
-
+  
   
   let providerID: String
   

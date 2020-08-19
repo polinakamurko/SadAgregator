@@ -50,6 +50,10 @@ public struct Post: Codable {
     }
   }
   
+  var isLiked: Bool {
+    like == "1"
+  }
+  
   public init(_id: String? = nil, vendorCapt: String? = nil, vendorId: String? = nil, pointId: String? = nil, vkPost: String? = nil, price: String? = nil, by: String? = nil, like: String? = nil, views: String? = nil, posted: String? = nil, text: String? = nil, images: [Images]? = nil, sizes: [String]? = nil, options: [String]? = nil) {
     self._id = _id
     self.vendorCapt = vendorCapt
