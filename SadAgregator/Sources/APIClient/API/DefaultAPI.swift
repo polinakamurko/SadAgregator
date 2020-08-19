@@ -2595,11 +2595,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APostID": aPostID,
-      "AStatus": aStatus
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APostID", value: aPostID),
+      URLQueryItem(name: "AStatus", value: aStatus),
+    ]
     
     let requestBuilder: RequestBuilder<PostLike>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     

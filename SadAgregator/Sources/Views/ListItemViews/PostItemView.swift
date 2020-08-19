@@ -8,23 +8,51 @@
 
 import SwiftUI
 
+class PostItemViewModel: ObservableObject {
+  @Published var showPostDescription: Bool = false
+  @Published var showUploadView: Bool = false
+  @Published var postIsLiked: Bool
+  
+  @Published var post: Post
+  
+  init(post: Post) {
+    self.post = post
+    self.postIsLiked = post.isLiked
+  }
+  
+  func likePost() {
+    
+    postIsLiked.toggle()
+    
+    let newStatus = postIsLiked ? "1" : "0"
+    post.like = newStatus
+    
+    DefaultAPI.agrUtilsPostLikeGet(aKey: userKey, aPostID: post.id, aStatus: newStatus) { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+    }
+  }
+}
+
 struct PostItemView: View {
   
-  @State private var showPostDescription: Bool = false
-  @State private var showUploadView: Bool = false
-  @State private var postIsLiked: Bool = false
+  @ObservedObject var viewModel: PostItemViewModel
   
-  var post: Post
+  init(post: Post) {
+    self.viewModel = PostItemViewModel(post: post)
+  }
   
   var body: some View {
     VStack(alignment: .leading, spacing: 5) {
       VStack(alignment: .leading, spacing: 5) {
         HStack {
-          Text(post.vendorCapt ?? "")
+          Text(viewModel.post.vendorCapt ?? "")
             .font(.system(size: 20, weight: .bold))
           Spacer()
-          if post.price != nil {
-            Text("\(post.price!) руб.")
+          if viewModel.post.price != nil {
+            Text("\(viewModel.post.price!) руб.")
               .font(.system(size: 15, weight: .semibold))
               .foregroundColor(Color(red: 33/255, green: 150/255, blue: 83/255))
               .frame(width: 89, height: 30)
@@ -33,9 +61,9 @@ struct PostItemView: View {
           }
         }
         
-        NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: post.vendorId!))) {
+        NavigationLink(destination: ProviderView(viewModel: ProviderViewModel(providerID: viewModel.post.vendorId!))) {
           HStack {
-            Text(post.by?.capitalized ?? "")
+            Text(viewModel.post.by?.capitalized ?? "")
             Image(systemName: "chevron.right")
           }
             
@@ -45,14 +73,14 @@ struct PostItemView: View {
         }
         .buttonStyle(BorderlessButtonStyle())
         
-        if (post.sizes ?? []).isEmpty == false {
+        if (viewModel.post.sizes ?? []).isEmpty == false {
           HStack {
             Text("Размеры")
               .fontWeight(.medium)
               .fixedSize(horizontal: true, vertical: true)
             
             Group {
-              ForEach(post.sizes ?? [], id: \.self) { size in
+              ForEach(viewModel.post.sizes ?? [], id: \.self) { size in
                 Text(size)
               }
             }
@@ -65,7 +93,7 @@ struct PostItemView: View {
         }
         HStack {
           Group {
-            ForEach(post.options ?? [], id: \.self) { option in
+            ForEach(viewModel.post.options ?? [], id: \.self) { option in
               Text(option)
             }
           }
@@ -85,9 +113,9 @@ struct PostItemView: View {
         ZStack {
           Text("Показать описание")
           Button(action: {
-            self.showPostDescription.toggle()
+            self.viewModel.showPostDescription.toggle()
           }) {
-            Image(systemName: showPostDescription ? "chevron.up" : "chevron.down")
+            Image(systemName: viewModel.showPostDescription ? "chevron.up" : "chevron.down")
               .frame(maxWidth: .infinity, alignment: .trailing)
               .padding(.trailing)
           }
@@ -96,9 +124,9 @@ struct PostItemView: View {
         .padding(.vertical, 8)
         .foregroundColor(Color(UIColor.darkGray))
         
-        if showPostDescription {
+        if viewModel.showPostDescription {
           VStack {
-            Text(post.cleanText)
+            Text(viewModel.post.cleanText)
               .padding([.horizontal, .bottom])
           }
         }
@@ -108,14 +136,14 @@ struct PostItemView: View {
       .listRowInsets(EdgeInsets())
       
       // Photos
-      PhotoGalleryView(imageUrlStrings: post.imageUrls)
+      PhotoGalleryView(imageUrlStrings: viewModel.post.imageUrls)
       
       HStack {
         Button(action: {
-          self.openURL(URL(string: self.post.vkPost ?? "https://www.apple.com")!)
+          self.openURL(URL(string: self.viewModel.post.vkPost ?? "https://www.apple.com")!)
         }) {
           VStack(alignment: .leading) {
-            Text(post.posted ?? "")
+            Text(viewModel.post.posted ?? "")
             Text("См. пост в ВК")
               .font(.system(size: 13, weight: .bold))
           }
@@ -129,7 +157,7 @@ struct PostItemView: View {
         Group {
           Image(systemName:"line.horizontal.3")
           Button(action: {
-            self.showUploadView = true
+            self.viewModel.showUploadView = true
           }) {
             HStack(spacing: 2) {
               Image("vk_icon")
@@ -138,14 +166,15 @@ struct PostItemView: View {
             }
             .font(.system(size: 14, weight: .semibold))
             .foregroundColor(Color(red: 64/255, green: 137/255, blue: 222/255))
-            .sheet(isPresented: $showUploadView) {
+            .sheet(isPresented: $viewModel.showUploadView) {
               UploadView()
             }
           }
           .buttonStyle(BorderlessButtonStyle())
           
-          Button(action: likePost) {
-            Image(systemName: postIsLiked ? "heart.fill" : "heart")
+          Button(action: viewModel.likePost) {
+            Image(systemName: viewModel.postIsLiked ? "heart.fill" : "heart")
+              .foregroundColor(Color(.systemBlue))
           }
           .buttonStyle(BorderlessButtonStyle())
         }
@@ -158,27 +187,15 @@ struct PostItemView: View {
         
       }
       .padding()
-    Divider()
+      Divider()
     }
     .padding(.top)
     .onAppear {
-      self.postIsLiked = self.post.isLiked
+      self.viewModel.postIsLiked = self.viewModel.post.isLiked
     }
   }
   
-  func likePost() {
-    
-    postIsLiked.toggle()
-    
-    let newStatus = postIsLiked ? "1" : "0"
-    
-    DefaultAPI.agrUtilsPostLikeGet(aKey: userKey, aPostID: post.id, aStatus: newStatus) { (response, error) in
-      if error != nil {
-        print(error!)
-        return
-      }
-    }
-  }
+  
   
   
   
