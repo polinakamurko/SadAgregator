@@ -16,7 +16,7 @@ class LineListViewModel: ObservableObject {
   
   func fetchPage() {
     currentPage += 1
-    DefaultAPI.agrIntfTopLinesGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (response, error) in
+    DefaultAPI.agrIntfTopLinesGet(aKey: userKey) { (response, error) in
       if error != nil {
         print(error!)
         return

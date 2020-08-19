@@ -42,7 +42,7 @@ class MainViewModel: ObservableObject {
   
   func fetchData() {
     if inSearchMode == false {
-      DefaultAPI.agrIntfMainGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788") { (result, error) in
+      DefaultAPI.agrIntfMainGet(aKey: userKey) { (result, error) in
         if error != nil {
           return
         }
@@ -59,7 +59,7 @@ class MainViewModel: ObservableObject {
         }
       }
     } else {
-      DefaultAPI.agrSrchGetSearchPageGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aQuery: searchQuery, aPage: "\(currentPage)")  { (result, error) in
+      DefaultAPI.agrSrchGetSearchPageGet(aKey: userKey, aQuery: searchQuery, aPage: "\(currentPage)")  { (result, error) in
         if error != nil {
           return
         }
@@ -89,7 +89,7 @@ class MainViewModel: ObservableObject {
     currentPage += 1
     
     if inSearchMode == false {
-      DefaultAPI.agrIntfMainPagingGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPage: "\(currentPage)") { result, error in
+      DefaultAPI.agrIntfMainPagingGet(aKey: userKey, aPage: "\(currentPage)") { result, error in
         if error != nil {
           print(error!)
           return
@@ -100,7 +100,7 @@ class MainViewModel: ObservableObject {
         }
       }
     } else {
-      DefaultAPI.agrSrchGetSearchPageGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aQuery: searchQuery, aPage: "\(currentPage)")  { (result, error) in
+      DefaultAPI.agrSrchGetSearchPageGet(aKey: userKey, aQuery: searchQuery, aPage: "\(currentPage)")  { (result, error) in
         if error != nil {
           return
         }

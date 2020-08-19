@@ -22,7 +22,7 @@ class LineViewModel: ObservableObject {
   private var currentPage = 0
   
   func fetchLine() {
-    DefaultAPI.agrIntfActivityLineGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aLineID: lineID) { (response, error) in
+    DefaultAPI.agrIntfActivityLineGet(aKey: userKey, aLineID: lineID) { (response, error) in
       if error != nil {
         print(error!)
         return

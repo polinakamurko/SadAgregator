@@ -24,7 +24,7 @@ class SpotViewModel: ObservableObject {
   private var currentPage = 0
   
   func fetchSpot() {
-    DefaultAPI.agrIntfActivityPointGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aPointID: spotID) { (response, error) in
+    DefaultAPI.agrIntfActivityPointGet(aKey: userKey, aPointID: spotID) { (response, error) in
       if error != nil {
         print(error!)
         return

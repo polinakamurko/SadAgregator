@@ -28,7 +28,7 @@ class TopProvidersViewModel: ObservableObject {
   
   func fetchPage() {
     currentPage += 1
-    DefaultAPI.agrSrchVendorsTOPGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aQueryID: query, aPage: "\(currentPage)") { (response, error) in
+    DefaultAPI.agrSrchVendorsTOPGet(aKey: userKey, aQueryID: query, aPage: "\(currentPage)") { (response, error) in
       if error != nil {
         print(error!)
         return

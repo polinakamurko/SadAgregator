@@ -13,7 +13,7 @@ class ProfileViewModel: ObservableObject {
   @Published var user: UserProfile?
   
   func fetchProfile() {
-    DefaultAPI.agrClientGetProfileGet(aKey:  "VOHCXiRrkonTQNIIFyRlVQL108838058") { (response, error) in
+    DefaultAPI.agrClientGetProfileGet(aKey:  userKey) { (response, error) in
       if error != nil {
         print(error!)
         return

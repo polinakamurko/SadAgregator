@@ -23,7 +23,7 @@ class FeedbackViewModel: ObservableObject {
   func fetchFeedback() {
     currentPage += 1
     
-    DefaultAPI.agrIntfGetVendRevsPagingGet(aKey: "QGFxjSgglyMSDxQhEYmdPJJ103618788", aVendorID: providerID, aPage: "\(currentPage)") { response, error in
+    DefaultAPI.agrIntfGetVendRevsPagingGet(aKey: userKey, aVendorID: providerID, aPage: "\(currentPage)") { response, error in
       if error != nil {
         print(error!)
         return
