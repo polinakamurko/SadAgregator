@@ -60,10 +60,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AStep": aStep
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStep", value: aStep)
+    ]
+    
     
     let requestBuilder: RequestBuilder<GetStep>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -106,11 +107,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AStepID": aStepID,
-      "ASelID": aSelID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID),
+      URLQueryItem(name: "ASelID", value: aSelID)
+    ]
     
     let requestBuilder: RequestBuilder<SetSimpleReq>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -150,11 +151,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AVKID": AVKID,
-      "AAppID": aAppID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AVKID", value: AVKID),
+      URLQueryItem(name: "AAppID", value: aAppID)
+    ]
     
     let requestBuilder: RequestBuilder<AssignOKToAppID>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -194,11 +195,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AVKID": AVKID,
-      "AAppID": aAppID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AVKID", value: AVKID),
+      URLQueryItem(name: "AAppID", value: aAppID)
+    ]
     
     let requestBuilder: RequestBuilder<AssignVKToAppID>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -238,11 +239,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "ALogin": aLogin,
-      "APass": aPass,
-      "AKey": aKey
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "ALogin", value: aLogin),
+      URLQueryItem(name: "APass", value: aPass),
+      URLQueryItem(name: "AKey", value: aKey)
+    ]
     
     let requestBuilder: RequestBuilder<Auth>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -293,9 +294,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+    ]
+    
     
     let requestBuilder: RequestBuilder<UserKey>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -383,6 +385,7 @@ open class DefaultAPI {
     url?.queryItems = [
       URLQueryItem(name: "AKey", value: aKey)
     ]
+    
     
     let requestBuilder: RequestBuilder<GetUserProfile>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -507,10 +510,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APage": aPage
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APage", value: aPage)
+    ]
     
     let requestBuilder: RequestBuilder<MyPosts>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -615,13 +618,13 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AEmail": aEmail,
-      "AName": aName,
-      "APass": aPass,
-      "APhone": aPhone
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AEmail", value: aEmail),
+      URLQueryItem(name: "AName", value: aName),
+      URLQueryItem(name: "APass", value: aPass),
+      URLQueryItem(name: "APhone", value: aPhone)
+    ]
     
     let requestBuilder: RequestBuilder<Register>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -661,11 +664,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AFieldID": aFieldID,
-      "AVal": aVal
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AFieldID", value: aFieldID),
+         URLQueryItem(name: "AVal", value: aVal)
+       ]
     
     let requestBuilder: RequestBuilder<SaveOKInfo>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -705,11 +708,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AFieldID": aFieldID,
-      "AVal": aVal
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AFieldID", value: aFieldID),
+         URLQueryItem(name: "AVal", value: aVal)
+       ]
     
     let requestBuilder: RequestBuilder<SaveVKInfo>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -750,11 +753,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AOldPass": aOldPass,
-      "ANewPass": aNewPass
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AOldPass", value: aOldPass),
+         URLQueryItem(name: "ANewPass", value: aNewPass)
+       ]
     
     let requestBuilder: RequestBuilder<ChangeUserPassword>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -793,10 +796,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AEmail": aEmail
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AEmail", value: aEmail)
+       ]
     
     let requestBuilder: RequestBuilder<UserForgotPass>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -837,11 +840,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AInfoType": aInfoType,
-      "ANewVal": aNewVal
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AInfoType", value: aInfoType),
+         URLQueryItem(name: "ANewVal", value: aNewVal)
+       ]
     
     let requestBuilder: RequestBuilder<ChangeUserOption>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -1150,10 +1153,9 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey
-    ])
-    
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey)
+       ]
     let requestBuilder: RequestBuilder<ExportPeers>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
@@ -1200,11 +1202,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AVendID": aVendID
-    ])
-    
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AVendID", value: aVendID)
+       ]
     let requestBuilder: RequestBuilder<GetMyReview>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
@@ -1293,7 +1294,7 @@ open class DefaultAPI {
     url?.queryItems = [
       URLQueryItem(name: "AKey", value: aKey),
       URLQueryItem(name: "AVendorID", value: aVendorID),
-       URLQueryItem(name: "APage", value: aPage)
+      URLQueryItem(name: "APage", value: aPage)
     ]
     
     let requestBuilder: RequestBuilder<GetProviderPostsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -1349,7 +1350,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = [URLQueryItem(name: "AKey", value: aKey), URLQueryItem(name: "AVendorID", value: aVendorID), URLQueryItem(name: "APage", value: aPage)]
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AVendorID", value: aVendorID),
+      URLQueryItem(name: "APage", value: aPage)
+    ]
     
     let requestBuilder: RequestBuilder<GetProviderReviewsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -1401,7 +1406,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "ALineID", value: aLineID), URLQueryItem(name: "aPage", value: aPage)]
+    url?.queryItems = [
+      URLQueryItem(name: "aKey", value: aKey),
+      URLQueryItem(name: "ALineID", value: aLineID),
+      URLQueryItem(name: "aPage", value: aPage)
+    ]
     
     let requestBuilder: RequestBuilder<LinePointsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -1491,7 +1500,7 @@ open class DefaultAPI {
     url?.queryItems = [
       URLQueryItem(name: "AKey", value: aKey),
       URLQueryItem(name: "ALineID", value: aLineID),
-       URLQueryItem(name: "APage", value: aPage)
+      URLQueryItem(name: "APage", value: aPage)
     ]
     
     let requestBuilder: RequestBuilder<LinePostsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -1607,9 +1616,9 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey)
+       ]
     
     let requestBuilder: RequestBuilder<MainPage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -1694,7 +1703,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "aPage", value: aPage)]
+    url?.queryItems = [
+      URLQueryItem(name: "aKey", value: aKey),
+      URLQueryItem(name: "aPage", value: aPage)
+    ]
     
     let requestBuilder: RequestBuilder<MainPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -1784,7 +1796,7 @@ open class DefaultAPI {
     url?.queryItems = [
       URLQueryItem(name: "AKey", value: aKey),
       URLQueryItem(name: "APointID", value: aPointID),
-       URLQueryItem(name: "APage", value: aPage)
+      URLQueryItem(name: "APage", value: aPage)
     ]
     
     let requestBuilder: RequestBuilder<SpotPostsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -1828,7 +1840,7 @@ open class DefaultAPI {
     url?.queryItems = [
       URLQueryItem(name: "AKey", value: aKey),
       URLQueryItem(name: "AVendID", value: aVendID),
-       URLQueryItem(name: "ARate", value: aRate)
+      URLQueryItem(name: "ARate", value: aRate)
     ]
     
     let requestBuilder: RequestBuilder<RateUpdate>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -1870,11 +1882,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AVendID": aVendID,
-      "ARevID": aRevID
-    ])
+    url?.queryItems = [
+         URLQueryItem(name: "AKey", value: aKey),
+         URLQueryItem(name: "AVendID", value: aVendID),
+         URLQueryItem(name: "ARevID", value: aRevID)
+       ]
     
     let requestBuilder: RequestBuilder<ReviewUpdate>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -1977,9 +1989,9 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey)
+    ]
     
     let requestBuilder: RequestBuilder<TopLines>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2030,7 +2042,10 @@ open class DefaultAPI {
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
     
-    url?.queryItems = [URLQueryItem(name: "aKey", value: aKey), URLQueryItem(name: "aPage", value: aPage)]
+    url?.queryItems = [
+      URLQueryItem(name: "aKey", value: aKey),
+      URLQueryItem(name: "aPage", value: aPage)
+    ]
     
     let requestBuilder: RequestBuilder<TopSpotsPaging>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2258,11 +2273,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AQuery": aQuery,
-      "APage": aPage
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AQuery", value: aQuery),
+      URLQueryItem(name: "APage", value: aPage)
+    ]
     
     let requestBuilder: RequestBuilder<GetSearchPage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2375,12 +2390,12 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APlace": aPlace,
-      "AURL": AURL,
-      "AComment": aComment
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APlace", value: aPlace),
+      URLQueryItem(name: "AURL", value: AURL),
+      URLQueryItem(name: "AComment", value: aComment)
+    ]
     
     let requestBuilder: RequestBuilder<AddProvider>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2419,10 +2434,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AImageID": aImageID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AImageID", value: aImageID)
+    ]
     
     let requestBuilder: RequestBuilder<DeletePhoto>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2469,9 +2484,9 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey)
+    ]
     
     let requestBuilder: RequestBuilder<HelpPage>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2509,10 +2524,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AMsgID": aMsgID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AMsgID", value: aMsgID)
+    ]
     
     let requestBuilder: RequestBuilder<MessageReaded>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2551,10 +2566,10 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AImageID": aImageID
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AImageID", value: aImageID)
+    ]
     
     let requestBuilder: RequestBuilder<PhotoSaved>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2598,7 +2613,7 @@ open class DefaultAPI {
     url?.queryItems = [
       URLQueryItem(name: "AKey", value: aKey),
       URLQueryItem(name: "APostID", value: aPostID),
-      URLQueryItem(name: "AStatus", value: aStatus),
+      URLQueryItem(name: "AStatus", value: aStatus)
     ]
     
     let requestBuilder: RequestBuilder<PostLike>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -2639,11 +2654,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "AEmail": aEmail,
-      "AQuestion": aQuestion
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AEmail", value: aEmail),
+      URLQueryItem(name: "AQuestion", value: aQuestion)
+    ]
     
     let requestBuilder: RequestBuilder<SendQuestion>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
@@ -2683,11 +2698,11 @@ open class DefaultAPI {
     let URLString = SwaggerClientAPI.basePath + path
     let parameters: [String:Any]? = nil
     var url = URLComponents(string: URLString)
-    url?.queryItems = APIHelper.mapValuesToQueryItems([
-      "AKey": aKey,
-      "APostID": aPostID,
-      "AText": aText
-    ])
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APostID", value: aPostID),
+      URLQueryItem(name: "AText", value: aText)
+    ]
     
     let requestBuilder: RequestBuilder<ToExpQueue>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     

@@ -190,14 +190,7 @@ struct PostItemView: View {
       Divider()
     }
     .padding(.top)
-    .onAppear {
-      self.viewModel.postIsLiked = self.viewModel.post.isLiked
-    }
   }
-  
-  
-  
-  
   
   func openURL(_ url: URL) {
     UIApplication.shared.open(url, options: [:], completionHandler: nil)

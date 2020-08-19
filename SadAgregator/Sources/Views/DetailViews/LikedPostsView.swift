@@ -29,6 +29,7 @@ struct LikedPostsView: View {
       }
       .onAppear(perform: viewModel.fetchLikedPosts)
     }
+    .navigationBarTitle(Text("Избранные посты"), displayMode: .inline)
   }
 }
 
