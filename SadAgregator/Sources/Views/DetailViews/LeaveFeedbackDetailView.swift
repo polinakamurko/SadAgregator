@@ -12,8 +12,6 @@ struct LeaveFeedbackDetailView: View {
   
   @ObservedObject var viewModel: LeaveFeedbackViewModel
   
-  
-  
   var body: some View {
     VStack {
       HStack {

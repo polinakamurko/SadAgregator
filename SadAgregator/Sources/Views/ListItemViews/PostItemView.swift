@@ -11,7 +11,9 @@ import SwiftUI
 class PostItemViewModel: ObservableObject {
   @Published var showPostDescription: Bool = false
   @Published var showUploadView: Bool = false
+  @Published var showEditTextView: Bool = false
   @Published var postIsLiked: Bool
+  
   
   @Published var post: Post
   
@@ -100,7 +102,7 @@ struct PostItemView: View {
               Text(option)
                 .onTapGesture {
                   self.onTagTap(option)
-                }
+              }
             }
           }
           .font(.system(size: 17, weight: .medium))
@@ -161,7 +163,16 @@ struct PostItemView: View {
         Spacer()
         
         Group {
-          Image(systemName:"line.horizontal.3")
+          Button(action: {
+            self.viewModel.showEditTextView = true
+          }) {
+            Image(systemName:"line.horizontal.3")
+              .sheet(isPresented: $viewModel.showEditTextView) {
+                EditPostTextView(text: self.viewModel.post.text ?? "", isPresented: self.$viewModel.showEditTextView)
+            }
+          }
+          .buttonStyle(BorderlessButtonStyle())
+          
           Button(action: {
             self.viewModel.showUploadView = true
           }) {
