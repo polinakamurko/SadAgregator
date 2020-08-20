@@ -40,8 +40,11 @@ struct PostItemView: View {
   
   @ObservedObject var viewModel: PostItemViewModel
   
-  init(post: Post) {
+  var onTagTap: (String) -> Void
+  
+  init(post: Post, onTagTap: @escaping (String) -> Void = { _ in }) {
     self.viewModel = PostItemViewModel(post: post)
+    self.onTagTap = onTagTap
   }
   
   var body: some View {
@@ -95,6 +98,9 @@ struct PostItemView: View {
           Group {
             ForEach(viewModel.post.options ?? [], id: \.self) { option in
               Text(option)
+                .onTapGesture {
+                  self.onTagTap(option)
+                }
             }
           }
           .font(.system(size: 17, weight: .medium))

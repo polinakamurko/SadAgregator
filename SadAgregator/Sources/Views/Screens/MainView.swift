@@ -148,7 +148,10 @@ struct MainView: View {
           SectionTitleView<Text>("Последние посты")
           
           ForEach(viewModel.inSearchMode ? viewModel.searchPosts : viewModel.posts) { post in
-            PostItemView(post: post)
+            PostItemView(post: post, onTagTap: { tag in
+              self.viewModel.inSearchMode = true
+              self.viewModel.searchQuery = tag
+            })
               .listRowInsets(EdgeInsets())
               .onAppear {
                 self.onPostShowed(post)
