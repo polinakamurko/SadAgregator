@@ -26,13 +26,13 @@ struct PopularProviderItemView: View {
         
         // Username
         VStack(alignment: .leading, spacing: 5) {
-          Text(provider.capt ?? "")
+          Text(provider.name?.capitalized ?? "")
             .bold()
           
           Button(action: {}) {
             HStack(spacing: 0) {
               Group {
-                Text(provider.name?.capitalized ?? "")
+                Text(provider.capt ?? "")
                   .padding(.trailing, 5)
                 
                 Image(systemName: "chevron.right")
