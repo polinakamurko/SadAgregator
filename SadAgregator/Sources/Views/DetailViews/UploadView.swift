@@ -10,6 +10,8 @@ import SwiftUI
 
 struct UploadView: View {
 
+  @Binding var isPresented: Bool
+  
   var body: some View {
     VStack {
       Text("Выберите место выгрузки")
@@ -22,7 +24,10 @@ struct UploadView: View {
         UploadItemView(title: "Название группы")
       }
       
-      Button(action: {}) {
+      Button(action: {
+        self.isPresented = false
+        
+      }) {
         VStack(alignment: .leading, spacing: 6) {
           HStack {
             Text("Отмена")
@@ -42,9 +47,3 @@ struct UploadView: View {
   }
 }
 
-
-struct UploadView_Previews: PreviewProvider {
-  static var previews: some View {
-    UploadView()
-  }
-}

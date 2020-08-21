@@ -9,6 +9,7 @@
 import SwiftUI
 
 class PostItemViewModel: ObservableObject {
+  
   @Published var showPostDescription: Bool = false
   @Published var showUploadView: Bool = false
   @Published var showEditTextView: Bool = false

@@ -154,7 +154,7 @@ struct PostItemView: View {
             .font(.system(size: 14, weight: .semibold))
             .foregroundColor(Color(red: 64/255, green: 137/255, blue: 222/255))
             .sheet(isPresented: $viewModel.showUploadView) {
-              UploadView()
+              UploadView(isPresented: self.$viewModel.showUploadView)
             }
           }
           .buttonStyle(BorderlessButtonStyle())
