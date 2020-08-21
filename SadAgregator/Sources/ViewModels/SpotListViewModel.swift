@@ -25,13 +25,12 @@ class SpotListViewModel: ObservableObject {
     
     if let lineId = lineId {
       DefaultAPI.agrIntfLinePointsPagingGet(aKey: userKey, aLineID: lineId, aPage: "\(currentPage)") { (response, error) in
-             if error != nil {
-               print(error!)
-               return
-             }
-             
-             self.topSpots.append(contentsOf: response?.pointsTop ?? [])
-           }
+        if error != nil {
+          print(error!)
+          return
+        }
+        self.topSpots.append(contentsOf: response?.pointsTop ?? [])
+      }
     } else {
       DefaultAPI.agrIntfTopPointsPagingGet(aKey: userKey, aPage: "\(currentPage)") { (response, error) in
         if error != nil {

@@ -15,7 +15,6 @@ class PostItemViewModel: ObservableObject {
   @Published var showEditTextView: Bool = false
   @Published var postIsLiked: Bool
   
-  
   @Published var post: Post
   
   init(post: Post) {

@@ -11,6 +11,7 @@ import SwiftUI
 struct UploadItemView: View {
   
   var title: String
+  var isVk: Bool
   
   @State private var showChooseButton = false
   
@@ -22,7 +23,7 @@ struct UploadItemView: View {
           self.showChooseButton.toggle()
         }) {
           HStack {
-            Image("vk_icon")
+            Image(isVk ? "vk_icon" : "ok_icon")
               .renderingMode(.template)
             Text(title)
               .font(showChooseButton ? Font.body.weight(.bold) : Font.body)
@@ -46,7 +47,7 @@ struct UploadItemView: View {
         }
       }
       .font(.system(size: 17, weight: .regular))
-      .foregroundColor(Color(red: 64/255, green: 137/255, blue: 222/255))
+      .foregroundColor(isVk ? Color(red: 64/255, green: 137/255, blue: 222/255) : Color(red: 237/255, green: 129/255, blue: 43/255))
       Divider()
     }
   }
@@ -54,6 +55,6 @@ struct UploadItemView: View {
 
 struct UploadItemView_Previews: PreviewProvider {
   static var previews: some View {
-    UploadItemView(title: "Название группы")
+    UploadItemView(title: "Название группы", isVk: true)
   }
 }

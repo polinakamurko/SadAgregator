@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct UploadView: View {
-
+  
   @Binding var isPresented: Bool
+  
+  @ObservedObject var viewModel: UploadViewModel
   
   var body: some View {
     VStack {
@@ -18,12 +20,11 @@ struct UploadView: View {
         .font(.headline)
         .padding()
       List {
-        UploadItemView(title: "Название группы")
-        UploadItemView(title: "Название группы")
-        UploadItemView(title: "Название группы")
-        UploadItemView(title: "Название группы")
+        ForEach(0..<viewModel.groups.count, id: \.self) { index in
+          UploadItemView(title: self.viewModel.groups[index].capt ?? "", isVk: self.viewModel.groups[index].isVk)
+        }
       }
-      
+      .onAppear(perform: viewModel.getUploadGroups)
       Button(action: {
         self.isPresented = false
         

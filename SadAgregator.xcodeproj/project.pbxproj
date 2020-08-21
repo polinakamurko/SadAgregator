@@ -14,6 +14,7 @@
 		9B4527C724EBF76F00DA573B /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4527C624EBF76E00DA573B /* PostResponse.swift */; };
 		9B4527C924EED16700DA573B /* EditPostTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4527C824EED16700DA573B /* EditPostTextView.swift */; };
 		9B4527CB24EEDF8100DA573B /* PostItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4527CA24EEDF8100DA573B /* PostItemViewModel.swift */; };
+		9B4527CD24F021EF00DA573B /* UploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4527CC24F021EF00DA573B /* UploadViewModel.swift */; };
 		9B50A8612487ABCE00B43BAB /* FeedbackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8602487ABCE00B43BAB /* FeedbackDetailView.swift */; };
 		9B50A8632487B73300B43BAB /* LeaveFeedbackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8622487B73300B43BAB /* LeaveFeedbackDetailView.swift */; };
 		9B50A8652487E8B200B43BAB /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B50A8642487E8B200B43BAB /* TextView.swift */; };
@@ -172,6 +173,7 @@
 		9B4527C624EBF76E00DA573B /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
 		9B4527C824EED16700DA573B /* EditPostTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostTextView.swift; sourceTree = "<group>"; };
 		9B4527CA24EEDF8100DA573B /* PostItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemViewModel.swift; sourceTree = "<group>"; };
+		9B4527CC24F021EF00DA573B /* UploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewModel.swift; sourceTree = "<group>"; };
 		9B50A8602487ABCE00B43BAB /* FeedbackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDetailView.swift; sourceTree = "<group>"; };
 		9B50A8622487B73300B43BAB /* LeaveFeedbackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackDetailView.swift; sourceTree = "<group>"; };
 		9B50A8642487E8B200B43BAB /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -363,7 +365,6 @@
 			children = (
 				9B97D4DB24A0CBC800DB3F5E /* SpotListView.swift */,
 				9B97D4E324A23A3100DB3F5E /* LineListView.swift */,
-				9B96FEFA24C071D20022D6D9 /* UploadItemView.swift */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -518,6 +519,8 @@
 				9BFD66B124A0C6D20091110A /* Help.swift */,
 				9BFD66DA24A0C6D80091110A /* HelpItem.swift */,
 				9BFD66C224A0C6D50091110A /* HelpPage.swift */,
+				9B74677024E2FAA20003A05D /* Images.swift */,
+				BE3F0A712496951B006F605A /* ImageSizes.swift */,
 				9BFD66D924A0C6D80091110A /* Line.swift */,
 				9BFD66D424A0C6D70091110A /* LinePointsPaging.swift */,
 				9BFD66CD24A0C6D60091110A /* LinePostsPaging.swift */,
@@ -530,8 +533,8 @@
 				9BFD66D724A0C6D70091110A /* Peers.swift */,
 				9BFD66E324A0C6D90091110A /* PhotoSaved.swift */,
 				BE3F0A702496951A006F605A /* Post.swift */,
-				9B74677024E2FAA20003A05D /* Images.swift */,
 				9BFD66B524A0C6D30091110A /* PostLike.swift */,
+				9B4527C624EBF76E00DA573B /* PostResponse.swift */,
 				9BFD66D824A0C6D70091110A /* Provider.swift */,
 				9BFD66CA24A0C6D60091110A /* ProviderItem.swift */,
 				9BFD66C024A0C6D40091110A /* ProviderLike.swift */,
@@ -547,7 +550,6 @@
 				9BFD66D524A0C6D70091110A /* SaveOKInfo.swift */,
 				9BFD66AD24A0C6D20091110A /* SaveVKInfo.swift */,
 				9BFD66D324A0C6D70091110A /* SendQuestion.swift */,
-				BE3F0A712496951B006F605A /* ImageSizes.swift */,
 				9BFD66BE24A0C6D40091110A /* SetSimpleReq.swift */,
 				9BFD66C424A0C6D50091110A /* Spot.swift */,
 				9BFD66BB24A0C6D40091110A /* SpotPostsPaging.swift */,
@@ -560,7 +562,6 @@
 				9BFD66B724A0C6D30091110A /* UserForgotPass.swift */,
 				BE3F0A742496951B006F605A /* UserKey.swift */,
 				9BFD66CE24A0C6D60091110A /* UserProfile.swift */,
-				9B4527C624EBF76E00DA573B /* PostResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -608,6 +609,7 @@
 				9B779F0024ABBA7D005967B6 /* ProviderItemView.swift */,
 				9BE9065824B36D7B00FD955E /* FeedbackItemView.swift */,
 				9BE9065E24BCC34700FD955E /* SearchStatisticsItemView.swift */,
+				9B96FEFA24C071D20022D6D9 /* UploadItemView.swift */,
 			);
 			path = ListItemViews;
 			sourceTree = "<group>";
@@ -657,6 +659,7 @@
 				BEDCF74B2496B75B00217CE3 /* MainViewModel.swift */,
 				9B74676824DB1D0B0003A05D /* MenuViewModel.swift */,
 				9B4527CA24EEDF8100DA573B /* PostItemViewModel.swift */,
+				9B4527CC24F021EF00DA573B /* UploadViewModel.swift */,
 				9BE9066024BF29FE00FD955E /* ProfileViewModel.swift */,
 				9B779F0224ADDD14005967B6 /* ProviderViewModel.swift */,
 				9B97D4DD24A0D35800DB3F5E /* SpotListViewModel.swift */,
@@ -849,6 +852,7 @@
 				9B97D4E424A23A3100DB3F5E /* LineListView.swift in Sources */,
 				9B779EFB24A4BFA1005967B6 /* TopProvidersViewModel.swift in Sources */,
 				9BFD670824A0C6D90091110A /* Arrows.swift in Sources */,
+				9B4527CD24F021EF00DA573B /* UploadViewModel.swift in Sources */,
 				9BFD670524A0C6D90091110A /* LinePostsPaging.swift in Sources */,
 				9BFD670324A0C6D90091110A /* Reviews.swift in Sources */,
 				BE3F0A8C2496952A006F605A /* Models.swift in Sources */,

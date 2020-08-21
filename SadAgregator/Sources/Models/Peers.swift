@@ -15,6 +15,10 @@ public struct Peers: Codable {
     public var peerId: String?
     public var capt: String?
 
+  var isVk: Bool {
+    type == "vk"
+  }
+  
     public init(type: String?, peerId: String?, capt: String?) {
         self.type = type
         self.peerId = peerId
