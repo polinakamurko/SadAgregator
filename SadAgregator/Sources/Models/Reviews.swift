@@ -21,6 +21,26 @@ public struct Reviews: Codable, Identifiable {
     _id ?? UUID().uuidString
   }
   
+  public var rating: Double? {
+    Double(rate ?? "0")
+  }
+  
+  public var filledStars: Int {
+    Int(rating ?? 0)
+  }
+  
+  public var hasHalfStart: Bool {
+    if let rating = rating {
+      return rating > floor(rating)
+    }
+    
+    return false
+  }
+  
+  public var emptyStars: Int {
+    5 - filledStars - (hasHalfStart ? 1 : 0)
+  }
+  
   public init(_id: String? = nil, author: String? = nil, rate: String? = nil, title: String? = nil, text: String? = nil, dt: String? = nil, imgs: [String]? = nil) {
     self._id = _id
     self.author = author

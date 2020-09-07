@@ -20,12 +20,33 @@ struct FeedbackItemView: View {
             .padding(.top)
             .font(.system(size: 15, weight: .semibold))
           HStack(spacing: 0) {
-            Group{
-              Image(systemName: "star.fill")
-              Image(systemName: "star.fill")
-              Image(systemName: "star.fill")
-              Image(systemName: "star.lefthalf.fill")
-              Image(systemName: "star")
+            Group {
+              if feedback.rate != nil {
+                HStack(spacing: 0) {
+                  Group {
+                    ForEach(0..<(feedback.filledStars )) { _ in
+                      Image(systemName: "star.fill")
+                        .padding(.horizontal, 2)
+                    }
+                    
+                    if (feedback.hasHalfStart ) {
+                      Image(systemName: "star.lefthalf.fill")
+                        .padding(.horizontal, 2)
+                    }
+                    
+                    ForEach(0..<(feedback.emptyStars )) { _ in
+                      Image(systemName: "star")
+                        .padding(.horizontal, 2)
+                    }
+                  }
+                }
+                //              }
+                //              Image(systemName: "star.fill")
+                //              Image(systemName: "star.fill")
+                //              Image(systemName: "star.fill")
+                //              Image(systemName: "star.lefthalf.fill")
+                //              Image(systemName: "star")
+              }
             }
             .padding(.horizontal, 1.5)
             .padding(.bottom, 8)
@@ -65,7 +86,7 @@ struct FeedbackItemView: View {
 }
 
 struct FeedbackItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedbackItemView(feedback: Reviews())
-    }
+  static var previews: some View {
+    FeedbackItemView(feedback: Reviews())
+  }
 }
