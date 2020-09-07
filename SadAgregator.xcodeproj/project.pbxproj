@@ -39,6 +39,7 @@
 		9B97D4E224A1F83300DB3F5E /* DefaultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E124A1F83200DB3F5E /* DefaultAPI.swift */; };
 		9B97D4E424A23A3100DB3F5E /* LineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E324A23A3100DB3F5E /* LineListView.swift */; };
 		9B97D4E624A23AA500DB3F5E /* LineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B97D4E524A23AA500DB3F5E /* LineListViewModel.swift */; };
+		9BA04B6525068621000E1533 /* FeedbackPhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA04B6425068621000E1533 /* FeedbackPhotoGalleryView.swift */; };
 		9BAD866C2479421400F756DA /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAD866B2479421400F756DA /* LineView.swift */; };
 		9BB2FB4B246F0A4C00E1B184 /* DetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2FB4A246F0A4C00E1B184 /* DetailItemView.swift */; };
 		9BB2FB4D246F0B9900E1B184 /* ProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB2FB4C246F0B9900E1B184 /* ProviderView.swift */; };
@@ -198,6 +199,7 @@
 		9B97D4E124A1F83200DB3F5E /* DefaultAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAPI.swift; sourceTree = "<group>"; };
 		9B97D4E324A23A3100DB3F5E /* LineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineListView.swift; sourceTree = "<group>"; };
 		9B97D4E524A23AA500DB3F5E /* LineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineListViewModel.swift; sourceTree = "<group>"; };
+		9BA04B6425068621000E1533 /* FeedbackPhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPhotoGalleryView.swift; sourceTree = "<group>"; };
 		9BAD866B2479421400F756DA /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		9BB2FB4A246F0A4C00E1B184 /* DetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemView.swift; sourceTree = "<group>"; };
 		9BB2FB4C246F0B9900E1B184 /* ProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderView.swift; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 				9BFD6678248FC4370091110A /* SearchField.swift */,
 				BE07A4D7249FE3D4007AE812 /* BlueInfoView.swift */,
 				BE4DAB7F24E94C3A0097F243 /* AsyncImage.swift */,
+				9BA04B6425068621000E1533 /* FeedbackPhotoGalleryView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				9B779EFF24AB70E4005967B6 /* SpotViewModel.swift in Sources */,
 				9BFD66FB24A0C6D90091110A /* MyPosts.swift in Sources */,
 				BE07A4DF24A004CA007AE812 /* MainPaging.swift in Sources */,
+				9BA04B6525068621000E1533 /* FeedbackPhotoGalleryView.swift in Sources */,
 				9B4527C924EED16700DA573B /* EditPostTextView.swift in Sources */,
 				9BC48B0A2465420300239E4E /* SceneDelegate.swift in Sources */,
 				BEB9514C2484D94F00A26F71 /* ProfileView.swift in Sources */,

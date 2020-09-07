@@ -40,12 +40,6 @@ struct FeedbackItemView: View {
                     }
                   }
                 }
-                //              }
-                //              Image(systemName: "star.fill")
-                //              Image(systemName: "star.fill")
-                //              Image(systemName: "star.fill")
-                //              Image(systemName: "star.lefthalf.fill")
-                //              Image(systemName: "star")
               }
             }
             .padding(.horizontal, 1.5)
@@ -69,14 +63,10 @@ struct FeedbackItemView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .multilineTextAlignment(.leading)
       
-      HStack {
-        Group {
-          Image(systemName: "photo")
-          Image(systemName: "photo")
-          Image(systemName: "photo")
-        }
-        Spacer()
-      }
+      FeedbackPhotoGalleryView(imageUrlStrings: feedback.imageUrls)
+        
+      Spacer()
+      
       Text("Показать полностью")
         .font(.system(size: 15, weight: .medium))
         .foregroundColor(.blue)

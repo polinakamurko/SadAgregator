@@ -41,6 +41,14 @@ public struct Reviews: Codable, Identifiable {
     5 - filledStars - (hasHalfStart ? 1 : 0)
   }
   
+  var imageUrls: [String] {
+    if let serverImages = imgs {
+      return serverImages
+    } else {
+      return []
+    }
+  }
+  
   public init(_id: String? = nil, author: String? = nil, rate: String? = nil, title: String? = nil, text: String? = nil, dt: String? = nil, imgs: [String]? = nil) {
     self._id = _id
     self.author = author
