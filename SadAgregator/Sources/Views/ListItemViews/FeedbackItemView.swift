@@ -16,9 +16,11 @@ struct FeedbackItemView: View {
     VStack {
       HStack {
         VStack(alignment: .leading, spacing: 6) {
-          Text(feedback.title ?? "")
-            .padding(.top)
-            .font(.system(size: 15, weight: .semibold))
+          if feedback.title != "" {
+            Text(feedback.title ?? "")
+              .padding(.top)
+              .font(.system(size: 15, weight: .semibold))
+          }
           HStack(spacing: 0) {
             Group {
               if feedback.rate != nil {
@@ -43,7 +45,7 @@ struct FeedbackItemView: View {
               }
             }
             .padding(.horizontal, 1.5)
-            .padding(.bottom, 8)
+            //            .padding(.bottom, 6)
           }
           .font(.system(size: 11))
           .foregroundColor(Color(red: 255/255, green: 204/255, blue: 71/255))
@@ -51,7 +53,7 @@ struct FeedbackItemView: View {
         Spacer()
         VStack(alignment: .trailing, spacing: 0) {
           Text(feedback.dt ?? "")
-          Text(feedback.author ?? "")
+          Text(feedback.author?.capitalized ?? "")
         }
         .font(.caption)
         .foregroundColor(Color(red: 153/255, green: 153/255, blue: 153/255))
@@ -64,13 +66,15 @@ struct FeedbackItemView: View {
         .multilineTextAlignment(.leading)
       
       FeedbackPhotoGalleryView(imageUrlStrings: feedback.imageUrls)
-        
+      
       Spacer()
       
       Text("Показать полностью")
         .font(.system(size: 15, weight: .medium))
         .foregroundColor(.blue)
         .padding(.vertical, 8)
+      
+      Divider()
     }
   }
 }

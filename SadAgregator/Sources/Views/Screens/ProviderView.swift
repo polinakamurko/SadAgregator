@@ -148,6 +148,8 @@ struct ProviderView: View {
         }
         
         Section {
+          HStack {
+          SectionTitleView<Text>("Отзывы")
           VStack {
             // TODO: - Change providerID to viewModel.providerID
             NavigationLink(destination: FeedbackDetailView(viewModel: FeedbackViewModel(providerID: viewModel.providerID))) {
@@ -156,6 +158,7 @@ struct ProviderView: View {
             }
             .foregroundColor(.blue)
             .padding(.top, 8)
+          }
           }
           ForEach(viewModel.reviews) { review in
             FeedbackItemView(feedback: review)

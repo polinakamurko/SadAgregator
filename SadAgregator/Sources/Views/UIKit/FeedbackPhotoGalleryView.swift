@@ -27,7 +27,10 @@ struct FeedbackPhotoGalleryView: View {
           placeholder: Text("Loading"),
           cache: self.cache
         )
+        .frame(width: 58, height: 58)
+        .cornerRadius(5)
       }
+      Spacer()
     }
   }
 }
