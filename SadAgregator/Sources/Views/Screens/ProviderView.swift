@@ -14,13 +14,23 @@ struct ProviderView: View {
   
   @State private var showProviderConditions = false
   
+  @Environment(\.imageCache) var cache
+  
   var body: some View {
     List {
       Section {
         VStack(alignment: .leading) {
           HStack {
-            Image("SellerPhoto")
+            if viewModel.provider.imageUrl != nil {
+              AsyncImage(
+                url: viewModel.provider.imageUrl!,
+                placeholder: Text("Loading"),
+                cache: cache
+              )
               .frame(width: 60, height: 60)
+              .cornerRadius(30)
+              .aspectRatio(contentMode: .fill)
+            }
             
             VStack(alignment: .leading, spacing: 5) {
               Text(viewModel.provider.name?.capitalized ?? "")

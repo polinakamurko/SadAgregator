@@ -631,13 +631,13 @@
 		BEB9514A2484D91600A26F71 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				BE4DAB7F24E94C3A0097F243 /* AsyncImage.swift */,
+				BE07A4D7249FE3D4007AE812 /* BlueInfoView.swift */,
+				9BA04B6425068621000E1533 /* FeedbackPhotoGalleryView.swift */,
 				9B74676E24E16BAA0003A05D /* PhotoGalleryView.swift */,
+				9BFD6678248FC4370091110A /* SearchField.swift */,
 				BE562F4B2475BD01000EDB5C /* SectionTitleView.swift */,
 				9B50A8642487E8B200B43BAB /* TextView.swift */,
-				9BFD6678248FC4370091110A /* SearchField.swift */,
-				BE07A4D7249FE3D4007AE812 /* BlueInfoView.swift */,
-				BE4DAB7F24E94C3A0097F243 /* AsyncImage.swift */,
-				9BA04B6425068621000E1533 /* FeedbackPhotoGalleryView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1073,7 +1073,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
 				DEVELOPMENT_TEAM = 68788AEQ8E;
 				ENABLE_PREVIEWS = YES;
@@ -1095,7 +1095,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
 				DEVELOPMENT_TEAM = 68788AEQ8E;
 				ENABLE_PREVIEWS = YES;
