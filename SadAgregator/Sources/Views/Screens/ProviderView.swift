@@ -27,9 +27,9 @@ struct ProviderView: View {
                 placeholder: Text("Loading"),
                 cache: cache
               )
-              .frame(width: 60, height: 60)
-              .cornerRadius(30)
-              .aspectRatio(contentMode: .fill)
+                .frame(width: 60, height: 60)
+                .cornerRadius(30)
+                .aspectRatio(contentMode: .fill)
             }
             
             VStack(alignment: .leading, spacing: 5) {
@@ -180,19 +180,24 @@ struct ProviderView: View {
         
         Section {
           HStack {
-          SectionTitleView<Text>("Отзывы")
-          VStack {
-            // TODO: - Change providerID to viewModel.providerID
-            NavigationLink(destination: FeedbackDetailView(viewModel: FeedbackViewModel(providerID: viewModel.providerID))) {
-              Text("См. все")
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            SectionTitleView<Text>("Отзывы")
+            VStack {
+              if viewModel.reviews.isEmpty == false {
+                NavigationLink(destination: FeedbackDetailView(viewModel: FeedbackViewModel(providerID: viewModel.providerID))) {
+                  Text("См. все")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .foregroundColor(.blue)
+                .padding(.top, 8)
+              }
             }
-            .foregroundColor(.blue)
-            .padding(.top, 8)
           }
-          }
-          ForEach(viewModel.reviews) { review in
-            FeedbackItemView(feedback: review)
+          if viewModel.reviews.isEmpty == false {
+            ForEach(viewModel.reviews) { review in
+              FeedbackItemView(feedback: review)
+            }
+          } else {
+            Text("Отзывов еще нет. Оставьте первый отзыв о поставщике.")
           }
         }
         
