@@ -130,7 +130,16 @@ struct ProviderView: View {
             }
           }
           DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: viewModel.provider.place ?? "")
-          DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: viewModel.provider.phoneNumber)
+          Button(action: {
+            if let phoneCallURL = URL(string: "tel://\(self.viewModel.provider.phoneNumber)") {
+              let application:UIApplication = UIApplication.shared
+              if (application.canOpenURL(phoneCallURL)) {
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+              }
+            }
+          }) {
+            DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: viewModel.provider.phoneNumber)
+          }
           DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: viewModel.provider.regDt ?? "")
           DetailItemView(systemImageName: "person.2", mainText: "Охват", detailedText: viewModel.provider.pop ?? "")
         }

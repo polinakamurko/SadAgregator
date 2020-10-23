@@ -1127,7 +1127,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
-				DEVELOPMENT_TEAM = 68788AEQ8E;
+				DEVELOPMENT_TEAM = N2HCJ99WYH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1135,7 +1135,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-sad.SadAgregator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-sad.SadAgregator000";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1149,7 +1149,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"SadAgregator/Preview Content\"";
-				DEVELOPMENT_TEAM = 68788AEQ8E;
+				DEVELOPMENT_TEAM = N2HCJ99WYH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SadAgregator/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1157,7 +1157,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-sad.SadAgregator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tk-sad.SadAgregator000";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
