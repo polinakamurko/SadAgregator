@@ -21,7 +21,7 @@ class ProviderViewModel: ObservableObject {
       }
     }
   }
-  
+  @Published var presentSafariView = false
   
   let providerID: String
   

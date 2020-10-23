@@ -17,17 +17,25 @@ public struct GetStep: Codable {
     public var hint: String?
     public var descr: String?
     public var ansqers: [Answer]?
+    public var captListExists: String?
+    public var captListExtButton: String?
+    public var captListName: String?
+    public var edtPlaceHolder: String?
     public var result: Int?
     public var backStepId: String?
     public var speed: Int?
 
-    public init(stepId: Int?, type: String?, capt: String?, hint: String?, descr: String?, ansqers: [Answer]?, result: Int?, backStepId: String?, speed: Int?) {
+    public init(stepId: Int?, type: String?, capt: String?, hint: String?, descr: String?, ansqers: [Answer]?, captListExists: String?, captListExtButton: String?, captListName: String?, edtPlaceHolder: String?, result: Int?, backStepId: String?, speed: Int?) {
         self.stepId = stepId
         self.type = type
         self.capt = capt
         self.hint = hint
         self.descr = descr
         self.ansqers = ansqers
+        self.captListExists = captListExists
+        self.captListExtButton = captListExtButton
+        self.captListName = captListName
+        self.edtPlaceHolder = edtPlaceHolder
         self.result = result
         self.backStepId = backStepId
         self.speed = speed
@@ -40,6 +48,10 @@ public struct GetStep: Codable {
         case hint
         case descr
         case ansqers
+        case captListExists = "capt_list_exists"
+        case captListExtButton = "capt_list_ext_button"
+        case captListName = "capt_list_name"
+        case edtPlaceHolder = "edt_place_holder"
         case result
         case backStepId = "back_step_id"
         case speed

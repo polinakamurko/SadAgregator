@@ -116,7 +116,19 @@ struct ProviderView: View {
         .listRowInsets(EdgeInsets())
         
         Section {
-          DetailItemView(imageName: "vk_icon", mainText: viewModel.provider.vkLink ?? "")
+          
+          Button(action: {
+            self.viewModel.presentSafariView = true
+          }) {
+            DetailItemView(imageName: "vk_icon", mainText: viewModel.provider.vkLink ?? "")
+          }
+          .sheet(isPresented: $viewModel.presentSafariView) {
+            if self.viewModel.provider.vkUrl != nil {
+              SafariView(url: self.viewModel.provider.vkUrl)
+            } else {
+              Text("Страница недоступна")
+            }
+          }
           DetailItemView(systemImageName: "location", mainText: "Контейнер", detailedText: viewModel.provider.place ?? "")
           DetailItemView(systemImageName: "phone", mainText: "Телефон", detailedText: viewModel.provider.phoneNumber)
           DetailItemView(systemImageName: "calendar", mainText: "Дата регистрации VK", detailedText: viewModel.provider.regDt ?? "")

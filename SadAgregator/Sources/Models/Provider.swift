@@ -36,6 +36,14 @@ public struct Provider: Codable {
     }
   }
   
+  public var vkUrl: URL? {
+    if var vkLink = vkLink {
+      vkLink = "https://m.vk.com/" + vkLink.replacingOccurrences(of: "@", with: "")
+      return URL(string: vkLink)
+    }
+    return nil
+  }
+  
   var cleanTerms: String? {
     terms?.replacingOccurrences(of: "<br>", with: "\n")
   }

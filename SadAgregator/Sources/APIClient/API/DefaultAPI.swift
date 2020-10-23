@@ -121,6 +121,413 @@ open class DefaultAPI {
   /**
    
    - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aListID: (query) ListID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistADDListWorkExtGet(aKey: String, aStepID: String, aListID: String, completion: @escaping ((_ data: Auth?,_ error: Error?) -> Void)) {
+    agrAssistADDListWorkExtGetWithRequestBuilder(aKey: aKey, aStepID: aStepID, aListID: aListID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.ADD_ListWork_Ext
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aListID: (query) ListID
+   
+   - returns: RequestBuilder<Auth>
+   */
+  open class func agrAssistADDListWorkExtGetWithRequestBuilder(aKey: String, aStepID: String, aListID: String) -> RequestBuilder<Auth> {
+    let path = "/agr_assist.ADD_ListWork_Ext"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID),
+      URLQueryItem(name: "AListID", value: aListID)
+    ]
+    
+    let requestBuilder: RequestBuilder<Auth>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aListID: (query) ListID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistDELListWorkExtGet(aKey: String, aStepID: String, aListID: String, completion: @escaping ((_ data: Auth?,_ error: Error?) -> Void)) {
+    agrAssistDELListWorkExtGetWithRequestBuilder(aKey: aKey, aStepID: aStepID, aListID: aListID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.DEL_ListWork_Ext
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aListID: (query) ListID
+   
+   - returns: RequestBuilder<Auth>
+   */
+  open class func agrAssistDELListWorkExtGetWithRequestBuilder(aKey: String, aStepID: String, aListID: String) -> RequestBuilder<Auth> {
+    let path = "/agr_assist.DEL_ListWork_Ext"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID),
+      URLQueryItem(name: "AListID", value: aListID)
+    ]
+    
+    
+    let requestBuilder: RequestBuilder<Auth>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistGetListWORKExtGet(aKey: String, aStepID: String, completion: @escaping ((_ data: ListWork?,_ error: Error?) -> Void)) {
+    agrAssistGetListWORKExtGetWithRequestBuilder(aKey: aKey, aStepID: aStepID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.Get_ListWORK_Ext
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 1,
+   "list" : [ {
+   "ext" : 6,
+   "act" : "act",
+   "sub_capt" : "sub_capt",
+   "id" : 0,
+   "capt" : "capt"
+   }, {
+   "ext" : 6,
+   "act" : "act",
+   "sub_capt" : "sub_capt",
+   "id" : 0,
+   "capt" : "capt"
+   } ],
+   "speed" : 5
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   
+   - returns: RequestBuilder<ListWork>
+   */
+  open class func agrAssistGetListWORKExtGetWithRequestBuilder(aKey: String, aStepID: String) -> RequestBuilder<ListWork> {
+    let path = "/agr_assist.Get_ListWORK_Ext"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID)
+    ]
+    
+    
+    let requestBuilder: RequestBuilder<ListWork>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStep: (query) Step
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aButtonID: (query) ButtonID
+   - parameter aVal: (query) Value
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistSetInputVALGet(aKey: String, aStepID: String, aButtonID: String, aVal: String, completion: @escaping ((_ data: SetInputValue?,_ error: Error?) -> Void)) {
+    agrAssistSetInputVALGetWithRequestBuilder(aKey: aKey, aStepID: aStepID, aButtonID: aButtonID, aVal: aVal).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.Set_InputVAL
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 7,
+   "descr" : "descr",
+   "buttons" : [ {
+   "left" : [ {
+   "rec" : 5,
+   "id" : 5,
+   "capt" : "capt"
+   }, {
+   "rec" : 5,
+   "id" : 5,
+   "capt" : "capt"
+   } ],
+   "right" : [ {
+   "id" : 2,
+   "capt" : "capt"
+   }, {
+   "id" : 2,
+   "capt" : "capt"
+   } ]
+   }, {
+   "left" : [ {
+   "rec" : 5,
+   "id" : 5,
+   "capt" : "capt"
+   }, {
+   "rec" : 5,
+   "id" : 5,
+   "capt" : "capt"
+   } ],
+   "right" : [ {
+   "id" : 2,
+   "capt" : "capt"
+   }, {
+   "id" : 2,
+   "capt" : "capt"
+   } ]
+   } ],
+   "hint" : "hint",
+   "step_id" : 0,
+   "type" : "type",
+   "capt" : "capt",
+   "speed" : 9,
+   "input_val" : [ {
+   "def_val" : "def_val",
+   "place_holder" : "place_holder",
+   "can_edit" : 6,
+   "max_len" : 1
+   }, {
+   "def_val" : "def_val",
+   "place_holder" : "place_holder",
+   "can_edit" : 6,
+   "max_len" : 1
+   } ]
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aButtonID: (query) ButtonID
+   - parameter aVal: (query) Value
+   
+   - returns: RequestBuilder<SetInputValue>
+   */
+  open class func agrAssistSetInputVALGetWithRequestBuilder(aKey: String, aStepID: String, aButtonID: String, aVal: String) -> RequestBuilder<SetInputValue> {
+    let path = "/agr_assist.Set_InputVAL"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID),
+      URLQueryItem(name: "AButtonID", value: aButtonID),
+      URLQueryItem(name: "AVal", value: aVal)
+    ]
+    
+    let requestBuilder: RequestBuilder<SetInputValue>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aListID: (query) ListID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistSetListSelectGet(aKey: String, aStepID: String, aListID: String, completion: @escaping ((_ data: SetListSelect?,_ error: Error?) -> Void)) {
+    agrAssistSetListSelectGetWithRequestBuilder(aKey: aKey, aStepID: aStepID, aListID: aListID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.Set_ListSelect
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 5,
+   "descr" : "descr",
+   "hint" : "hint",
+   "step_id" : 0,
+   "type" : "type",
+   "capt" : "capt",
+   "items" : [ {
+   "button" : "button",
+   "rec" : 1,
+   "hint" : "hint",
+   "id" : 6,
+   "capt" : "capt"
+   }, {
+   "button" : "button",
+   "rec" : 1,
+   "hint" : "hint",
+   "id" : 6,
+   "capt" : "capt"
+   } ],
+   "speed" : 5
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aListID: (query) ListID
+   
+   - returns: RequestBuilder<SetListSelect>
+   */
+  open class func agrAssistSetListSelectGetWithRequestBuilder(aKey: String, aStepID: String, aListID: String) -> RequestBuilder<SetListSelect> {
+    let path = "/agr_assist.Set_ListSelect"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID),
+      URLQueryItem(name: "AListID", value: aListID)
+    ]
+    
+    let requestBuilder: RequestBuilder<SetListSelect>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistSetListWORKGet(aKey: String, aStepID: String, completion: @escaping ((_ data: SetListWork?,_ error: Error?) -> Void)) {
+    agrAssistSetListWORKGetWithRequestBuilder(aKey: aKey, aStepID: aStepID).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.Set_ListWORK
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "next_step_id" : "next_step_id",
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   
+   - returns: RequestBuilder<SetListWork>
+   */
+  open class func agrAssistSetListWORKGetWithRequestBuilder(aKey: String, aStepID: String) -> RequestBuilder<SetListWork> {
+    let path = "/agr_assist.Set_ListWORK"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID)
+    ]
+    
+    
+    let requestBuilder: RequestBuilder<SetListWork>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+ 
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aQuery: (query) Token
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrAssistSrchListWorkGet(aKey: String, aStepID: String, aQuery: String, completion: @escaping ((_ data: ListWork?,_ error: Error?) -> Void)) {
+    agrAssistSrchListWorkGetWithRequestBuilder(aKey: aKey, aStepID: aStepID, aQuery: aQuery).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_assist.Srch_ListWork
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 1,
+   "list" : [ {
+   "ext" : 6,
+   "act" : "act",
+   "sub_capt" : "sub_capt",
+   "id" : 0,
+   "capt" : "capt"
+   }, {
+   "ext" : 6,
+   "act" : "act",
+   "sub_capt" : "sub_capt",
+   "id" : 0,
+   "capt" : "capt"
+   } ],
+   "speed" : 5
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aStepID: (query) StepID
+   - parameter aQuery: (query) Token
+   
+   - returns: RequestBuilder<ListWork>
+   */
+  open class func agrAssistSrchListWorkGetWithRequestBuilder(aKey: String, aStepID: String, aQuery: String) -> RequestBuilder<ListWork> {
+    let path = "/agr_assist.Srch_ListWork"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "AStepID", value: aStepID),
+      URLQueryItem(name: "AQuery", value: aQuery)
+    ]
+    
+    let requestBuilder: RequestBuilder<ListWork>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
    - parameter AVKID: (query) ID
    - parameter aAppID: (query) ID
    - parameter completion: completion handler to receive the data and the error objects
@@ -2661,6 +3068,50 @@ open class DefaultAPI {
     ]
     
     let requestBuilder: RequestBuilder<SendQuestion>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+    
+    return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+  }
+  
+  /**
+   
+   - parameter aKey: (query) Token
+   - parameter aPushGuid: (query) PushGuid
+   - parameter aStatus: (query) Status
+   - parameter completion: completion handler to receive the data and the error objects
+   */
+  open class func agrUtilsSetPushStatusGet(aKey: String, aPushGuid: String, aStatus: String, completion: @escaping ((_ data: Auth?,_ error: Error?) -> Void)) {
+    agrUtilsSetPushStatusGetWithRequestBuilder(aKey: aKey, aPushGuid: aPushGuid, aStatus: aStatus).execute { (response, error) -> Void in
+      completion(response?.body, error)
+    }
+  }
+  
+  
+  /**
+   - GET /agr_utils.SetPushStatus
+   -
+   
+   - examples: [{contentType=application/json, example={
+   "result" : 0,
+   "speed" : 6
+   }}]
+   - parameter aKey: (query) Token
+   - parameter aPushGuid: (query) PushGuid
+   - parameter aStatus: (query) Status
+   
+   - returns: RequestBuilder<Auth>
+   */
+  open class func agrUtilsSetPushStatusGetWithRequestBuilder(aKey: String, aPushGuid: String, aStatus: String) -> RequestBuilder<Auth> {
+    let path = "/agr_utils.SetPushStatus"
+    let URLString = SwaggerClientAPI.basePath + path
+    let parameters: [String:Any]? = nil
+    var url = URLComponents(string: URLString)
+    url?.queryItems = [
+      URLQueryItem(name: "AKey", value: aKey),
+      URLQueryItem(name: "APushGuid", value: aPushGuid),
+      URLQueryItem(name: "AStatus", value: aStatus)
+    ]
+    
+    let requestBuilder: RequestBuilder<Auth>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
     
     return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
   }
