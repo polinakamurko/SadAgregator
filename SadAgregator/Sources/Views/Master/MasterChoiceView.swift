@@ -9,48 +9,37 @@
 import SwiftUI
 
 struct MasterChoiceView: View {
+  
+  @ObservedObject var viewModel: MasterViewModel
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Spacer()
-      Text("Что именно Вы хотите сделать?")
+      Text(viewModel.currentStep.capt ?? "")
         .font(.title)
         .fontWeight(.bold)
-      Text("Выберите дальнейшее действие")
+      Text(viewModel.currentStep.hint ?? "")
         .font(.headline)
       
-      Button(action: {}) {
-        VStack(alignment: .leading, spacing: 6) {
-          Text("Изменить настройки парсера")
-            .font(.system(size: 17, weight: .semibold))
-          Text("Настройки парсера будут изменены в соответствии с вашими требованиями.")
-            .font(.system(size: 15))
-            .fixedSize(horizontal: false, vertical: true)
-            .foregroundColor(Color(.darkGray))
+      if viewModel.currentStep.type == "simple_req" {
+        ForEach(viewModel.currentStep.answers, id: \.answerId) { answer in
+          Button(action: {}) {
+            VStack(alignment: .leading, spacing: 6) {
+              Text(answer.capt ?? "")
+                .font(.system(size: 17, weight: .semibold))
+              Text(answer.hint ?? "")
+                .font(.system(size: 15))
+                .fixedSize(horizontal: false, vertical: true)
+                .foregroundColor(Color(.darkGray))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .background(
+              RoundedRectangle(cornerRadius: 10)
+                .foregroundColor((Color(.systemGray6)))
+            )
+          }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(
-          RoundedRectangle(cornerRadius: 10)
-            .foregroundColor((Color(.systemGray6)))
-        )
-      }
-      
-      Button(action: {}) {
-        VStack(alignment: .leading, spacing: 6) {
-          Text("Приостановить выгрузку")
-            .font(.system(size: 17, weight: .semibold))
-          Text("Выгрузка будет приостановлена.")
-            .font(.system(size: 15))
-            .fixedSize(horizontal: false, vertical: true)
-            .foregroundColor(Color(.darkGray))
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(
-          RoundedRectangle(cornerRadius: 10)
-            .foregroundColor((Color(.systemGray6)))
-          
-        )
       }
       Spacer()
       Text("На этом шаге вы настраиваете")
@@ -75,22 +64,23 @@ struct MasterChoiceView: View {
         }
         
         NavigationLink(destination: MasterTextView()) {
-            VStack(alignment: .leading, spacing: 6) {
-              HStack {
-                Text("ПРОДОЛЖИТЬ")
-              }
-              .font(.system(size: 17, weight: .semibold))
-              .foregroundColor(.white)
+          VStack(alignment: .leading, spacing: 6) {
+            HStack {
+              Text("ПРОДОЛЖИТЬ")
             }
+            .font(.system(size: 17, weight: .semibold))
+            .foregroundColor(.white)
           }
-          .frame(width: 160, height: 36)
-          .background(
-            RoundedRectangle(cornerRadius: 17)
-              .foregroundColor(.blue)
-          )
+        }
+        .frame(width: 160, height: 36)
+        .background(
+          RoundedRectangle(cornerRadius: 17)
+            .foregroundColor(.blue)
+        )
       }
       .frame(maxWidth: .infinity, alignment: .center)
     }
+    .onAppear(perform: viewModel.fetchMaster)
     .frame(maxHeight: .infinity)
     .padding()
   }
@@ -100,6 +90,6 @@ struct MasterChoiceView: View {
 
 struct MasterChoiceView_Previews: PreviewProvider {
   static var previews: some View {
-    MasterChoiceView()
+    MasterChoiceView(viewModel: MasterViewModel())
   }
 }

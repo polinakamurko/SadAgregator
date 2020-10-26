@@ -10,5 +10,20 @@ import SwiftUI
 
 class MasterViewModel: ObservableObject {
 
+  @Published var currentStep = GetStep()
+  
+  func fetchMaster() {
+    
+    DefaultAPI.agrAssistGetStepGet(aKey: userKey, aStep: "") { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      if let currentStep = response {
+        self.currentStep = currentStep
+      }
+    }
+  }
 
 }

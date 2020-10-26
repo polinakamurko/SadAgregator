@@ -25,7 +25,11 @@ public struct GetStep: Codable {
     public var backStepId: String?
     public var speed: Int?
 
-    public init(stepId: Int?, type: String?, capt: String?, hint: String?, descr: String?, ansqers: [Answer]?, captListExists: String?, captListExtButton: String?, captListName: String?, edtPlaceHolder: String?, result: Int?, backStepId: String?, speed: Int?) {
+  public var answers: [Answer] {
+    ansqers ?? []
+  }
+  
+    public init(stepId: Int? = nil, type: String? = nil, capt: String? = nil, hint: String? = nil, descr: String? = nil, ansqers: [Answer]? = nil, captListExists: String? = nil, captListExtButton: String? = nil, captListName: String? = nil, edtPlaceHolder: String? = nil, result: Int? = nil, backStepId: String? = nil, speed: Int? = nil) {
         self.stepId = stepId
         self.type = type
         self.capt = capt
