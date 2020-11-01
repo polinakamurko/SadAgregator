@@ -9,7 +9,7 @@ import Foundation
 
 
 
-public struct GetStep: Codable {
+public class GetStep: Codable, ObservableObject {
 
     public var stepId: Int?
     public var type: String?

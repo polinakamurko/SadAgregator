@@ -16,6 +16,7 @@ public struct InputValue: Codable {
     public var canEdit: Int?
     public var maxLen: Int?
 
+  
     public init(placeHolder: String?, defVal: String?, canEdit: Int?, maxLen: Int?) {
         self.placeHolder = placeHolder
         self.defVal = defVal

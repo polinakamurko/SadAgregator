@@ -9,7 +9,7 @@ import Foundation
 
 
 
-public struct SetInputValue: Codable {
+public class SetInputValue: Codable, ObservableObject {
 
     public var stepId: Int?
     public var type: String?
@@ -21,7 +21,11 @@ public struct SetInputValue: Codable {
     public var result: Int?
     public var speed: Int?
 
-    public init(stepId: Int?, type: String?, capt: String?, hint: String?, descr: String?, inputVal: [InputValue]?, buttons: [Buttons]?, result: Int?, speed: Int?) {
+  public var newInput: [InputValue] {
+    inputVal ?? []
+  }
+  
+    public init(stepId: Int? = nil, type: String? = nil, capt: String? = nil, hint: String? = nil, descr: String? = nil, inputVal: [InputValue]? = nil, buttons: [Buttons]? = nil, result: Int? = nil, speed: Int? = nil) {
         self.stepId = stepId
         self.type = type
         self.capt = capt

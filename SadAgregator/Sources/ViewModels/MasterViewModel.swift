@@ -9,8 +9,16 @@
 import SwiftUI
 
 class MasterViewModel: ObservableObject {
-
+  
   @Published var currentStep = GetStep()
+  @Published var inputValue = SetInputValue()
+  @Published var percentage = "" {
+    didSet {
+      
+    }
+  }
+  
+  @Published var newPersentage = ""
   
   func fetchMaster() {
     
@@ -25,5 +33,20 @@ class MasterViewModel: ObservableObject {
       }
     }
   }
-
+  
+  func sendInputValue(buttonID: String) {
+    guard let stepId = currentStep.stepId else {
+      return
+    }
+    DefaultAPI.agrAssistSetInputVALGet(aKey: userKey, aStepID: "\(stepId)", aButtonID: buttonID, aVal: "") { (response, error) in
+      if error != nil {
+        print(error!)
+        return
+      }
+      
+      if let inputValue = response {
+        self.inputValue = inputValue
+      }
+    }
+  }
 }

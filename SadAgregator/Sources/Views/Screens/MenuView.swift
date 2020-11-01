@@ -44,7 +44,7 @@ struct MenuView: View {
       
       Section {
         DetailItemView(systemImageName: "tray.and.arrow.up", mainText: "Парсер")
-        NavigationLink(destination: MasterChoiceView(viewModel: MasterViewModel())) {
+        NavigationLink(destination: MasterView(viewModel: MasterViewModel())) {
           DetailItemView(systemImageName: "wrench", mainText: "Мастер настройки")
         }
       }

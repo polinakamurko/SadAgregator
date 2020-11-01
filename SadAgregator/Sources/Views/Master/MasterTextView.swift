@@ -10,24 +10,18 @@ import SwiftUI
 
 struct MasterTextView: View {
   
+  @ObservedObject var currentInput: SetInputValue
   @State var surchargeTitle = ""
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      Spacer()
-      Text("Укажите % наценки на товар")
-        .font(.title)
-        .fontWeight(.bold)
-      Text("Например, 5%")
-        .font(.headline)
-        .foregroundColor(Color(.lightGray))
-      
-      TextField("Введите % наценки", text: $surchargeTitle)
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background((Color(.systemGray6)))
-        .cornerRadius(10)
-      
+      ForEach(currentInput.newInput, id: \.placeHolder) { input in
+        TextField(input.placeHolder ?? "", text: self.$surchargeTitle)
+          .padding()
+          .frame(maxWidth: .infinity)
+          .background((Color(.systemGray6)))
+          .cornerRadius(10)
+      }
       HStack() {
         Button(action: {}) {
           VStack(alignment: .leading, spacing: 6) {
@@ -103,11 +97,5 @@ struct MasterTextView: View {
     }
     .frame(maxHeight: .infinity)
     .padding()
-  }
-}
-
-struct MasterTextView_Previews: PreviewProvider {
-  static var previews: some View {
-    MasterTextView()
   }
 }
